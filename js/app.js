@@ -233,23 +233,26 @@
         // ----------------------------------------------------
         // 3. NAVIGATION & SIDEBAR TOGGLE
         // ----------------------------------------------------
-        let isSidebarCollapsed = false;
-
+        // PCではサイドバーをアイコン表示に折り畳み、モバイルでは mobile.js が開閉を処理する。
         function toggleSidebar() {
+            if (window.matchMedia('(max-width: 760px)').matches) return;
+            const app = document.getElementById('app-container');
+            if (!app) return;
+            app.classList.toggle('sidebar-collapsed');
+            const collapsed = app.classList.contains('sidebar-collapsed');
             const sidebar = document.getElementById('sidebar');
-            const texts = document.querySelectorAll('.sidebar-text');
-
-            isSidebarCollapsed = !isSidebarCollapsed;
-
-            if (isSidebarCollapsed) {
-                sidebar.classList.remove('w-64');
-                sidebar.classList.add('w-16');
-                texts.forEach(el => el.classList.add('hidden'));
-            } else {
-                sidebar.classList.remove('w-16');
-                sidebar.classList.add('w-64');
-                texts.forEach(el => el.classList.remove('hidden'));
+            if (sidebar) {
+                sidebar.querySelectorAll('.nav-item').forEach(item => {
+                    const label = item.querySelector('.sidebar-text');
+                    if (label && label.textContent.trim()) item.title = label.textContent.trim();
+                });
+                sidebar.querySelectorAll('.menu-accordion-toggle').forEach(item => {
+                    const label = item.querySelector('.sidebar-text');
+                    if (label && label.textContent.trim()) item.title = label.textContent.trim();
+                });
             }
+            const button = document.querySelector('#top-navbar button[onclick*="toggleSidebar"]');
+            if (button) button.setAttribute('aria-expanded', String(!collapsed));
         }
 
         function switchTab(tabName) {

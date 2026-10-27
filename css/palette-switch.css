@@ -60,20 +60,27 @@
 /* Accordion navigation + active assignment view */
 .menu-accordion-group{border-bottom:1px solid rgba(148,163,184,.12);padding-bottom:.35rem}.menu-accordion-group>button{color:var(--text-muted,#94a3b8)}.menu-accordion-body{padding-left:.15rem}.menu-accordion-body.hidden{display:none!important}.menu-accordion-body .nav-item{margin:.1rem 0}.menu-accordion-group button i{transition:transform .2s ease}.menu-accordion-group button i.rotate-180{transform:rotate(180deg)}
 
-/* Sidebar icon-only collapse mode with native hover tooltips */
+/* サイドバーの文字・ラベルは常時表示。折り畳みは各サブメニュー単位で行う。 */
 #sidebar{width:16rem;min-width:16rem;overflow-x:hidden}
-#sidebar.sidebar-collapsed{width:4.5rem!important;min-width:4.5rem!important}
-#sidebar.sidebar-collapsed .sidebar-text{display:none!important}
-#sidebar.sidebar-collapsed .sidebar-title-row{justify-content:center;padding-left:.25rem;padding-right:.25rem}
-#sidebar.sidebar-collapsed .sidebar-collapse-toggle{margin:0 auto}
-#sidebar.sidebar-collapsed .menu-accordion-toggle{justify-content:center;padding:.7rem .25rem}
-#sidebar.sidebar-collapsed .menu-group-label{justify-content:center;gap:0}
-#sidebar.sidebar-collapsed .menu-group-icon{margin:0;font-size:1.05rem}
-#sidebar.sidebar-collapsed .menu-chevron{display:none}
-#sidebar.sidebar-collapsed .menu-accordion-body{padding-left:0}
-#sidebar.sidebar-collapsed .nav-item{justify-content:center;gap:0;padding:.7rem .25rem!important;margin:.2rem 0}
-#sidebar.sidebar-collapsed .nav-item>i{width:auto!important;min-width:1.25rem;margin:0;font-size:1.05rem}
-#sidebar.sidebar-collapsed .p-3.border-t .flex.items-center{justify-content:center;gap:0}
-#sidebar.sidebar-collapsed .p-3.border-t .w-8.h-8{flex-shrink:0}
-#sidebar .sidebar-collapse-toggle{flex-shrink:0;color:inherit;transition:background .2s ease}
-#sidebar .menu-accordion-toggle:focus-visible,#sidebar .sidebar-collapse-toggle:focus-visible,#sidebar .nav-item:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
+
+/* Desktop and mobile: reliable submenu accordion collapse/expand */
+.menu-accordion-body.is-collapsed{display:none!important}
+.menu-accordion-toggle{cursor:pointer;user-select:none}
+.menu-accordion-toggle:focus-visible{outline:2px solid #22d3ee;outline-offset:2px;border-radius:.5rem}
+
+
+/* Desktop sidebar collapse: keep icons visible while hiding labels. */
+@media (min-width: 761px) {
+  #app-container.sidebar-collapsed #sidebar { width: 4.5rem !important; min-width: 4.5rem !important; }
+  #app-container.sidebar-collapsed #sidebar > div.py-4 { padding-left: .45rem !important; padding-right: .45rem !important; }
+  #app-container.sidebar-collapsed #sidebar .sidebar-text,
+  #app-container.sidebar-collapsed #sidebar .menu-chevron { display: none !important; }
+  #app-container.sidebar-collapsed #sidebar .nav-item { justify-content: center !important; gap: 0 !important; padding-left: .5rem !important; padding-right: .5rem !important; }
+  #app-container.sidebar-collapsed #sidebar .nav-item > i { margin: 0 !important; }
+  #app-container.sidebar-collapsed #sidebar .menu-accordion-toggle { justify-content: center !important; padding-left: .5rem !important; padding-right: .5rem !important; }
+  #app-container.sidebar-collapsed #sidebar .menu-group-label { justify-content: center !important; gap: 0 !important; }
+  #app-container.sidebar-collapsed #sidebar .menu-accordion-body { padding-left: 0 !important; }
+  #app-container.sidebar-collapsed #sidebar .menu-accordion-group { padding-bottom: .25rem; }
+  #app-container.sidebar-collapsed #sidebar .sidebar-title-row { justify-content: center !important; padding-left: 0 !important; padding-right: 0 !important; }
+  #app-container.sidebar-collapsed #sidebar .p-3.border-t > div { justify-content: center !important; padding: .25rem !important; }
+}
