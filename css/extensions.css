@@ -1,0 +1,113 @@
+/* SES_Core extension styles */
+.ext-input{width:100%;min-width:0;padding:10px 12px;border-radius:8px;border:1px solid rgba(100,116,139,.45);background:rgba(15,23,42,.88);color:#e2e8f0;font-size:12px;outline:none;transition:border-color .2s,box-shadow .2s}
+.ext-input:focus{border-color:#22d3ee;box-shadow:0 0 0 3px rgba(34,211,238,.1)}
+.ext-button{padding:9px 12px;border-radius:8px;border:1px solid rgba(34,211,238,.35);background:rgba(8,145,178,.2);color:#67e8f9;font-size:12px;font-weight:600;white-space:nowrap;transition:all .2s}
+.ext-button:hover{background:rgba(8,145,178,.35);box-shadow:0 0 14px rgba(34,211,238,.12)}
+.ext-table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}
+.ext-table th{text-align:left;padding:12px;background:rgba(15,23,42,.8);color:#94a3b8;font-weight:600;border-bottom:1px solid rgba(100,116,139,.25)}
+.ext-table td{padding:11px 12px;border-bottom:1px solid rgba(100,116,139,.16);color:#cbd5e1}
+.ext-table tbody tr:hover{background:rgba(34,211,238,.035)}
+.ext-pill{display:inline-flex;align-items:center;padding:3px 7px;border-radius:999px;font-size:10px;border:1px solid rgba(148,163,184,.25);white-space:nowrap}
+.ext-pill.good{color:#6ee7b7;background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25)}.ext-pill.warn{color:#fcd34d;background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25)}.ext-pill.danger{color:#fda4af;background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.25)}.ext-pill.muted{color:#cbd5e1;background:rgba(100,116,139,.1)}
+.global-search-wrap{position:relative;width:min(240px,28vw);margin-right:8px;color:#67e8f9}
+.global-search-wrap>i{position:absolute;left:11px;top:11px;font-size:12px;pointer-events:none}
+#global-search{width:100%;padding:9px 10px 9px 30px;border-radius:9px;background:rgba(15,23,42,.75);border:1px solid rgba(100,116,139,.35);font-size:12px;color:#e2e8f0;outline:none}
+#global-search:focus{border-color:#22d3ee;box-shadow:0 0 12px rgba(34,211,238,.1)}
+#global-search-results{position:absolute;z-index:80;top:calc(100% + 8px);right:0;width:min(360px,85vw);max-height:360px;overflow:auto;background:#0b1220;border:1px solid rgba(34,211,238,.3);border-radius:12px;box-shadow:0 16px 45px rgba(0,0,0,.45)}
+.global-result{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;padding:10px 12px;border-bottom:1px solid rgba(100,116,139,.15);color:#e2e8f0}.global-result:hover{background:rgba(34,211,238,.08)}.global-result span:last-child{display:flex;flex-direction:column;gap:3px;min-width:0}.global-result strong{font-size:12px;overflow:hidden;text-overflow:ellipsis}.global-result small{font-size:10px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis}
+.theme-standard .ext-input{background:#fff;color:#0f172a;border-color:#cbd5e1}.theme-standard .ext-table td{color:#334155}.theme-standard .ext-table th{background:#f1f5f9;color:#475569}.theme-standard #global-search{background:#fff;color:#0f172a}
+@media(max-width:760px){.global-search-wrap{width:36px}.global-search-wrap:focus-within{width:min(200px,35vw)}.global-search-wrap:not(:focus-within) #global-search{padding-left:30px}.global-search-wrap:not(:focus-within) #global-search::placeholder{color:transparent}.ext-table{font-size:11px}}
+
+/* Revenue management layout refinement */
+#monthly-revenue-matrix{min-width:0;width:100%;display:flex;flex-direction:column;gap:0}
+#monthly-revenue-matrix .revenue-kpi-grid{align-items:stretch}
+#monthly-revenue-matrix .revenue-kpi-grid>.glass-card{min-width:0;min-height:118px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+#monthly-revenue-matrix .revenue-main-panel{min-width:0;overflow:hidden;border:1px solid rgba(148,163,184,.18);box-shadow:0 12px 32px rgba(0,0,0,.12)}
+#monthly-revenue-matrix .revenue-annual-summary>div{min-width:0}
+#monthly-revenue-matrix .revenue-table-wrap{max-width:100%;max-height:68vh;overscroll-behavior:contain;background:rgba(2,6,23,.18)}
+#monthly-revenue-matrix .revenue-matrix-table{border-collapse:separate;border-spacing:0;min-width:2400px}
+#monthly-revenue-matrix .revenue-matrix-table th{position:sticky;top:0;z-index:5}
+#monthly-revenue-matrix .revenue-matrix-table th:first-child{left:0;z-index:12;min-width:240px;max-width:260px;white-space:normal}
+#monthly-revenue-matrix .revenue-matrix-table td{vertical-align:top}
+#monthly-revenue-matrix .revenue-matrix-table .ext-input{padding:7px 8px;font-size:11px}
+.theme-standard #monthly-revenue-matrix .revenue-main-panel{background:#fff;border-color:#dbe2ea}
+.theme-standard #monthly-revenue-matrix .revenue-table-wrap{background:#fff}
+@media(max-width:760px){#monthly-revenue-matrix .revenue-kpi-grid>.glass-card{min-height:96px;padding:14px}#monthly-revenue-matrix .revenue-main-panel{padding:12px}#monthly-revenue-matrix .revenue-table-wrap{max-height:60vh}}
+
+/* Revenue layout: no vertical scroll, compact member column, readable spacing */
+#monthly-revenue-matrix .revenue-table-wrap{max-height:none!important;overflow-y:visible!important;overflow-x:auto!important}
+#monthly-revenue-matrix .revenue-matrix-table{min-width:0!important;width:max-content;table-layout:auto}
+#monthly-revenue-matrix .revenue-matrix-table th:first-child{width:190px;min-width:190px;max-width:190px;white-space:normal;line-height:1.45;padding:12px!important}
+#monthly-revenue-matrix .revenue-matrix-table td{line-height:1.45}
+#monthly-revenue-matrix .revenue-member-meta{display:flex;flex-direction:column;gap:3px;margin-top:7px;font-size:10px;line-height:1.45;font-weight:400;color:#94a3b8;white-space:normal;overflow-wrap:anywhere}
+#monthly-revenue-matrix .revenue-matrix-table th .font-semibold{line-height:1.5;overflow-wrap:anywhere;margin-bottom:2px}
+#monthly-revenue-matrix .revenue-kpi-grid>.glass-card{padding:18px 20px;gap:0;line-height:1.5;min-height:112px}
+#monthly-revenue-matrix .revenue-kpi-grid>.glass-card>div{line-height:1.55;overflow-wrap:anywhere}
+#monthly-revenue-matrix .revenue-kpi-grid .text-2xl{line-height:1.35;margin-top:9px}
+#monthly-revenue-matrix .revenue-main-panel{padding:18px}
+#monthly-revenue-matrix .ext-input,#monthly-revenue-matrix select,.ext-input,select.ext-input{ text-align:left!important;text-align-last:left!important; }
+#monthly-revenue-matrix select.ext-input option,.ext-input option{ text-align:left!important; }
+/* Standard theme: conventional light business-system palette */
+.theme-standard #monthly-revenue-matrix .revenue-kpi-grid>.glass-card{background:#fff!important;border:1px solid #d7e0ea!important;box-shadow:0 2px 5px rgba(15,23,42,.05)!important}
+.theme-standard #monthly-revenue-matrix .revenue-kpi-grid .text-slate-400,.theme-standard #monthly-revenue-matrix .revenue-kpi-grid .text-slate-500{color:#64748b!important}
+.theme-standard #monthly-revenue-matrix .revenue-kpi-grid .text-cyan-300{color:#0369a1!important}
+.theme-standard #monthly-revenue-matrix .revenue-kpi-grid .text-sky-300{color:#2563eb!important}
+.theme-standard #monthly-revenue-matrix .revenue-kpi-grid .text-violet-300{color:#6d28d9!important}
+.theme-standard #monthly-revenue-matrix .revenue-kpi-grid .text-emerald-300{color:#047857!important}
+.theme-standard #monthly-revenue-matrix .revenue-main-panel{background:#fff!important;color:#1e293b!important;border-color:#d7e0ea!important}
+.theme-standard #monthly-revenue-matrix .revenue-main-panel h3{color:#1d4ed8!important}
+.theme-standard #monthly-revenue-matrix .revenue-main-panel p,.theme-standard #monthly-revenue-matrix .revenue-main-panel label{color:#475569!important}
+.theme-standard #monthly-revenue-matrix .revenue-annual-summary>div{background:#f8fafc!important;border-color:#dbe3ee!important}
+.theme-standard #monthly-revenue-matrix .revenue-annual-summary .text-cyan-300{color:#0369a1!important}
+.theme-standard #monthly-revenue-matrix .revenue-annual-summary .text-amber-300{color:#b45309!important}
+.theme-standard #monthly-revenue-matrix .revenue-annual-summary .text-emerald-300{color:#047857!important}
+.theme-standard #monthly-revenue-matrix .revenue-matrix-table th{background:#eef2f7!important;color:#334155!important;border-bottom:1px solid #d5dde7!important}
+.theme-standard #monthly-revenue-matrix .revenue-matrix-table th:first-child,.theme-standard #monthly-revenue-matrix .revenue-matrix-table tbody th{background:#f8fafc!important;color:#1e293b!important}
+.theme-standard #monthly-revenue-matrix .revenue-matrix-table td{background:#fff!important;color:#334155!important;border-bottom:1px solid #e2e8f0!important}
+.theme-standard #monthly-revenue-matrix .revenue-matrix-table .revenue-member-meta{color:#64748b!important}
+.theme-standard #monthly-revenue-matrix .revenue-matrix-table .text-emerald-300{color:#047857!important}
+.theme-standard #monthly-revenue-matrix .revenue-matrix-table .text-rose-300{color:#be123c!important}
+.theme-standard #monthly-revenue-matrix .revenue-matrix-table .text-cyan-300{color:#0369a1!important}
+.theme-standard #monthly-revenue-matrix .revenue-table-wrap{border-color:#d7e0ea!important;background:#fff!important}
+.theme-standard .ext-input{background:#fff!important;color:#1e293b!important;border-color:#cbd5e1!important}
+.theme-standard .ext-input:focus{border-color:#2563eb!important;box-shadow:0 0 0 3px rgba(37,99,235,.12)!important}
+@media(max-width:760px){#monthly-revenue-matrix .revenue-matrix-table th:first-child{width:165px;min-width:165px;max-width:165px}#monthly-revenue-matrix .revenue-main-panel{padding:12px}}
+
+/* Revenue table: reliable vertical scrolling and compact numeric inputs */
+#monthly-revenue-matrix .revenue-table-wrap{
+  display:block!important;
+  position:relative;
+  width:100%;
+  max-height:calc(100vh - 300px)!important;
+  min-height:260px;
+  overflow-x:auto!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+}
+#monthly-revenue-matrix .revenue-matrix-table{
+  width:max-content!important;
+  min-width:100%!important;
+  table-layout:auto;
+}
+#monthly-revenue-matrix .revenue-matrix-table thead th{position:sticky;top:0;z-index:8}
+#monthly-revenue-matrix .revenue-matrix-table th:first-child{
+  position:sticky;left:0;z-index:12;
+  width:190px;min-width:190px;max-width:190px;
+  white-space:normal;overflow-wrap:anywhere;
+}
+#monthly-revenue-matrix .revenue-matrix-table td.revenue-input-cell{width:132px;min-width:132px;max-width:132px;padding:8px!important;vertical-align:top}
+#monthly-revenue-matrix .revenue-input-stack{display:flex;flex-direction:column;gap:6px;min-width:0;width:100%}
+#monthly-revenue-matrix .revenue-input-stack label{display:grid;grid-template-columns:42px minmax(0,1fr);align-items:center;gap:5px;font-size:10px;line-height:1.25;white-space:nowrap;color:#94a3b8}
+#monthly-revenue-matrix .revenue-input-stack .ext-input{display:block;width:100%!important;min-width:0!important;max-width:78px;box-sizing:border-box;padding:5px 4px!important;font-size:11px;line-height:1.25}
+#monthly-revenue-matrix .revenue-profit-inline{border-top:1px solid rgba(148,163,184,.22);padding-top:5px;font-size:10px;line-height:1.35;white-space:normal;overflow-wrap:anywhere}
+#monthly-revenue-matrix .revenue-profit-cell{width:132px;min-width:132px;text-align:right;vertical-align:middle!important;padding:12px 8px!important;font-weight:700;white-space:normal;overflow-wrap:anywhere}
+#monthly-revenue-matrix .revenue-table-wrap::-webkit-scrollbar{width:12px;height:12px}
+#monthly-revenue-matrix .revenue-table-wrap::-webkit-scrollbar-thumb{background:rgba(100,116,139,.65);border-radius:8px;border:3px solid transparent;background-clip:padding-box}
+.theme-standard #monthly-revenue-matrix .revenue-input-stack label{color:#475569!important}
+.theme-standard #monthly-revenue-matrix .revenue-profit-inline{border-color:#dbe3ee}
+@media(max-width:760px){
+ #monthly-revenue-matrix .revenue-table-wrap{max-height:calc(100vh - 260px)!important;min-height:220px}
+ #monthly-revenue-matrix .revenue-matrix-table th:first-child{width:160px;min-width:160px;max-width:160px}
+ #monthly-revenue-matrix .revenue-matrix-table td.revenue-input-cell,#monthly-revenue-matrix .revenue-matrix-table td.revenue-profit-cell{width:124px;min-width:124px;max-width:124px}
+}

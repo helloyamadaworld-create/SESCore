@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SES_Core - SES統合業務管理システム</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <script src="js/tailwind-config.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/extensions.css">
+    <link rel="stylesheet" href="css/neon-overdrive.css">
+    <link rel="stylesheet" href="css/palette-switch.css">
+</head>
+<body class="theme-neon h-screen flex flex-col overflow-hidden select-none">
+
+    <!-- ========================================== -->
+    <!-- 0. LOGIN SCREEN                           -->
+    <!-- ========================================== -->
+    <section id="login-screen" class="login-screen fixed inset-0 z-[60] flex items-center justify-center p-5 cyber-grid">
+        <div class="login-orb login-orb-one"></div>
+        <div class="login-orb login-orb-two"></div>
+        <div class="login-panel relative z-10 w-full max-w-md rounded-2xl p-7 sm:p-9">
+            <div class="flex flex-col items-center text-center mb-8">
+                <div class="login-logo mb-5"><i class="fa-solid fa-network-wired"></i></div>
+                <p class="font-mono text-[10px] tracking-[0.35em] text-cyan-300 mb-2">SECURE ACCESS GATEWAY</p>
+                <h1 class="font-tech text-3xl font-bold tracking-widest text-white neon-glow-text">SES_CORE</h1>
+                <p class="text-sm text-slate-400 mt-2">SES統合業務管理システム</p>
+            </div>
+
+            <form id="login-form" onsubmit="handleLogin(event)" class="space-y-5">
+                <div>
+                    <label for="login-username" class="block text-xs font-mono tracking-wider text-slate-300 mb-2">USER ID</label>
+                    <div class="login-input-wrap"><i class="fa-regular fa-user"></i><input id="login-username" name="username" type="text" autocomplete="username" placeholder="ユーザーIDを入力" required></div>
+                </div>
+                <div>
+                    <label for="login-password" class="block text-xs font-mono tracking-wider text-slate-300 mb-2">PASSWORD</label>
+                    <div class="login-input-wrap"><i class="fa-solid fa-lock"></i><input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="パスワードを入力" required><button type="button" class="password-toggle" onclick="togglePasswordVisibility()" aria-label="パスワード表示切替"><i id="password-toggle-icon" class="fa-regular fa-eye"></i></button></div>
+                </div>
+                <p id="login-error" class="hidden text-sm text-rose-300 bg-rose-500/10 border border-rose-400/30 rounded-lg px-3 py-2" role="alert">ユーザーIDまたはパスワードが正しくありません。</p>
+                <button id="login-submit" type="submit" class="login-submit w-full rounded-lg py-3.5 font-semibold tracking-wider text-slate-950 transition flex items-center justify-center gap-2"><i class="fa-solid fa-right-to-bracket"></i><span>SECURE LOGIN</span></button>
+            </form>
+            <div class="flex items-center gap-3 my-6"><div class="h-px flex-1 bg-cyan-500/20"></div><span class="text-[10px] font-mono tracking-widest text-slate-500">AUTHORIZED PERSONNEL ONLY</span><div class="h-px flex-1 bg-cyan-500/20"></div></div>
+            <div class="text-center text-[10px] text-slate-500 font-mono">SES_CORE SYSTEM // v3.0 EXPANSION EDITION</div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 1. OPENING ANIMATION / SYSTEM INITIALIZER  -->
+    <!-- ========================================== -->
+    <div id="opening-screen" style="display:none" class="fixed inset-0 z-50 bg-slate-950 text-cyan-400 flex flex-col items-center justify-center p-6 cyber-grid transition-opacity duration-700">
+        <canvas id="matrix-canvas"></canvas>
+        
+        <div class="relative z-10 max-w-xl w-full flex flex-col items-center text-center space-y-6">
+            <!-- SKIP BUTTON -->
+            <button onclick="skipOpening()" class="absolute -top-12 right-0 px-4 py-1.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono tracking-widest border border-slate-600 transition flex items-center space-x-2">
+                <span>SKIP INTRO</span>
+                <i class="fa-solid fa-forward text-cyan-400"></i>
+            </button>
+
+            <!-- LOGO / BRANDING -->
+            <div class="space-y-2">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-cyan-500/10 border-2 border-cyan-400/50 shadow-[0_0_30px_rgba(6,182,212,0.4)] animate-pulse">
+                    <i class="fa-solid fa-network-wired text-4xl text-cyan-400"></i>
+                </div>
+                <h1 class="font-tech text-3xl md:text-4xl font-extrabold tracking-wider text-white neon-glow-text">
+                    SES_CORE <span class="text-cyan-400 text-sm font-mono block md:inline font-normal">v3.0 Expansion Edition</span>
+                </h1>
+                <p class="text-xs text-slate-400 font-mono">次世代SES事業統合型ナレッジ &amp; 営業マネジメントシステム</p>
+            </div>
+
+            <!-- TERMINAL LOG DISPLAY -->
+            <div class="w-full bg-slate-900/90 border border-cyan-500/30 rounded-lg p-4 font-mono text-left text-xs space-y-1.5 h-36 overflow-y-auto shadow-inner text-slate-300" id="terminal-logs">
+                <div class="text-cyan-400">[SYSTEM] Initialization process standard boot sequence started...</div>
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="w-full space-y-2">
+                <div class="flex justify-between text-xs font-mono text-slate-400">
+                    <span id="loader-status">Loading Database Schema...</span>
+                    <span id="loader-percent" class="text-cyan-400 font-bold">0%</span>
+                </div>
+                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-700">
+                    <div id="loader-bar" class="bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500 h-full w-0 transition-all duration-300 shadow-[0_0_12px_rgba(6,182,212,0.8)]"></div>
+                </div>
+            </div>
+            
+            <div class="text-[10px] text-slate-500 font-mono">CONFIDENTIAL - FOR INTERNAL SES OPERATIONS ONLY</div>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- 2. MAIN APPLICATION CONTAINER              -->
+    <!-- ========================================== -->
+    <div id="app-container" class="flex-1 flex flex-col h-full overflow-hidden opacity-0 transition-opacity duration-500">
+
+        <!-- TOP NAVBAR -->
+        <header class="h-14 border-b flex items-center justify-between px-4 z-20 transition-colors duration-300" id="top-navbar">
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleSidebar()" class="p-2 rounded-lg hover:bg-slate-700/20 text-slate-400 hover:text-cyan-400 transition" title="サイドバー切替">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-layer-group text-cyan-400 text-lg"></i>
+                    <span class="font-tech font-bold text-lg tracking-wider">SES_CORE</span>
+                    <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-mono hidden sm:inline-block">LIVE</span>
+                </div>
+            </div>
+
+            <!-- NAVBAR RIGHT TOOLS -->
+            <div class="flex items-center space-x-3">
+                <button onclick="logoutSES()" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-pink-300 border border-pink-500/40 hover:bg-pink-500/15 hover:text-white transition shadow-[0_0_12px_rgba(236,72,153,0.18)]" title="ログアウト"><i class="fa-solid fa-right-from-bracket mr-1"></i>ログアウト</button>
+                <!-- DATA REFRESH / RESET -->
+                <button onclick="confirmResetData()" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition border border-transparent hover:border-slate-700" title="初期サンプルデータにリセット">
+                    <i class="fa-solid fa-rotate-right mr-1"></i> リセット
+                </button>
+
+                <!-- IMPORT / EXPORT BUTTONS -->
+                <button onclick="openImportModal()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-cyan-500/30 transition flex items-center">
+                    <i class="fa-solid fa-file-import mr-1.5"></i> JSONインポート
+                </button>
+                <button onclick="exportDataJSON()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center shadow-md">
+                    <i class="fa-solid fa-file-export mr-1.5"></i> JSONエクスポート
+                </button>
+
+                <div class="h-5 w-px bg-slate-700 mx-1"></div>
+
+                <!-- THEME SWITCHER TOGGLE -->
+                <div class="flex items-center bg-slate-800/80 p-1 rounded-full border border-slate-700">
+                    <button id="theme-btn-standard" onclick="setTheme('standard')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
+                        <i class="fa-solid fa-sun text-amber-400"></i>
+                        <span class="hidden md:inline">STANDARD</span>
+                    </button>
+                    <button id="theme-btn-neon" onclick="setTheme('neon')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
+                        <i class="fa-solid fa-bolt text-cyan-400"></i>
+                        <span class="hidden md:inline">NEON</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN LAYOUT BODY (SIDEBAR + CONTENT AREA) -->
+        <div class="flex-1 flex overflow-hidden">
+
+            <!-- SIDEBAR NAVIGATION -->
+            <aside id="sidebar" class="w-64 border-r flex flex-col justify-between transition-all duration-300 z-10 flex-shrink-0" style="background-color: var(--bg-sidebar);">
+                <div class="py-4 space-y-1 px-3">
+                    <div class="px-3 py-2 text-[11px] font-mono tracking-wider text-slate-400 uppercase sidebar-text">メインメニュー</div>
+
+                    <a href="#" onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-cyan-400 bg-cyan-500/10 border-l-4 border-cyan-400">
+                        <i class="fa-solid fa-chart-pie w-5 text-center text-base"></i>
+                        <span class="sidebar-text">ダッシュボード</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('clients')" id="nav-clients" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i class="fa-solid fa-building w-5 text-center text-base"></i>
+                        <span class="sidebar-text">取引先管理</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('projects')" id="nav-projects" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i class="fa-solid fa-briefcase w-5 text-center text-base"></i>
+                        <span class="sidebar-text">案件・プロジェクト</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('members')" id="nav-members" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i class="fa-solid fa-users-gear w-5 text-center text-base"></i>
+                        <span class="sidebar-text">要員・メンバー</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('interviews')" id="nav-interviews" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i class="fa-solid fa-comments w-5 text-center text-base"></i>
+                        <span class="sidebar-text">打合せ・面談履歴</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('revenue')" id="nav-revenue" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i class="fa-solid fa-sack-dollar w-5 text-center text-base"></i>
+                        <span class="sidebar-text">売上・粗利管理</span>
+                    </a>
+                </div>
+
+                <!-- SIDEBAR FOOTER (USER INFO) -->
+                <div class="p-3 border-t border-slate-800">
+                    <div class="flex items-center space-x-3 p-2 rounded-lg bg-slate-800/40">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center font-bold text-white text-xs">
+                            営業
+                        </div>
+                        <div class="sidebar-text min-w-0 flex-1">
+                            <p class="text-xs font-semibold truncate text-slate-200">SES営業統括部</p>
+                            <p class="text-[10px] text-slate-400 truncate">管理者権限 (Admin)</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN DYNAMIC CONTENT DISPLAY -->
+            <main class="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
+
+                <!-- --------------------------------------- -->
+                <!-- VIEW 1: DASHBOARD                      -->
+                <!-- --------------------------------------- -->
+                <section id="view-dashboard" class="view-panel space-y-6">
+                    <!-- TOP KPI SUMMARY CARDS -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400 flex items-center justify-between">
+                                <span>稼働中エンジニア</span>
+                                <i class="fa-solid fa-user-check text-emerald-400"></i>
+                            </div>
+                            <div class="text-2xl font-bold font-tech" id="kpi-active-engineers">0</div>
+                            <div class="text-[10px] text-emerald-400 font-mono">稼働率: <span id="kpi-utilization-rate">0%</span></div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400 flex items-center justify-between">
+                                <span>進行中案件数</span>
+                                <i class="fa-solid fa-folder-open text-cyan-400"></i>
+                            </div>
+                            <div class="text-2xl font-bold font-tech" id="kpi-active-projects">0</div>
+                            <div class="text-[10px] text-slate-400 font-mono">募集案件</div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400 flex items-center justify-between">
+                                <span>取引先企業</span>
+                                <i class="fa-solid fa-building text-blue-400"></i>
+                            </div>
+                            <div class="text-2xl font-bold font-tech" id="kpi-total-clients">0</div>
+                            <div class="text-[10px] text-blue-400 font-mono">アクティブクライアント</div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400 flex items-center justify-between">
+                                <span>今月見込み売上</span>
+                                <i class="fa-solid fa-yen-sign text-amber-400"></i>
+                            </div>
+                            <div class="text-xl font-bold font-tech text-amber-400" id="kpi-monthly-revenue">¥0M</div>
+                            <div class="text-[10px] text-slate-400 font-mono">達成率: <span id="kpi-target-rate">0%</span></div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400 flex items-center justify-between">
+                                <span>今月粗利益</span>
+                                <i class="fa-solid fa-chart-line text-purple-400"></i>
+                            </div>
+                            <div class="text-xl font-bold font-tech text-purple-400" id="kpi-monthly-profit">¥0M</div>
+                            <div class="text-[10px] text-purple-400 font-mono">粗利率: <span id="kpi-profit-margin">0%</span></div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400 flex items-center justify-between">
+                                <span>待機要員</span>
+                                <i class="fa-solid fa-user-clock text-rose-400"></i>
+                            </div>
+                            <div class="text-2xl font-bold font-tech text-rose-400" id="kpi-bench-engineers">0</div>
+                            <div class="text-[10px] text-rose-400 font-mono">要提案アクション</div>
+                        </div>
+                    </div>
+
+                    <!-- CHARTS SECTION -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Revenue vs Profit Chart -->
+                        <div class="glass-card p-5 rounded-xl lg:col-span-2 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-sm flex items-center">
+                                    <i class="fa-solid fa-chart-column mr-2 text-cyan-400"></i>
+                                    月次売上・粗利推移 (2026年)
+                                </h3>
+                                <span class="text-xs text-slate-400 font-mono">単位: 万円</span>
+                            </div>
+                            <div class="h-64 relative">
+                                <canvas id="chart-revenue-trend"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Pipeline Funnel Chart -->
+                        <div class="glass-card p-5 rounded-xl space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-sm flex items-center">
+                                    <i class="fa-solid fa-filter mr-2 text-purple-400"></i>
+                                    提案パイプラインステータス
+                                </h3>
+                            </div>
+                            <div class="h-64 relative flex items-center justify-center">
+                                <canvas id="chart-pipeline-funnel"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTION NEEDED / RECENT INTERVIEWS LIST -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Immediate Action Required -->
+                        <div class="glass-card p-5 rounded-xl space-y-3">
+                            <h3 class="font-bold text-sm flex items-center text-rose-400">
+                                <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+                                要フォロー・即時対応タスク
+                            </h3>
+                            <div class="space-y-2 max-h-56 overflow-y-auto pr-1" id="dash-action-list">
+                                <!-- Dynamic insertions -->
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Interview Schedules -->
+                        <div class="glass-card p-5 rounded-xl space-y-3">
+                            <h3 class="font-bold text-sm flex items-center text-cyan-400">
+                                <i class="fa-solid fa-calendar-day mr-2"></i>
+                                直近の面談・打合せ予定
+                            </h3>
+                            <div class="space-y-2 max-h-56 overflow-y-auto pr-1" id="dash-interviews-list">
+                                <!-- Dynamic insertions -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- --------------------------------------- -->
+                <!-- VIEW 2: CLIENTS MANAGEMENT              -->
+                <!-- --------------------------------------- -->
+                <section id="view-clients" class="view-panel hidden space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold tracking-tight">取引先企業一覧</h2>
+                            <p class="text-xs text-slate-400">エンド企業・元請SES・協力会社の情報と取引ステータス管理</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <input type="text" id="client-search" oninput="renderClientsTable()" placeholder="企業名、担当者、開発技術で検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
+                            <button onclick="openClientModal()" class="px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
+                                <i class="fa-solid fa-plus mr-1"></i> 新規取引先追加
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CLIENTS TABLE -->
+                    <div class="glass-card rounded-xl overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
+                                    <tr>
+                                        <th class="p-3">取引先ID</th>
+                                        <th class="p-3">企業名</th>
+                                        <th class="p-3">種別</th>
+                                        <th class="p-3">担当者名</th>
+                                        <th class="p-3">連絡先メール</th>
+                                        <th class="p-3">公開中案件数</th>
+                                        <th class="p-3">ステータス</th>
+                                        <th class="p-3 text-right">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clients-table-body" class="divide-y divide-slate-800">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- --------------------------------------- -->
+                <!-- VIEW 3: PROJECTS / CASES MANAGEMENT    -->
+                <!-- --------------------------------------- -->
+                <section id="view-projects" class="view-panel hidden space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold tracking-tight">案件・プロジェクト管理</h2>
+                            <p class="text-xs text-slate-400">募集案件・必要スキル・単価・提案状況の一貫トラッキング</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <select id="project-filter-status" onchange="renderProjectsTable()" class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400">
+                                <option value="ALL">すべてのステータス</option>
+                                <option value="募集準備中">募集準備中</option>
+                                <option value="提案公募中">提案公募中</option>
+                                <option value="面談調整中">面談調整中</option>
+                                <option value="成約済み">成約済み</option>
+                                <option value="募集終了">募集終了</option>
+                            </select>
+                            <input type="text" id="project-search" oninput="renderProjectsTable()" placeholder="案件名、スキルタグで検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
+                            <button onclick="openProjectModal()" class="px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
+                                <i class="fa-solid fa-plus mr-1"></i> 新規案件登録
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PROJECTS TABLE -->
+                    <div class="glass-card rounded-xl overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
+                                    <tr>
+                                        <th class="p-3">案件ID</th>
+                                        <th class="p-3">案件名称</th>
+                                        <th class="p-3">クライアント</th>
+                                        <th class="p-3">必須スキル</th>
+                                        <th class="p-3">想定単価</th>
+                                        <th class="p-3">勤務形態</th>
+                                        <th class="p-3">ステータス</th>
+                                        <th class="p-3 text-right">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="projects-table-body" class="divide-y divide-slate-800">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- --------------------------------------- -->
+                <!-- VIEW 4: ENGINEERS / MEMBERS MANAGEMENT -->
+                <!-- --------------------------------------- -->
+                <section id="view-members" class="view-panel hidden space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold tracking-tight">要員・エンジニア管理</h2>
+                            <p class="text-xs text-slate-400">自社エンジニア・パートナー要員の保有スキル・稼働状況・提案管理</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <select id="member-filter-status" onchange="renderMembersTable()" class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400">
+                                <option value="ALL">全員表示</option>
+                                <option value="稼働中">稼働中</option>
+                                <option value="待機中">待機中 (即提案可)</option>
+                                <option value="提案中">提案中</option>
+                                <option value="未設定">未設定</option>
+                            </select>
+                            <input type="text" id="member-search" oninput="renderMembersTable()" placeholder="氏名、言語、フレームワークで検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
+                            <button onclick="openMemberModal()" class="px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
+                                <i class="fa-solid fa-plus mr-1"></i> 新規エンジニア登録
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- MEMBERS TABLE -->
+                    <div class="glass-card rounded-xl overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
+                                    <tr>
+                                        <th class="p-3">要員ID</th>
+                                        <th class="p-3">氏名 / 区分</th>
+                                        <th class="p-3">所属部署</th>
+                                        <th class="p-3">役職</th>
+                                        <th class="p-3">主要スキル</th>
+                                        <th class="p-3">経験年数</th>
+                                        <th class="p-3">希望/参画単価</th>
+                                        <th class="p-3">稼働可能日</th>
+                                        <th class="p-3">状態</th>
+                                        <th class="p-3 text-right">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="members-table-body" class="divide-y divide-slate-800">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- --------------------------------------- -->
+                <!-- VIEW 5: INTERVIEWS & SALES ACTIVITIES   -->
+                <!-- --------------------------------------- -->
+                <section id="view-interviews" class="view-panel hidden space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold tracking-tight">打合せ・面談調整履歴</h2>
+                            <p class="text-xs text-slate-400">Web面談設定・同席調整・営業フォローアップ状況</p>
+                        </div>
+                        <button onclick="openInterviewModal()" class="px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
+                            <i class="fa-solid fa-plus mr-1"></i> 面談予定登録
+                        </button>
+                    </div>
+
+                    <!-- INTERVIEWS TABLE -->
+                    <div class="glass-card rounded-xl overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
+                                    <tr>
+                                        <th class="p-3">日時</th>
+                                        <th class="p-3">対象エンジニア</th>
+                                        <th class="p-3">対象案件</th>
+                                        <th class="p-3">取引先企業</th>
+                                        <th class="p-3">形式 / 場所</th>
+                                        <th class="p-3">結果・ステータス</th>
+                                        <th class="p-3 text-right">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="interviews-table-body" class="divide-y divide-slate-800">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- --------------------------------------- -->
+                <!-- VIEW 6: REVENUE & PROFIT MANAGEMENT    -->
+                <!-- --------------------------------------- -->
+                <section id="view-revenue" class="view-panel hidden space-y-6">
+                    <div>
+                        <h2 class="text-xl font-bold tracking-tight">売上・粗利マネジメント</h2>
+                        <p class="text-xs text-slate-400">エンジニアごとの販売単価・仕入原価・マージン率の一覧分析</p>
+                    </div>
+
+                    <!-- SUMMARY CARDS FOR REVENUE -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400">稼働人数合計</div>
+                            <div class="text-2xl font-bold font-tech text-cyan-400" id="rev-summary-count">0名</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400">月間合計売上高</div>
+                            <div class="text-2xl font-bold font-tech text-emerald-400" id="rev-summary-total">¥0</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400">月間合計原価</div>
+                            <div class="text-2xl font-bold font-tech text-slate-300" id="rev-summary-cost">¥0</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl space-y-1">
+                            <div class="text-xs text-slate-400">平均粗利益率</div>
+                            <div class="text-2xl font-bold font-tech text-purple-400" id="rev-summary-margin">0%</div>
+                        </div>
+                    </div>
+
+                    <!-- REVENUE DETAIL TABLE -->
+                    <div class="glass-card rounded-xl overflow-hidden space-y-2 p-4">
+                        <h3 class="font-bold text-sm text-slate-300">稼働要員別 単価・原価・粗利計算シート</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
+                                    <tr>
+                                        <th class="p-3">エンジニア名</th>
+                                        <th class="p-3">参画案件</th>
+                                        <th class="p-3">取引先</th>
+                                        <th class="p-3">受注単価 (売上)</th>
+                                        <th class="p-3">支払単価 (原価)</th>
+                                        <th class="p-3">月間粗利益</th>
+                                        <th class="p-3">粗利益率</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="revenue-table-body" class="divide-y divide-slate-800">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- MODALS SECTION                             -->
+    <!-- ========================================== -->
+
+    <!-- JSON IMPORT MODAL -->
+    <div id="modal-import" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl max-w-md w-full p-6 space-y-5 border border-cyan-500/30 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="font-bold text-base flex items-center text-cyan-400">
+                    <i class="fa-solid fa-file-import mr-2"></i> JSONデータのインポート
+                </h3>
+                <button onclick="closeModal('modal-import')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <p class="text-xs text-slate-300 leading-relaxed">
+                エクスポートした `initialData.json` 形式のファイルをアップロードしてください。現在のシステムデータが完全に更新されます。
+            </p>
+
+            <div class="border-2 border-dashed border-slate-700 hover:border-cyan-400 rounded-xl p-6 text-center space-y-3 cursor-pointer transition" onclick="document.getElementById('import-file-input').click()">
+                <i class="fa-solid fa-cloud-arrow-up text-3xl text-cyan-400"></i>
+                <div class="text-xs font-mono text-slate-300">ファイルを選択またはドラッグ＆ドロップ</div>
+                <input type="file" id="import-file-input" accept=".json" class="hidden" onchange="handleFileSelect(event)">
+            </div>
+
+            <div id="import-file-name" class="text-xs font-mono text-cyan-400 text-center font-bold"></div>
+
+            <div class="flex justify-end space-x-2 pt-2">
+                <button onclick="closeModal('modal-import')" class="px-4 py-2 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-300">キャンセル</button>
+                <button onclick="processJSONImport()" class="px-4 py-2 rounded-lg text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-white">データを更新適用</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CLIENT EDIT/ADD MODAL -->
+    <div id="modal-client" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl max-w-lg w-full p-6 space-y-4 border border-slate-700">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="font-bold text-sm text-cyan-400" id="modal-client-title">新規取引先追加</h3>
+                <button onclick="closeModal('modal-client')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-client" onsubmit="saveClient(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="client-id">
+                <div>
+                    <label class="block text-slate-400 mb-1">企業名 <span class="text-rose-400">*</span></label>
+                    <input type="text" id="client-name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:border-cyan-400">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">取引先区分</label>
+                        <select id="client-type" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <option value="エンド企業">エンド企業</option>
+                            <option value="元請SES">元請SES</option>
+                            <option value="協力会社">協力会社(パートナー)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">担当者名</label>
+                        <input type="text" id="client-contact" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">連絡先メールアドレス</label>
+                    <input type="email" id="client-email" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">ステータス</label>
+                    <select id="client-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                        <option value="アクティブ">アクティブ</option>
+                        <option value="取引停止">取引停止</option>
+                    </select>
+                </div>
+                <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
+                    <button type="button" onclick="closeModal('modal-client')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
+                    <button type="submit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">保存する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- PROJECT EDIT/ADD MODAL -->
+    <div id="modal-project" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl max-w-lg w-full p-6 space-y-4 border border-slate-700">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="font-bold text-sm text-cyan-400" id="modal-project-title">新規案件登録</h3>
+                <button onclick="closeModal('modal-project')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-project" onsubmit="saveProject(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="project-id">
+                <div>
+                    <label class="block text-slate-400 mb-1">案件名称 <span class="text-rose-400">*</span></label>
+                    <input type="text" id="project-title" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">発注元クライアント</label>
+                        <select id="project-client" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <!-- Dynamic populated -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">想定単価 (万円/月)</label>
+                        <input type="number" id="project-price" placeholder="85" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">必須スキル・技術 (カンマ区切り)</label>
+                    <input type="text" id="project-skills" placeholder="Java, Spring Boot, AWS" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">勤務形態</label>
+                        <select id="project-location" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <option value="フルリモート">フルリモート</option>
+                            <option value="ハイブリッド (週2-3出社)">ハイブリッド (週2-3出社)</option>
+                            <option value="常駐 (都内)">常駐 (都内)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">ステータス</label>
+                        <select id="project-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <option value="提案公募中">提案公募中</option>
+                            <option value="面談調整中">面談調整中</option>
+                            <option value="成約済み">成約済み</option>
+                            <option value="募集終了">募集終了</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
+                    <button type="button" onclick="closeModal('modal-project')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
+                    <button type="submit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">保存する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- MEMBER EDIT/ADD MODAL -->
+    <div id="modal-member" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl max-w-lg w-full p-6 space-y-4 border border-slate-700">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="font-bold text-sm text-cyan-400" id="modal-member-title">新規エンジニア登録</h3>
+                <button onclick="closeModal('modal-member')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-member" onsubmit="saveMember(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="member-id">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">氏名 <span class="text-rose-400">*</span></label>
+                        <input type="text" id="member-name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">区分</label>
+                        <select id="member-type" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <option value="正社員">正社員</option>
+                            <option value="フリーランス">フリーランス</option>
+                            <option value="パートナー">パートナーBP</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">保有スキル (カンマ区切り)</label>
+                    <input type="text" id="member-skills" placeholder="React, TypeScript, Node.js" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">経験年数</label>
+                        <input type="text" id="member-exp" placeholder="5年" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">受注単価(万円)</label>
+                        <input type="number" id="member-rate" placeholder="80" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">原価単価(万円)</label>
+                        <input type="number" id="member-cost" placeholder="60" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">稼働可能日</label>
+                        <input type="text" id="member-available" placeholder="即日 / 2026-11-01" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">稼働ステータス</label>
+                        <select id="member-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <option value="稼働中">稼働中</option>
+                            <option value="待機中">待機中</option>
+                            <option value="提案中">提案中</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
+                    <button type="button" onclick="closeModal('modal-member')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
+                    <button type="submit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">保存する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- INTERVIEW EDIT/ADD MODAL -->
+    <div id="modal-interview" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl max-w-lg w-full p-6 space-y-4 border border-slate-700">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="font-bold text-sm text-cyan-400">面談・営業活動の登録</h3>
+                <button onclick="closeModal('modal-interview')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-interview" onsubmit="saveInterview(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block text-slate-400 mb-1">対象エンジニア</label>
+                    <select id="interview-member" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                        <!-- Dynamic -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">対象案件</label>
+                    <select id="interview-project" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                        <!-- Dynamic -->
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 mb-1">面談日時</label>
+                        <input type="datetime-local" id="interview-date" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1">形式</label>
+                        <input type="text" id="interview-location" placeholder="Google Meet / Zoom" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-slate-400 mb-1">ステータス / 結果</label>
+                    <select id="interview-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                        <option value="予定調整済">予定調整済</option>
+                        <option value="合格 (見極め中)">合格 (見極め中)</option>
+                        <option value="成約・参画確定">成約・参画確定</option>
+                        <option value="見送り">見送り</option>
+                    </select>
+                </div>
+                <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
+                    <button type="button" onclick="closeModal('modal-interview')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
+                    <button type="submit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">登録する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT LOGIC ENGINE                     -->
+    <!-- ========================================== -->
+    <script src="js/app.js"></script>
+    <script src="js/extensions.js"></script>
+</body>
+</html>
