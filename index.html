@@ -376,13 +376,18 @@
                             <h2 class="text-xl font-bold tracking-tight">案件・プロジェクト管理</h2>
                             <p class="text-xs text-slate-400">募集案件・必要スキル・単価・提案状況の一貫トラッキング</p>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <div class="flex rounded-lg border border-slate-700 overflow-hidden" role="group" aria-label="案件区分">
+                                <button type="button" id="project-mode-shared" onclick="setProjectViewMode('共有案件')" class="px-3 py-2 text-xs bg-cyan-600 text-white">共有案件</button>
+                                <button type="button" id="project-mode-assigned" onclick="setProjectViewMode('参画案件')" class="px-3 py-2 text-xs bg-slate-800 text-slate-300">参画案件</button>
+                            </div>
                             <select id="project-filter-status" onchange="renderProjectsTable()" class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400">
                                 <option value="ALL">すべてのステータス</option>
                                 <option value="募集準備中">募集準備中</option>
                                 <option value="提案公募中">提案公募中</option>
                                 <option value="面談調整中">面談調整中</option>
                                 <option value="成約済み">成約済み</option>
+                                <option value="見送り">見送り</option>
                                 <option value="募集終了">募集終了</option>
                             </select>
                             <input type="text" id="project-search" oninput="renderProjectsTable()" placeholder="案件名、スキルタグで検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
@@ -684,11 +689,19 @@
                         </select>
                     </div>
                     <div>
+                        <label class="block text-slate-400 mb-1">案件区分</label>
+                        <select id="project-type" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <option value="共有案件">共有案件（取引先などから共有された案件）</option>
+                            <option value="参画案件">参画案件（自社メンバーが実際に参画中）</option>
+                        </select>
+                    </div>
+                    <div>
                         <label class="block text-slate-400 mb-1">ステータス</label>
                         <select id="project-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
                             <option value="提案公募中">提案公募中</option>
                             <option value="面談調整中">面談調整中</option>
                             <option value="成約済み">成約済み</option>
+                            <option value="見送り">見送り</option>
                             <option value="募集終了">募集終了</option>
                         </select>
                     </div>

@@ -1,58 +1,569 @@
 
         // Default System Database Preset (initialData.json)
         const DEFAULT_INITIAL_DATA = {
-            metadata: {
-                systemName: "SES_Core",
-                version: "3.0.0",
-                exportedAt: new Date().toISOString()
-            },
-            clients: [
-                { id: "CLI-001", name: "アクシス・ソリューションズ株式会社", type: "エンド企業", contact: "山田 太郎", email: "yamada@axis-sol.co.jp", activeProjects: 3, status: "アクティブ" },
-                { id: "CLI-002", name: "株式会社ネクスト・イノベーション", type: "元請SES", contact: "佐藤 美咲", email: "sato@next-inno.jp", activeProjects: 2, status: "アクティブ" },
-                { id: "CLI-003", name: "サイバー・テック株式会社", type: "エンド企業", contact: "高橋 健一", email: "takahashi@cybertech.com", activeProjects: 1, status: "アクティブ" },
-                { id: "CLI-004", name: "グローバルシステムパートナーズ", type: "協力会社", contact: "鈴木 隆", email: "suzuki@gsp-net.jp", activeProjects: 0, status: "アクティブ" }
-            ],
-            projects: [
-                { id: "PRJ-101", title: "大手ECサイト マイクロサービス刷新PJ", clientId: "CLI-001", clientName: "アクシス・ソリューションズ株式会社", price: 85, skills: ["Java", "Spring Boot", "AWS", "Docker"], location: "フルリモート", status: "提案公募中" },
-                { id: "PRJ-102", title: "次世代FinTechアプリ Frontend開発", clientId: "CLI-002", clientName: "株式会社ネクスト・イノベーション", price: 90, skills: ["React", "TypeScript", "Next.js", "Tailwind"], location: "ハイブリッド (週2-3出社)", status: "面談調整中" },
-                { id: "PRJ-103", title: "医療用クラウド基盤 構築・インフラ運用", clientId: "CLI-003", clientName: "サイバー・テック株式会社", price: 95, skills: ["AWS", "Terraform", "Kubernetes", "Python"], location: "常駐 (都内)", status: "提案公募中" },
-                { id: "PRJ-104", title: "AI搭載社内ナレッジ検索ツール構築", clientId: "CLI-001", clientName: "アクシス・ソリューションズ株式会社", price: 100, skills: ["Python", "FastAPI", "OpenAI API", "LangChain"], location: "フルリモート", status: "成約済み" }
-            ],
-            members: [
-                { id: "MEM-101", name: "川合 要", type: "正社員", department: "営業", role: "所長代理", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-102", name: "山田 裕也", type: "正社員", department: "開発部門統括", role: "課長代理", manages: ["開発1部", "開発2部", "ITソリューション部"], skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-103", name: "伊藤 快成", type: "正社員", department: "開発1部", role: "リーダー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-104", name: "佐々木 七海", type: "正社員", department: "開発1部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-105", name: "小関 彩乃", type: "正社員", department: "開発1部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-106", name: "曽根 美咲", type: "正社員", department: "開発1部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-107", name: "久保 奈美礼", type: "正社員", department: "開発1部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-108", name: "梶原 悠羽", type: "正社員", department: "開発2部", role: "リーダー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-109", name: "生天目 慧海", type: "正社員", department: "開発2部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-110", name: "内海 未奈子", type: "正社員", department: "開発2部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-111", name: "高橋 響哉", type: "正社員", department: "開発2部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-112", name: "澤村 吏久", type: "正社員", department: "開発2部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-113", name: "正木 裕多竜", type: "正社員", department: "開発2部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-114", name: "佐々木 翔平", type: "正社員", department: "ITソリューション部", role: "リーダー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-115", name: "古山 淳詞", type: "正社員", department: "ITソリューション部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-116", name: "稲毛 遼河", type: "正社員", department: "ITソリューション部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-117", name: "鹿又 翔二朗", type: "正社員", department: "ITソリューション部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-118", name: "遠藤 新太", type: "正社員", department: "ITソリューション部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-119", name: "鈴木 裕斗", type: "正社員", department: "ITソリューション部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-120", name: "滝沢 陽", type: "正社員", department: "ITソリューション部", role: "メンバー", skills: [], exp: "未登録", rate: 0, cost: 0, available: "未登録", status: "未設定" },
-                { id: "MEM-001", name: "木村 拓也", type: "正社員", skills: ["Java", "Spring Boot", "MySQL"], exp: "6年", rate: 85, cost: 60, available: "即日", status: "稼働中" },
-                { id: "MEM-002", name: "伊藤 結衣", type: "フリーランス", skills: ["React", "TypeScript", "Vue.js"], exp: "4年", rate: 90, cost: 72, available: "2026-11-01", status: "待機中" },
-                { id: "MEM-003", name: "渡辺 裕樹", type: "正社員", skills: ["AWS", "Python", "Terraform"], exp: "8年", rate: 95, cost: 68, available: "即日", status: "稼働中" },
-                { id: "MEM-004", name: "中村 アレン", type: "パートナー", skills: ["Python", "FastAPI", "Docker"], exp: "3年", rate: 80, cost: 65, available: "即日", status: "提案中" }
-            ],
-            interviews: [
-                { id: "INT-501", memberId: "MEM-002", memberName: "伊藤 結衣", projectId: "PRJ-102", projectTitle: "次世代FinTechアプリ Frontend開発", clientName: "株式会社ネクスト・イノベーション", date: "2026-10-28T14:00", location: "Google Meet", status: "予定調整済" },
-                { id: "INT-502", memberId: "MEM-004", memberName: "中村 アレン", projectId: "PRJ-101", projectTitle: "大手ECサイト マイクロサービス刷新PJ", clientName: "アクシス・ソリューションズ株式会社", date: "2026-10-29T16:00", location: "Zoom", status: "予定調整済" }
-            ],
-            tasks: [
-                { id: 1, title: "伊藤 結衣 氏: ネクスト社事前面談の事前レクチャー準備", date: "2026-10-27", priority: "HIGH" },
-                { id: 2, title: "アクシス社提案案件 (PRJ-101) パートナー要員の追加提出", date: "2026-10-28", priority: "MEDIUM" }
-            ]
-        };
+        "metadata": {
+                "systemName": "SES_Core",
+                "version": "3.0.0",
+                "exportedAt": "2026-10-27T07:58:39.127Z",
+                "schemaVersion": "3.0.0"
+        },
+        "clients": [
+                {
+                        "id": "CLI-001",
+                        "name": "アクシス・ソリューションズ株式会社",
+                        "type": "エンド企業",
+                        "contact": "山田 太郎",
+                        "email": "yamada@axis-sol.co.jp",
+                        "activeProjects": 3,
+                        "status": "アクティブ"
+                },
+                {
+                        "id": "CLI-002",
+                        "name": "株式会社ネクスト・イノベーション",
+                        "type": "元請SES",
+                        "contact": "佐藤 美咲",
+                        "email": "sato@next-inno.jp",
+                        "activeProjects": 2,
+                        "status": "アクティブ"
+                },
+                {
+                        "id": "CLI-003",
+                        "name": "サイバー・テック株式会社",
+                        "type": "エンド企業",
+                        "contact": "高橋 健一",
+                        "email": "takahashi@cybertech.com",
+                        "activeProjects": 1,
+                        "status": "アクティブ"
+                },
+                {
+                        "id": "CLI-004",
+                        "name": "グローバルシステムパートナーズ",
+                        "type": "協力会社",
+                        "contact": "鈴木 隆",
+                        "email": "suzuki@gsp-net.jp",
+                        "activeProjects": 0,
+                        "status": "アクティブ"
+                }
+        ],
+        "projects": [
+                {
+                        "contractEnd": "",
+                        "startDate": "",
+                        "assignedMemberIds": [],
+                        "id": "PRJ-101",
+                        "title": "大手ECサイト マイクロサービス刷新PJ",
+                        "clientId": "CLI-001",
+                        "clientName": "アクシス・ソリューションズ株式会社",
+                        "price": 85,
+                        "skills": [
+                                "Java",
+                                "Spring Boot",
+                                "AWS",
+                                "Docker"
+                        ],
+                        "location": "フルリモート",
+                        "status": "提案公募中"
+                },
+                {
+                        "contractEnd": "",
+                        "startDate": "",
+                        "assignedMemberIds": [],
+                        "id": "PRJ-102",
+                        "title": "次世代FinTechアプリ Frontend開発",
+                        "clientId": "CLI-002",
+                        "clientName": "株式会社ネクスト・イノベーション",
+                        "price": 90,
+                        "skills": [
+                                "React",
+                                "TypeScript",
+                                "Next.js",
+                                "Tailwind"
+                        ],
+                        "location": "ハイブリッド (週2-3出社)",
+                        "status": "面談調整中"
+                },
+                {
+                        "contractEnd": "",
+                        "startDate": "",
+                        "assignedMemberIds": [],
+                        "id": "PRJ-103",
+                        "title": "医療用クラウド基盤 構築・インフラ運用",
+                        "clientId": "CLI-003",
+                        "clientName": "サイバー・テック株式会社",
+                        "price": 95,
+                        "skills": [
+                                "AWS",
+                                "Terraform",
+                                "Kubernetes",
+                                "Python"
+                        ],
+                        "location": "常駐 (都内)",
+                        "status": "提案公募中"
+                },
+                {
+                        "contractEnd": "",
+                        "startDate": "",
+                        "assignedMemberIds": [],
+                        "id": "PRJ-104",
+                        "title": "AI搭載社内ナレッジ検索ツール構築",
+                        "clientId": "CLI-001",
+                        "clientName": "アクシス・ソリューションズ株式会社",
+                        "price": 100,
+                        "skills": [
+                                "Python",
+                                "FastAPI",
+                                "OpenAI API",
+                                "LangChain"
+                        ],
+                        "location": "フルリモート",
+                        "status": "成約済み"
+                },
+                {
+                        "contractEnd": "",
+                        "startDate": "",
+                        "assignedMemberIds": [],
+                        "id": "PRJ-SENDAI-ASSIGNED-001",
+                        "title": "仙台営業所 参画案件（詳細未登録）",
+                        "clientId": "",
+                        "clientName": "取引先未登録",
+                        "price": 40,
+                        "skills": [],
+                        "location": "未登録",
+                        "status": "成約済み",
+                        "notes": "実案件の詳細未登録。仮登録データ。"
+                }
+        ],
+        "members": [
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-101",
+                        "name": "川合 要",
+                        "type": "正社員",
+                        "department": "営業",
+                        "role": "所長代理",
+                        "skills": [],
+                        "exp": "2年",
+                        "rate": 0,
+                        "cost": 36,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-102",
+                        "name": "山田 裕也",
+                        "type": "正社員",
+                        "department": "開発部門統括",
+                        "role": "課長代理",
+                        "skills": [],
+                        "exp": "5年",
+                        "rate": 51,
+                        "cost": 49,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0,
+                        "manages": [
+                                "開発1部",
+                                "開発2部",
+                                "ITソリューション部"
+                        ]
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-103",
+                        "name": "伊藤 快成",
+                        "type": "正社員",
+                        "department": "開発1部",
+                        "role": "リーダー",
+                        "skills": [],
+                        "exp": "1年",
+                        "rate": 45,
+                        "cost": 36,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-104",
+                        "name": "佐々木 七海",
+                        "type": "正社員",
+                        "department": "開発1部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "2.5年",
+                        "rate": 44,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-105",
+                        "name": "小関 彩乃",
+                        "type": "正社員",
+                        "department": "開発1部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "1.5年",
+                        "rate": 35,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-106",
+                        "name": "曽根 美咲",
+                        "type": "正社員",
+                        "department": "開発1部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "1年",
+                        "rate": 40,
+                        "cost": 30,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-107",
+                        "name": "久保 奈美礼",
+                        "type": "正社員",
+                        "department": "開発1部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "0.5年",
+                        "rate": 10,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-108",
+                        "name": "梶原 悠羽",
+                        "type": "正社員",
+                        "department": "開発2部",
+                        "role": "リーダー",
+                        "skills": [],
+                        "exp": "2.5年",
+                        "rate": 50,
+                        "cost": 36,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-109",
+                        "name": "生天目 慧海",
+                        "type": "正社員",
+                        "department": "開発2部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "10年",
+                        "rate": 65,
+                        "cost": 36,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-110",
+                        "name": "内海 未奈子",
+                        "type": "正社員",
+                        "department": "開発2部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "2.5年",
+                        "rate": 48,
+                        "cost": 36,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-111",
+                        "name": "高橋 響哉",
+                        "type": "正社員",
+                        "department": "開発2部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "3年",
+                        "rate": 37,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-112",
+                        "name": "澤村 吏久",
+                        "type": "正社員",
+                        "department": "開発2部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "1.5年",
+                        "rate": 40,
+                        "cost": 36,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-113",
+                        "name": "正木 裕多竜",
+                        "type": "正社員",
+                        "department": "開発2部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "2年",
+                        "rate": 35,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-114",
+                        "name": "佐々木 翔平",
+                        "type": "正社員",
+                        "department": "ITソリューション部",
+                        "role": "リーダー",
+                        "skills": [],
+                        "exp": "4年",
+                        "rate": 41,
+                        "cost": 40,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-115",
+                        "name": "古山 淳詞",
+                        "type": "正社員",
+                        "department": "ITソリューション部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "2.5年",
+                        "rate": 43,
+                        "cost": 36,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-116",
+                        "name": "稲毛 遼河",
+                        "type": "正社員",
+                        "department": "ITソリューション部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "2年",
+                        "rate": 35,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-117",
+                        "name": "鹿又 翔二朗",
+                        "type": "正社員",
+                        "department": "ITソリューション部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "2年",
+                        "rate": 40,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-118",
+                        "name": "遠藤 新太",
+                        "type": "正社員",
+                        "department": "ITソリューション部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "1.5年",
+                        "rate": 35,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-119",
+                        "name": "鈴木 裕斗",
+                        "type": "正社員",
+                        "department": "ITソリューション部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "1年",
+                        "rate": 38,
+                        "cost": 33,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                },
+                {
+                        "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+                        "contractEnd": "",
+                        "id": "MEM-120",
+                        "name": "滝沢 陽",
+                        "type": "正社員",
+                        "department": "ITソリューション部",
+                        "role": "メンバー",
+                        "skills": [],
+                        "exp": "1年",
+                        "rate": 36,
+                        "cost": 30,
+                        "available": "未登録",
+                        "status": "稼働中",
+                        "currentProject": "仙台営業所 参画案件（詳細未登録）",
+                        "transportCost": 0
+                }
+        ],
+        "interviews": [
+                {
+                        "id": "INT-501",
+                        "memberId": "MEM-002",
+                        "memberName": "伊藤 結衣",
+                        "projectId": "PRJ-102",
+                        "projectTitle": "次世代FinTechアプリ Frontend開発",
+                        "clientName": "株式会社ネクスト・イノベーション",
+                        "date": "2026-10-28T14:00",
+                        "location": "Google Meet",
+                        "status": "予定調整済"
+                },
+                {
+                        "id": "INT-502",
+                        "memberId": "MEM-004",
+                        "memberName": "中村 アレン",
+                        "projectId": "PRJ-101",
+                        "projectTitle": "大手ECサイト マイクロサービス刷新PJ",
+                        "clientName": "アクシス・ソリューションズ株式会社",
+                        "date": "2026-10-29T16:00",
+                        "location": "Zoom",
+                        "status": "予定調整済"
+                }
+        ],
+        "tasks": [
+                {
+                        "status": "未着手",
+                        "assignee": "管理者",
+                        "createdAt": "2026-10-27",
+                        "id": 2,
+                        "title": "アクシス社提案案件 (PRJ-101) パートナー要員の追加提出",
+                        "date": "2026-10-28",
+                        "priority": "MEDIUM"
+                },
+                {
+                        "status": "完了",
+                        "assignee": "管理者",
+                        "createdAt": "2026-10-27",
+                        "id": "TSK-MVQ81KAY-NO0R",
+                        "title": "木村 拓也：大手ECサイト マイクロサービス刷新PJ の提案可否確認",
+                        "date": "2026-10-27",
+                        "priority": "MEDIUM",
+                        "completedAt": "2026-10-27"
+                },
+                {
+                        "status": "未着手",
+                        "assignee": "管理者",
+                        "createdAt": "2026-10-27",
+                        "id": "TSK-MVQ9EZCK-KB53",
+                        "title": "木村 拓也：大手ECサイト マイクロサービス刷新PJ の提案可否確認",
+                        "date": "2026-10-27",
+                        "priority": "MEDIUM"
+                },
+                {
+                        "status": "未着手",
+                        "assignee": "管理者",
+                        "createdAt": "2026-10-27",
+                        "id": "TSK-MVQAJN5I-EIF9",
+                        "title": "伊藤 結衣：AI搭載社内ナレッジ検索ツール構築 の提案可否確認",
+                        "date": "2026-10-27",
+                        "priority": "MEDIUM"
+                }
+        ],
+        "auditLog": [],
+        "monthlyRevenue": {
+                "MEM-002|2026-01": 87,
+                "MEM-002|2026-02": 87,
+                "MEM-002|2026-03": 87,
+                "MEM-002|2026-04": 87,
+                "MEM-002|2026-05": 87,
+                "MEM-002|2026-06": 87,
+                "MEM-002|2026-07": 87,
+                "MEM-002|2026-12": 87
+        },
+        "spotJobs": [],
+        "expenses": [],
+        "monthlyCost": {},
+        "monthlyTransport": {},
+        "monthlyRevenueActual": {},
+        "monthlyCostActual": {},
+        "monthlyTransportActual": {},
+        "oneOnOnes": [],
+        "feedbacks": []
+};
 
         // Application Global State
         let db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
@@ -285,53 +796,21 @@
             if (stored) {
                 try {
                     db = JSON.parse(stored);
-                    if (!Array.isArray(db.members)) db.members = [];
-                    const rosterNames = new Set(db.members.map(m => m.name));
-                    DEFAULT_INITIAL_DATA.members.filter(m => m.department && !rosterNames.has(m.name)).forEach(m => db.members.push(JSON.parse(JSON.stringify(m))));
-                    // Correct the Sendai office hierarchy even when an older local database already exists.
-                    const sendaiSalesManager = db.members.find(m => m.name === "川合 要");
-                    if (sendaiSalesManager) { sendaiSalesManager.department = "営業"; sendaiSalesManager.role = "所長代理"; }
-                    const developmentManager = db.members.find(m => m.name === "山田 裕也");
-                    if (developmentManager) {
-                        developmentManager.department = "開発部門統括";
-                        developmentManager.role = "課長代理";
-                        developmentManager.manages = ["開発1部", "開発2部", "ITソリューション部"];
-                    }
-                    if (!Array.isArray(db.interviews)) db.interviews = [];
-                    if (!Array.isArray(db.tasks)) db.tasks = [];
-                    // Seed the 20 Sendai roster members as active, at 40万円/month.
-                    // Project details are explicitly marked as not yet provided.
-                    const sendaiRosterNames = new Set(DEFAULT_INITIAL_DATA.members.filter(m => m.department).map(m => m.name));
-                    const placeholderProjectId = 'PRJ-SENDAI-ASSIGNED-001';
-                    if (!Array.isArray(db.projects)) db.projects = [];
-                    let placeholderProject = db.projects.find(p => p.id === placeholderProjectId);
-                    if (!placeholderProject) {
-                        placeholderProject = { id: placeholderProjectId, title: '仙台営業所 参画案件（詳細未登録）', clientId: '', clientName: '取引先未登録', price: 40, skills: [], location: '未登録', status: '成約済み', notes: '実案件の詳細未登録。仮登録データ。' };
-                        db.projects.push(placeholderProject);
-                    }
-                    db.members.filter(m => sendaiRosterNames.has(m.name)).forEach(m => {
-                        m.status = '稼働中';
-                        m.rate = 40;
-                        m.assignedProjectId = placeholderProjectId;
-                        m.currentProject = placeholderProject.title;
-                    });
-                    try { localStorage.setItem('ses_access_db', JSON.stringify(db)); } catch(e) {}
-                } catch(e) {
+                } catch (e) {
                     db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
                 }
             } else {
-                const sendaiRosterNames = new Set(DEFAULT_INITIAL_DATA.members.filter(m => m.department).map(m => m.name));
-                const placeholderProjectId = 'PRJ-SENDAI-ASSIGNED-001';
-                let placeholderProject = db.projects.find(p => p.id === placeholderProjectId);
-                if (!placeholderProject) {
-                    placeholderProject = { id: placeholderProjectId, title: '仙台営業所 参画案件（詳細未登録）', clientId: '', clientName: '取引先未登録', price: 40, skills: [], location: '未登録', status: '成約済み', notes: '実案件の詳細未登録。仮登録データ。' };
-                    db.projects.push(placeholderProject);
-                }
-                db.members.filter(m => sendaiRosterNames.has(m.name)).forEach(m => {
-                    m.status = '稼働中'; m.rate = 40; m.assignedProjectId = placeholderProjectId; m.currentProject = placeholderProject.title;
-                });
-                try { localStorage.setItem('ses_access_db', JSON.stringify(db)); } catch(e) {}
+                db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
+                try { localStorage.setItem('ses_access_db', JSON.stringify(db)); } catch (e) {}
             }
+            // Ensure expected collections exist, without overwriting user-provided member statuses or rates.
+            db.metadata = db.metadata || { systemName: 'SES_Core', version: '3.0.0', schemaVersion: '3.0.0' };
+            ['clients','projects','members','interviews','tasks','auditLog','spotJobs','expenses','oneOnOnes','feedbacks'].forEach(key => {
+                if (!Array.isArray(db[key])) db[key] = [];
+            });
+            ['monthlyRevenue','monthlyCost','monthlyTransport','monthlyRevenueActual','monthlyCostActual','monthlyTransportActual'].forEach(key => {
+                if (!db[key] || typeof db[key] !== 'object' || Array.isArray(db[key])) db[key] = {};
+            });
         }
 
         function confirmResetData() {
@@ -411,7 +890,7 @@
             const activeEng = db.members.filter(m => m.status === '稼働中').length;
             const benchEng = db.members.filter(m => m.status === '待机中' || m.status === '待機中').length;
             const totalEng = db.members.length;
-            const activePrj = db.projects.filter(p => p.status === '提案公募中' || p.status === '面談調整中').length;
+            const activePrj = db.projects.filter(p => !['見送り','募集終了'].includes(p.status)).length;
             const totalCli = db.clients.filter(c => c.status === 'アクティブ').length;
 
             let totalRev = 0;
@@ -480,7 +959,7 @@
                     <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-slate-700 text-slate-300">${c.type}</span></td>
                     <td class="p-3">${c.contact}</td>
                     <td class="p-3 font-mono text-slate-400">${c.email}</td>
-                    <td class="p-3 font-mono font-bold">${c.activeProjects}件</td>
+                    <td class="p-3 font-mono font-bold">${db.projects.filter(p => p.clientId === c.id && !['見送り','募集終了'].includes(p.status)).length}件</td>
                     <td class="p-3">
                         <span class="px-2 py-0.5 rounded text-[10px] ${c.status === 'アクティブ' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-slate-700 text-slate-400'}">
                             ${c.status}
@@ -495,22 +974,39 @@
         }
 
         // --- PROJECTS TABLE ---
+        let projectViewMode = '共有案件';
+        window.setProjectViewMode = function(mode) {
+            projectViewMode = mode === '参画案件' ? '参画案件' : '共有案件';
+            const shared = document.getElementById('project-mode-shared');
+            const assigned = document.getElementById('project-mode-assigned');
+            if (shared) { shared.className = projectViewMode === '共有案件' ? 'px-3 py-2 text-xs bg-cyan-600 text-white' : 'px-3 py-2 text-xs bg-slate-800 text-slate-300'; }
+            if (assigned) { assigned.className = projectViewMode === '参画案件' ? 'px-3 py-2 text-xs bg-cyan-600 text-white' : 'px-3 py-2 text-xs bg-slate-800 text-slate-300'; }
+            renderProjectsTable();
+        };
+        function inferredProjectType(p) {
+            if (p.projectType === '参画案件' || p.projectType === '共有案件') return p.projectType;
+            const linked = (db.members || []).some(m => m.assignedProjectId === p.id || m.currentProject === p.title) || (p.assignedMemberIds || []).length > 0;
+            return linked ? '参画案件' : '共有案件';
+        }
         function renderProjectsTable() {
             const query = document.getElementById('project-search').value.toLowerCase();
             const statusFilter = document.getElementById('project-filter-status').value;
             const tbody = document.getElementById('projects-table-body');
 
             const filtered = db.projects.filter(p => {
-                const matchQuery = p.title.toLowerCase().includes(query) || p.skills.some(s => s.toLowerCase().includes(query));
+                const title = String(p.title || '');
+                const skills = Array.isArray(p.skills) ? p.skills : [];
+                const matchQuery = title.toLowerCase().includes(query) || skills.some(s => String(s).toLowerCase().includes(query));
                 const matchStatus = statusFilter === 'ALL' || p.status === statusFilter;
-                return matchQuery && matchStatus;
+                const matchMode = inferredProjectType(p) === projectViewMode;
+                return matchQuery && matchStatus && matchMode;
             });
 
             tbody.innerHTML = filtered.map(p => `
                 <tr class="hover:bg-slate-800/40 transition">
                     <td class="p-3 font-mono text-cyan-400">${p.id}</td>
                     <td class="p-3 font-bold text-slate-200">${p.title}</td>
-                    <td class="p-3 text-slate-300">${p.clientName}</td>
+                    <td class="p-3 text-slate-300">${p.clientName || '取引先未登録'}</td>
                     <td class="p-3">
                         <div class="flex flex-wrap gap-1">
                             ${p.skills.map(s => `<span class="px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">${s}</span>`).join('')}
@@ -519,8 +1015,8 @@
                     <td class="p-3 font-mono font-bold text-amber-400">¥${p.price}万/月</td>
                     <td class="p-3 text-slate-400">${p.location}</td>
                     <td class="p-3">
-                        <span class="px-2 py-0.5 rounded text-[10px] ${p.status === '提案公募中' ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30' : p.status === '成約済み' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-slate-700 text-slate-300'}">
-                            ${p.status}
+                        <span class="px-2 py-0.5 rounded text-[10px] ${p.status === '提案公募中' ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30' : p.status === '成約済み' ? 'bg-emerald-500/10 text-emerald-400' : p.status === '見送り' ? 'bg-rose-500/10 text-rose-300 border border-rose-500/30' : p.status === '面談調整中' ? 'bg-amber-500/10 text-amber-300' : 'bg-slate-700 text-slate-300'}">
+                            ${p.status || '未設定'}
                         </span>
                     </td>
                     <td class="p-3 text-right space-x-2">
@@ -712,6 +1208,8 @@
             document.getElementById('form-project').reset();
             document.getElementById('project-id').value = '';
             document.getElementById('modal-project-title').innerText = '新規案件登録';
+            const projectTypeInput = document.getElementById('project-type');
+            if (projectTypeInput) projectTypeInput.value = projectViewMode;
             document.getElementById('modal-project').classList.remove('hidden');
         }
 
@@ -725,6 +1223,8 @@
             document.getElementById('project-skills').value = prj.skills.join(', ');
             document.getElementById('project-location').value = prj.location;
             document.getElementById('project-status').value = prj.status;
+            const projectTypeInput = document.getElementById('project-type');
+            if (projectTypeInput) projectTypeInput.value = inferredProjectType(prj);
             document.getElementById('modal-project-title').innerText = '案件情報編集';
             document.getElementById('modal-project').classList.remove('hidden');
         }
@@ -740,13 +1240,14 @@
             const skills = document.getElementById('project-skills').value.split(',').map(s => s.trim()).filter(s => s);
             const location = document.getElementById('project-location').value;
             const status = document.getElementById('project-status').value;
+            const projectType = document.getElementById('project-type')?.value || projectViewMode || '共有案件';
 
             if (id) {
                 const index = db.projects.findIndex(p => p.id === id);
-                if (index !== -1) db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, skills, location, status };
+                if (index !== -1) db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, skills, location, status, projectType };
             } else {
                 const newId = `PRJ-${String(db.projects.length + 101)}`;
-                db.projects.push({ id: newId, title, clientId, clientName, price, skills, location, status });
+                db.projects.push({ id: newId, title, clientId, clientName, price, skills, location, status, projectType, assignedMemberIds: [] });
             }
 
             saveStoredData();
