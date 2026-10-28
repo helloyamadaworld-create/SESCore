@@ -794,6 +794,50 @@
             renderAllViews();
         }
 
+        function normalizeName(value) {
+            return String(value || '').normalize('NFKC').toLowerCase().replace(/[\s　]/g, '').replace(/[‐‑‒–—−]/g, '-');
+        }
+        function normalizeAndDedupeData() {
+            const clientByName = new Map();
+            const clientIdMap = {};
+            const uniqueClients = [];
+            (db.clients || []).forEach(c => {
+                const key = normalizeName(c.name);
+                if (key && clientByName.has(key)) {
+                    const keep = clientByName.get(key);
+                    clientIdMap[c.id] = keep.id;
+                    Object.keys(c).forEach(k => { if ((keep[k] === '' || keep[k] == null) && c[k] !== '' && c[k] != null) keep[k] = c[k]; });
+                } else { clientByName.set(key, c); uniqueClients.push(c); clientIdMap[c.id] = c.id; }
+            });
+            db.clients = uniqueClients;
+            const projectByKey = new Map();
+            const uniqueProjects = [];
+            (db.projects || []).forEach(p => {
+                if (clientIdMap[p.clientId]) p.clientId = clientIdMap[p.clientId];
+                const client = db.clients.find(c => c.id === p.clientId);
+                if (client) p.clientName = client.name;
+                const key = normalizeName(p.clientName || p.clientId) + '|' + normalizeName(p.title);
+                if (key !== '|' && projectByKey.has(key)) {
+                    const keep = projectByKey.get(key);
+                    keep.assignedMemberIds = [...new Set([...(keep.assignedMemberIds || []), ...(p.assignedMemberIds || [])])];
+                    keep.participants = [...(keep.participants || []), ...(p.participants || [])];
+                    if (p.status === '参画中') keep.status = '参画中';
+                    Object.keys(p).forEach(k => { if ((keep[k] === '' || keep[k] == null) && p[k] !== '' && p[k] != null) keep[k] = p[k]; });
+                } else { projectByKey.set(key, p); uniqueProjects.push(p); }
+            });
+            db.projects = uniqueProjects;
+            db.projects.forEach(p => {
+                p.assignedMemberIds = Array.isArray(p.assignedMemberIds) ? [...new Set(p.assignedMemberIds)] : [];
+                p.participants = Array.isArray(p.participants) ? p.participants : [];
+                // Legacy project prices are stored in 10,000-yen units; preserve them and add a yen-precision field.
+                if (!Number.isFinite(Number(p.priceYen))) p.priceYen = Math.round((Number(p.price) || 0) * 10000);
+                p.participants = p.participants.filter((x, i, arr) => x && x.memberId && arr.findIndex(y => y.memberId === x.memberId) === i).map(x => ({ ...x, rateYen: Math.max(0, Math.round(Number(x.rateYen) || 0)) }));
+            });
+        }
+        function projectPriceYen(p) { return Math.max(0, Math.round(Number(p.priceYen != null ? p.priceYen : (Number(p.price) || 0) * 10000) || 0)); }
+        function formatYenAsMan(yen) { return (Number(yen || 0) / 10000).toLocaleString('ja-JP', { minimumFractionDigits: 0, maximumFractionDigits: 4 }); }
+        let projectDetailId = null;
+
         function loadStoredData() {
             const stored = localStorage.getItem('ses_access_db');
             if (stored) {
@@ -814,6 +858,7 @@
             ['monthlyRevenue','monthlyCost','monthlyTransport','monthlyRevenueActual','monthlyCostActual','monthlyTransportActual'].forEach(key => {
                 if (!db[key] || typeof db[key] !== 'object' || Array.isArray(db[key])) db[key] = {};
             });
+            normalizeAndDedupeData();
         }
 
         function confirmResetData() {
@@ -867,6 +912,7 @@
                     throw new Error("フォーマットが不正です。必要なフィールドが含まれていません。");
                 }
                 db = parsed;
+                normalizeAndDedupeData();
                 saveStoredData();
                 closeModal('modal-import');
                 alert("JSONデータの正常インポートが完了しました。");
@@ -1015,7 +1061,8 @@
                             ${p.skills.map(s => `<span class="px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">${s}</span>`).join('')}
                         </div>
                     </td>
-                    <td class="p-3 font-mono font-bold text-amber-400">¥${p.price}万/月</td>
+                    <td class="p-3 font-mono font-bold text-amber-400">${formatYenAsMan(projectPriceYen(p))}万円/月</td>
+                    <td class="p-3"><button onclick="openProjectDetail('${p.id}')" class="text-cyan-400 hover:text-cyan-300 underline">${getProjectParticipants(p).length}人を確認</button></td>
                     <td class="p-3 text-slate-400">${p.location}</td>
                     <td class="p-3">
                         <span class="px-2 py-0.5 rounded text-[10px] ${p.status === '提案公募中' ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30' : p.status === '成約済み' ? 'bg-emerald-500/10 text-emerald-400' : p.status === '見送り' ? 'bg-rose-500/10 text-rose-300 border border-rose-500/30' : p.status === '面談調整中' ? 'bg-amber-500/10 text-amber-300' : 'bg-slate-700 text-slate-300'}">
@@ -1023,7 +1070,8 @@
                         </span>
                     </td>
                     <td class="p-3 text-right space-x-2">
-                        <button onclick="editProject('${p.id}')" class="text-cyan-400 hover:text-cyan-300"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="openProjectDetail('${p.id}')" title="参画メンバー" class="text-emerald-400 hover:text-emerald-300"><i class="fa-solid fa-users"></i></button>
+                        <button onclick="editProject('${p.id}')" title="案件編集" class="text-cyan-400 hover:text-cyan-300"><i class="fa-solid fa-pen"></i></button>
                         <button onclick="deleteProject('${p.id}')" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
@@ -1036,15 +1084,27 @@
             const statusFilter = document.getElementById('member-filter-status').value;
             const tbody = document.getElementById('members-table-body');
 
-            const filtered = db.members.filter(m => {
+            const preferredMemberOrder = [
+                '川合 要', '山田 裕也', '佐々木 翔平', '生天目 慧海', '梶原 悠羽', '古山 淳詞',
+                '内海 未奈子', '佐々木 七海', '稲毛 遼河', '高橋 響哉', '澤村 吏久',
+                '鹿又 翔二朗', '小関 彩乃', '正木 裕多竜', '遠藤 新太', '伊藤 快成',
+                '鈴木 裕斗', '曽根 美咲', '滝沢 陽', '久保 奈美礼'
+            ];
+            const orderIndex = new Map(preferredMemberOrder.map((name, index) => [name, index]));
+            const orderedMembers = [...db.members].sort((a, b) => {
+                const aIndex = orderIndex.has(a.name) ? orderIndex.get(a.name) : Number.MAX_SAFE_INTEGER;
+                const bIndex = orderIndex.has(b.name) ? orderIndex.get(b.name) : Number.MAX_SAFE_INTEGER;
+                return aIndex - bIndex || a.name.localeCompare(b.name, 'ja');
+            });
+            const filtered = orderedMembers.filter(m => {
                 const matchQuery = m.name.toLowerCase().includes(query) || m.skills.some(s => s.toLowerCase().includes(query));
                 const matchStatus = statusFilter === 'ALL' || m.status === statusFilter;
                 return matchQuery && matchStatus;
             });
 
-            tbody.innerHTML = filtered.map(m => `
+            tbody.innerHTML = filtered.map((m, index) => `
                 <tr class="hover:bg-slate-800/40 transition">
-                    <td class="p-3 font-mono text-cyan-400">${m.id}</td>
+                    <td class="p-3 font-mono text-cyan-400"><span class="inline-flex items-center justify-center min-w-6 h-6 rounded-md bg-cyan-500/10 border border-cyan-500/20 mr-2">${index + 1}</span><span class="text-[10px] text-slate-400">${m.id}</span></td>
                     <td class="p-3 font-bold text-slate-200">
                         ${m.name} 
                         <span class="ml-1 text-[9px] px-1.5 py-0.2 rounded bg-slate-700 text-slate-300 font-normal">${m.type}</span>
@@ -1225,7 +1285,7 @@
             document.getElementById('project-id').value = prj.id;
             document.getElementById('project-title').value = prj.title;
             document.getElementById('project-client').value = prj.clientId;
-            document.getElementById('project-price').value = prj.price;
+            document.getElementById('project-price').value = projectPriceYen(prj);
             document.getElementById('project-skills').value = prj.skills.join(', ');
             document.getElementById('project-location').value = prj.location;
             document.getElementById('project-status').value = prj.status;
@@ -1242,7 +1302,8 @@
             const clientId = document.getElementById('project-client').value;
             const clientObj = db.clients.find(c => c.id === clientId);
             const clientName = clientObj ? clientObj.name : '不明クライアント';
-            const price = Number(document.getElementById('project-price').value) || 0;
+            const priceYen = Math.max(0, Math.round(Number(document.getElementById('project-price').value) || 0));
+            const price = priceYen / 10000;
             const skills = document.getElementById('project-skills').value.split(',').map(s => s.trim()).filter(s => s);
             const location = document.getElementById('project-location').value;
             const status = document.getElementById('project-status').value;
@@ -1250,14 +1311,82 @@
 
             if (id) {
                 const index = db.projects.findIndex(p => p.id === id);
-                if (index !== -1) db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, skills, location, status, projectType };
+                if (index !== -1) db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, priceYen, skills, location, status, projectType };
             } else {
                 const newId = `PRJ-${String(db.projects.length + 101)}`;
-                db.projects.push({ id: newId, title, clientId, clientName, price, skills, location, status, projectType, assignedMemberIds: [] });
+                db.projects.push({ id: newId, title, clientId, clientName, price, priceYen, skills, location, status, projectType, assignedMemberIds: [], participants: [] });
             }
 
             saveStoredData();
             closeModal('modal-project');
+        }
+
+        function getProjectParticipants(project) {
+            const explicit = (project.participants || []).filter(x => x && x.memberId);
+            const merged = [...explicit];
+            (project.assignedMemberIds || []).forEach(memberId => { if (!merged.some(x => x.memberId === memberId)) merged.push({ memberId, rateYen: 0 }); });
+            (db.members || []).forEach(m => {
+                if ((m.assignedProjectId === project.id || m.currentProject === project.title) && !merged.some(x => x.memberId === m.id)) {
+                    merged.push({ memberId: m.id, rateYen: Math.round((Number(m.rate) || 0) * 10000) });
+                }
+            });
+            return merged;
+        }
+        function openProjectDetail(id) {
+            const p = db.projects.find(x => x.id === id); if (!p) return;
+            projectDetailId = id;
+            document.getElementById('project-detail-title').textContent = p.title;
+            document.getElementById('project-detail-subtitle').textContent = `${p.clientName || '取引先未登録'} ／ 案件想定単価：${formatYenAsMan(projectPriceYen(p))}万円/月 ／ ステータス：${p.status || '未設定'}`;
+            const select = document.getElementById('participant-member');
+            const participants = getProjectParticipants(p);
+            select.innerHTML = '<option value="">メンバーを選択</option>' + db.members.map(m => `<option value="${m.id}" ${participants.some(x => x.memberId === m.id) ? 'disabled' : ''}>${m.name}（${m.id}）${participants.some(x => x.memberId === m.id) ? '・登録済み' : ''}</option>`).join('');
+            document.getElementById('participant-rate-yen').value = '';
+            renderProjectParticipants();
+            document.getElementById('modal-project-detail').classList.remove('hidden');
+        }
+        function renderProjectParticipants() {
+            const p = db.projects.find(x => x.id === projectDetailId); if (!p) return;
+            const participants = getProjectParticipants(p);
+            document.getElementById('project-participants-body').innerHTML = participants.length ? participants.map(x => {
+                const m = db.members.find(mm => mm.id === x.memberId);
+                return `<tr><td class="p-3 font-semibold text-slate-200">${m ? m.name : '削除済みメンバー'} <span class="text-slate-500">${x.memberId}</span></td><td class="p-3 font-mono text-amber-300">${formatYenAsMan(x.rateYen)}万円/月</td><td class="p-3 font-mono">¥${Math.round(Number(x.rateYen)||0).toLocaleString('ja-JP')}</td><td class="p-3 text-right whitespace-nowrap"><button onclick="editProjectParticipant('${x.memberId}')" class="text-cyan-400 mr-3">単価変更</button><button onclick="removeProjectParticipant('${x.memberId}')" class="text-rose-400">解除</button></td></tr>`;
+            }).join('') : '<tr><td colspan="4" class="p-5 text-center text-slate-500">参画メンバーはまだ登録されていません。</td></tr>';
+            const select = document.getElementById('participant-member');
+            if (select) Array.from(select.options).forEach(o => { if (o.value) { const exists = participants.some(x => x.memberId === o.value); o.disabled = exists; o.textContent = (db.members.find(m => m.id === o.value)?.name || o.value) + (exists ? '・登録済み' : ''); } });
+        }
+        function addProjectParticipant() {
+            const p = db.projects.find(x => x.id === projectDetailId); if (!p) return;
+            const memberId = document.getElementById('participant-member').value;
+            const rateField = document.getElementById('participant-rate-yen');
+            if (!memberId) { alert('参画メンバーを選択してください。'); return; }
+            if (rateField.value === '' || !Number.isFinite(Number(rateField.value)) || Number(rateField.value) < 0) { alert('参画単価を円単位で入力してください。'); return; }
+            p.participants = Array.isArray(p.participants) ? p.participants : [];
+            if (getProjectParticipants(p).some(x => x.memberId === memberId)) { alert('このメンバーは登録済みです。'); return; }
+            p.participants.push({ memberId, rateYen: Math.round(Number(rateField.value)) });
+            p.assignedMemberIds = [...new Set([...(p.assignedMemberIds || []), memberId])];
+            p.projectType = '参画案件';
+            if (p.status === '提案公募中' || p.status === '募集準備中' || p.status === '募集終了') p.status = '参画中';
+            saveStoredData(); openProjectDetail(projectDetailId);
+        }
+        function editProjectParticipant(memberId) {
+            const p = db.projects.find(x => x.id === projectDetailId); if (!p) return;
+            const item = getProjectParticipants(p).find(x => x.memberId === memberId); if (!item) return;
+            const input = prompt('参画単価を円単位で入力してください（1円単位）', String(Math.round(Number(item.rateYen)||0)));
+            if (input === null) return;
+            if (input.trim() === '' || !Number.isFinite(Number(input)) || Number(input) < 0) { alert('0以上の金額を入力してください。'); return; }
+            p.participants = Array.isArray(p.participants) ? p.participants : [];
+            let row = p.participants.find(x => x.memberId === memberId);
+            if (!row) { row = { memberId, rateYen: 0 }; p.participants.push(row); }
+            row.rateYen = Math.round(Number(input));
+            saveStoredData(); openProjectDetail(projectDetailId);
+        }
+        function removeProjectParticipant(memberId) {
+            const p = db.projects.find(x => x.id === projectDetailId); if (!p) return;
+            const m = db.members.find(x => x.id === memberId);
+            if (!confirm(`${m ? m.name : memberId} をこの案件の参画メンバーから解除しますか？`)) return;
+            p.participants = (p.participants || []).filter(x => x.memberId !== memberId);
+            p.assignedMemberIds = (p.assignedMemberIds || []).filter(x => x !== memberId);
+            saveStoredData(); openProjectDetail(projectDetailId);
         }
 
         function deleteProject(id) {

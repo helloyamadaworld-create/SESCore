@@ -84,3 +84,20 @@
   #app-container.sidebar-collapsed #sidebar .sidebar-title-row { justify-content: center !important; padding-left: 0 !important; padding-right: 0 !important; }
   #app-container.sidebar-collapsed #sidebar .p-3.border-t > div { justify-content: center !important; padding: .25rem !important; }
 }
+
+/* Standard theme readability normalization: overrides legacy dark utility backgrounds only in standard mode. */
+.theme-standard{background:#f8fafc!important;color:#0f172a!important}
+.theme-standard main,.theme-standard .view-panel{color:#1e293b}
+.theme-standard .glass-card,.theme-standard .menu-accordion-group,.theme-standard .support-mobile-card{background:#fff!important;color:#1e293b!important;border-color:#e2e8f0!important;box-shadow:0 2px 8px rgba(15,23,42,.06)!important}
+.theme-standard [class*="bg-slate-950"],.theme-standard [class*="bg-slate-900"],.theme-standard [class*="bg-slate-800"],.theme-standard [class*="bg-gray-900"],.theme-standard [class*="bg-gray-800"]{background-color:#f8fafc!important;color:#1e293b!important}
+.theme-standard .text-slate-100,.theme-standard .text-slate-200,.theme-standard .text-slate-300,.theme-standard .text-slate-400,.theme-standard .text-gray-100,.theme-standard .text-gray-200,.theme-standard .text-gray-300,.theme-standard .text-gray-400{color:#475569!important}
+.theme-standard .text-cyan-300,.theme-standard .text-cyan-400,.theme-standard .text-emerald-300,.theme-standard .text-emerald-400,.theme-standard .text-amber-300,.theme-standard .text-rose-300{color:#1d4ed8!important}
+.theme-standard .border-white\/5,.theme-standard .border-white\/10,.theme-standard .border-slate-800,.theme-standard .border-slate-700{border-color:#e2e8f0!important}
+.theme-standard .support-detail-modal{color:#1e293b}
+
+/* Clear nested submenu presentation under each sidebar section. */
+.menu-accordion-body.member-submenu-list{margin:.15rem 0 .25rem .55rem;padding-left:.45rem;border-left:1px solid rgba(148,163,184,.28)}
+.menu-accordion-body .nav-item.menu-subitem{min-height:2.45rem;padding-top:.6rem;padding-bottom:.6rem;font-size:.82rem}
+.menu-accordion-body .nav-item.menu-subitem .sidebar-text{line-height:1.35}
+.theme-standard .menu-accordion-body.member-submenu-list{border-left-color:#cbd5e1}
+@media(max-width:767px){.menu-accordion-body.member-submenu-list{margin-left:.25rem;padding-left:.35rem}.menu-accordion-body .nav-item.menu-subitem{min-height:2.8rem;padding-top:.75rem;padding-bottom:.75rem}}

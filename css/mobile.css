@@ -60,3 +60,36 @@ button, input, select, textarea { touch-action: manipulation; }
   main .glass-card { padding:9px!important; }
   #monthly-revenue-matrix .revenue-kpi-grid .text-2xl { font-size:1rem!important; }
 }
+
+/* Member support workflows: desktop table preserved; compact card UI on mobile only. */
+.support-mobile-cards{display:none}
+.support-detail-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(2,6,23,.72);padding:20px;align-items:center;justify-content:center}
+.support-detail-modal.is-open{display:flex}
+.support-detail-dialog{width:min(760px,100%);max-height:92dvh;overflow:auto;border:1px solid rgba(148,163,184,.35);border-radius:16px;padding:20px;background:#0f172a;color:#f8fafc;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.support-detail-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.support-detail-header h3{font-size:1.15rem;font-weight:700}
+.support-detail-header button{width:42px;height:42px;border-radius:10px;font-size:28px;line-height:1}
+.support-detail-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.support-detail-form label{display:block;min-width:0}
+.support-detail-form label span{display:block;font-size:.85rem;margin-bottom:6px;font-weight:600}
+.support-detail-form label:has(textarea){grid-column:1/-1}
+.support-detail-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px;padding-top:12px;border-top:1px solid rgba(148,163,184,.25)}
+.support-detail-actions button{min-height:44px;padding:10px 16px;border-radius:9px;font-weight:600}
+.support-save-button{background:#0891b2;color:white}.support-cancel-button{background:#334155;color:white}
+@media(max-width:767px){
+  .support-desktop-table{display:none!important}.support-mobile-cards{display:grid;gap:10px;padding:10px}
+  .support-mobile-card{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;border:1px solid rgba(148,163,184,.25);border-radius:12px;min-width:0}
+  .support-mobile-card-main{min-width:0;flex:1}.support-mobile-card-title{font-weight:700;font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+  .support-mobile-card-meta{display:flex;flex-wrap:wrap;gap:5px 10px;font-size:12px;opacity:.78;margin-top:6px;overflow-wrap:anywhere}
+  .support-mobile-card-actions{display:flex;flex-direction:column;gap:7px;flex-shrink:0}
+  .support-detail-button,.support-delete-button{min-height:40px;padding:8px 10px;border-radius:8px;font-size:12px;font-weight:600;white-space:nowrap}
+  .support-detail-button{background:#0e7490;color:white}.support-delete-button{border:1px solid rgba(244,63,94,.45);color:#fb7185}
+  .support-field{font-size:14px!important}.support-field input,.support-field select,.support-field textarea{min-height:44px;padding:10px!important}
+  .support-detail-modal{padding:10px;align-items:flex-end}.support-detail-dialog{width:100%;max-height:90dvh;border-radius:16px 16px 10px 10px;padding:16px}
+  .support-detail-form{grid-template-columns:minmax(0,1fr);gap:13px}.support-detail-form label:has(textarea){grid-column:auto}
+  .support-detail-form input,.support-detail-form select,.support-detail-form textarea{min-height:44px;font-size:16px!important;padding:10px!important}
+  .support-detail-actions{position:sticky;bottom:-16px;background:inherit;padding:12px 0 0}
+  .support-detail-actions button{flex:1;min-height:46px}
+}
+.theme-standard .support-detail-dialog{background:#fff!important;color:#0f172a!important;border-color:#dbe3ee!important}
+.theme-standard .support-cancel-button{background:#e2e8f0!important;color:#1e293b!important}

@@ -178,7 +178,7 @@
 
                     <a href="#" onclick="switchTab('members')" id="nav-members" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
                         <i class="fa-solid fa-users-gear w-5 text-center text-base"></i>
-                        <span class="sidebar-text">要員・メンバー</span>
+                        <span class="sidebar-text">メンバー・要員</span>
                     </a>
 
                     <a href="#" onclick="switchTab('interviews')" id="nav-interviews" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
@@ -334,7 +334,7 @@
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
                             <h2 class="text-xl font-bold tracking-tight">取引先企業一覧</h2>
-                            <p class="text-xs text-slate-400">エンド企業・元請SES・協力会社の情報と取引ステータス管理</p>
+                            <p class="text-xs text-slate-400">参照元シート：取引先マスタ｜エンド企業・元請SES・協力会社の情報と取引ステータス管理</p>
                         </div>
                         <div class="flex items-center space-x-2">
                             <input type="text" id="client-search" oninput="renderClientsTable()" placeholder="企業名、担当者、開発技術で検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
@@ -376,7 +376,7 @@
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
                             <h2 class="text-xl font-bold tracking-tight">案件・プロジェクト管理</h2>
-                            <p class="text-xs text-slate-400">募集案件・必要スキル・単価・提案状況の一貫トラッキング</p>
+                            <p class="text-xs text-slate-400">参照元シート：案件情報｜募集案件・必要スキル・単価・提案状況の一貫トラッキング</p>
                         </div>
                         <div class="flex flex-wrap items-center gap-2">
                             <div class="flex rounded-lg border border-slate-700 overflow-hidden" role="group" aria-label="案件区分">
@@ -389,6 +389,7 @@
                                 <option value="提案公募中">提案公募中</option>
                                 <option value="面談調整中">面談調整中</option>
                                 <option value="成約済み">成約済み</option>
+                                <option value="参画中">参画中</option>
                                 <option value="見送り">見送り</option>
                                 <option value="募集終了">募集終了</option>
                             </select>
@@ -410,6 +411,7 @@
                                         <th class="p-3">クライアント</th>
                                         <th class="p-3">必須スキル</th>
                                         <th class="p-3">想定単価</th>
+                                        <th class="p-3">参画人数</th>
                                         <th class="p-3">勤務形態</th>
                                         <th class="p-3">ステータス</th>
                                         <th class="p-3 text-right">操作</th>
@@ -454,7 +456,7 @@
                             <table class="w-full text-left text-xs">
                                 <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
                                     <tr>
-                                        <th class="p-3">要員ID</th>
+                                        <th class="p-3">No. / 要員ID</th>
                                         <th class="p-3">氏名 / 区分</th>
                                         <th class="p-3">所属部署</th>
                                         <th class="p-3">役職</th>
@@ -673,8 +675,8 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-slate-400 mb-1">想定単価 (万円/月)</label>
-                        <input type="number" id="project-price" placeholder="85" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                        <label class="block text-slate-400 mb-1">案件想定単価（円/月）</label>
+                        <input type="number" id="project-price" min="0" step="1" placeholder="850000" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
                     </div>
                 </div>
                 <div>
@@ -703,6 +705,7 @@
                             <option value="提案公募中">提案公募中</option>
                             <option value="面談調整中">面談調整中</option>
                             <option value="成約済み">成約済み</option>
+                            <option value="参画中">参画中</option>
                             <option value="見送り">見送り</option>
                             <option value="募集終了">募集終了</option>
                         </select>
@@ -716,6 +719,24 @@
         </div>
     </div>
 
+
+    <!-- PROJECT PARTICIPANTS DETAIL MODAL -->
+    <div id="modal-project-detail" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto p-6 space-y-4 border border-slate-700">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div><h3 id="project-detail-title" class="font-bold text-base text-cyan-400">案件参画メンバー</h3><p id="project-detail-subtitle" class="text-xs text-slate-400 mt-1"></p></div>
+                <button onclick="closeModal('modal-project-detail')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div><label class="block text-slate-400 mb-1">参画メンバー</label><select id="participant-member" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white"></select></div>
+                <div><label class="block text-slate-400 mb-1">参画単価（円/月・1円単位）</label><input id="participant-rate-yen" type="number" min="0" step="1" placeholder="380000" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white"></div>
+                <div class="flex items-end"><button type="button" onclick="addProjectParticipant()" class="w-full px-4 py-2.5 rounded-lg font-bold bg-cyan-600 text-white"><i class="fa-solid fa-user-plus mr-1"></i>参画メンバーを登録</button></div>
+            </div>
+            <p class="text-xs text-slate-400">単価は円単位で保存し、表示は万円単位です。同じメンバーを同一案件に重複登録することはできません。</p>
+            <div class="overflow-x-auto rounded-lg border border-slate-800"><table class="w-full text-left text-xs"><thead class="bg-slate-800 text-slate-400"><tr><th class="p-3">メンバー</th><th class="p-3">参画単価（万円/月）</th><th class="p-3">参画単価（円）</th><th class="p-3 text-right">操作</th></tr></thead><tbody id="project-participants-body" class="divide-y divide-slate-800"></tbody></table></div>
+            <div class="flex justify-end"><button type="button" onclick="closeModal('modal-project-detail')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">閉じる</button></div>
+        </div>
+    </div>
 
     <!-- MEMBER EDIT/ADD MODAL -->
     <div id="modal-member" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
