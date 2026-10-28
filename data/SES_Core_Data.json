@@ -1,9 +1,9 @@
 {
   "metadata": {
     "systemName": "SES_Core",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "exportedAt": "2026-10-27T07:58:39.127Z",
-    "schemaVersion": "3.0.0"
+    "schemaVersion": "3.1.0"
   },
   "clients": [
     {
@@ -147,7 +147,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -169,7 +171,9 @@
         "開発1部",
         "開発2部",
         "ITソリューション部"
-      ]
+      ],
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -186,7 +190,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -203,7 +209,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -220,7 +228,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -237,7 +247,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -254,7 +266,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -271,7 +285,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -288,7 +304,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -305,7 +323,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -322,7 +342,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -339,7 +361,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -356,7 +380,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -373,7 +399,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -390,7 +418,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -407,7 +437,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -424,7 +456,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -441,7 +475,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -458,7 +494,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     },
     {
       "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -475,7 +513,9 @@
       "available": "未登録",
       "status": "稼働中",
       "currentProject": "仙台営業所 参画案件（詳細未登録）",
-      "transportCost": 0
+      "transportCost": 0,
+      "currentStatus": "稼働中",
+      "nextMonthStatus": "稼働中"
     }
   ],
   "interviews": [

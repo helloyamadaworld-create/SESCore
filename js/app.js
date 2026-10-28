@@ -674,9 +674,12 @@
             openingScreen.classList.add('opacity-0', 'pointer-events-none');
             setTimeout(() => {
                 openingScreen.style.display = 'none';
+                openingScreen.classList.remove('opacity-0', 'pointer-events-none');
                 appContainer.classList.remove('opacity-0');
             }, 600);
         }
+        // The inline Skip button must be able to access the handler globally.
+        window.skipOpening = skipOpening;
 
         // Matrix Grid Digital Rain Effect
         function initMatrixCanvas() {
@@ -1057,9 +1060,12 @@
                     <td class="p-3 font-mono">¥${m.rate}万 (原価: ¥${m.cost}万)</td>
                     <td class="p-3 font-mono text-slate-300">${m.available}</td>
                     <td class="p-3">
-                        <span class="px-2 py-0.5 rounded text-[10px] ${m.status === '稼働中' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : m.status === '待機中' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30' : 'bg-amber-500/10 text-amber-400'}">
-                            ${m.status}
-                        </span>
+                        <div class="flex flex-col items-start gap-1">
+                            <span class="text-[9px] text-slate-500">現在</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] ${m.status === '稼働中' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : m.status === '待機中' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30' : 'bg-amber-500/10 text-amber-400'}">${m.status}</span>
+                            <span class="text-[9px] text-slate-500 mt-1">来月以降</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] ${(m.nextMonthStatus || m.status) === '稼働中' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : (m.nextMonthStatus || m.status) === '待機中' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30' : 'bg-amber-500/10 text-amber-400'}">${m.nextMonthStatus || m.status}</span>
+                        </div>
                     </td>
                     <td class="p-3 text-right space-x-2">
                         <button onclick="editMember('${m.id}')" class="text-cyan-400 hover:text-cyan-300"><i class="fa-solid fa-pen"></i></button>

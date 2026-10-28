@@ -1,0 +1,81 @@
+/* Revenue/profit layout refinements */
+#monthly-revenue-matrix .revenue-member-details > div {
+  display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+#monthly-revenue-matrix .revenue-field-label {
+  display: block;
+  font-size: 8px !important;
+  line-height: 1.1 !important;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  margin-bottom: 3px;
+}
+#monthly-revenue-matrix .revenue-month-cell-container {
+  min-width: 112px;
+  width: 112px;
+  max-width: 112px;
+  vertical-align: top;
+}
+#monthly-revenue-matrix .revenue-month-cell-container .ext-input {
+  box-sizing: border-box;
+  display: block;
+  width: 62px;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 10px;
+  line-height: 1.2;
+  padding: 3px 4px;
+  margin-top: 2px;
+}
+#monthly-revenue-matrix .revenue-finance-table {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: max-content;
+}
+#monthly-revenue-matrix .revenue-finance-table thead th { white-space: nowrap; }
+#monthly-revenue-matrix .revenue-finance-table thead th:first-child,
+#monthly-revenue-matrix .revenue-finance-table tbody th { width: 220px; min-width: 220px; max-width: 220px; }
+#monthly-revenue-matrix .revenue-view-toggle { display: flex; align-items: center; }
+#monthly-revenue-matrix .revenue-view-toggle .ext-button { white-space: nowrap; font-size: 11px; padding: 6px 9px; }
+#monthly-revenue-matrix select#revenue-department-filter,
+#monthly-revenue-matrix select#revenue-member-filter { display: block; margin-left: 0 !important; margin-right: auto; text-align: left; }
+#monthly-revenue-matrix label:has(#revenue-department-filter),
+#monthly-revenue-matrix label:has(#revenue-member-filter) { text-align: left; }
+@media (max-width: 760px) {
+  #monthly-revenue-matrix .revenue-month-cell-container { min-width: 100px; width: 100px; max-width: 100px; }
+  #monthly-revenue-matrix .revenue-month-cell-container .ext-input { width: 56px; }
+  #monthly-revenue-matrix .revenue-finance-table thead th:first-child,
+  #monthly-revenue-matrix .revenue-finance-table tbody th { width: 180px; min-width: 180px; max-width: 180px; }
+}
+
+/* Revenue filters: left-align labels, selected values, and dropdown controls */
+#monthly-revenue-matrix .revenue-filter-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+}
+#monthly-revenue-matrix .revenue-filter-label select,
+#monthly-revenue-matrix select#revenue-mode,
+#monthly-revenue-matrix select#revenue-year,
+#monthly-revenue-matrix select#revenue-view-type,
+#monthly-revenue-matrix select#revenue-start-month,
+#monthly-revenue-matrix select#revenue-end-month,
+#monthly-revenue-matrix select#revenue-department-filter,
+#monthly-revenue-matrix select#revenue-member-filter {
+  text-align: left !important;
+  text-align-last: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  direction: ltr;
+}
+#monthly-revenue-matrix .revenue-filter-label select {
+  min-width: 112px;
+  max-width: 100%;
+}

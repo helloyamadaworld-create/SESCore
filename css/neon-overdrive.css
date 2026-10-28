@@ -118,3 +118,14 @@ body.theme-neon:after{
 #nav-spot, #nav-expenses { border-left: 1px solid rgba(34,211,238,.18); }
 #view-spot .ext-table, #view-expenses .ext-table { width:100%; }
 #view-spot .ext-table th, #view-expenses .ext-table th { white-space:nowrap; }
+
+/* Consistent left accent line for every sidebar menu item */
+#sidebar .nav-item {
+  border-left: 1px solid rgba(34, 211, 238, .18);
+}
+.theme-neon #sidebar .nav-item {
+  border-left-color: rgba(34, 211, 238, .28);
+}
+.theme-standard #sidebar .nav-item {
+  border-left-color: #e2e8f0;
+}

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="css/neon-overdrive.css">
     <link rel="stylesheet" href="css/palette-switch.css">
     <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/viewport-fix.css">
+    <link rel="stylesheet" href="css/revenue-layout-fix.css">
 </head>
 <body class="theme-neon h-screen flex flex-col overflow-hidden select-none">
 
@@ -64,7 +66,7 @@
         
         <div class="relative z-10 max-w-xl w-full flex flex-col items-center text-center space-y-6">
             <!-- SKIP BUTTON -->
-            <button onclick="skipOpening()" class="absolute -top-12 right-0 px-4 py-1.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono tracking-widest border border-slate-600 transition flex items-center space-x-2">
+            <button type="button" id="skip-opening-button" onclick="window.skipOpening && window.skipOpening()" style="position:absolute;z-index:100020;pointer-events:auto;touch-action:manipulation" class="absolute -top-12 right-0 px-4 py-1.5 rounded-full bg-slate-800/90 hover:bg-slate-700 text-slate-100 text-xs font-mono tracking-widest border border-cyan-500/70 shadow-lg transition flex items-center space-x-2">
                 <span>SKIP INTRO</span>
                 <i class="fa-solid fa-forward text-cyan-400"></i>
             </button>
@@ -756,18 +758,28 @@
                         <input type="number" id="member-cost" placeholder="60" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-slate-400 mb-1">稼働可能日</label>
                         <input type="text" id="member-available" placeholder="即日 / 2026-11-01" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
                     </div>
                     <div>
-                        <label class="block text-slate-400 mb-1">稼働ステータス</label>
+                        <label class="block text-slate-400 mb-1">現在のステータス</label>
                         <select id="member-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
                             <option value="稼働中">稼働中</option>
                             <option value="待機中">待機中</option>
                             <option value="提案中">提案中</option>
                         </select>
+                        <p class="text-[10px] text-slate-500 mt-1">通常の一覧・ダッシュボードはこのステータスを参照します。</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-slate-400 mb-1">来月以降のステータス（人材マッチング用）</label>
+                        <select id="member-next-month-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <option value="稼働中">稼働中</option>
+                            <option value="待機中">待機中</option>
+                            <option value="提案中">提案中</option>
+                        </select>
+                        <p class="text-[10px] text-slate-500 mt-1">人材マッチングは「来月以降」のステータスを参照します。</p>
                     </div>
                 </div>
                 <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
