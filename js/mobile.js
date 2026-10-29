@@ -2,6 +2,22 @@
 (function(){
   const mobileQuery='(max-width: 760px)';
   const isMobile=()=>window.matchMedia(mobileQuery).matches;
+  function prepareMobileTables(){
+    if(!isMobile()) return;
+    document.querySelectorAll('main table').forEach(table=>{
+      if(table.closest('.mobile-table-scroll')) return;
+      const parent=table.parentElement;
+      const parentClass=parent ? String(parent.className||'') : '';
+      if(parent && /overflow-x-auto|overflow-auto|revenue-table-wrap|support-desktop-table/.test(parentClass)) return;
+      const wrapper=document.createElement('div');
+      wrapper.className='mobile-table-scroll';
+      wrapper.setAttribute('role','region');
+      wrapper.setAttribute('aria-label','横にスクロールできる一覧');
+      table.parentNode.insertBefore(wrapper,table);
+      wrapper.appendChild(table);
+    });
+  }
+
   function setup(){
     const sidebar=document.getElementById('sidebar');
     const app=document.getElementById('app-container');
@@ -18,8 +34,16 @@
       menuButton.dataset.mobileBound='1';
       menuButton.addEventListener('click',function(e){ if(!isMobile()) return; e.preventDefault(); e.stopImmediatePropagation(); sidebar.classList.contains('mobile-sidebar-open')?closeNav():openNav(); }, true);
     }
-    sidebar.querySelectorAll('.nav-item').forEach(link=>link.addEventListener('click',()=>{if(isMobile()) closeNav();}));
-    window.addEventListener('resize',()=>{if(!isMobile()) closeNav();});
+    sidebar.querySelectorAll('.nav-item').forEach(link=>link.addEventListener('click',()=>{
+      if(isMobile()) { closeNav(); setTimeout(prepareMobileTables, 80); }
+    }));
+    prepareMobileTables();
+    if(!document.documentElement.dataset.mobileTableObserver){
+      document.documentElement.dataset.mobileTableObserver='1';
+      const observer=new MutationObserver(()=>prepareMobileTables());
+      observer.observe(document.querySelector('main')||document.body,{childList:true,subtree:true});
+    }
+    window.addEventListener('resize',()=>{if(!isMobile()) closeNav(); else prepareMobileTables();});
 
     // Build a dedicated mobile utility sheet from existing actions; original controls stay in place for desktop.
     const toolsContainer=navbar.querySelector(':scope > div:last-child');
