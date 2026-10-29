@@ -1,0 +1,10 @@
+/* Profile/account/chat and centered mobile dialog refinements */
+#view-mypage input, #view-mypage textarea, #view-accounts input, #view-chat textarea { font-size: 16px; }
+#view-mypage, #view-chat, #view-accounts { padding-bottom: 2rem; }
+#view-chat #chat-messages { scrollbar-width: thin; }
+@media (max-width: 760px) {
+  #view-mypage .glass-card, #view-chat .glass-card { padding: 1rem; }
+  #modal-account { align-items: center !important; }
+  #modal-account .app-dialog-panel { margin: auto !important; max-height: calc(100dvh - 24px); overflow-y: auto; }
+  #view-accounts table { min-width: 580px; }
+}
