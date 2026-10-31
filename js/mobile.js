@@ -48,6 +48,8 @@
     // Build a dedicated mobile utility sheet from existing actions; original controls stay in place for desktop.
     const toolsContainer=navbar.querySelector(':scope > div:last-child');
     if(!toolsContainer || document.getElementById('mobile-tools-dialog')) return;
+    // Header utilities moved to sidebar Settings; no mobile header sheet needed.
+    if(document.getElementById('nav-settings')) return;
     const utilityButtons=Array.from(toolsContainer.querySelectorAll('button')).filter(button=>
       /logoutSES|confirmResetData|openImportModal|exportDataJSON/.test(button.getAttribute('onclick')||'')
     );

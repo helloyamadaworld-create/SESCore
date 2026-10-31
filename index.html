@@ -128,35 +128,6 @@
                 </div>
             </div>
 
-            <!-- NAVBAR RIGHT TOOLS -->
-            <div class="flex items-center space-x-3">
-                <!-- DATA REFRESH / RESET -->
-                <button onclick="confirmResetData()" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition border border-transparent hover:border-slate-700" title="初期サンプルデータにリセット">
-                    <i class="fa-solid fa-rotate-right mr-1"></i> リセット
-                </button>
-
-                <!-- IMPORT / EXPORT BUTTONS -->
-                <button onclick="openImportModal()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-cyan-500/30 transition flex items-center">
-                    <i class="fa-solid fa-file-import mr-1.5"></i> JSONインポート
-                </button>
-                <button onclick="exportDataJSON()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center shadow-md">
-                    <i class="fa-solid fa-file-export mr-1.5"></i> JSONエクスポート
-                </button>
-
-                <div class="h-5 w-px bg-slate-700 mx-1"></div>
-
-                <!-- THEME SWITCHER TOGGLE -->
-                <div class="flex items-center bg-slate-800/80 p-1 rounded-full border border-slate-700">
-                    <button id="theme-btn-standard" onclick="setTheme('standard')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
-                        <i class="fa-solid fa-sun text-amber-400"></i>
-                        <span class="hidden md:inline">STANDARD</span>
-                    </button>
-                    <button id="theme-btn-neon" onclick="setTheme('neon')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
-                        <i class="fa-solid fa-bolt text-cyan-400"></i>
-                        <span class="hidden md:inline">NEON</span>
-                    </button>
-                </div>
-            </div>
         </header>
 
         <!-- MAIN LAYOUT BODY (SIDEBAR + CONTENT AREA) -->
@@ -202,6 +173,7 @@
                         <i class="fa-solid fa-user-shield w-5 text-center text-base"></i><span class="sidebar-text">アカウント登録</span>
                         </a>
                         <a href="#" onclick="logoutSES(); return false" id="nav-logout" style="display:flex" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-rose-300 hover:text-white hover:bg-rose-500/10"><i class="fa-solid fa-right-from-bracket w-5 text-center text-base"></i><span class="sidebar-text">ログアウト</span></a>
+                        <a href="#" onclick="switchTab('settings'); return false" id="nav-settings" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50"><i class="fa-solid fa-gear w-5 text-center text-base"></i><span class="sidebar-text">設定</span></a>
                     </div>
 
                     <a href="#" onclick="switchTab('interviews')" id="nav-interviews" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
@@ -235,6 +207,49 @@
             <main class="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
 
                 <section id="view-fiscal-targets" class="view-panel hidden space-y-6"><div class="glass-card p-5 rounded-xl space-y-5 w-full max-w-none"><h2 class="font-bold text-xl">売上目標と粗利管理</h2><p class="text-sm text-slate-400">11月〜翌10月の事業年度ごとに年間目標を登録します。金額は万円単位で入力します。1億円以上は億円で表示します。</p><label class="block text-sm">対象年度<select id="target-fiscal-year" class="ext-input mt-2" onchange="setDashboardFiscalYear(this.value)"></select></label><label class="block text-sm">年間売上目標（万円）<input id="target-revenue-input" class="ext-input mt-2" type="number" min="0" step="0.1"></label><label class="block text-sm">年間粗利目標（万円）<input id="target-profit-input" class="ext-input mt-2" type="number" min="0" step="0.1"></label><div class="text-sm text-slate-300 space-y-1"><p>月別売上目標（年間÷12）：<strong id="monthly-revenue-target-preview">未設定</strong></p><p>月別粗利目標（年間÷12）：<strong id="monthly-profit-target-preview">未設定</strong></p></div><button type="button" onclick="saveFiscalTargets()" class="px-5 py-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold">目標を保存</button><p id="target-save-message" class="text-sm text-emerald-400" role="status"></p></div></section>
+
+                <section id="view-settings" class="view-panel hidden space-y-6">
+                    <div class="glass-card rounded-xl p-5 md:p-7 space-y-5 w-full max-w-none">
+                        <h2 class="text-xl font-bold"><i class="fa-solid fa-gear mr-2 text-cyan-400"></i>設定</h2>
+                        <p class="text-sm text-slate-400">テーマ切替・データ管理を行います。</p>
+                        <div class="neon-preferences rounded-xl p-4 md:p-6 space-y-5 border border-cyan-400/40">
+                          <h3 class="font-bold text-lg"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i>ネオン演出</h3>
+                          <label class="block space-y-2"><span class="flex justify-between gap-2"><span>発光強度</span><strong id="neon-intensity-value">100%</strong></span><input id="neon-intensity" type="range" min="0" max="200" step="10" value="100" class="w-full accent-fuchsia-400" oninput="setNeonPreferences()"></label>
+                          <label class="block space-y-2"><span class="flex justify-between gap-2"><span>アニメーション速度</span><strong id="neon-speed-value">標準（1.0倍）</strong></span><input id="neon-speed" type="range" min="0" max="300" step="25" value="100" class="w-full accent-emerald-400" oninput="setNeonPreferences()"></label>
+                          <p class="text-xs text-slate-400">速度0%でアニメーションを停止します。設定はこのブラウザに保存されます。端末の動きを減らす設定を優先します。</p>
+                        </div>
+                        <div id="settings-actions" class="flex flex-wrap items-center gap-3">
+            <div class="flex items-center space-x-3">
+                <!-- DATA REFRESH / RESET -->
+                <button onclick="confirmResetData()" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition border border-transparent hover:border-slate-700" title="初期サンプルデータにリセット">
+                    <i class="fa-solid fa-rotate-right mr-1"></i> リセット
+                </button>
+
+                <!-- IMPORT / EXPORT BUTTONS -->
+                <button onclick="openImportModal()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-cyan-500/30 transition flex items-center">
+                    <i class="fa-solid fa-file-import mr-1.5"></i> JSONインポート
+                </button>
+                <button onclick="exportDataJSON()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center shadow-md">
+                    <i class="fa-solid fa-file-export mr-1.5"></i> JSONエクスポート
+                </button>
+
+                <div class="h-5 w-px bg-slate-700 mx-1"></div>
+
+                <!-- THEME SWITCHER TOGGLE -->
+                <div class="flex items-center bg-slate-800/80 p-1 rounded-full border border-slate-700">
+                    <button id="theme-btn-standard" onclick="setTheme('standard')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
+                        <i class="fa-solid fa-sun text-amber-400"></i>
+                        <span class="hidden md:inline">STANDARD</span>
+                    </button>
+                    <button id="theme-btn-neon" onclick="setTheme('neon')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
+                        <i class="fa-solid fa-bolt text-cyan-400"></i>
+                        <span class="hidden md:inline">NEON</span>
+                    </button>
+                </div>
+            
+                        </div>
+                    </div>
+                </section>
 
                 <!-- --------------------------------------- -->
                 <!-- VIEW 1: DASHBOARD                      -->
@@ -859,6 +874,7 @@
     <script src="js/fiscal-dashboard.js"></script>
     <script src="js/mobile.js"></script>
     <script src="js/user-features.js"></script>
+    <script src="js/neon-preferences.js"></script>
     <script>
       // v3.2.11: アカウント画面への導線を直接固定し、既存の権限・ナビ処理に依存させない。
       window.openAccountManagement = function () {
@@ -882,5 +898,6 @@
 
       });
     </script>
+<link rel="stylesheet" href="css/neon-preferences.css">
 </body>
 </html>

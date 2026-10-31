@@ -73,7 +73,7 @@
     // 「マイメニュー」は全ユーザー共通。権限切替時も表示を保証する。
     const myMenuGroup = document.getElementById('nav-my-menu-group');
     if (myMenuGroup) { myMenuGroup.classList.remove('hidden'); myMenuGroup.style.display = ''; }
-    ['nav-chat', 'nav-mypage'].forEach(id => {
+    ['nav-chat', 'nav-mypage', 'nav-logout', 'nav-settings'].forEach(id => {
       const item = document.getElementById(id);
       if (item) { item.classList.remove('hidden'); item.style.display = ''; item.removeAttribute('data-admin-only'); }
     });
