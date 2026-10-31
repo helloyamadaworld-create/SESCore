@@ -26,10 +26,10 @@
 
     let backdrop=document.getElementById('mobile-nav-backdrop');
     if(!backdrop){ backdrop=document.createElement('div'); backdrop.id='mobile-nav-backdrop'; app.appendChild(backdrop); }
-    const closeNav=()=>{ sidebar.classList.remove('mobile-sidebar-open'); backdrop.classList.remove('active'); document.body.classList.remove('mobile-nav-open'); };
-    const openNav=()=>{ sidebar.classList.add('mobile-sidebar-open'); backdrop.classList.add('active'); document.body.classList.add('mobile-nav-open'); };
+    const closeNav=()=>{ const trigger=document.getElementById('ses-mobile-menu-button'); if(trigger){trigger.setAttribute('aria-expanded','false');trigger.setAttribute('aria-label','メニューを開く');} sidebar.classList.remove('mobile-sidebar-open'); backdrop.classList.remove('active'); document.body.classList.remove('mobile-nav-open'); };
+    const openNav=()=>{ const trigger=document.getElementById('ses-mobile-menu-button'); if(trigger){trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-label','メニューを閉じる');} sidebar.classList.add('mobile-sidebar-open'); backdrop.classList.add('active'); document.body.classList.add('mobile-nav-open'); };
     backdrop.addEventListener('click',closeNav);
-    const menuButton=navbar.querySelector('button[onclick*="toggleSidebar"]');
+    const menuButton=document.getElementById('ses-mobile-menu-button') || navbar.querySelector('button[onclick*="toggleSidebar"]');
     if(menuButton && !menuButton.dataset.mobileBound){
       menuButton.dataset.mobileBound='1';
       menuButton.addEventListener('click',function(e){ if(!isMobile()) return; e.preventDefault(); e.stopImmediatePropagation(); sidebar.classList.contains('mobile-sidebar-open')?closeNav():openNav(); }, true);

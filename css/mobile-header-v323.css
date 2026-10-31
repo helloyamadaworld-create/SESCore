@@ -1,0 +1,10 @@
+/* v3.2.23: header has explicit left and right areas; no search injection into menu area. */
+@media (max-width:760px){
+ #top-navbar > div:first-child{order:0!important;flex:0 0 auto!important;display:flex!important;align-items:center!important;min-width:0!important;gap:5px!important}
+ #top-navbar > #ses-header-actions{order:1!important;flex:0 1 auto!important;min-width:0!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:5px!important}
+ #ses-mobile-menu-button{display:inline-flex!important;flex:0 0 42px!important;width:42px!important;height:42px!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;order:0!important;overflow:visible!important}
+ #ses-mobile-menu-button svg{display:block!important;width:24px!important;height:24px!important;stroke:#00eaff!important;visibility:visible!important;opacity:1!important}
+ #top-navbar .global-search-wrap{order:0!important}
+ #top-navbar #ses-header-actions .theme-switcher{order:1!important;display:flex!important;flex-wrap:nowrap!important;gap:2px!important}
+ #top-navbar #ses-header-actions .theme-switcher button{white-space:nowrap!important;display:inline-flex!important}
+}

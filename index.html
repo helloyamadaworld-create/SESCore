@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="css/cyber-neon-v317.css">
     <link rel="stylesheet" href="css/cyber-flow-v318.css">
     <link rel="stylesheet" href="css/cyber-system-v319.css">
+    <link rel="stylesheet" href="css/theme-switch-restore.css">
 </head>
 <body class="theme-neon h-screen flex flex-col overflow-hidden select-none">
 
@@ -118,8 +119,8 @@
         <!-- TOP NAVBAR -->
         <header class="h-14 border-b flex items-center justify-between px-4 z-20 transition-colors duration-300" id="top-navbar">
             <div class="flex items-center space-x-3">
-                <button onclick="toggleSidebar()" class="p-2 rounded-lg hover:bg-slate-700/20 text-slate-400 hover:text-cyan-400 transition" title="サイドバー切替">
-                    <i class="fa-solid fa-bars text-lg"></i>
+                <button id="ses-mobile-menu-button" type="button" onclick="toggleSidebar()" aria-label="メニューを開く" aria-controls="sidebar" aria-expanded="false" class="p-2 rounded-lg hover:bg-slate-700/20 text-cyan-400 transition" title="メニューを開く">
+                    <svg class="ses-hamburger-lines" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
                 </button>
                 <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-layer-group text-cyan-400 text-lg"></i>
@@ -127,7 +128,13 @@
                     <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-mono hidden sm:inline-block">LIVE</span>
                 </div>
             </div>
-
+            <!-- Right-side controls: keep separate from hamburger/brand. -->
+            <div id="ses-header-actions" class="flex items-center justify-end gap-2 min-w-0">
+                <div class="theme-switcher flex items-center bg-slate-800/80 p-1 rounded-full border border-slate-700" aria-label="表示テーマ">
+                    <button id="theme-btn-standard" type="button" onclick="setTheme('standard')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center gap-1"><i class="fa-solid fa-sun text-amber-400" aria-hidden="true"></i><span>STANDARD</span></button>
+                    <button id="theme-btn-neon" type="button" onclick="setTheme('neon')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center gap-1"><i class="fa-solid fa-bolt text-cyan-400" aria-hidden="true"></i><span>NEON</span></button>
+                </div>
+            </div>
         </header>
 
         <!-- MAIN LAYOUT BODY (SIDEBAR + CONTENT AREA) -->
@@ -237,11 +244,11 @@
 
                 <!-- THEME SWITCHER TOGGLE -->
                 <div class="flex items-center bg-slate-800/80 p-1 rounded-full border border-slate-700">
-                    <button id="theme-btn-standard" onclick="setTheme('standard')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
+                    <button onclick="setTheme('standard')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
                         <i class="fa-solid fa-sun text-amber-400"></i>
                         <span class="hidden md:inline">STANDARD</span>
                     </button>
-                    <button id="theme-btn-neon" onclick="setTheme('neon')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
+                    <button onclick="setTheme('neon')" class="px-2.5 py-1 rounded-full text-xs font-medium transition flex items-center space-x-1">
                         <i class="fa-solid fa-bolt text-cyan-400"></i>
                         <span class="hidden md:inline">NEON</span>
                     </button>
@@ -899,5 +906,7 @@
       });
     </script>
 <link rel="stylesheet" href="css/neon-preferences.css">
+<link rel="stylesheet" href="css/mobile-header-v322.css">
+<link rel="stylesheet" href="css/mobile-header-v323.css">
 </body>
 </html>
