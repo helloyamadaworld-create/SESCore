@@ -4758,5 +4758,11 @@
   "feedbacks": [],
   "merchandiseProducts": [],
   "merchandiseSales": [],
-  "merchandiseExpenses": []
+  "merchandiseExpenses": [],
+  "fiscalTargets": {
+    "2027": {
+      "revenue": 10800,
+      "profit": 1184
+    }
+  }
 }

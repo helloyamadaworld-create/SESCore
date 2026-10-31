@@ -1,6 +1,7 @@
 
         // Default System Database Preset (initialData.json)
         const DEFAULT_INITIAL_DATA = {
+          "fiscalTargets": {"2027":{"revenue":10800,"profit":1184}},
     "metadata": {
         "systemName": "SES_Core",
         "version": "3.2.12",
@@ -5075,6 +5076,9 @@
                 db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
                 try { localStorage.setItem('ses_access_db', JSON.stringify(db)); } catch (e) {}
             }
+            // Annual goals for FY2027 / 15th term; preserve any existing user-entered values.
+            if (!db.fiscalTargets || typeof db.fiscalTargets !== 'object') db.fiscalTargets = {};
+            if (!db.fiscalTargets['2027']) db.fiscalTargets['2027'] = { revenue: 10800, profit: 1184 };
             // Ensure expected collections exist, without overwriting user-provided member statuses or rates.
             db.metadata = db.metadata || { systemName: 'SES_Core', version: '3.0.0', schemaVersion: '3.0.0' };
             ['clients','projects','members','interviews','tasks','auditLog','spotJobs','expenses','oneOnOnes','feedbacks'].forEach(key => {
@@ -5181,15 +5185,6 @@
             const profitMargin = totalRev > 0 ? ((profit / totalRev) * 100).toFixed(1) : 0;
             const utilizationRate = totalEng > 0 ? ((activeEng / totalEng) * 100).toFixed(0) : 0;
 
-            document.getElementById('kpi-active-engineers').innerText = `${activeEng}名`;
-            document.getElementById('kpi-utilization-rate').innerText = `${utilizationRate}%`;
-            document.getElementById('kpi-active-projects').innerText = `${activePrj}件`;
-            document.getElementById('kpi-total-clients').innerText = `${totalCli}社`;
-            document.getElementById('kpi-monthly-revenue').innerText = `¥${(totalRev / 100).toFixed(2)}M`;
-            document.getElementById('kpi-monthly-profit').innerText = `¥${(profit / 100).toFixed(2)}M`;
-            document.getElementById('kpi-profit-margin').innerText = `${profitMargin}%`;
-            document.getElementById('kpi-target-rate').innerText = `${((totalRev / 500) * 100).toFixed(0)}%`; // Target 500万
-            document.getElementById('kpi-bench-engineers').innerText = `${benchEng}名`;
 
             // Immediate Action Tasks
             const taskContainer = document.getElementById('dash-action-list');
