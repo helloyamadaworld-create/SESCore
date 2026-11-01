@@ -1,0 +1,73 @@
+/* v3.2.3: portrait-first mobile clarity, spacing, overflow and navigation fixes.
+   Deliberately scoped to mobile so desktop layout remains untouched. */
+@media (max-width: 760px) {
+  :root { --mobile-gutter: 14px; }
+  html, body { width:100%; max-width:100%; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  body { overflow:hidden !important; }
+  #app-container { width:100%; max-width:100%; overflow:hidden !important; }
+
+  /* Keep the mobile header compact but never squeeze or wrap labels. */
+  #top-navbar { position:relative !important; z-index:80 !important; flex-shrink:0; }
+  #top-navbar > div:first-child { flex:1 1 auto; min-width:0; }
+  #top-navbar > div:first-child .font-tech { white-space:nowrap !important; overflow:hidden; text-overflow:ellipsis; }
+  #top-navbar > div:last-child { flex:0 0 auto; white-space:nowrap; }
+  #top-navbar button { white-space:nowrap; word-break:keep-all; }
+
+  /* Critical fix: the backdrop must sit BEHIND the menu, not intercept its taps. */
+  #mobile-nav-backdrop { position:fixed !important; top:62px !important; right:0 !important; bottom:0 !important; left:0 !important; z-index:54 !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+  #sidebar { position:fixed !important; top:62px !important; bottom:0 !important; left:0 !important; height:calc(100dvh - 62px) !important; z-index:65 !important; width:min(86vw,330px) !important; max-width:330px; overflow-y:auto !important; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+  #sidebar.mobile-sidebar-open { transform:translateX(0) !important; pointer-events:auto !important; visibility:visible !important; }
+  #sidebar .nav-item { display:flex; align-items:center; gap:12px; white-space:normal; overflow-wrap:normal; word-break:normal; }
+  #sidebar .nav-item i, #sidebar .nav-item svg { flex:0 0 20px; }
+  body.mobile-nav-open { overflow:hidden !important; }
+
+  /* Remove visual blur effects from the mobile UI; keep text crisp. */
+  .mobile-tools-dialog, .support-detail-modal { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+  #app-container, #sidebar, #top-navbar, main, main * { -webkit-font-smoothing:antialiased; }
+  main .glass-card, main button, main a, #sidebar, #top-navbar { filter:none !important; }
+  main .glass-card:hover, main button:hover { transform:none !important; }
+
+  /* Portrait-first: give content room. Dashboard metric grids remain two columns;
+     general forms and content grids use one column to avoid crowded cards. */
+  #app-container > .flex-1.flex.overflow-hidden > main { min-width:0 !important; width:100% !important; overflow-x:hidden !important; overflow-y:auto !important; -webkit-overflow-scrolling:touch; padding:18px var(--mobile-gutter) calc(28px + env(safe-area-inset-bottom)) !important; }
+  main > .view-panel { width:100%; min-width:0; gap:20px !important; }
+  main .grid { grid-template-columns:minmax(0,1fr) !important; gap:14px !important; }
+  main #dashboard .grid, main .dashboard-grid, main .stats-grid,
+  #monthly-revenue-matrix .revenue-kpi-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:10px !important; }
+  main .glass-card { min-width:0; padding:16px !important; overflow-wrap:normal !important; word-break:normal !important; }
+  main h1, main h2, main h3, main p, main label { word-break:normal !important; overflow-wrap:break-word !important; }
+  main button, main .nav-item, main a[role="button"] { word-break:keep-all; }
+  main input:not([type=checkbox]):not([type=radio]), main select, main textarea { width:100%; max-width:100%; min-width:0; box-sizing:border-box; }
+
+  /* Data tables scroll sideways instead of squeezing columns or breaking labels. */
+  .mobile-table-scroll { display:block !important; width:100% !important; max-width:100% !important; overflow-x:auto !important; overflow-y:hidden !important; -webkit-overflow-scrolling:touch !important; overscroll-behavior-x:contain; border-radius:12px; }
+  .mobile-table-scroll table, main table { width:max-content !important; min-width:100% !important; max-width:none !important; table-layout:auto !important; border-collapse:separate; }
+  .mobile-table-scroll th, .mobile-table-scroll td, main table th, main table td { white-space:nowrap !important; word-break:keep-all !important; overflow-wrap:normal !important; }
+  .mobile-table-scroll th, .mobile-table-scroll td { min-width:88px; }
+  .mobile-table-scroll th:first-child, .mobile-table-scroll td:first-child { position:sticky; left:0; z-index:2; }
+  .mobile-table-scroll th:first-child { z-index:4; }
+  /* Do not force wide tables into the viewport; scroll containers own the overflow. */
+  main .overflow-x-auto, main .overflow-auto { max-width:100% !important; min-width:0 !important; -webkit-overflow-scrolling:touch; }
+
+  /* Dialogs use a readable bottom sheet and never compress controls. */
+  .modal, [id^="modal-"] { z-index:1000; }
+  .modal > div, [id^="modal-"] > div { width:100% !important; max-width:100% !important; }
+  .modal form .grid, [id^="modal-"] form .grid { grid-template-columns:minmax(0,1fr) !important; }
+}
+@media (max-width: 420px) {
+  :root { --mobile-gutter:12px; }
+  #top-navbar { gap:6px !important; }
+  #top-navbar > div:first-child .font-tech { font-size:14px !important; }
+  main .glass-card { padding:14px !important; }
+  main #dashboard .grid, main .dashboard-grid, main .stats-grid,
+  #monthly-revenue-matrix .revenue-kpi-grid { gap:8px !important; }
+}
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  #sidebar, #app-container, .mobile-tools-dialog, .modal { transition:none !important; animation:none !important; }
+}
+@media (max-width: 760px) {
+  #sidebar, #top-navbar, main .glass-card, .mobile-tools-sheet, .modal > div, [id^="modal-"] > div {
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+}

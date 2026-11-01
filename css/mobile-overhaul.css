@@ -1,0 +1,116 @@
+/* Mobile-first usability overhaul. All rules are scoped to small screens; desktop is intentionally untouched. */
+@media (max-width: 760px) {
+  :root { --mobile-gutter: 16px; --mobile-control-height: 48px; }
+  html { height: 100%; height: 100dvh; -webkit-text-size-adjust: 100%; }
+  body { min-height: 100%; min-height: 100dvh; overscroll-behavior: none; }
+  button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+  button, a { touch-action: manipulation; }
+
+  /* Login: single clear column, safe-area aware, no squeezed copy */
+  #login-screen { padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom)) !important; overflow-y: auto; align-items: center; }
+  #login-screen .login-panel { box-sizing: border-box; width: 100%; max-width: 420px; padding: 26px 22px !important; margin: auto; border-radius: 22px; }
+  #login-screen .login-panel > div:first-child { margin-bottom: 26px !important; }
+  #login-screen .login-logo { width: 58px; height: 58px; border-radius: 17px; font-size: 25px; margin-bottom: 17px !important; }
+  #login-screen h1 { font-size: clamp(26px, 8vw, 32px) !important; line-height: 1.2; letter-spacing: .12em !important; }
+  #login-screen .login-panel p { overflow-wrap: anywhere; }
+  #login-form { display: grid; gap: 18px !important; }
+  #login-form label { font-size: 11px !important; letter-spacing: .12em; }
+  #login-form .login-input-wrap { min-height: 54px; gap: 11px; padding: 0 14px; border-radius: 12px; }
+  #login-form .login-input-wrap input { min-height: 52px; font-size: 16px !important; }
+  #login-form .password-toggle { min-width: 40px; min-height: 40px; }
+  #login-submit { min-height: 54px; border-radius: 12px; font-size: 14px; }
+  #login-screen .login-panel > .flex.items-center.gap-3 { margin: 22px 0 !important; gap: 9px; }
+  #login-screen .login-panel > .flex.items-center.gap-3 span { font-size: 9px; letter-spacing: .12em; white-space: nowrap; }
+
+  /* Opening: fit small screens; skip action remains visible and easy to hit */
+  #opening-screen { box-sizing: border-box; min-height: 100dvh; height: 100dvh; padding: max(72px, env(safe-area-inset-top) + 52px) 18px max(22px, env(safe-area-inset-bottom)) !important; overflow-y: auto; justify-content: center; }
+  #opening-screen > .relative.z-10 { width: 100%; max-width: 460px; gap: 22px !important; }
+  #skip-opening-button { position: fixed !important; top: max(12px, env(safe-area-inset-top)) !important; right: 14px !important; min-height: 42px; padding: 10px 14px !important; }
+  #opening-screen .w-20.h-20 { width: 62px !important; height: 62px !important; border-radius: 17px !important; }
+  #opening-screen .w-20.h-20 i { font-size: 27px !important; }
+  #opening-screen h1 { font-size: clamp(23px, 7vw, 30px) !important; line-height: 1.35; overflow-wrap: anywhere; }
+  #opening-screen p { line-height: 1.7; }
+  #terminal-logs { height: clamp(105px, 20dvh, 150px) !important; padding: 12px !important; font-size: 10px !important; line-height: 1.55; }
+  #loader-status { max-width: 78%; line-height: 1.4; }
+
+  /* App shell and header: one clean row, actions grouped in a dialog */
+  #app-container { height: 100dvh !important; min-height: 0 !important; }
+  #top-navbar { box-sizing: border-box; height: 62px !important; min-height: 62px !important; padding: 8px 12px !important; gap: 10px !important; position: relative; z-index: 70; }
+  #top-navbar > div:first-child { flex: 1 1 auto; min-width: 0; gap: 8px !important; }
+  #top-navbar > div:first-child > button { flex: 0 0 42px; width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(103,232,249,.25); }
+  #top-navbar > div:first-child > div { min-width: 0; gap: 7px !important; }
+  #top-navbar > div:first-child .font-tech { font-size: 15px !important; letter-spacing: .04em !important; white-space: nowrap; }
+  #top-navbar > div:first-child .fa-layer-group { font-size: 16px !important; }
+  #top-navbar > div:last-child { flex: 0 0 auto; width: auto; min-width: 0; flex-wrap: nowrap !important; gap: 6px !important; }
+  #top-navbar > div:last-child > button { display: none !important; }
+  #top-navbar > div:last-child > .h-5 { display: none !important; }
+  #top-navbar > div:last-child > .theme-switcher { display: none !important; }
+  #top-navbar > div:last-child > .mobile-tools-trigger { display: inline-flex !important; align-items: center; justify-content: center; gap: 7px; min-height: 42px; padding: 0 12px !important; border-radius: 12px; font-size: 12px; font-weight: 700; white-space: nowrap; color: #cffafe; background: rgba(8,145,178,.16); border: 1px solid rgba(34,211,238,.38); }
+  #top-navbar .mobile-tools-trigger i { font-size: 14px; }
+  #top-navbar > div:last-child > .mobile-logout-trigger { display: inline-flex !important; align-items: center; justify-content: center; min-height: 42px; width: 42px; padding: 0 !important; font-size: 0 !important; border-radius: 12px; }
+  #top-navbar .mobile-logout-trigger i { margin: 0 !important; font-size: 15px; }
+  #app-container > .flex-1.flex.overflow-hidden { min-height: 0; }
+  #sidebar { top: 62px !important; height: calc(100dvh - 62px) !important; width: min(86vw, 330px) !important; max-width: 330px; padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+  #mobile-nav-backdrop { inset: 62px 0 0 !important; z-index: 64 !important; backdrop-filter: blur(3px); }
+  #sidebar .nav-item { min-height: 48px; padding: 12px 14px !important; font-size: 14px !important; border-radius: 12px; }
+  #sidebar > div:first-child { padding: 14px 12px; }
+  #app-container > .flex-1.flex.overflow-hidden > main { box-sizing: border-box; padding: 18px var(--mobile-gutter) calc(24px + env(safe-area-inset-bottom)) !important; }
+  main > .view-panel { gap: 18px !important; }
+  main h1, main .text-3xl { font-size: 1.45rem !important; line-height: 1.3 !important; letter-spacing: -.02em; }
+  main h2, main .text-2xl { font-size: 1.18rem !important; line-height: 1.4 !important; }
+  main h3 { line-height: 1.4; }
+  main p, main label { line-height: 1.55; }
+  main .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+  main .glass-card { padding: 14px !important; border-radius: 16px !important; }
+  main .glass-card:hover { transform: none !important; }
+  main button, main a[role="button"] { min-height: 42px; }
+  main input:not([type=checkbox]):not([type=radio]), main select, main textarea { min-height: 46px; padding: 11px 12px !important; border-radius: 10px !important; font-size: 16px !important; }
+  main textarea { min-height: 100px; }
+  main table { font-size: 12px !important; }
+  main table th, main table td { padding: 10px 9px !important; line-height: 1.45; }
+  main .overflow-x-auto { border-radius: 12px; }
+
+  /* Dialogs: mobile bottom-sheet/full-screen, larger controls, persistent actions */
+  .modal, [id^="modal-"] { padding: 0 !important; align-items: flex-end !important; }
+  .modal > div, [id^="modal-"] > div { box-sizing: border-box; width: 100% !important; max-width: none !important; max-height: 92dvh !important; margin: 0 !important; border-radius: 22px 22px 0 0 !important; padding: 20px 16px max(18px, env(safe-area-inset-bottom)) !important; overflow-y: auto !important; overscroll-behavior: contain; }
+  .modal h2, .modal h3, [id^="modal-"] h2, [id^="modal-"] h3 { font-size: 1.15rem !important; line-height: 1.4; }
+  .modal form .grid, [id^="modal-"] form .grid { grid-template-columns: minmax(0,1fr) !important; gap: 14px !important; }
+  .modal form > div, [id^="modal-"] form > div { min-width: 0; }
+  .modal button, [id^="modal-"] button { min-height: 44px; }
+  .modal input:not([type=checkbox]):not([type=radio]), .modal select, .modal textarea,
+  [id^="modal-"] input:not([type=checkbox]):not([type=radio]), [id^="modal-"] select, [id^="modal-"] textarea { width: 100%; min-height: 46px; box-sizing: border-box; font-size: 16px !important; padding: 11px 12px !important; }
+  .modal .flex.justify-end, [id^="modal-"] .flex.justify-end { display: flex; gap: 10px !important; flex-wrap: wrap; padding-top: 14px; }
+  .modal .flex.justify-end > button, [id^="modal-"] .flex.justify-end > button { flex: 1 1 120px; }
+
+  /* Data-heavy screens stay usable without forcing tiny columns */
+  #monthly-revenue-matrix .revenue-table-wrap { max-height: calc(100dvh - 330px) !important; min-height: 220px !important; }
+  #monthly-revenue-matrix .revenue-matrix-table th:first-child { width: 138px !important; min-width: 138px !important; }
+  #monthly-revenue-matrix .revenue-input-stack label { font-size: 11px !important; }
+  .support-detail-modal { z-index: 1200; }
+}
+
+@media (max-width: 420px) {
+  :root { --mobile-gutter: 12px; }
+  #login-screen .login-panel { padding: 24px 18px !important; }
+  #top-navbar { padding: 7px 9px !important; }
+  #top-navbar .mobile-tools-trigger { width: 42px; padding: 0 !important; font-size: 0 !important; }
+  #top-navbar .mobile-tools-trigger i { font-size: 16px; }
+  main .grid { gap: 8px !important; }
+  main .glass-card { padding: 11px !important; }
+  main .grid .glass-card .text-2xl { font-size: 1.08rem !important; }
+}
+
+/* Mobile utility dialog */
+.mobile-tools-dialog { display:none; position:fixed; inset:0; z-index:2000; align-items:flex-end; justify-content:center; padding:0; background:rgba(2,6,23,.68); backdrop-filter:blur(5px); }
+.mobile-tools-dialog.is-open { display:flex; }
+.mobile-tools-sheet { box-sizing:border-box; width:100%; max-height:88dvh; overflow:auto; padding:20px 16px max(20px,env(safe-area-inset-bottom)); border-radius:22px 22px 0 0; background:#081426; color:#f8fafc; border:1px solid rgba(34,211,238,.35); box-shadow:0 -18px 50px rgba(0,0,0,.35); }
+.mobile-tools-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
+.mobile-tools-heading h2 { font-size:17px; font-weight:800; }
+.mobile-tools-close { width:42px; height:42px; border-radius:12px; background:rgba(148,163,184,.14); font-size:22px; }
+.mobile-tools-list { display:grid; grid-template-columns:minmax(0,1fr); gap:10px; }
+.mobile-tools-list > button, .mobile-tools-list .mobile-tools-theme button { display:flex !important; align-items:center; justify-content:flex-start; gap:12px; width:100%; min-height:50px; padding:12px 14px !important; border:1px solid rgba(148,163,184,.2); border-radius:12px; background:rgba(15,23,42,.7); color:#e2e8f0; font-size:14px !important; text-align:left; }
+.mobile-tools-list button i { width:20px; text-align:center; }
+.mobile-tools-theme { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.theme-standard .mobile-tools-sheet { background:#fff; color:#0f172a; border-color:#cbd5e1; }
+.theme-standard .mobile-tools-list > button, .theme-standard .mobile-tools-list .mobile-tools-theme button { background:#f8fafc; color:#0f172a; border-color:#dbe3ee; }
+@media (min-width:761px) { .mobile-tools-dialog, .mobile-tools-trigger { display:none !important; } }

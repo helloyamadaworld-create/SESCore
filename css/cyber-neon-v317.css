@@ -1,0 +1,24 @@
+/* v3.2.17 Cyber Neon — visual changes only; data and navigation remain intact */
+body.theme-neon{--cy-pink:#ff26d7;--cy-yellow:#ffe84b;--cy-green:#00ffc8;--cy-blue:#00dcff;--cy-violet:#ae69ff;background-image:radial-gradient(ellipse at 5% 8%,rgba(0,120,255,.38),transparent 33%),radial-gradient(ellipse at 92% 12%,rgba(255,20,195,.30),transparent 30%),radial-gradient(ellipse at 65% 90%,rgba(0,255,194,.18),transparent 40%),linear-gradient(125deg,#010411,#09051e 53%,#020819)!important}
+.theme-neon #top-navbar{border-bottom:1px solid rgba(0,245,255,.85)!important;box-shadow:0 0 16px rgba(0,220,255,.4),0 8px 32px rgba(255,26,208,.16),inset 0 -1px 12px rgba(0,240,255,.16)!important}
+.theme-neon #sidebar{border-right:2px solid var(--cy-pink)!important;box-shadow:0 0 18px rgba(255,38,215,.5),12px 0 46px rgba(0,220,255,.17),inset -5px 0 35px rgba(255,38,215,.12)!important;background:linear-gradient(180deg,rgba(10,4,34,.98),rgba(1,15,31,.98))!important}
+.theme-neon #sidebar .nav-item{border:1px solid rgba(0,220,255,.38)!important;background:linear-gradient(100deg,rgba(0,220,255,.075),rgba(255,38,215,.07))!important;box-shadow:inset 0 0 14px rgba(0,220,255,.07),0 0 7px rgba(0,220,255,.12)!important;transition:box-shadow .22s,border-color .22s,transform .22s!important}
+.theme-neon #sidebar .nav-item:nth-child(3n+2){border-color:rgba(255,38,215,.5)!important}
+.theme-neon #sidebar .nav-item:nth-child(3n+3){border-color:rgba(255,232,75,.48)!important}
+.theme-neon #sidebar .nav-item:hover{border-color:var(--cy-green)!important;box-shadow:0 0 12px rgba(0,255,200,.65),0 0 28px rgba(0,255,200,.25),inset 0 0 17px rgba(0,255,200,.15)!important;transform:translateX(2px)}
+.theme-neon #sidebar .nav-item.active,.theme-neon #sidebar .nav-item[aria-current="page"]{border-color:var(--cy-pink)!important;background:linear-gradient(90deg,rgba(255,38,215,.27),rgba(0,220,255,.13))!important;box-shadow:0 0 16px rgba(255,38,215,.6),inset 4px 0 var(--cy-green),inset 0 0 20px rgba(255,38,215,.18)!important;color:#fff!important}
+.theme-neon #nav-my-menu-group{border:1px solid rgba(255,38,215,.4)!important;border-radius:12px;box-shadow:0 0 15px rgba(255,38,215,.14);padding:4px}
+.theme-neon #nav-my-menu-group .nav-item i{filter:drop-shadow(0 0 6px currentColor)}
+.theme-neon #nav-logout{border-color:rgba(255,90,140,.75)!important;color:#ffb2cf!important}
+.theme-neon .glass-card{border-color:rgba(0,220,255,.57)!important;box-shadow:0 0 13px rgba(0,220,255,.2),0 0 32px rgba(100,45,255,.10),inset 0 0 17px rgba(0,220,255,.045)!important}
+.theme-neon .glass-card:hover{border-color:rgba(255,38,215,.85)!important;box-shadow:0 0 18px rgba(255,38,215,.3),0 0 42px rgba(0,220,255,.13),inset 0 0 18px rgba(255,38,215,.055)!important}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card{border:2px solid var(--card-color,var(--cy-blue))!important;box-shadow:0 0 13px var(--card-color,var(--cy-blue)),0 0 32px var(--card-glow,rgba(0,220,255,.2)),inset 0 0 28px var(--card-glow,rgba(0,220,255,.15))!important}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card .font-tech{text-shadow:0 0 9px var(--card-color),0 0 25px var(--card-color)!important}
+.theme-neon #view-dashboard canvas{filter:drop-shadow(0 0 10px rgba(255,38,215,.4)) drop-shadow(0 0 16px rgba(0,255,200,.2))}
+.theme-neon .view-panel h1,.theme-neon .view-panel h2{ text-shadow:0 0 11px rgba(0,220,255,.7),0 0 26px rgba(255,38,215,.22)!important}
+.theme-neon button.bg-cyan-600,.theme-neon button.bg-cyan-500,.theme-neon .ext-button{border:1px solid rgba(0,255,200,.85)!important;box-shadow:0 0 12px rgba(0,255,200,.55),0 0 25px rgba(0,220,255,.2)!important}
+.theme-neon button.bg-cyan-600:hover,.theme-neon button.bg-cyan-500:hover,.theme-neon .ext-button:hover{box-shadow:0 0 17px rgba(255,38,215,.65),0 0 33px rgba(0,255,200,.38)!important}
+.theme-neon input:focus,.theme-neon select:focus,.theme-neon textarea:focus{border-color:var(--cy-green)!important;box-shadow:0 0 0 1px var(--cy-green),0 0 20px rgba(0,255,200,.45)!important}
+.theme-neon #view-fiscal-targets .glass-card{border-color:var(--cy-pink)!important;box-shadow:0 0 17px rgba(255,38,215,.38),0 0 35px rgba(0,255,200,.18)!important}
+.theme-neon #view-dashboard button[onclick*=openFiscalTargetSettings],.theme-neon #view-fiscal-targets button[onclick*=saveFiscalTargets]{background:linear-gradient(100deg,#ff1fce,#a03cff,#00ebc6)!important;box-shadow:0 0 16px rgba(255,31,206,.65),0 0 36px rgba(0,235,198,.3)!important}
+@media(prefers-reduced-motion:reduce){.theme-neon #sidebar .nav-item{transition:none!important;transform:none!important}}

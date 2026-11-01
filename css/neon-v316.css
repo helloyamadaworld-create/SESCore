@@ -1,0 +1,32 @@
+/* SES Core v3.2.16 vivid neon UI */
+#view-fiscal-targets,#view-chat,#view-mypage,#view-accounts{width:100%;max-width:none!important;min-width:0}
+#view-fiscal-targets > .glass-card,#view-chat > .glass-card,#view-mypage > .glass-card,#view-accounts > .glass-card{width:100%!important;max-width:none!important}
+#view-chat .max-w-2xl,#view-chat .max-w-3xl,#view-chat .max-w-4xl,#view-mypage .max-w-2xl,#view-mypage .max-w-3xl,#view-mypage .max-w-4xl,#view-accounts .max-w-2xl{max-width:none!important;width:100%!important}
+#nav-my-menu-group a{display:flex!important;align-items:center!important;gap:12px!important}
+#nav-my-menu-group a i{flex:0 0 20px!important;width:20px!important;margin:0!important;text-align:center!important}
+#nav-my-menu-group a span{margin:0!important}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card{overflow:hidden;border-width:1px!important;box-shadow:0 0 22px var(--card-glow),inset 0 0 22px var(--card-glow)!important;background:linear-gradient(140deg,var(--card-bg),rgba(5,9,30,.94))!important;border-color:var(--card-color)!important}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(8n+1){--card-color:#ff45d4;--card-glow:rgba(255,69,212,.18);--card-bg:rgba(92,8,69,.56)}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(8n+2){--card-color:#ffdb37;--card-glow:rgba(255,219,55,.17);--card-bg:rgba(91,67,8,.5)}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(8n+3){--card-color:#00f5c3;--card-glow:rgba(0,245,195,.18);--card-bg:rgba(4,76,63,.48)}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(8n+4){--card-color:#8b6aff;--card-glow:rgba(139,106,255,.2);--card-bg:rgba(47,27,99,.52)}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(8n+5){--card-color:#00d9ff;--card-glow:rgba(0,217,255,.17);--card-bg:rgba(8,55,87,.5)}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(8n+6){--card-color:#ff8c37;--card-glow:rgba(255,140,55,.17);--card-bg:rgba(83,41,10,.5)}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(8n+7){--card-color:#f76aa8;--card-glow:rgba(247,106,168,.18);--card-bg:rgba(92,25,65,.52)}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(8n+8){--card-color:#77ff55;--card-glow:rgba(119,255,85,.17);--card-bg:rgba(36,83,19,.46)}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card .font-tech{color:var(--card-color)!important;text-shadow:0 0 12px var(--card-color),0 0 25px var(--card-glow)!important;overflow-wrap:anywhere}
+.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card i{color:var(--card-color)!important;filter:drop-shadow(0 0 6px var(--card-color))}
+.theme-neon #view-dashboard canvas{filter:drop-shadow(0 0 6px rgba(255,69,212,.18))}
+.theme-neon #sidebar{border-right:1px solid #ff43d1!important;box-shadow:6px 0 28px rgba(255,44,202,.2),inset -1px 0 20px rgba(0,255,190,.08)!important}
+.theme-neon #sidebar .nav-item{border:1px solid rgba(255,64,208,.21)!important;background:linear-gradient(90deg,rgba(255,32,180,.055),rgba(0,255,198,.045))!important;margin-bottom:3px;box-shadow:inset 0 0 12px rgba(255,42,191,.035)}
+.theme-neon #sidebar .nav-item:nth-of-type(3n+2){border-color:rgba(0,255,195,.26)!important}
+.theme-neon #sidebar .nav-item:nth-of-type(3n+3){border-color:rgba(255,220,40,.22)!important}
+.theme-neon #sidebar .nav-item:hover{color:#fff!important;border-color:#ff46ce!important;box-shadow:0 0 18px rgba(255,45,198,.28),inset 0 0 18px rgba(0,245,195,.08)!important}
+.theme-neon #sidebar .nav-item.active,.theme-neon #sidebar .nav-item[aria-current=page]{border-color:#00ffd1!important;box-shadow:0 0 20px rgba(0,255,209,.28),inset 4px 0 #ff39c9!important}
+.theme-neon #nav-my-menu-group{border-color:rgba(255,65,204,.5)!important}
+.theme-neon #nav-my-menu-group > div{color:#ff8fe6!important;text-shadow:0 0 9px rgba(255,60,203,.75)}
+.theme-neon #nav-logout{color:#ff9fbc!important;border-color:rgba(255,91,132,.55)!important}
+.theme-neon #view-fiscal-targets .glass-card{border-color:rgba(255,62,207,.65)!important;box-shadow:0 0 22px rgba(255,62,207,.12),0 0 35px rgba(0,255,195,.07)!important}
+.theme-neon #view-dashboard button[onclick*=openFiscalTargetSettings],.theme-neon #view-fiscal-targets button[onclick*=saveFiscalTargets]{background:linear-gradient(105deg,#ff31b7,#9b46ff,#00dcb4)!important;box-shadow:0 0 19px rgba(255,49,183,.35),0 0 20px rgba(0,220,180,.18)!important;border:1px solid rgba(255,255,255,.28)}
+@media(max-width:760px){#view-fiscal-targets,#view-chat,#view-mypage,#view-accounts{width:100%!important}#view-dashboard > .grid.grid-cols-2 > .glass-card .font-tech{font-size:clamp(13px,3.8vw,22px)!important}}
+@media(prefers-reduced-motion:reduce){.theme-neon #sidebar .nav-item{transition:none!important}}

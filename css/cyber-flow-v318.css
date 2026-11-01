@@ -1,0 +1,40 @@
+/* v3.2.18: animated cyber neon, accessible motion settings */
+@keyframes cyberFlow {0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes cyberPulse {0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes cyberHalo {0%,100%{filter:drop-shadow(0 0 3px rgba(0,220,255,.28))}50%{filter:drop-shadow(0 0 10px rgba(255,38,215,.55))}}
+/* Moving light travels around borders without changing the content or layout. */
+body.theme-neon #sidebar .nav-item,
+body.theme-neon .glass-card,
+body.theme-neon #top-navbar,
+body.theme-neon button.bg-cyan-600,
+body.theme-neon .ext-button {
+  position:relative;
+}
+body.theme-neon #sidebar .nav-item::after,
+body.theme-neon .glass-card::after,
+body.theme-neon #top-navbar::after {
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;z-index:1;
+  background:linear-gradient(110deg,transparent 0%,transparent 24%,#ff26d7 38%,#ffe84b 48%,#00ffc8 57%,#00dcff 66%,transparent 80%);
+  background-size:220% 100%;animation:cyberFlow 6s linear infinite;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;opacity:.65;
+}
+body.theme-neon #sidebar .nav-item::after{animation-duration:4.5s;opacity:.8}
+body.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card::after{animation-duration:3.8s;opacity:1;padding:2px}
+body.theme-neon #view-dashboard > .grid.grid-cols-2 > .glass-card:nth-child(even)::after{animation-delay:-2s}
+body.theme-neon #top-navbar::after{animation-duration:8s;opacity:.55}
+body.theme-neon #sidebar .nav-item i,body.theme-neon #view-dashboard .glass-card i{animation:cyberHalo 3.5s ease-in-out infinite}
+body.theme-neon #view-dashboard .glass-card:nth-child(3n) i{animation-delay:-1.5s}
+body.theme-neon #view-dashboard button[onclick*=openFiscalTargetSettings],body.theme-neon #view-fiscal-targets button[onclick*=saveFiscalTargets]{background-size:220% 100%!important;animation:cyberFlow 5s linear infinite}
+/* Always keep eight KPI cards in two columns on narrow phones. */
+@media(max-width:767px){
+  #view-dashboard > .grid.grid-cols-2.md\:grid-cols-4{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  #view-dashboard > .grid.grid-cols-2.md\:grid-cols-4 > .glass-card{min-width:0!important;width:auto!important;max-width:none!important;padding:12px!important;overflow-wrap:anywhere}
+  #view-dashboard > .grid.grid-cols-2.md\:grid-cols-4 > .glass-card .font-tech{font-size:clamp(1rem,4.3vw,1.35rem)!important;line-height:1.3!important}
+  #view-dashboard > .grid.grid-cols-2.md\:grid-cols-4 > .glass-card .text-xs{font-size:11px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.theme-neon #sidebar .nav-item::after,body.theme-neon .glass-card::after,body.theme-neon #top-navbar::after,
+ body.theme-neon #sidebar .nav-item i,body.theme-neon #view-dashboard .glass-card i,
+ body.theme-neon #view-dashboard button[onclick*=openFiscalTargetSettings],body.theme-neon #view-fiscal-targets button[onclick*=saveFiscalTargets]{animation:none!important}
+}

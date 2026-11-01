@@ -1,0 +1,11 @@
+/* v3.2.21: global neon preferences */
+:root{--neon-intensity:1;--neon-motion-factor:1}
+body.theme-neon .glass-card,body.theme-neon #sidebar .nav-item,body.theme-neon .menu-accordion-group,body.theme-neon .ext-button,body.theme-neon .neon-preferences{
+ filter:drop-shadow(0 0 calc(6px * var(--neon-intensity)) rgba(0,255,215,.25));
+}
+body.theme-neon .glass-card::after,body.theme-neon #sidebar .nav-item::after,body.theme-neon #top-navbar::after{animation-duration:calc(6s * var(--neon-motion-factor))!important;opacity:calc(.9 * var(--neon-intensity))!important}
+body.theme-neon #sidebar .nav-item i,body.theme-neon #view-dashboard .glass-card i{animation-duration:calc(3.5s * var(--neon-motion-factor))!important}
+body.theme-neon #view-dashboard button[onclick*=openFiscalTargetSettings],body.theme-neon #view-fiscal-targets button[onclick*=saveFiscalTargets]{animation-duration:calc(5s * var(--neon-motion-factor))!important}
+html.neon-motion-off body.theme-neon *,html.neon-motion-off body.theme-neon *::before,html.neon-motion-off body.theme-neon *::after{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){body.theme-neon *,body.theme-neon *::before,body.theme-neon *::after{animation:none!important;transition:none!important}}
+#nav-logout,#nav-settings{display:flex!important}
