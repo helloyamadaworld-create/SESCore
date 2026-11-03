@@ -5186,31 +5186,6 @@
             const utilizationRate = totalEng > 0 ? ((activeEng / totalEng) * 100).toFixed(0) : 0;
 
 
-            // Immediate Action Tasks
-            const taskContainer = document.getElementById('dash-action-list');
-            taskContainer.innerHTML = db.tasks.map(t => `
-                <div class="p-2.5 rounded-lg bg-slate-800/60 border border-slate-700/50 flex items-center justify-between">
-                    <div class="flex items-center space-x-2 min-w-0">
-                        <span class="w-2 h-2 rounded-full ${t.priority === 'HIGH' ? 'bg-rose-500 animate-ping' : 'bg-amber-400'}"></span>
-                        <span class="text-xs truncate text-slate-200">${t.title}</span>
-                    </div>
-                    <span class="text-[10px] font-mono text-slate-400">${t.date}</span>
-                </div>
-            `).join('');
-
-            // Upcoming Interviews
-            const intContainer = document.getElementById('dash-interviews-list');
-            intContainer.innerHTML = db.interviews.map(i => `
-                <div class="p-2.5 rounded-lg bg-slate-800/60 border border-slate-700/50 flex items-center justify-between">
-                    <div>
-                        <div class="text-xs font-bold text-cyan-400">${i.memberName} 氏 &#8594; ${i.clientName}</div>
-                        <div class="text-[10px] text-slate-400">${i.projectTitle} (${i.location})</div>
-                    </div>
-                    <span class="text-xs font-mono px-2 py-1 rounded bg-cyan-500/10 text-cyan-400 font-semibold">
-                        ${i.date.replace('T', ' ')}
-                    </span>
-                </div>
-            `).join('');
         }
 
         // --- CLIENTS TABLE ---
@@ -5631,6 +5606,7 @@
             document.getElementById('member-cost').value = m.cost;
             document.getElementById('member-available').value = m.available;
             document.getElementById('member-status').value = m.status;
+            document.getElementById('member-waiting-start').value = m.waitingStartDate || '';
             document.getElementById('modal-member-title').innerText = 'エンジニア情報編集';
             document.getElementById('modal-member').classList.remove('hidden');
         }
@@ -5647,13 +5623,14 @@
             const cost = Number(document.getElementById('member-cost').value) || 0;
             const available = document.getElementById('member-available').value;
             const status = document.getElementById('member-status').value;
+            const waitingStartDate = document.getElementById('member-waiting-start').value;
 
             if (id) {
                 const index = db.members.findIndex(m => m.id === id);
-                if (index !== -1) db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status };
+                if (index !== -1) db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate };
             } else {
                 const newId = `MEM-${String(db.members.length + 1).padStart(3, '0')}`;
-                db.members.push({ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status });
+                db.members.push({ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate });
             }
 
             saveStoredData();

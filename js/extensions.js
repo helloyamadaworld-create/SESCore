@@ -142,7 +142,10 @@
             const passwordButton=document.createElement('button');passwordButton.className='ext-button';passwordButton.textContent='PW変更';passwordButton.title='自分のパスワードを変更';passwordButton.setAttribute('onclick','promptChangePassword()');navbar.insertBefore(passwordButton,navbar.children[1]||null);
         }
         const dashboard = document.getElementById('view-dashboard');
-        if (dashboard && !document.getElementById('extended-dashboard')) dashboard.insertAdjacentHTML('beforeend', `<div id="extended-dashboard" class="grid grid-cols-1 lg:grid-cols-2 gap-4"><div class="glass-card rounded-xl p-4"><div class="flex justify-between items-center mb-3"><h3 class="font-bold text-sm">期限・契約アラート</h3><button class="text-xs text-cyan-400" onclick="switchTab('tasks')">タスク管理へ →</button></div><div id="dashboard-alerts" class="space-y-2"></div></div><div class="glass-card rounded-xl p-4"><div class="flex justify-between items-center mb-3"><h3 class="font-bold text-sm">営業KPI</h3><button class="text-xs text-cyan-400" onclick="switchTab('reports')">分析を見る →</button></div><div id="dashboard-sales-kpis" class="grid grid-cols-2 gap-3"></div></div></div>`);
+        if (dashboard && !document.getElementById('extended-dashboard')) dashboard.insertAdjacentHTML('beforeend', `<div id="extended-dashboard" class="grid grid-cols-1 lg:grid-cols-2 gap-4"><div class="glass-card rounded-xl p-4"><div class="flex justify-between items-center mb-3"><h3 class="font-bold text-sm">営業KPI</h3><button class="text-xs text-cyan-400" onclick="switchTab('reports')">分析を見る →</button></div><div id="dashboard-sales-kpis" class="grid grid-cols-2 gap-3"></div></div></div>`);
+        // 営業KPIと待機要員は同じ2列グリッド内に配置する。
+        const kpiRow = document.getElementById('extended-dashboard');
+        if (kpiRow && !document.getElementById('dashboard-waiting-panel')) kpiRow.insertAdjacentHTML('beforeend', `<div id="dashboard-waiting-panel" class="glass-card rounded-xl p-4"><h3 class="font-bold text-sm text-emerald-300 mb-3"><i class="fa-solid fa-user-clock mr-2"></i>待機要員</h3><div id="dashboard-waiting-members" class="grid grid-cols-1 gap-3"></div></div>`);
     }
     function addStyles() {
         if (document.getElementById('ses-extension-css')) return;
@@ -436,14 +439,33 @@
         document.getElementById('report-funnel').innerHTML=pipeline.map(([l,n])=>`<div class="p-3 rounded-lg bg-slate-800/60"><div class="text-xs text-slate-400">${l}</div><div class="text-2xl font-bold text-cyan-300">${n}</div></div>`).join('');
     };
     window.renderDashboardExtensions = function () {
-        const alerts=document.getElementById('dashboard-alerts');if(!alerts||typeof db === 'undefined')return;ensureSchema();
-        const overdue=db.tasks.filter(t=>t.status!=='完了'&&t.date&&t.date<today()).map(t=>({label:`期限超過：${t.title}`,date:t.date,kind:'task'}));
-        const due=db.projects.filter(p=>p.contractEnd&&p.contractEnd>=today()&&p.contractEnd<=new Date(Date.now()+30*86400000).toISOString().slice(0,10)).map(p=>({label:`契約終了予定：${p.title}`,date:p.contractEnd,kind:'project'}));
-        const soon=db.interviews.filter(i=>i.date&&i.date.slice(0,10)>=today()&&i.date.slice(0,10)<=new Date(Date.now()+7*86400000).toISOString().slice(0,10)).map(i=>({label:`面談予定：${i.memberName} / ${i.projectTitle}`,date:i.date.replace('T',' '),kind:'interview'}));
-        const all=[...overdue,...due,...soon].slice(0,8);alerts.innerHTML=all.map(a=>`<div class="flex items-start justify-between gap-3 p-2 rounded-lg bg-slate-800/50"><span class="text-xs">${safeText(a.label)}</span><span class="text-[10px] text-cyan-300 whitespace-nowrap">${safeText(a.date)}</span></div>`).join('')||'<p class="text-xs text-slate-500">期限が近いタスクや予定はありません。契約終了日を登録するとアラートに表示されます。</p>';
-        const active=db.members.filter(m=>m.status==='稼働中').length, proposals=db.projects.filter(p=>p.status==='提案公募中').length, scheduled=db.interviews.filter(i=>i.status==='予定調整済').length, tasks=db.tasks.filter(t=>t.status!=='完了').length;
-        const passed=db.projects.filter(p=>p.status==='見送り').length;
-        document.getElementById('dashboard-sales-kpis').innerHTML=[['提案募集中',proposals+'件'],['見送り',passed+'件'],['面談予定',scheduled+'件'],['未完了タスク',tasks+'件'],['稼働エンジニア',active+'名']].map(([a,b])=>`<div class="p-3 rounded-lg bg-slate-800/50"><div class="text-xs text-slate-400">${a}</div><div class="text-lg font-bold text-cyan-300">${b}</div></div>`).join('');
+        if (typeof db === 'undefined') return;
+        ensureSchema();
+        const target = document.getElementById('dashboard-sales-kpis');
+        if (!target) return;
+        const now = new Date();
+        const thisMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        const lastMonth = new Date(now.getFullYear(), now.getMonth()-1, 1);
+        const monthKey = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+        const validMonth = raw => /^\d{4}-\d{2}/.test(String(raw || '')) ? String(raw).slice(0,7) : null;
+        const projectMonth = p => validMonth(p.createdAt || p.registeredAt || p.registrationDate || p.addedAt);
+        const interviewMonth = i => validMonth(i.date || i.interviewDate);
+        const labels = [
+            ['募集案件', (month) => db.projects.filter(p => ['提案公募中','募集準備中','募集中'].includes(p.status) && projectMonth(p) === month).length],
+            ['面談実施済み', (month) => db.interviews.filter(i => ['実施済み','面談実施済み','完了','実施完了'].includes(i.status) && interviewMonth(i) === month).length],
+            ['見送り', (month) => db.projects.filter(p => p.status === '見送り' && validMonth(p.statusChangedAt || p.rejectedAt || p.updatedAt) === month).length],
+            ['面談予定', (month) => db.interviews.filter(i => ['予定調整済','面談予定','予定','調整済み'].includes(i.status) && interviewMonth(i) === month).length]
+        ];
+        const colors = ['#00f5ff','#ff39d4','#ffe75b','#00ffba'];
+        target.className = 'grid grid-cols-2 lg:grid-cols-4 gap-3';
+        target.innerHTML = [ ['今月',monthKey(thisMonth)], ['先月',monthKey(lastMonth)] ].map(([title,month]) =>
+            `<div class="col-span-2 lg:col-span-4 text-xs font-bold text-cyan-300 mt-2">${title}（${month}）</div>` +
+            labels.map(([name,calc],i) => `<div class="rounded-lg p-3 bg-slate-900/70 border" style="border-color:${colors[i]};box-shadow:0 0 12px ${colors[i]}55,inset 0 0 10px ${colors[i]}15"><div class="text-xs text-slate-300">${name}</div><div class="text-xl font-bold mt-1" style="color:${colors[i]};text-shadow:0 0 12px ${colors[i]}99">${calc(month)}件</div></div>`).join('')
+        ).join('');
+        const panel = document.getElementById('dashboard-waiting-members');
+        if (!panel) return;
+        const waiting = db.members.filter(m => m.status === '待機中');
+        panel.innerHTML = waiting.length ? waiting.map(m => `<div class="rounded-lg border border-emerald-400/50 bg-slate-900/60 px-3 py-2 flex flex-wrap justify-between gap-2"><span class="font-semibold text-emerald-200">${safeText(m.name)}</span><span class="text-xs text-slate-300">待機開始：${m.waitingStartDate ? safeText(m.waitingStartDate) : '未登録'}</span></div>`).join('') : '<p class="text-sm text-slate-400">現在、待機中のメンバーはいません。</p>';
     };
     let searchIndex=[];
     function updateGlobalSearchData(){if(typeof db === 'undefined')return;ensureSchema();searchIndex=[...db.clients.map(x=>({type:'取引先',id:x.id,name:x.name,detail:x.contact,tab:'clients'})),...db.projects.map(x=>({type:'案件',id:x.id,name:x.title,detail:x.clientName,tab:'projects'})),...db.members.map(x=>({type:'エンジニア',id:x.id,name:x.name,detail:(x.skills||[]).join(', '),tab:'members'})),...db.interviews.map(x=>({type:'面談',id:x.id,name:x.memberName,detail:x.projectTitle,tab:'interviews'})),...db.tasks.map(x=>({type:'タスク',id:x.id,name:x.title,detail:x.date,tab:'tasks'}))];}

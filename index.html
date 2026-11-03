@@ -290,30 +290,6 @@
                     </div>
                     <p class="text-xs text-slate-400" id="fy-data-note">※確定実績のみを集計します。未入力月は0として扱います。</p>
 
-                    <!-- ACTION NEEDED / RECENT INTERVIEWS LIST -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <!-- Immediate Action Required -->
-                        <div class="glass-card p-5 rounded-xl space-y-3">
-                            <h3 class="font-bold text-sm flex items-center text-rose-400">
-                                <i class="fa-solid fa-triangle-exclamation mr-2"></i>
-                                要フォロー・即時対応タスク
-                            </h3>
-                            <div class="space-y-2 max-h-56 overflow-y-auto pr-1" id="dash-action-list">
-                                <!-- Dynamic insertions -->
-                            </div>
-                        </div>
-
-                        <!-- Upcoming Interview Schedules -->
-                        <div class="glass-card p-5 rounded-xl space-y-3">
-                            <h3 class="font-bold text-sm flex items-center text-cyan-400">
-                                <i class="fa-solid fa-calendar-day mr-2"></i>
-                                直近の面談・打合せ予定
-                            </h3>
-                            <div class="space-y-2 max-h-56 overflow-y-auto pr-1" id="dash-interviews-list">
-                                <!-- Dynamic insertions -->
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
 
@@ -812,6 +788,11 @@
                             <option value="提案中">提案中</option>
                         </select>
                         <p class="text-[10px] text-slate-500 mt-1">通常の一覧・ダッシュボードはこのステータスを参照します。</p>
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-1" for="member-waiting-start">待機開始日</label>
+                        <input type="date" id="member-waiting-start" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                        <p class="text-[10px] text-slate-500 mt-1">待機中の間、ダッシュボードに表示します。</p>
                     </div>
                     <div class="md:col-span-2">
                         <label class="block text-slate-400 mb-1">来月以降のステータス（人材マッチング用）</label>
