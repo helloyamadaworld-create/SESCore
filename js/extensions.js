@@ -143,9 +143,7 @@
         }
         const dashboard = document.getElementById('view-dashboard');
         if (dashboard && !document.getElementById('extended-dashboard')) dashboard.insertAdjacentHTML('beforeend', `<div id="extended-dashboard" class="grid grid-cols-1 lg:grid-cols-2 gap-4"><div class="glass-card rounded-xl p-4"><div class="flex justify-between items-center mb-3"><h3 class="font-bold text-sm">営業KPI</h3><button class="text-xs text-cyan-400" onclick="switchTab('reports')">分析を見る →</button></div><div id="dashboard-sales-kpis" class="grid grid-cols-2 gap-3"></div></div></div>`);
-        // 営業KPIと待機要員は同じ2列グリッド内に配置する。
-        const kpiRow = document.getElementById('extended-dashboard');
-        if (kpiRow && !document.getElementById('dashboard-waiting-panel')) kpiRow.insertAdjacentHTML('beforeend', `<div id="dashboard-waiting-panel" class="glass-card rounded-xl p-4"><h3 class="font-bold text-sm text-emerald-300 mb-3"><i class="fa-solid fa-user-clock mr-2"></i>待機要員</h3><div id="dashboard-waiting-members" class="grid grid-cols-1 gap-3"></div></div>`);
+        if (dashboard && !document.getElementById('dashboard-waiting-panel')) dashboard.insertAdjacentHTML('beforeend', `<div id="dashboard-waiting-panel" class="glass-card rounded-xl p-4 mt-4"><h3 class="font-bold text-sm text-emerald-300 mb-3"><i class="fa-solid fa-user-clock mr-2"></i>待機要員</h3><div id="dashboard-waiting-members" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div>`);
     }
     function addStyles() {
         if (document.getElementById('ses-extension-css')) return;
