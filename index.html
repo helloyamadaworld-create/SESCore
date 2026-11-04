@@ -32,6 +32,114 @@
     <link rel="stylesheet" href="css/cyber-flow-v318.css">
     <link rel="stylesheet" href="css/cyber-system-v319.css">
     <link rel="stylesheet" href="css/theme-switch-restore.css">
+<style>
+body.theme-neon #view-clients .ses-client-row{border-bottom:1px solid rgba(0,245,255,.12)}
+body.theme-neon #view-clients .ses-client-row:hover{background:linear-gradient(90deg,rgba(0,245,255,.09),rgba(255,57,212,.05))}
+body.theme-neon #view-clients .ses-client-company{font-weight:700;font-size:13px;color:#f1faff;letter-spacing:.025em}
+body.theme-neon #view-clients .ses-client-status{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(148,163,184,.3);background:rgba(30,41,59,.55);border-radius:999px;padding:6px 12px;color:#cbd5e1;font-weight:600}
+body.theme-neon #view-clients .ses-client-status.is-active{color:#6fffd6;border-color:rgba(0,255,186,.4);background:rgba(0,255,186,.07)}
+body.theme-neon #view-clients .ses-client-dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+#view-clients .ses-client-detail-button{font-size:21px;min-width:44px;min-height:44px;color:#67e8f9;border:1px solid rgba(103,232,249,.35);border-radius:12px;transition:transform .2s,box-shadow .2s}
+body.theme-neon #view-clients .ses-client-detail-button:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,245,255,.4)}
+.ses-client-detail-dialog{max-height:90vh;overflow-y:auto}
+.ses-client-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ses-client-detail-field{min-width:0;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:13px;background:rgba(15,23,42,.45)}
+.ses-client-detail-field dt{font-size:11px;color:#94a3b8;margin-bottom:7px}
+.ses-client-detail-field dd{font-size:13px;color:#f1f5f9;white-space:pre-wrap;overflow-wrap:anywhere}
+.ses-client-edit-action,.ses-client-delete-action{padding:10px 18px;border-radius:10px;font-weight:700;font-size:12px}
+.ses-client-edit-action{background:#0891b2;color:white}.ses-client-delete-action{border:1px solid rgba(251,113,133,.4);color:#fda4af}
+body.theme-neon .ses-client-detail-field{border-color:rgba(0,245,255,.22);box-shadow:inset 0 0 12px rgba(0,245,255,.035)}
+#view-clients .ses-clients-table{table-layout:fixed;min-width:620px;border-collapse:collapse}
+#view-clients .ses-clients-table th,#view-clients .ses-clients-table td{padding:15px 18px;vertical-align:middle;box-sizing:border-box}
+#view-clients .ses-clients-table th:nth-child(3),#view-clients .ses-clients-table td:nth-child(3){text-align:center}
+#view-clients .ses-clients-table th:last-child,#view-clients .ses-clients-table td:last-child{text-align:center}
+#view-clients .ses-clients-table th{letter-spacing:.08em;font-weight:700;white-space:nowrap}
+#view-clients .ses-client-company{overflow-wrap:anywhere;line-height:1.55}
+#view-clients .ses-client-detail-button{display:inline-flex;align-items:center;justify-content:center;font-size:23px;min-width:48px;min-height:48px}
+/* Keep animated neon decoration attached to the dialog rather than the scrollable content. */
+body.theme-neon #modal-client-detail .ses-client-detail-dialog::before,
+body.theme-neon #modal-client-detail .ses-client-detail-dialog::after{content:none!important;animation:none!important;display:none!important}
+body.theme-neon #modal-client-detail .ses-client-detail-dialog{background-image:none!important;overflow-y:auto;overscroll-behavior:contain}
+.ses-client-detail-field dd{line-height:1.6}
+@media(max-width:560px){.ses-client-detail-grid{grid-template-columns:1fr}}
+/* Borderless close icons across all dialogs, including account dialog. */
+[id^="modal-"] button:has(.fa-xmark),#modal-account button[aria-label="閉じる"]{border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;background-image:none!important}
+.ses-client-header-action{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;font-size:16px;transition:background .2s,transform .2s}
+.ses-client-header-edit{color:#67e8f9;background:rgba(6,182,212,.12);border:1px solid rgba(103,232,249,.3)}
+.ses-client-header-delete{color:#fda4af;background:rgba(244,63,94,.1);border:1px solid rgba(251,113,133,.3)}
+.ses-client-header-action:hover{transform:translateY(-1px);filter:brightness(1.2)}
+.ses-client-extra-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ses-client-extra-fields:empty{display:none}
+.ses-client-extra-fields label{display:block;color:#94a3b8;margin-bottom:5px}
+.ses-client-extra-fields input,.ses-client-extra-fields textarea{width:100%;background:#1e293b;border:1px solid #475569;border-radius:8px;padding:10px;color:#fff}
+@media(max-width:560px){.ses-client-extra-fields{grid-template-columns:1fr}}
+
+/* v3.2.38: client editor matches the detail dialog, with internal scrolling. */
+#modal-client .ses-client-edit-dialog{display:flex;flex-direction:column;max-height:min(90dvh,900px);overflow:hidden;padding:0;min-height:0}
+#modal-client .ses-client-edit-header{flex:none;padding:20px 24px 16px}
+#modal-client .ses-client-edit-form{display:flex;flex-direction:column;min-height:0;flex:1;overflow:hidden}
+#modal-client .ses-client-edit-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;overflow-y:auto;overscroll-behavior:contain;min-height:0;padding:20px 24px;align-content:start}
+#modal-client .ses-client-edit-fields>div:not([id="client-extra-fields"]){min-width:0;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:13px;background:rgba(15,23,42,.45)}
+#modal-client .ses-client-edit-fields>div.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;grid-column:1/-1}
+#modal-client .ses-client-edit-fields>div.grid>div{min-width:0}
+#modal-client .ses-client-edit-fields input,#modal-client .ses-client-edit-fields select,#modal-client .ses-client-edit-fields textarea{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
+#modal-client .ses-client-extra-fields{grid-column:1/-1;gap:12px}
+#modal-client .ses-client-extra-fields>div{min-width:0;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:13px;background:rgba(15,23,42,.45)}
+#modal-client .ses-client-edit-footer{flex:none;padding:15px 24px;background:rgba(15,23,42,.9)}
+body.theme-neon #modal-client .ses-client-edit-fields>div:not([id="client-extra-fields"]),body.theme-neon #modal-client .ses-client-extra-fields>div{border-color:rgba(0,245,255,.22);box-shadow:inset 0 0 12px rgba(0,245,255,.035)}
+body.theme-neon #modal-client .ses-client-edit-dialog::before,body.theme-neon #modal-client .ses-client-edit-dialog::after{content:none!important;display:none!important;animation:none!important}
+body.theme-neon #modal-client .ses-client-edit-dialog{background-image:none!important}
+@media(max-width:560px){#modal-client .ses-client-edit-fields{grid-template-columns:1fr;padding:14px;gap:10px}#modal-client .ses-client-edit-fields>div.grid{grid-template-columns:1fr}#modal-client .ses-client-edit-header{padding:16px}#modal-client .ses-client-edit-footer{padding:12px 16px}#modal-client .ses-client-extra-fields{grid-template-columns:1fr}}
+/* v3.2.39: mobile client action stays within its own button. */
+@media(max-width:640px){
+ #view-clients>div:first-child>div:last-child{display:flex;flex-wrap:wrap;gap:8px;min-width:0;width:100%}
+ #view-clients #client-search{width:auto;flex:1 1 155px;min-width:0}
+ #view-clients .ses-client-add-button{flex:0 1 auto;min-width:0;max-width:100%;white-space:nowrap;justify-content:center;gap:4px;padding:9px 10px;font-size:clamp(10px,2.7vw,12px);line-height:1.3}
+ #view-clients .ses-client-add-button i{flex:none;margin-right:0}
+}
+/* Keep the mobile opening progress sentence on one line. */
+@media(max-width:640px){#opening-screen #loader-status{white-space:nowrap;font-size:clamp(8px,2.3vw,12px);letter-spacing:-.02em;min-width:0;overflow:hidden;text-overflow:clip}#opening-screen #loader-percent{flex-shrink:0;margin-left:8px}#opening-screen #terminal-logs{font-size:clamp(8px,2.1vw,12px)}#opening-screen #terminal-logs>div{white-space:nowrap}}
+
+/* v3.2.40: client sections and dialog breathing room. */
+#modal-client .ses-client-section-title{grid-column:1/-1;padding:10px 12px 9px;border-bottom:1px solid rgba(0,245,255,.55);font-size:13px;font-weight:800;letter-spacing:.08em;color:#67e8f9;text-shadow:0 0 9px rgba(0,245,255,.75);background:linear-gradient(90deg,rgba(0,245,255,.12),transparent);border-radius:8px}
+#modal-client .ses-client-edit-fields>.ses-client-section-title{border-top:0;background:linear-gradient(90deg,rgba(0,245,255,.12),transparent);box-shadow:none}
+/* Limit all modal content panels, without changing the fullscreen backdrop. */
+[id^="modal-"].fixed.inset-0>div:first-child{max-width:min(90vw,1100px)!important;box-sizing:border-box;min-width:0}
+#modal-client .ses-client-edit-dialog,#modal-client-detail .ses-client-detail-dialog{width:min(90vw,900px)!important;max-width:900px!important}
+@media(max-width:640px){[id^="modal-"].fixed.inset-0{padding:12px!important}[id^="modal-"].fixed.inset-0>div:first-child{max-width:90vw!important}#modal-client .ses-client-edit-dialog,#modal-client-detail .ses-client-detail-dialog{width:90vw!important}}
+
+
+/* v3.2.43 project toolbar and client-consistent detail/edit presentation */
+#view-projects .ses-project-toolbar{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:10px;padding:12px;border:1px solid rgba(0,245,255,.27);border-radius:16px;background:rgba(8,24,45,.55);box-shadow:inset 0 0 15px rgba(0,245,255,.045)}
+#view-projects .ses-project-mode{display:flex;overflow:hidden;border:1px solid rgba(0,245,255,.5);border-radius:11px;flex-shrink:0}
+#view-projects .ses-project-mode button{min-height:40px;padding:9px 14px;font-weight:700;white-space:nowrap}
+#view-projects #project-filter-status,#view-projects #project-search{min-height:40px;min-width:0;border-radius:11px;border:1px solid rgba(0,245,255,.35);padding:9px 12px;font-size:12px}
+#view-projects #project-search{flex:1 1 180px;width:auto;max-width:300px}
+#view-projects .ses-project-toolbar>button{min-height:40px;border-radius:11px;padding:9px 14px;font-weight:700;white-space:nowrap;box-shadow:0 0 13px rgba(0,245,255,.23)}
+#view-projects .ses-project-list table{table-layout:fixed;min-width:580px}
+#view-projects .ses-project-list th:nth-child(1){width:16%}#view-projects .ses-project-list th:nth-child(2){width:34%}#view-projects .ses-project-list th:nth-child(3){width:25%}#view-projects .ses-project-list th:nth-child(4){width:16%}#view-projects .ses-project-list th:nth-child(5){width:9%}
+#view-projects .ses-project-list th,#view-projects .ses-project-list td{padding:14px 12px;overflow-wrap:anywhere;vertical-align:middle}
+#view-projects .ses-project-list th:nth-child(5),#view-projects .ses-project-list td:nth-child(5){text-align:center}
+#view-projects .ses-client-detail-button{display:inline-flex;align-items:center;justify-content:center;font-size:23px;min-width:48px;min-height:48px;color:#67e8f9;border:1px solid rgba(103,232,249,.35);border-radius:12px;transition:transform .2s,box-shadow .2s}
+body.theme-neon #view-projects .ses-client-detail-button:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,245,255,.4)}
+#modal-project-info .ses-project-info-dialog{width:min(90vw,900px)!important;max-width:900px!important;max-height:90vh;overflow-y:auto}
+body.theme-neon #modal-project-info .ses-project-info-dialog::before,body.theme-neon #modal-project-info .ses-project-info-dialog::after,body.theme-neon #modal-project .ses-project-edit-dialog::before,body.theme-neon #modal-project .ses-project-edit-dialog::after{content:none!important;display:none!important;animation:none!important}
+#modal-project .ses-project-edit-dialog{width:min(90vw,900px)!important;max-width:900px!important;max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
+#modal-project .ses-project-edit-header{flex:none;padding:20px 24px}
+#modal-project .ses-project-edit-form{display:flex;flex-direction:column;min-height:0;overflow:hidden;gap:0}
+#modal-project .ses-project-edit-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:18px 24px;overflow-y:auto;min-height:0}
+#modal-project .ses-project-edit-fields>div:not(.ses-client-section-title){min-width:0}
+#modal-project .ses-project-edit-fields>div.grid{grid-column:1/-1}
+#modal-project .ses-client-section-title{grid-column:1/-1;padding:10px 12px;border-bottom:1px solid rgba(0,245,255,.55);font-size:13px;font-weight:800;color:#67e8f9;text-shadow:0 0 9px rgba(0,245,255,.75);background:linear-gradient(90deg,rgba(0,245,255,.12),transparent);border-radius:8px}
+#modal-project .ses-project-extra-fields{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#modal-project .ses-project-edit-footer{flex:none;padding:15px 24px;background:rgba(15,23,42,.9)}
+@media(max-width:640px){#view-projects .ses-project-toolbar{justify-content:stretch}#view-projects .ses-project-mode{width:100%}#view-projects .ses-project-mode button{flex:1}#view-projects #project-filter-status{flex:1 1 140px}#view-projects #project-search{max-width:none}#view-projects .ses-project-toolbar>button{flex:1 1 130px;justify-content:center}#modal-project .ses-project-edit-fields{grid-template-columns:1fr;padding:14px}#modal-project .ses-project-edit-fields>div.grid,#modal-project .ses-project-extra-fields{grid-template-columns:1fr}}
+body:not(.theme-neon) #view-projects .ses-project-toolbar{background:#fff;border-color:#c9d9ef;box-shadow:none}
+body:not(.theme-neon) #view-projects .ses-project-mode{border-color:#b9d1ef}
+body:not(.theme-neon) #view-projects #project-filter-status,body:not(.theme-neon) #view-projects #project-search{background:#fff!important;color:#17243a!important;border-color:#c9d9ef!important}
+body:not(.theme-neon) #modal-project .ses-project-edit-footer{background:#fff}
+body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3ff;color:#17385f;text-shadow:none;border-color:#bdd6f5}
+</style>
 </head>
 <body class="theme-neon h-screen flex flex-col overflow-hidden select-none">
 
@@ -304,7 +412,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <input type="text" id="client-search" oninput="renderClientsTable()" placeholder="企業名、担当者、開発技術で検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
-                            <button onclick="openClientModal()" class="px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
+                            <button onclick="openClientModal()" class="ses-client-add-button px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
                                 <i class="fa-solid fa-plus mr-1"></i> 新規取引先追加
                             </button>
                         </div>
@@ -313,15 +421,12 @@
                     <!-- CLIENTS TABLE -->
                     <div class="glass-card rounded-xl overflow-hidden">
                         <div class="overflow-x-auto">
-                            <table class="w-full text-left text-xs">
+                            <table class="ses-clients-table w-full text-left text-xs">
+                                <colgroup><col style="width:18%"><col style="width:48%"><col style="width:22%"><col style="width:12%"></colgroup>
                                 <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
                                     <tr>
                                         <th class="p-3">取引先ID</th>
                                         <th class="p-3">企業名</th>
-                                        <th class="p-3">種別</th>
-                                        <th class="p-3">担当者名</th>
-                                        <th class="p-3">連絡先メール</th>
-                                        <th class="p-3">公開中案件数</th>
                                         <th class="p-3">ステータス</th>
                                         <th class="p-3 text-right">操作</th>
                                     </tr>
@@ -344,13 +449,13 @@
                             <h2 class="text-xl font-bold tracking-tight">案件・プロジェクト管理</h2>
                             <p class="text-xs text-slate-400">参照元シート：案件情報｜募集案件・必要スキル・単価・提案状況の一貫トラッキング</p>
                         </div>
-                        <div class="flex flex-wrap items-center gap-2">
-                            <div class="flex rounded-lg border border-slate-700 overflow-hidden" role="group" aria-label="案件区分">
+                        <div class="ses-project-toolbar">
+                            <div class="ses-project-mode" role="group" aria-label="案件区分">
                                 <button type="button" id="project-mode-shared" onclick="setProjectViewMode('共有案件')" class="px-3 py-2 text-xs bg-cyan-600 text-white">共有案件</button>
                                 <button type="button" id="project-mode-assigned" onclick="setProjectViewMode('参画案件')" class="px-3 py-2 text-xs bg-slate-800 text-slate-300">参画案件</button>
                             </div>
                             <select id="project-filter-status" onchange="renderProjectsTable()" class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400">
-                                <option value="ALL">すべてのステータス</option>
+                                <option value="ALL">すべて</option>
                                 <option value="募集準備中">募集準備中</option>
                                 <option value="提案公募中">提案公募中</option>
                                 <option value="面談調整中">面談調整中</option>
@@ -367,7 +472,7 @@
                     </div>
 
                     <!-- PROJECTS TABLE -->
-                    <div class="glass-card rounded-xl overflow-hidden">
+                    <div class="glass-card rounded-xl overflow-hidden ses-project-list">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-xs">
                                 <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
@@ -375,12 +480,8 @@
                                         <th class="p-3">案件ID</th>
                                         <th class="p-3">案件名称</th>
                                         <th class="p-3">クライアント</th>
-                                        <th class="p-3">必須スキル</th>
-                                        <th class="p-3">想定単価</th>
-                                        <th class="p-3">参画人数</th>
-                                        <th class="p-3">勤務形態</th>
                                         <th class="p-3">ステータス</th>
-                                        <th class="p-3 text-right">操作</th>
+                                        <th class="p-3 text-center">操作</th>
                                     </tr>
                                 </thead>
                                 <tbody id="projects-table-body" class="divide-y divide-slate-800">
@@ -599,14 +700,28 @@
     </div>
 
 
+    <!-- CLIENT READ-ONLY DETAIL MODAL -->
+    <div id="modal-client-detail" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="client-detail-title">
+        <div class="glass-card ses-client-detail-dialog rounded-2xl w-full max-w-2xl p-5 md:p-7 border border-slate-700">
+            <div class="flex justify-between items-start gap-4 border-b border-slate-700 pb-4">
+                <div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">取引先詳細</div><div class="flex items-center justify-between gap-3"><h3 id="client-detail-title" class="font-bold text-lg text-white break-words"></h3><div class="flex items-center gap-2 shrink-0"><button type="button" id="client-detail-edit" class="ses-client-header-action ses-client-header-edit" title="編集" aria-label="取引先を編集"><i class="fa-solid fa-pen"></i></button><button type="button" id="client-detail-delete" class="ses-client-header-action ses-client-header-delete" title="削除" aria-label="取引先を削除"><i class="fa-solid fa-trash-can"></i></button></div></div></div>
+                <button type="button" onclick="closeModal('modal-client-detail')" aria-label="閉じる" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <dl id="client-detail-fields" class="ses-client-detail-grid mt-5"></dl>
+
+        </div>
+    </div>
+
     <!-- CLIENT EDIT/ADD MODAL -->
     <div id="modal-client" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-card rounded-2xl max-w-lg w-full p-6 space-y-4 border border-slate-700">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="glass-card ses-client-edit-dialog rounded-2xl w-full max-w-2xl border border-slate-700">
+            <div class="ses-client-edit-header flex items-center justify-between border-b border-slate-800">
                 <h3 class="font-bold text-sm text-cyan-400" id="modal-client-title">新規取引先追加</h3>
                 <button onclick="closeModal('modal-client')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form id="form-client" onsubmit="saveClient(event)" class="space-y-3 text-xs">
+            <form id="form-client" onsubmit="saveClient(event)" class="ses-client-edit-form text-xs">
+                <div class="ses-client-edit-fields">
+                <div class="ses-client-section-title">基本情報</div>
                 <input type="hidden" id="client-id">
                 <div>
                     <label class="block text-slate-400 mb-1">企業名 <span class="text-rose-400">*</span></label>
@@ -616,15 +731,17 @@
                     <div>
                         <label class="block text-slate-400 mb-1">取引先区分</label>
                         <select id="client-type" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
+                            <option value="取引先(SES)">取引先(SES)</option>
                             <option value="エンド企業">エンド企業</option>
                             <option value="元請SES">元請SES</option>
                             <option value="協力会社">協力会社(パートナー)</option>
                         </select>
                     </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1">担当者名</label>
-                        <input type="text" id="client-contact" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                    </div>
+                </div>
+                <div class="ses-client-section-title">担当者情報</div>
+                <div>
+                    <label class="block text-slate-400 mb-1">担当者名</label>
+                    <input type="text" id="client-contact" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
                 </div>
                 <div>
                     <label class="block text-slate-400 mb-1">連絡先メールアドレス</label>
@@ -637,7 +754,10 @@
                         <option value="取引停止">取引停止</option>
                     </select>
                 </div>
-                <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
+                <div class="ses-client-section-title">その他情報</div>
+                <div id="client-extra-fields" class="ses-client-extra-fields"></div>
+                </div>
+                <div class="ses-client-edit-footer flex justify-end space-x-2 border-t border-slate-800">
                     <button type="button" onclick="closeModal('modal-client')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
                     <button type="submit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">保存する</button>
                 </div>
@@ -648,12 +768,14 @@
 
     <!-- PROJECT EDIT/ADD MODAL -->
     <div id="modal-project" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-card rounded-2xl max-w-lg w-full p-6 space-y-4 border border-slate-700">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="glass-card ses-project-edit-dialog rounded-2xl w-full border border-slate-700">
+            <div class="ses-project-edit-header flex items-center justify-between border-b border-slate-800 pb-3">
                 <h3 class="font-bold text-sm text-cyan-400" id="modal-project-title">新規案件登録</h3>
                 <button onclick="closeModal('modal-project')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form id="form-project" onsubmit="saveProject(event)" class="space-y-3 text-xs">
+            <form id="form-project" onsubmit="saveProject(event)" class="ses-project-edit-form space-y-3 text-xs">
+                <div class="ses-project-edit-fields">
+                <div class="ses-client-section-title">基本情報</div>
                 <input type="hidden" id="project-id">
                 <div>
                     <label class="block text-slate-400 mb-1">案件名称 <span class="text-rose-400">*</span></label>
@@ -682,6 +804,7 @@
                             <option value="フルリモート">フルリモート</option>
                             <option value="ハイブリッド (週2-3出社)">ハイブリッド (週2-3出社)</option>
                             <option value="常駐 (都内)">常駐 (都内)</option>
+                            <option value="常駐(仙台)">常駐(仙台)</option>
                         </select>
                     </div>
                     <div>
@@ -703,7 +826,10 @@
                         </select>
                     </div>
                 </div>
-                <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
+                <div class="ses-client-section-title">その他情報</div>
+                <div id="project-extra-fields" class="ses-project-extra-fields"></div>
+                </div>
+                <div class="ses-project-edit-footer flex justify-end space-x-2 pt-3 border-t border-slate-800">
                     <button type="button" onclick="closeModal('modal-project')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
                     <button type="submit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">保存する</button>
                 </div>
@@ -711,6 +837,17 @@
         </div>
     </div>
 
+
+    <!-- PROJECT INFORMATION DETAIL -->
+    <div id="modal-project-info" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="project-info-title">
+        <div class="glass-card ses-client-detail-dialog ses-project-info-dialog rounded-2xl w-full p-5 md:p-7 border border-slate-700">
+            <div class="flex justify-between items-start gap-4 border-b border-slate-700 pb-4">
+                <div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">案件詳細</div><div class="flex items-center justify-between gap-3"><h3 id="project-info-title" class="font-bold text-lg text-white break-words"></h3><div class="flex items-center gap-2 shrink-0"><button type="button" id="project-info-edit" class="ses-client-header-action ses-client-header-edit" title="編集" aria-label="案件を編集"><i class="fa-solid fa-pen"></i></button><button type="button" id="project-info-delete" class="ses-client-header-action ses-client-header-delete" title="削除" aria-label="案件を削除"><i class="fa-solid fa-trash-can"></i></button></div></div></div>
+                <button type="button" onclick="closeModal('modal-project-info')" aria-label="閉じる" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <dl id="project-info-fields" class="ses-client-detail-grid mt-5"></dl>
+        </div>
+    </div>
 
     <!-- PROJECT PARTICIPANTS DETAIL MODAL -->
     <div id="modal-project-detail" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
@@ -906,5 +1043,6 @@
 <link rel="stylesheet" href="css/mobile-header-v323.css">
 <link rel="stylesheet" href="css/theme-color.css">
 <link rel="stylesheet" href="css/theme-advanced.css">
+<link rel="stylesheet" href="css/standard-readability.css">
 </body>
 </html>

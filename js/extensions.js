@@ -142,8 +142,7 @@
             const passwordButton=document.createElement('button');passwordButton.className='ext-button';passwordButton.textContent='PW変更';passwordButton.title='自分のパスワードを変更';passwordButton.setAttribute('onclick','promptChangePassword()');navbar.insertBefore(passwordButton,navbar.children[1]||null);
         }
         const dashboard = document.getElementById('view-dashboard');
-        if (dashboard && !document.getElementById('extended-dashboard')) dashboard.insertAdjacentHTML('beforeend', `<div id="extended-dashboard" class="grid grid-cols-1 lg:grid-cols-2 gap-4"><div class="glass-card rounded-xl p-4"><div class="flex justify-between items-center mb-3"><h3 class="font-bold text-sm">営業KPI</h3><button class="text-xs text-cyan-400" onclick="switchTab('reports')">分析を見る →</button></div><div id="dashboard-sales-kpis" class="grid grid-cols-2 gap-3"></div></div></div>`);
-        if (dashboard && !document.getElementById('dashboard-waiting-panel')) dashboard.insertAdjacentHTML('beforeend', `<div id="dashboard-waiting-panel" class="glass-card rounded-xl p-4 mt-4"><h3 class="font-bold text-sm text-emerald-300 mb-3"><i class="fa-solid fa-user-clock mr-2"></i>待機要員</h3><div id="dashboard-waiting-members" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div>`);
+        if (dashboard && !document.getElementById('extended-dashboard')) dashboard.insertAdjacentHTML('beforeend', `<div id="extended-dashboard" class="grid grid-cols-1 gap-4"><div class="glass-card rounded-xl p-4"><h3 class="font-bold text-sm mb-3">営業KPI</h3><div id="dashboard-sales-kpis" class="grid grid-cols-2 lg:grid-cols-5 gap-3"></div></div></div>`);
     }
     function addStyles() {
         if (document.getElementById('ses-extension-css')) return;
@@ -448,22 +447,21 @@
         const validMonth = raw => /^\d{4}-\d{2}/.test(String(raw || '')) ? String(raw).slice(0,7) : null;
         const projectMonth = p => validMonth(p.createdAt || p.registeredAt || p.registrationDate || p.addedAt);
         const interviewMonth = i => validMonth(i.date || i.interviewDate);
+        const waiting = db.members.filter(m => m.status === '待機中');
+        const waitingForMonth = month => waiting.filter(m => { const started = validMonth(m.waitingStartDate); return started && started <= month; });
         const labels = [
             ['募集案件', (month) => db.projects.filter(p => ['提案公募中','募集準備中','募集中'].includes(p.status) && projectMonth(p) === month).length],
             ['面談実施済み', (month) => db.interviews.filter(i => ['実施済み','面談実施済み','完了','実施完了'].includes(i.status) && interviewMonth(i) === month).length],
             ['見送り', (month) => db.projects.filter(p => p.status === '見送り' && validMonth(p.statusChangedAt || p.rejectedAt || p.updatedAt) === month).length],
             ['面談予定', (month) => db.interviews.filter(i => ['予定調整済','面談予定','予定','調整済み'].includes(i.status) && interviewMonth(i) === month).length]
         ];
-        const colors = ['#00f5ff','#ff39d4','#ffe75b','#00ffba'];
-        target.className = 'grid grid-cols-2 lg:grid-cols-4 gap-3';
+        const colors = ['#00f5ff','#ff39d4','#ffe75b','#00ffba','#66e9b6'];
+        target.className = 'grid grid-cols-2 lg:grid-cols-5 gap-3';
         target.innerHTML = [ ['今月',monthKey(thisMonth)], ['先月',monthKey(lastMonth)] ].map(([title,month]) =>
-            `<div class="col-span-2 lg:col-span-4 text-xs font-bold text-cyan-300 mt-2">${title}（${month}）</div>` +
-            labels.map(([name,calc],i) => `<div class="rounded-lg p-3 bg-slate-900/70 border" style="border-color:${colors[i]};box-shadow:0 0 12px ${colors[i]}55,inset 0 0 10px ${colors[i]}15"><div class="text-xs text-slate-300">${name}</div><div class="text-xl font-bold mt-1" style="color:${colors[i]};text-shadow:0 0 12px ${colors[i]}99">${calc(month)}件</div></div>`).join('')
+            `<div class="col-span-2 lg:col-span-5 text-xs font-bold text-cyan-300 mt-2">${title}（${month}）</div>` +
+            labels.map(([name,calc],i) => `<div class="rounded-lg p-3 bg-slate-900/70 border h-full min-h-[100px]" style="border-color:${colors[i]};box-shadow:0 0 12px ${colors[i]}55,inset 0 0 10px ${colors[i]}15"><div class="text-xs text-slate-300">${name}</div><div class="text-xl font-bold mt-1" style="color:${colors[i]};text-shadow:0 0 12px ${colors[i]}99">${calc(month)}件</div></div>`).join('') +
+            `<div class="rounded-lg p-3 bg-slate-900/70 border h-full min-h-[100px]" style="border-color:${colors[4]};box-shadow:0 0 12px ${colors[4]}55,inset 0 0 10px ${colors[4]}15"><div class="text-xs text-slate-300">待機要員</div><div class="text-xl font-bold mt-1" style="color:${colors[4]};text-shadow:0 0 12px ${colors[4]}99">${waitingForMonth(month).length}名</div><div class="text-xs text-slate-300 mt-2 space-y-1">${waitingForMonth(month).map(m => `<div class="break-words">${safeText(m.name)}（${safeText(m.waitingStartDate)}〜）</div>`).join('') || '<div>該当者なし</div>'}</div></div>`
         ).join('');
-        const panel = document.getElementById('dashboard-waiting-members');
-        if (!panel) return;
-        const waiting = db.members.filter(m => m.status === '待機中');
-        panel.innerHTML = waiting.length ? waiting.map(m => `<div class="rounded-lg border border-emerald-400/50 bg-slate-900/60 px-3 py-2 flex flex-wrap justify-between gap-2"><span class="font-semibold text-emerald-200">${safeText(m.name)}</span><span class="text-xs text-slate-300">待機開始：${m.waitingStartDate ? safeText(m.waitingStartDate) : '未登録'}</span></div>`).join('') : '<p class="text-sm text-slate-400">現在、待機中のメンバーはいません。</p>';
     };
     let searchIndex=[];
     function updateGlobalSearchData(){if(typeof db === 'undefined')return;ensureSchema();searchIndex=[...db.clients.map(x=>({type:'取引先',id:x.id,name:x.name,detail:x.contact,tab:'clients'})),...db.projects.map(x=>({type:'案件',id:x.id,name:x.title,detail:x.clientName,tab:'projects'})),...db.members.map(x=>({type:'エンジニア',id:x.id,name:x.name,detail:(x.skills||[]).join(', '),tab:'members'})),...db.interviews.map(x=>({type:'面談',id:x.id,name:x.memberName,detail:x.projectTitle,tab:'interviews'})),...db.tasks.map(x=>({type:'タスク',id:x.id,name:x.title,detail:x.date,tab:'tasks'}))];}

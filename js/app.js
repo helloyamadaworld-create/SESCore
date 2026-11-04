@@ -5189,34 +5189,45 @@
         }
 
         // --- CLIENTS TABLE ---
+        function clientDisplayText(value) {
+            return String(value == null ? '' : value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+        }
         function renderClientsTable() {
-            const query = document.getElementById('client-search').value.toLowerCase();
+            const query = (document.getElementById('client-search')?.value || '').toLowerCase();
             const tbody = document.getElementById('clients-table-body');
-
-            const filtered = db.clients.filter(c => 
-                c.name.toLowerCase().includes(query) || 
-                c.contact.toLowerCase().includes(query)
-            );
-
-            tbody.innerHTML = filtered.map(c => `
-                <tr class="hover:bg-slate-800/40 transition">
-                    <td class="p-3 font-mono text-cyan-400">${c.id}</td>
-                    <td class="p-3 font-bold text-slate-200">${c.name}</td>
-                    <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-slate-700 text-slate-300">${c.type}</span></td>
-                    <td class="p-3">${c.contact}</td>
-                    <td class="p-3 font-mono text-slate-400">${c.email}</td>
-                    <td class="p-3 font-mono font-bold">${db.projects.filter(p => p.clientId === c.id && !['見送り','募集終了'].includes(p.status)).length}件</td>
-                    <td class="p-3">
-                        <span class="px-2 py-0.5 rounded text-[10px] ${c.status === 'アクティブ' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-slate-700 text-slate-400'}">
-                            ${c.status}
-                        </span>
-                    </td>
-                    <td class="p-3 text-right space-x-2">
-                        <button onclick="editClient('${c.id}')" class="text-cyan-400 hover:text-cyan-300"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteClient('${c.id}')" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-            `).join('');
+            if (!tbody) return;
+            const filtered = db.clients.filter(c => [c.name,c.contact,c.id,c.email].some(v => String(v || '').toLowerCase().includes(query)));
+            tbody.innerHTML = filtered.map(c => {
+                const index = db.clients.indexOf(c);
+                return `<tr class="ses-client-row transition">
+                    <td class="p-4 font-mono text-cyan-400">${clientDisplayText(c.id)}</td>
+                    <td class="p-4"><div class="ses-client-company">${clientDisplayText(c.name)}</div></td>
+                    <td class="p-4"><span class="ses-client-status ${c.status === 'アクティブ' ? 'is-active' : ''}"><span class="ses-client-dot"></span>${clientDisplayText(c.status || '未設定')}</span></td>
+                    <td class="p-4 text-right"><button type="button" onclick="openClientDetailByIndex(${index})" class="ses-client-detail-button" title="取引先の詳細を開く" aria-label="${clientDisplayText(c.name)}の詳細を開く"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></td>
+                </tr>`;
+            }).join('') || '<tr><td colspan="4" class="p-6 text-center text-slate-400">該当する取引先がありません。</td></tr>';
+        }
+        function openClientDetailByIndex(index) {
+            const c = db.clients[index];
+            if (!c) return;
+            const modal = document.getElementById('modal-client-detail');
+            if (!modal) return;
+            document.getElementById('client-detail-title').textContent = c.name || '取引先詳細';
+            const names = {id:'取引先ID',name:'企業名',type:'種別',contact:'担当者名',email:'連絡先メール',status:'ステータス',activeProjects:'公開中案件数',meetingDate:'打合せ日',meetingRoute:'打合せまでの流れ',department:'部署名',position:'役職',address:'住所',url:'企業URL',notes:'備考',skillMemo:'スキルメモ',enteredBy:'記入者名',sourceData:'登録元の詳細情報'};
+            let extraNumber = 0;
+            const renderField = (label, value) => `<div class="ses-client-detail-field"><dt>${clientDisplayText(label)}</dt><dd>${clientDisplayText(value == null || value === '' ? '未登録' : String(value))}</dd></div>`;
+            const renderEntries = (record, source = false) => Object.entries(record).map(([key, value]) => {
+                const label = source ? key : (names[key] || `その他の登録項目 ${++extraNumber}`);
+                if (value && typeof value === 'object') {
+                    if (Array.isArray(value)) return renderField(label, value.map(v => typeof v === 'object' ? Object.values(v).join('・') : v).join('、'));
+                    return `<div class="ses-client-detail-field" style="grid-column:1/-1"><dt>${clientDisplayText(label)}</dt><dl class="ses-client-detail-grid mt-3">${renderEntries(value, true)}</dl></div>`;
+                }
+                return renderField(label, value);
+            }).join('');
+            document.getElementById('client-detail-fields').innerHTML = renderEntries(c);
+            document.getElementById('client-detail-edit').onclick = () => { closeModal('modal-client-detail'); editClient(c.id); };
+            document.getElementById('client-detail-delete').onclick = () => { closeModal('modal-client-detail'); deleteClient(c.id); };
+            modal.classList.remove('hidden');
         }
 
         // --- PROJECTS TABLE ---
@@ -5250,27 +5261,11 @@
 
             tbody.innerHTML = filtered.map(p => `
                 <tr class="hover:bg-slate-800/40 transition">
-                    <td class="p-3 font-mono text-cyan-400">${p.id}</td>
-                    <td class="p-3 font-bold text-slate-200">${p.title}</td>
-                    <td class="p-3 text-slate-300">${p.clientName || '取引先未登録'}</td>
-                    <td class="p-3">
-                        <div class="flex flex-wrap gap-1">
-                            ${p.skills.map(s => `<span class="px-1.5 py-0.5 rounded text-[9px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">${s}</span>`).join('')}
-                        </div>
-                    </td>
-                    <td class="p-3 font-mono font-bold text-amber-400">${formatYenAsMan(projectPriceYen(p))}万円/月</td>
-                    <td class="p-3"><button onclick="openProjectDetail('${p.id}')" class="text-cyan-400 hover:text-cyan-300 underline">${getProjectParticipants(p).length}人を確認</button></td>
-                    <td class="p-3 text-slate-400">${p.location}</td>
-                    <td class="p-3">
-                        <span class="px-2 py-0.5 rounded text-[10px] ${p.status === '提案公募中' ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30' : p.status === '成約済み' ? 'bg-emerald-500/10 text-emerald-400' : p.status === '見送り' ? 'bg-rose-500/10 text-rose-300 border border-rose-500/30' : p.status === '面談調整中' ? 'bg-amber-500/10 text-amber-300' : 'bg-slate-700 text-slate-300'}">
-                            ${p.status || '未設定'}
-                        </span>
-                    </td>
-                    <td class="p-3 text-right space-x-2">
-                        <button onclick="openProjectDetail('${p.id}')" title="参画メンバー" class="text-emerald-400 hover:text-emerald-300"><i class="fa-solid fa-users"></i></button>
-                        <button onclick="editProject('${p.id}')" title="案件編集" class="text-cyan-400 hover:text-cyan-300"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteProject('${p.id}')" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
-                    </td>
+                    <td class="font-mono text-cyan-400">${projectInfoEscape(p.id)}</td>
+                    <td class="font-bold text-slate-200">${projectInfoEscape(p.title)}</td>
+                    <td class="text-slate-300">${projectInfoEscape(p.clientName || '取引先未登録')}</td>
+                    <td><span class="px-3 py-1.5 rounded-lg text-xs border border-cyan-500/30 text-cyan-400">${projectInfoEscape(p.status || '未設定')}</span></td>
+                    <td><button type="button" onclick="openProjectInfoByIndex(${db.projects.indexOf(p)})" class="ses-client-detail-button" title="案件の詳細を開く" aria-label="案件の詳細を開く"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></td>
                 </tr>
             `).join('');
         }
@@ -5408,8 +5403,55 @@
         }
 
         // --- CLIENT CRUD ---
+        // Edit every stored client field without dropping unknown legacy fields.
+        const clientStandardFields = new Set(['id','name','type','contact','email','status']);
+        const clientFieldLabels = {activeProjects:'公開中案件数',meetingDate:'打合せ日',meetingRoute:'打合せまでの流れ',department:'部署名',position:'役職',address:'住所',url:'企業URL',notes:'備考',skillMemo:'スキルメモ',enteredBy:'記入者名',sourceData:'登録元の詳細情報'};
+        let clientExtraPaths = [];
+        function renderClientExtraFields(client) {
+            const area = document.getElementById('client-extra-fields');
+            if (!area) return;
+            clientExtraPaths = [];
+            const fields = [];
+            const walk = (value, path, label) => {
+                if (value && typeof value === 'object' && !Array.isArray(value)) {
+                    Object.entries(value).forEach(([key, child]) => walk(child, [...path,key], path.length ? key : (clientFieldLabels[key] || key)));
+                    return;
+                }
+                const index = clientExtraPaths.push({path,original:value}) - 1;
+                const display = Array.isArray(value) ? value.map(v => typeof v === 'object' ? Object.values(v).join('・') : v).join('、') : String(value ?? '');
+                fields.push(`<div><label for="client-extra-${index}">${clientDisplayText(label)}</label><textarea id="client-extra-${index}" rows="2" data-client-extra="${index}">${clientDisplayText(display)}</textarea></div>`);
+            };
+            Object.entries(client || {}).filter(([key]) => !clientStandardFields.has(key)).forEach(([key,value]) => walk(value,[key],clientFieldLabels[key] || key));
+            area.innerHTML = fields.join('');
+        }
+        function saveClientExtraFields(client) {
+            clientExtraPaths.forEach(({path,original}, index) => {
+                const el = document.getElementById(`client-extra-${index}`);
+                if (!el) return;
+                const value = el.value;
+                let parsed = value;
+                if (typeof original === 'number' && value.trim() !== '' && Number.isFinite(Number(value))) parsed = Number(value);
+                else if (typeof original === 'boolean') parsed = value === 'true' ? true : value === 'false' ? false : value;
+                else if (Array.isArray(original)) parsed = value.trim() ? value.split('、').map(v => v.trim()) : [];
+                let target = client;
+                for (const key of path.slice(0,-1)) target = target[key];
+                target[path[path.length-1]] = parsed;
+            });
+        }
         function openClientModal() {
             document.getElementById('form-client').reset();
+            document.getElementById('client-type').value = '取引先(SES)';
+            // Use the existing client schema so new records expose the same fields as detail/edit.
+            const schemaClient = (db.clients || []).find(c => c && c.sourceData && typeof c.sourceData === 'object') || (db.clients || [])[0];
+            const blankClient = {};
+            if (schemaClient) {
+                Object.entries(schemaClient).forEach(([key, value]) => {
+                    if (clientStandardFields.has(key)) return;
+                    const blank = v => Array.isArray(v) ? [] : (v && typeof v === 'object') ? Object.fromEntries(Object.entries(v).map(([k, child]) => [k, blank(child)])) : typeof v === 'number' ? 0 : typeof v === 'boolean' ? false : '';
+                    blankClient[key] = blank(value);
+                });
+            }
+            renderClientExtraFields(blankClient);
             document.getElementById('client-id').value = '';
             document.getElementById('modal-client-title').innerText = '新規取引先追加';
             document.getElementById('modal-client').classList.remove('hidden');
@@ -5424,6 +5466,7 @@
             document.getElementById('client-contact').value = client.contact;
             document.getElementById('client-email').value = client.email;
             document.getElementById('client-status').value = client.status;
+            renderClientExtraFields(client);
             document.getElementById('modal-client-title').innerText = '取引先編集';
             document.getElementById('modal-client').classList.remove('hidden');
         }
@@ -5439,10 +5482,24 @@
 
             if (id) {
                 const index = db.clients.findIndex(c => c.id === id);
-                if (index !== -1) db.clients[index] = { ...db.clients[index], name, type, contact, email, status };
+                if (index !== -1) {
+                    const updated = { ...db.clients[index], name, type, contact, email, status };
+                    saveClientExtraFields(updated);
+                    db.clients[index] = updated;
+                }
             } else {
                 const newId = `CLI-${String(db.clients.length + 1).padStart(3, '0')}`;
-                db.clients.push({ id: newId, name, type, contact, email, activeProjects: 0, status });
+                const created = { id: newId, name, type, contact, email, activeProjects: 0, status };
+                clientExtraPaths.forEach(({path}) => {
+                    let target = created;
+                    for (const key of path.slice(0, -1)) {
+                        if (!target[key] || typeof target[key] !== 'object') target[key] = {};
+                        target = target[key];
+                    }
+                    if (!(path[path.length - 1] in target)) target[path[path.length - 1]] = '';
+                });
+                saveClientExtraFields(created);
+                db.clients.push(created);
             }
 
             saveStoredData();
@@ -5456,9 +5513,58 @@
             }
         }
 
+
+        const projectInfoEscape = value => String(value == null ? '' : value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+        const projectInfoLabels = {id:'案件ID',title:'案件名称',clientId:'取引先ID',clientName:'クライアント',skills:'必須スキル',price:'想定単価（万円）',priceYen:'想定単価（円）',location:'勤務形態',status:'ステータス',projectType:'案件区分',assignedMemberIds:'参画メンバーID',participants:'参画メンバー',startDate:'開始日',endDate:'終了日',description:'案件内容',notes:'備考',createdAt:'登録日時',updatedAt:'更新日時',sourceData:'登録元情報',contractEnd:'契約終了日',proposedMember:'提案要員',settlementHours:'精算時間',commercialFlow:'商流',requiredSkills:'必須スキル詳細',desirableSkills:'尚可スキル',interviewCount:'面談回数',nextAction:'次回アクション・備考',clientContact:'取引先担当者'};
+        function projectInfoField(label, value) {
+            const display = value == null || value === '' ? '未登録' : String(value);
+            return `<div class="ses-client-detail-field"><dt>${projectInfoEscape(label)}</dt><dd>${projectInfoEscape(display)}</dd></div>`;
+        }
+        function projectInfoEntries(data) {
+            return Object.entries(data).map(([key,value]) => {
+                const label = projectInfoLabels[key] || '追加情報';
+                if (Array.isArray(value)) {
+                    if (!value.length) return projectInfoField(label,'未登録');
+                    return `<div class="ses-client-detail-field" style="grid-column:1/-1"><dt>${projectInfoEscape(label)}</dt><dl class="ses-client-detail-grid mt-3">${value.map((item,i)=>typeof item === 'object' && item !== null ? `<div class="ses-client-detail-field" style="grid-column:1/-1"><dt>${i+1}件目</dt><dl class="ses-client-detail-grid mt-3">${projectInfoEntries(item)}</dl></div>` : projectInfoField(`${i+1}`,item)).join('')}</dl></div>`;
+                }
+                if (value && typeof value === 'object') return `<div class="ses-client-detail-field" style="grid-column:1/-1"><dt>${projectInfoEscape(label)}</dt><dl class="ses-client-detail-grid mt-3">${projectInfoEntries(value)}</dl></div>`;
+                return projectInfoField(label,value);
+            }).join('');
+        }
+        function openProjectInfoByIndex(index) {
+            const p = db.projects[index]; if (!p) return;
+            document.getElementById('project-info-title').textContent = p.title || '案件詳細';
+            document.getElementById('project-info-fields').innerHTML = projectInfoEntries(p);
+            document.getElementById('project-info-edit').onclick = () => {closeModal('modal-project-info');editProject(p.id);};
+            document.getElementById('project-info-delete').onclick = () => {closeModal('modal-project-info');deleteProject(p.id);};
+            document.getElementById('modal-project-info').classList.remove('hidden');
+        }
+        window.openProjectInfoByIndex = openProjectInfoByIndex;
+        const projectCoreKeys = new Set(['id','title','clientId','clientName','price','priceYen','skills','location','status','projectType']);
+        function renderProjectExtraFields(p) {
+            const target = document.getElementById('project-extra-fields'); if (!target) return;
+            target.innerHTML = p ? Object.entries(p).filter(([k])=>!projectCoreKeys.has(k)).map(([key,value]) => {
+                const label=projectInfoLabels[key]||'追加情報';
+                const serialized = value !== null && typeof value === 'object' ? JSON.stringify(value,null,2) : String(value ?? '');
+                return `<div><label class="block text-slate-400 mb-1">${projectInfoEscape(label)}</label><textarea class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" rows="${typeof value === 'object' && value !== null ? 3 : 2}" data-project-extra="${projectInfoEscape(key)}" data-project-type="${Array.isArray(value)?'array':value===null?'null':typeof value}">${projectInfoEscape(serialized)}</textarea></div>`;
+            }).join('') : '';
+        }
+        function readProjectExtraFields() {
+            const result={};
+            document.querySelectorAll('#project-extra-fields [data-project-extra]').forEach(el=>{
+                const type=el.dataset.projectType; const raw=el.value;
+                if (type==='array'||type==='object') {try{const parsed=JSON.parse(raw);if ((type==='array'&& !Array.isArray(parsed))||(type==='object'&&(parsed===null||Array.isArray(parsed)||typeof parsed!=='object')))throw Error();result[el.dataset.projectExtra]=parsed;}catch(e){throw new Error(`${el.previousElementSibling?.textContent||el.dataset.projectExtra}の形式を確認してください`);}}
+                else if(type==='number') result[el.dataset.projectExtra]=Number(raw)||0;
+                else if(type==='boolean') result[el.dataset.projectExtra]=raw==='true';
+                else result[el.dataset.projectExtra]=type==='null'&&raw===''?null:raw;
+            });
+            return result;
+        }
+
         // --- PROJECT CRUD ---
         function openProjectModal() {
             document.getElementById('form-project').reset();
+            renderProjectExtraFields(null);
             document.getElementById('project-id').value = '';
             document.getElementById('modal-project-title').innerText = '新規案件登録';
             const projectTypeInput = document.getElementById('project-type');
@@ -5469,6 +5575,7 @@
         function editProject(id) {
             const prj = db.projects.find(p => p.id === id);
             if (!prj) return;
+            renderProjectExtraFields(prj);
             document.getElementById('project-id').value = prj.id;
             document.getElementById('project-title').value = prj.title;
             document.getElementById('project-client').value = prj.clientId;
@@ -5495,13 +5602,14 @@
             const location = document.getElementById('project-location').value;
             const status = document.getElementById('project-status').value;
             const projectType = document.getElementById('project-type')?.value || projectViewMode || '共有案件';
+            let extra; try { extra = readProjectExtraFields(); } catch (error) { alert(error.message); return; }
 
             if (id) {
                 const index = db.projects.findIndex(p => p.id === id);
-                if (index !== -1) db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, priceYen, skills, location, status, projectType };
+                if (index !== -1) db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, priceYen, skills, location, status, projectType, ...extra };
             } else {
                 const newId = `PRJ-${String(db.projects.length + 101)}`;
-                db.projects.push({ id: newId, title, clientId, clientName, price, priceYen, skills, location, status, projectType, assignedMemberIds: [], participants: [] });
+                db.projects.push({ id: newId, title, clientId, clientName, price, priceYen, skills, location, status, projectType, assignedMemberIds: [], participants: [], ...extra });
             }
 
             saveStoredData();
