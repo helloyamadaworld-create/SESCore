@@ -173,3 +173,95 @@
     .login-panel { padding: 24px 20px; }
     .login-logo { width: 60px; height: 60px; }
 }
+
+/* v3.2.45: Login fields, including mobile browser autofill */
+#login-screen .login-input-wrap input {
+  color: #ffffff !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #00e5ff !important;
+}
+#login-screen .login-input-wrap input:-webkit-autofill,
+#login-screen .login-input-wrap input:-webkit-autofill:hover,
+#login-screen .login-input-wrap input:-webkit-autofill:focus,
+#login-screen .login-input-wrap input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #101c30 inset !important;
+  box-shadow: 0 0 0 1000px #101c30 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #00e5ff !important;
+  border-radius: 0;
+  transition: background-color 99999s ease-out 0s;
+}
+#login-screen .login-input-wrap:focus-within {
+  border-color: #00e5ff;
+  box-shadow: 0 0 0 1px rgba(0,229,255,.55), 0 0 22px rgba(0,229,255,.38);
+}
+
+/* v3.2.54 member list and detail layout */
+#members-table-body .ses-member-row td{vertical-align:middle;line-height:1.35}
+.ses-member-status-compact{display:grid;grid-template-columns:auto auto;gap:3px 7px;align-items:center;justify-content:start;white-space:nowrap}
+.ses-member-status-label{font-size:10px;opacity:.78}
+.ses-member-status-value{font-size:11px;font-weight:700;line-height:1.25;padding:3px 7px;border-radius:7px;border:1px solid rgba(34,211,238,.32);color:#67e8f9;background:rgba(34,211,238,.09)}
+#modal-member-detail .ses-member-detail-dialog{width:min(90vw,900px)!important;max-width:900px!important;max-height:90dvh;overflow-y:auto;overscroll-behavior:contain;padding-top:0!important}
+#modal-member-detail .ses-member-detail-dialog>div:first-child{position:sticky;top:0;z-index:5;background:#0c1429;padding-top:20px;padding-bottom:15px}
+body.theme-standard #modal-member-detail .ses-member-detail-dialog{background:#fff!important;color:#17243a!important}
+body.theme-standard #modal-member-detail .ses-member-detail-dialog>div:first-child{background:#fff!important}
+body.theme-standard #modal-member-detail .ses-client-detail-field{background:#fff!important;color:#17243a!important;border-color:#c7d9ed!important}
+body.theme-standard #modal-member-detail .ses-client-detail-field dt{color:#344b69!important}
+body.theme-standard #modal-member-detail .ses-client-detail-field dd{color:#14253c!important}
+body.theme-standard .ses-member-status-value{background:#eff7ff;color:#173c65;border-color:#bed7f0}
+
+/* v3.2.55 Member dialog aligned with client/project dialogs */
+#modal-member .ses-member-form-dialog{width:min(90vw,950px)!important;max-width:950px!important;max-height:90dvh;display:flex;flex-direction:column;overflow:hidden;padding:0!important}
+#modal-member .ses-member-form-header{flex-shrink:0;padding:20px 24px;background:#0c1429;z-index:3}
+#modal-member .ses-member-form-content{padding:20px 24px;overflow-y:auto;overscroll-behavior:contain;min-height:0}
+#modal-member .ses-member-extra-section{border-top:1px solid rgba(34,211,238,.25);padding-top:16px}
+#modal-member .ses-member-extra-section h4{color:#67e8f9;font-weight:700;margin-bottom:12px}
+#modal-member .ses-member-extra-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#modal-member .ses-member-extra-field{min-width:0;display:flex;flex-direction:column;gap:6px;color:#cbd5e1}
+body.theme-standard #modal-member .ses-member-form-dialog,body.theme-standard #modal-member .ses-member-form-header{background:#fff!important;color:#17243a!important}
+body.theme-standard #modal-member .ses-member-extra-field{color:#344b69!important}
+body.theme-standard #modal-member .ses-member-form-content input,body.theme-standard #modal-member .ses-member-form-content select{background:#fff!important;color:#17243a!important;border-color:#b7cee8!important;-webkit-text-fill-color:#17243a!important}
+@media(max-width:640px){#modal-member .ses-member-extra-grid{grid-template-columns:1fr}#modal-member .ses-member-form-header,#modal-member .ses-member-form-content{padding:16px}}
+
+/* v3.2.57: align member table headers and values, restore visible stored IDs. */
+.ses-member-list-table{table-layout:fixed;min-width:780px;border-collapse:collapse}
+.ses-member-list-table th,.ses-member-list-table td{box-sizing:border-box;padding:9px 10px;text-align:left;vertical-align:middle;overflow-wrap:anywhere}
+.ses-member-list-table th:last-child,.ses-member-list-table td:last-child{text-align:center}
+.ses-member-id-cell{display:flex;align-items:center;gap:7px;min-width:0;flex-wrap:wrap}
+.ses-member-number{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:26px;border-radius:6px;background:rgba(6,182,212,.10);border:1px solid rgba(6,182,212,.3);font-weight:700}
+.ses-member-actual-id{font-size:11px;font-weight:600;overflow-wrap:anywhere;color:inherit}
+.ses-member-list-table .ses-member-status-compact{white-space:normal;grid-template-columns:1fr;gap:2px}
+.ses-member-list-table .ses-member-status-label{font-size:9px}
+.ses-member-list-table .ses-member-status-value{font-size:10px;padding:2px 5px;line-height:1.2;max-width:100%;overflow-wrap:anywhere}
+body.theme-standard .ses-member-actual-id{color:#17243a}
+
+/* v3.2.58: keep the status column compact, and avoid a scrolling border overlay. */
+.ses-member-list-table .ses-member-status-compact{max-width:100%;min-width:0}
+.ses-member-list-table .ses-member-status-value{display:inline-block;width:fit-content;max-width:100%;white-space:normal}
+/* Keep the detail title/actions sticky, but do not pin a decorative border to them. */
+#modal-client-detail .ses-client-detail-dialog>div:first-child,
+#modal-project-info .ses-project-info-dialog>div:first-child,
+#modal-member-detail .ses-member-detail-dialog>div:first-child{border:0!important;border-bottom:0!important;box-shadow:none!important}
+/* Animated pseudo-element frames should not float over scrolled detail content. */
+#modal-client-detail .ses-client-detail-dialog::before,
+#modal-client-detail .ses-client-detail-dialog::after,
+#modal-project-info .ses-project-info-dialog::before,
+#modal-project-info .ses-project-info-dialog::after,
+#modal-member-detail .ses-member-detail-dialog::before,
+#modal-member-detail .ses-member-detail-dialog::after{content:none!important;display:none!important}
+
+/* v3.2.59: mobile member toolbar and compact status, without changing desktop columns. */
+@media (max-width: 767px) {
+  #view-members .ses-member-toolbar {
+    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:stretch;width:100%;min-width:0;
+  }
+  #view-members #member-filter-status {grid-column:1 / -1;width:100%;min-width:0;height:40px;}
+  #view-members #member-search {grid-column:1;min-width:0;width:100%;height:40px;}
+  #view-members .ses-member-add-button {grid-column:2;min-width:0;max-width:100%;height:40px;white-space:nowrap;justify-content:center;gap:4px;padding:8px 10px;font-size:11px;line-height:1.2;}
+  #view-members .ses-member-add-button i {margin-right:0;}
+  .ses-member-list-table {min-width:740px;}
+  .ses-member-list-table .ses-member-status-compact {display:grid;grid-template-columns:1fr;gap:2px;white-space:nowrap;}
+  .ses-member-list-table .ses-member-status-label {font-size:9px;white-space:nowrap;}
+  .ses-member-list-table .ses-member-status-value {font-size:10px;line-height:1.2;white-space:nowrap;overflow-wrap:normal;max-width:none;padding:2px 5px;}
+}

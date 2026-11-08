@@ -76,3 +76,61 @@ body.theme-standard :is(.detail-field,.detail-card,.info-card,.profile-field,.pr
   background:#fff!important;background-image:none!important;color:#17243a!important;border-color:#c9d9ef!important;
 }
 body.theme-standard :is(.detail-field,.detail-card,.info-card,.profile-field,.profile-card,.data-field,.data-card) :is(dt,dd,label,p,span,small){color:#24364f!important;opacity:1!important}
+
+/* v3.2.49: accessible STANDARD detail cards and full-bleed sticky header. */
+body.theme-standard #modal-project-info .ses-client-detail-field,
+body.theme-standard #modal-client-detail .ses-client-detail-field {
+  background:#ffffff!important;background-image:none!important;
+  border:1px solid #c7d9ed!important;color:#172b47!important;
+  box-shadow:0 2px 6px rgba(32,65,112,.055)!important;
+  opacity:1!important;
+}
+body.theme-standard #modal-project-info .ses-client-detail-field dt,
+body.theme-standard #modal-client-detail .ses-client-detail-field dt {
+  color:#344b69!important;font-weight:700!important;opacity:1!important;text-shadow:none!important;
+}
+body.theme-standard #modal-project-info .ses-client-detail-field dd,
+body.theme-standard #modal-project-info .ses-client-detail-field dd *,
+body.theme-standard #modal-client-detail .ses-client-detail-field dd,
+body.theme-standard #modal-client-detail .ses-client-detail-field dd * {
+  color:#14253c!important;opacity:1!important;text-shadow:none!important;
+}
+body.theme-standard #modal-project-info .ses-client-detail-field .ses-client-detail-field,
+body.theme-standard #modal-client-detail .ses-client-detail-field .ses-client-detail-field {
+  background:#f4f9ff!important;border-color:#d2e2f3!important;
+}
+/* Header spans the complete dialog width, without clipped inset panels. */
+#modal-client-detail .ses-client-detail-dialog,
+#modal-project-info .ses-project-info-dialog {
+  padding:0!important;overflow-x:hidden!important;
+}
+#modal-client-detail .ses-client-detail-dialog > div:first-child,
+#modal-project-info .ses-project-info-dialog > div:first-child {
+  position:sticky!important;top:0!important;z-index:10!important;
+  margin:0!important;padding:22px 26px 18px!important;
+  box-sizing:border-box;width:100%!important;
+  border-bottom:1px solid rgba(148,163,184,.25)!important;
+  border-radius:0!important;
+}
+#modal-client-detail .ses-client-detail-dialog > dl,
+#modal-project-info .ses-project-info-dialog > dl {
+  margin:0!important;padding:20px 26px 26px!important;
+}
+body.theme-standard #modal-client-detail .ses-client-detail-dialog > div:first-child,
+body.theme-standard #modal-project-info .ses-project-info-dialog > div:first-child {
+  background:#ffffff!important;box-shadow:0 4px 12px rgba(35,61,99,.08)!important;
+}
+@media(max-width:640px){
+ #modal-client-detail .ses-client-detail-dialog > div:first-child,
+ #modal-project-info .ses-project-info-dialog > div:first-child {padding:16px!important}
+ #modal-client-detail .ses-client-detail-dialog > dl,
+ #modal-project-info .ses-project-info-dialog > dl {padding:16px!important}
+}
+
+/* v3.2.51 STANDARD login input contrast, including browser autofill. */
+body.theme-standard #login-screen .login-input-wrap { background:#fff!important; border-color:#9bb7d5!important; color:#23466a!important; }
+body.theme-standard #login-screen .login-input-wrap input { background:transparent!important; color:#15263d!important; -webkit-text-fill-color:#15263d!important; caret-color:#1556a2!important; }
+body.theme-standard #login-screen .login-input-wrap input:-webkit-autofill,
+body.theme-standard #login-screen .login-input-wrap input:-webkit-autofill:hover,
+body.theme-standard #login-screen .login-input-wrap input:-webkit-autofill:focus { -webkit-box-shadow:0 0 0 1000px #fff inset!important; box-shadow:0 0 0 1000px #fff inset!important; -webkit-text-fill-color:#15263d!important; caret-color:#1556a2!important; }
+body.theme-standard #login-screen .login-input-wrap:focus-within { border-color:#2563eb!important; box-shadow:0 0 0 2px rgba(37,99,235,.20)!important; }

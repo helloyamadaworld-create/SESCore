@@ -120,6 +120,9 @@ body.theme-neon #modal-client .ses-client-edit-dialog{background-image:none!impo
 #view-projects .ses-project-list th:nth-child(1){width:16%}#view-projects .ses-project-list th:nth-child(2){width:34%}#view-projects .ses-project-list th:nth-child(3){width:25%}#view-projects .ses-project-list th:nth-child(4){width:16%}#view-projects .ses-project-list th:nth-child(5){width:9%}
 #view-projects .ses-project-list th,#view-projects .ses-project-list td{padding:14px 12px;overflow-wrap:anywhere;vertical-align:middle}
 #view-projects .ses-project-list th:nth-child(5),#view-projects .ses-project-list td:nth-child(5){text-align:center}
+/* Match the member detail action to the client/project detail icon. */
+#view-members .ses-client-detail-button{display:inline-flex;align-items:center;justify-content:center;font-size:23px;min-width:48px;min-height:48px;color:#67e8f9;border:1px solid rgba(103,232,249,.35);border-radius:12px;transition:transform .2s,box-shadow .2s}
+body.theme-neon #view-members .ses-client-detail-button:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,245,255,.4)}
 #view-projects .ses-client-detail-button{display:inline-flex;align-items:center;justify-content:center;font-size:23px;min-width:48px;min-height:48px;color:#67e8f9;border:1px solid rgba(103,232,249,.35);border-radius:12px;transition:transform .2s,box-shadow .2s}
 body.theme-neon #view-projects .ses-client-detail-button:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,245,255,.4)}
 #modal-project-info .ses-project-info-dialog{width:min(90vw,900px)!important;max-width:900px!important;max-height:90vh;overflow-y:auto}
@@ -139,6 +142,17 @@ body:not(.theme-neon) #view-projects .ses-project-mode{border-color:#b9d1ef}
 body:not(.theme-neon) #view-projects #project-filter-status,body:not(.theme-neon) #view-projects #project-search{background:#fff!important;color:#17243a!important;border-color:#c9d9ef!important}
 body:not(.theme-neon) #modal-project .ses-project-edit-footer{background:#fff}
 body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3ff;color:#17385f;text-shadow:none;border-color:#bdd6f5}
+
+/* v3.2.48: project toolbar and fixed detail headers */
+#view-projects .ses-project-toolbar{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+#view-projects .ses-project-toolbar-top,#view-projects .ses-project-toolbar-bottom{display:flex;align-items:center;gap:12px;width:100%;min-width:0}
+#view-projects .ses-project-toolbar-top{justify-content:flex-start}
+#view-projects .ses-project-toolbar-bottom #project-search{flex:1 1 auto;max-width:none;width:100%}
+#view-projects .ses-project-toolbar-bottom>button{flex:0 0 auto;min-height:40px;white-space:nowrap}
+#modal-client-detail .ses-client-detail-dialog,#modal-project-info .ses-project-info-dialog{max-height:90dvh;overflow-y:auto;overscroll-behavior:contain;padding-top:0!important}
+#modal-client-detail .ses-client-detail-dialog>div:first-child,#modal-project-info .ses-project-info-dialog>div:first-child{position:sticky;top:0;z-index:5;margin:0 -1px;padding:20px 1px 15px;background:#0c1429;box-shadow:0 8px 15px rgba(0,0,0,.15)}
+body.theme-standard #modal-client-detail .ses-client-detail-dialog>div:first-child,body.theme-standard #modal-project-info .ses-project-info-dialog>div:first-child{background:#fff}
+@media(max-width:640px){#view-projects .ses-project-toolbar-top{flex-wrap:wrap}#view-projects .ses-project-toolbar-bottom{flex-wrap:nowrap}#view-projects .ses-project-toolbar-bottom>button{font-size:11px;padding:8px}#view-projects .ses-project-toolbar-bottom #project-search{min-width:0}}
 </style>
 </head>
 <body class="theme-neon h-screen flex flex-col overflow-hidden select-none">
@@ -450,6 +464,7 @@ body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3f
                             <p class="text-xs text-slate-400">参照元シート：案件情報｜募集案件・必要スキル・単価・提案状況の一貫トラッキング</p>
                         </div>
                         <div class="ses-project-toolbar">
+                            <div class="ses-project-toolbar-top">
                             <div class="ses-project-mode" role="group" aria-label="案件区分">
                                 <button type="button" id="project-mode-shared" onclick="setProjectViewMode('共有案件')" class="px-3 py-2 text-xs bg-cyan-600 text-white">共有案件</button>
                                 <button type="button" id="project-mode-assigned" onclick="setProjectViewMode('参画案件')" class="px-3 py-2 text-xs bg-slate-800 text-slate-300">参画案件</button>
@@ -464,10 +479,13 @@ body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3f
                                 <option value="見送り">見送り</option>
                                 <option value="募集終了">募集終了</option>
                             </select>
+                            </div>
+                            <div class="ses-project-toolbar-bottom">
                             <input type="text" id="project-search" oninput="renderProjectsTable()" placeholder="案件名、スキルタグで検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
                             <button onclick="openProjectModal()" class="px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
                                 <i class="fa-solid fa-plus mr-1"></i> 新規案件登録
                             </button>
+                            </div>
                         </div>
                     </div>
 
@@ -499,10 +517,10 @@ body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3f
                 <section id="view-members" class="view-panel hidden space-y-4">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div>
-                            <h2 class="text-xl font-bold tracking-tight">要員・エンジニア管理</h2>
-                            <p class="text-xs text-slate-400">自社エンジニア・パートナー要員の保有スキル・稼働状況・提案管理</p>
+                            <h2 class="text-xl font-bold tracking-tight">メンバー・社員管理</h2>
+                            <p class="text-xs text-slate-400">自社社員・パートナー要員の保有スキル・稼働状況・提案管理</p>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div class="ses-member-toolbar">
                             <select id="member-filter-status" onchange="renderMembersTable()" class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400">
                                 <option value="ALL">全員表示</option>
                                 <option value="稼働中">稼働中</option>
@@ -511,8 +529,8 @@ body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3f
                                 <option value="未設定">未設定</option>
                             </select>
                             <input type="text" id="member-search" oninput="renderMembersTable()" placeholder="氏名、言語、フレームワークで検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
-                            <button onclick="openMemberModal()" class="px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
-                                <i class="fa-solid fa-plus mr-1"></i> 新規エンジニア登録
+                            <button onclick="openMemberModal()" class="ses-member-add-button px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
+                                <i class="fa-solid fa-plus mr-1"></i> 新規社員登録
                             </button>
                         </div>
                     </div>
@@ -520,18 +538,19 @@ body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3f
                     <!-- MEMBERS TABLE -->
                     <div class="glass-card rounded-xl overflow-hidden">
                         <div class="overflow-x-auto">
-                            <table class="w-full text-left text-xs">
+                            <table class="ses-member-list-table w-full text-left text-xs">
+                                <colgroup><col style="width:15%"><col style="width:25%"><col style="width:16%"><col style="width:14%"><col style="width:11%"><col style="width:11%"><col style="width:8%"></colgroup>
                                 <thead class="bg-slate-800/80 uppercase text-slate-400 font-mono border-b border-slate-700">
                                     <tr>
                                         <th class="p-3">No. / 要員ID</th>
                                         <th class="p-3">氏名 / 区分</th>
                                         <th class="p-3">所属部署</th>
                                         <th class="p-3">役職</th>
-                                        <th class="p-3">主要スキル</th>
-                                        <th class="p-3 whitespace-nowrap">入社日</th>
+                                        
+                                        
                                         <th class="p-3 whitespace-nowrap">在籍年数</th>
-                                        <th class="p-3">希望/参画単価</th>
-                                        <th class="p-3">稼働可能日</th>
+                                        
+                                        
                                         <th class="p-3">状態</th>
                                         <th class="p-3 text-right">操作</th>
                                     </tr>
@@ -673,7 +692,7 @@ body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3f
     <!-- JSON IMPORT MODAL -->
     <div id="modal-import" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="glass-card rounded-2xl max-w-md w-full p-6 space-y-5 border border-cyan-500/30 shadow-2xl">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="ses-member-form-header flex items-center justify-between border-b border-slate-800 pb-3">
                 <h3 class="font-bold text-base flex items-center text-cyan-400">
                     <i class="fa-solid fa-file-import mr-2"></i> JSONデータのインポート
                 </h3>
@@ -867,14 +886,24 @@ body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3f
         </div>
     </div>
 
+    <!-- MEMBER INFORMATION DETAIL -->
+    <div id="modal-member-detail" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="member-detail-title">
+      <div class="glass-card ses-client-detail-dialog ses-member-detail-dialog rounded-2xl w-full p-5 md:p-7 border border-slate-700">
+        <div class="flex justify-between items-start gap-4 border-b border-slate-700 pb-4">
+          <div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">社員詳細</div><div class="flex items-center justify-between gap-3"><h3 id="member-detail-title" class="font-bold text-lg text-white break-words"></h3><div class="flex gap-2 shrink-0"><button type="button" id="member-detail-edit" class="ses-client-header-action ses-client-header-edit" title="編集" aria-label="社員を編集"><i class="fa-solid fa-pen"></i></button><button type="button" id="member-detail-delete" class="ses-client-header-action ses-client-header-delete" title="削除" aria-label="社員を削除"><i class="fa-solid fa-trash-can"></i></button></div></div></div>
+          <button type="button" onclick="closeModal('modal-member-detail')" aria-label="閉じる" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <dl id="member-detail-fields" class="ses-client-detail-grid mt-5"></dl>
+      </div>
+    </div>
     <!-- MEMBER EDIT/ADD MODAL -->
     <div id="modal-member" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-card rounded-2xl max-w-lg w-full p-6 space-y-4 border border-slate-700">
+        <div class="glass-card ses-member-form-dialog rounded-2xl w-full border border-slate-700">
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h3 class="font-bold text-sm text-cyan-400" id="modal-member-title">新規エンジニア登録</h3>
+                <h3 class="font-bold text-sm text-cyan-400" id="modal-member-title">新規社員登録</h3>
                 <button onclick="closeModal('modal-member')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form id="form-member" onsubmit="saveMember(event)" class="space-y-3 text-xs">
+            <form id="form-member" onsubmit="saveMember(event)" class="ses-member-form-content space-y-3 text-xs">
                 <input type="hidden" id="member-id">
                 <div class="grid grid-cols-2 gap-3">
                     <div>
@@ -941,6 +970,7 @@ body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3f
                         <p class="text-[10px] text-slate-500 mt-1">人材マッチングは「来月以降」のステータスを参照します。</p>
                     </div>
                 </div>
+                <div class="ses-member-extra-section"><h4>その他情報</h4><div id="member-extra-fields" class="ses-member-extra-grid"></div></div>
                 <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
                     <button type="button" onclick="closeModal('modal-member')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
                     <button type="submit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">保存する</button>

@@ -4,7 +4,7 @@
   const currentEndYear = now.getFullYear() - (now.getMonth() < 10 ? 1 : 0);
   let selectedYear = currentEndYear;
   const charts = {};
-  const man = n => { const v=Number(n)||0; const a=Math.abs(v); return a>=10000 ? `¥${(Math.round(v/1000)/10).toLocaleString('ja-JP')}億円` : `¥${(Math.round(v*10)/10).toLocaleString('ja-JP')}万円`; };
+  const man = n => { const v = Math.round(Number(n)||0); const sign = v < 0 ? '-' : ''; const abs = Math.abs(v); return sign + '¥' + (abs >= 10000 ? `${Math.floor(abs/10000).toLocaleString('ja-JP')}億${(abs%10000).toLocaleString('ja-JP')}万円` : `${abs.toLocaleString('ja-JP')}万円`); };
   const monthsFor = y => Array.from({length:12}, (_,i) => {
     const month = (i + 10) % 12 + 1;
     return `${month >= 11 ? y : y+1}-${String(month).padStart(2,'0')}`;

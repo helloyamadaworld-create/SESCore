@@ -4984,6 +4984,51 @@
             if (button) button.setAttribute('aria-expanded', String(!collapsed));
         }
 
+        // Each page opens at the top, independently of the previous page's scroll.
+        function resetPageScrollToTop() {
+            const reset = () => {
+                // The application scrolls inside <main>, not the browser window.
+                const main = document.querySelector('#app-container main');
+                if (main) main.scrollTop = 0;
+                document.querySelectorAll('.view-panel').forEach(panel => { panel.scrollTop = 0; });
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+                window.scrollTo(0, 0);
+            };
+            reset();
+            requestAnimationFrame(reset);
+            requestAnimationFrame(() => requestAnimationFrame(reset));
+            setTimeout(reset, 0);
+            setTimeout(reset, 60);
+            setTimeout(reset, 180);
+        }
+
+        // Reset scroll positions for every newly opened dialog, including its inner scrolling panel.
+        function installDialogScrollReset() {
+            const dialogs = document.querySelectorAll('[id^="modal-"]');
+            const observer = new MutationObserver(changes => {
+                changes.forEach(change => {
+                    if (change.attributeName !== 'class') return;
+                    const modal = change.target;
+                    if (modal.classList.contains('hidden')) return;
+                    const reset = () => {
+                        modal.scrollTop = 0;
+                        modal.querySelectorAll('*').forEach(el => {
+                            if (el.scrollTop) el.scrollTop = 0;
+                        });
+                    };
+                    reset();
+                    requestAnimationFrame(reset);
+                });
+            });
+            dialogs.forEach(dialog => observer.observe(dialog, { attributes: true, attributeFilter: ['class'] }));
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', installDialogScrollReset, { once: true });
+        } else {
+            installDialogScrollReset();
+        }
+
         function switchTab(tabName) {
             document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
             document.querySelectorAll('.nav-item').forEach(item => {
@@ -4995,6 +5040,7 @@
             const activeNav = document.getElementById(`nav-${tabName}`);
 
             if (activeView) activeView.classList.remove('hidden');
+            resetPageScrollToTop();
             if (activeNav) {
                 activeNav.classList.remove('text-slate-400');
                 activeNav.classList.add('text-cyan-400', 'bg-cyan-500/10', 'border-l-4', 'border-cyan-400');
@@ -5284,39 +5330,76 @@
             });
 
             tbody.innerHTML = filtered.map((m, index) => `
-                <tr class="hover:bg-slate-800/40 transition">
-                    <td class="p-3 font-mono text-cyan-400"><span class="inline-flex items-center justify-center min-w-6 h-6 rounded-md bg-cyan-500/10 border border-cyan-500/20 mr-2">${index + 1}</span><span class="text-[10px] text-slate-400">${m.id}</span></td>
-                    <td class="p-3 font-bold text-slate-200">
-                        ${m.name} 
-                        <span class="ml-1 text-[9px] px-1.5 py-0.2 rounded bg-slate-700 text-slate-300 font-normal">${m.type}</span>
-                    </td>
-                    <td class="p-3 text-slate-300">${m.department || '未登録'}</td>
-                    <td class="p-3 text-slate-300">${m.role || '未登録'}</td>
-                    <td class="p-3">
-                        <div class="flex flex-wrap gap-1">
-                            ${m.skills.map(s => `<span class="px-1.5 py-0.5 rounded text-[9px] bg-purple-500/10 text-purple-400 border border-purple-500/20">${s}</span>`).join('')}
-                        </div>
-                    </td>
-                    <td class="p-3 whitespace-nowrap">${m.hireDate || '未登録'}</td>
-                    <td class="p-3 whitespace-nowrap">${window.calculateTenure ? window.calculateTenure(m.hireDate) : (m.exp || '未登録')}</td>
-                    <td class="p-3 font-mono">¥${m.rate}万 (原価: ¥${m.cost}万)</td>
-                    <td class="p-3 font-mono text-slate-300">${m.available}</td>
-                    <td class="p-3">
-                        <div class="flex flex-col items-start gap-1">
-                            <span class="text-[9px] text-slate-500">現在</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] ${m.status === '稼働中' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : m.status === '待機中' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30' : 'bg-amber-500/10 text-amber-400'}">${m.status}</span>
-                            <span class="text-[9px] text-slate-500 mt-1">来月以降</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] ${(m.nextMonthStatus || m.status) === '稼働中' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : (m.nextMonthStatus || m.status) === '待機中' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30' : 'bg-amber-500/10 text-amber-400'}">${m.nextMonthStatus || m.status}</span>
-                        </div>
-                    </td>
-                    <td class="p-3 text-right space-x-2">
-                        <button onclick="editMember('${m.id}')" class="text-cyan-400 hover:text-cyan-300"><i class="fa-solid fa-pen"></i></button>
-                        <button onclick="deleteMember('${m.id}')" class="text-rose-400 hover:text-rose-300"><i class="fa-solid fa-trash"></i></button>
-                    </td>
+                <tr class="ses-member-row hover:bg-slate-800/40 transition">
+                    <td class="p-2 font-mono text-cyan-400"><div class="ses-member-id-cell"><span class="ses-member-number">${String(orderedMembers.indexOf(m) + 1).padStart(3, '0')}</span><span class="ses-member-actual-id" title="要員ID：${memberDetailEscape(m.id || '未設定')}">${memberDetailEscape(m.id || '未設定')}</span></div></td>
+                    <td class="p-2 font-bold text-slate-200">${memberDetailEscape(m.name)} <span class="ml-1 text-[9px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 font-normal">${memberDetailEscape(m.type)}</span></td>
+                    <td class="p-2 text-slate-300">${memberDetailEscape(m.department || '未登録')}</td>
+                    <td class="p-2 text-slate-300">${memberDetailEscape(m.role || '未登録')}</td>
+                    <td class="p-2 whitespace-nowrap">${memberDetailEscape(window.calculateTenure ? window.calculateTenure(m.hireDate) : (m.exp || '未登録'))}</td>
+                    <td class="p-2"><div class="ses-member-status-compact"><span class="ses-member-status-label">現在</span><span class="ses-member-status-value">${memberDetailEscape(m.status || '未設定')}</span><span class="ses-member-status-label">来月以降</span><span class="ses-member-status-value">${memberDetailEscape(m.nextMonthStatus || m.status || '未設定')}</span></div></td>
+                    <td class="p-2 text-right"><button type="button" onclick="openMemberDetailByIndex(${db.members.indexOf(m)})" class="ses-client-detail-button ses-member-detail-action" title="社員の詳細を開く" aria-label="社員の詳細を開く"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></td>
                 </tr>
             `).join('');
         }
 
+        const memberFieldNames = {id:'要員ID',name:'氏名',type:'区分',department:'所属部署',role:'役職',skills:'保有スキル',hireDate:'入社日',exp:'在籍年数',rate:'受注単価（万円）',cost:'原価単価（万円）',available:'稼働可能日',status:'現在の状態',nextMonthStatus:'来月以降の状態',waitingStartDate:'待機開始日',email:'メールアドレス',phone:'電話番号',notes:'備考',createdAt:'登録日時',updatedAt:'更新日時',address:'住所',birthday:'生年月日',birthDate:'生年月日',gender:'性別',age:'年齢',company:'所属会社',companyName:'所属会社名',nearestStation:'最寄り駅',station:'最寄り駅',nationality:'国籍',experience:'経験年数',qualifications:'資格',certifications:'資格',employmentType:'雇用形態',contractType:'契約形態',project:'参画案件',projectName:'参画案件名',startDate:'開始日',endDate:'終了日',memo:'メモ',remark:'備考',remarks:'備考',sales:'営業担当',salesPerson:'営業担当',updatedBy:'更新者'};
+        function memberJapaneseLabel(key) {
+            const label=memberFieldNames[key]; if(label)return label;
+            const words=String(key).replace(/([a-z])([A-Z])/g,'$1 $2').toLowerCase().split(/[\s_-]+/);
+            const dict={member:'要員',employee:'社員',contact:'連絡先',date:'日',time:'時刻',start:'開始',end:'終了',price:'金額',amount:'金額',monthly:'月額',daily:'日額',hourly:'時間単価',work:'勤務',location:'場所',skill:'スキル',level:'レベル',year:'年',years:'年数',month:'月',months:'月数',name:'名称',number:'番号',code:'コード',url:'URL',link:'リンク',description:'説明',history:'履歴',details:'詳細',detail:'詳細',information:'情報',info:'情報',manager:'管理者',assigned:'担当',client:'取引先',contract:'契約',status:'状態',type:'区分',category:'分類',value:'値',flag:'フラグ',active:'有効',is:'',has:''};
+            return words.map(w=>dict[w]||'追加情報').join('') || '追加情報';
+        }
+        const memberCoreFields = new Set(['id','name','type','skills','hireDate','exp','rate','cost','available','status','waitingStartDate','nextMonthStatus']);
+        function memberExtraEditor(member) {
+            const root=document.getElementById('member-extra-fields'); if(!root)return;
+            root.innerHTML='';
+            const entries=[];
+            const collect=(obj,path=[])=>Object.entries(obj).forEach(([key,value])=>{
+                if(path.length===0 && memberCoreFields.has(key))return;
+                if(value && typeof value==='object' && !Array.isArray(value))collect(value,[...path,key]);
+                else entries.push({path:[...path,key],value});
+            });
+            collect(member);
+            entries.forEach(({path,value})=>{
+                const wrap=document.createElement('label');wrap.className='ses-member-extra-field';
+                const title=document.createElement('span');title.textContent=path.map(memberJapaneseLabel).join(' / ');wrap.appendChild(title);
+                const input=document.createElement('input');
+                const key=path[path.length-1];
+                const dateLike=/date|birthday|birthDate|\bday\b/i.test(key) && /^\d{4}-\d{2}-\d{2}$/.test(String(value||''));
+                input.type=dateLike?'date':typeof value==='number'?'number':'text';
+                input.value=Array.isArray(value)?value.join(', '):(value==null?'':String(value));
+                input.dataset.memberPath=JSON.stringify(path);
+                input.dataset.memberKind=Array.isArray(value)?'array':typeof value;
+                input.className='w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white';
+                wrap.appendChild(input);root.appendChild(wrap);
+            });
+        }
+        function saveMemberExtra(member) {
+            document.querySelectorAll('#member-extra-fields [data-member-path]').forEach(input=>{
+                const path=JSON.parse(input.dataset.memberPath);let target=member;
+                for(const part of path.slice(0,-1)){if(!target[part] || typeof target[part]!=='object')target[part]={};target=target[part];}
+                const kind=input.dataset.memberKind;
+                target[path[path.length-1]]=kind==='array'?input.value.split(',').map(x=>x.trim()).filter(Boolean):kind==='number'?(input.value===''?null:Number(input.value)):kind==='boolean'?(input.value==='true'):input.value;
+            });
+        }
+        function memberDetailEscape(value) { return String(value == null ? '' : value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+        function openMemberDetailByIndex(index) {
+            const m = db.members[index]; if (!m) return;
+            const modal = document.getElementById('modal-member-detail');
+            document.getElementById('member-detail-title').textContent = m.name || '社員詳細';
+            const names = memberFieldNames;
+            const field=(key,val)=>`<div class="ses-client-detail-field"><dt>${memberDetailEscape(names[key] || memberJapaneseLabel(key))}</dt><dd>${memberDetailEscape(val == null || val === '' ? '未登録' : String(val))}</dd></div>`;
+            const entries=obj=>Object.entries(obj).map(([key,value])=>{
+                if(Array.isArray(value)) return field(key,value.join('、'));
+                if(value && typeof value==='object') return `<div class="ses-client-detail-field" style="grid-column:1/-1"><dt>${memberDetailEscape(names[key]||memberJapaneseLabel(key))}</dt><dl class="ses-client-detail-grid mt-3">${entries(value)}</dl></div>`;
+                return field(key,value);
+            }).join('');
+            document.getElementById('member-detail-fields').innerHTML=entries(m);
+            document.getElementById('member-detail-edit').onclick=()=>{closeModal('modal-member-detail');editMember(m.id);};
+            document.getElementById('member-detail-delete').onclick=()=>{closeModal('modal-member-detail');deleteMember(m.id);};
+            modal.classList.remove('hidden');
+            const dialog=modal.querySelector('.ses-member-detail-dialog');if(dialog)dialog.scrollTop=0;
+        }
         // --- INTERVIEWS TABLE ---
         function renderInterviewsTable() {
             const tbody = document.getElementById('interviews-table-body');
@@ -5419,7 +5502,9 @@
                 }
                 const index = clientExtraPaths.push({path,original:value}) - 1;
                 const display = Array.isArray(value) ? value.map(v => typeof v === 'object' ? Object.values(v).join('・') : v).join('、') : String(value ?? '');
-                fields.push(`<div><label for="client-extra-${index}">${clientDisplayText(label)}</label><textarea id="client-extra-${index}" rows="2" data-client-extra="${index}">${clientDisplayText(display)}</textarea></div>`);
+                const isDate = typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && /(date|日|開始|終了)/i.test(label + path.join(''));
+                const input = typeof value === 'number' ? `<input type="number" step="any" id="client-extra-${index}" data-client-extra="${index}" value="${clientDisplayText(display)}">` : isDate ? `<input type="date" id="client-extra-${index}" data-client-extra="${index}" value="${clientDisplayText(display)}">` : `<textarea id="client-extra-${index}" rows="2" data-client-extra="${index}">${clientDisplayText(display)}</textarea>`;
+                fields.push(`<div><label for="client-extra-${index}">${clientDisplayText(label)}</label>${input}</div>`);
             };
             Object.entries(client || {}).filter(([key]) => !clientStandardFields.has(key)).forEach(([key,value]) => walk(value,[key],clientFieldLabels[key] || key));
             area.innerHTML = fields.join('');
@@ -5504,6 +5589,7 @@
 
             saveStoredData();
             closeModal('modal-client');
+            if (id) { const saved = db.clients.find(c => c.id === id); if (saved) openClientDetailByIndex(db.clients.findIndex(c => c.id === saved.id)); }
         }
 
         function deleteClient(id) {
@@ -5546,7 +5632,11 @@
             target.innerHTML = p ? Object.entries(p).filter(([k])=>!projectCoreKeys.has(k)).map(([key,value]) => {
                 const label=projectInfoLabels[key]||'追加情報';
                 const serialized = value !== null && typeof value === 'object' ? JSON.stringify(value,null,2) : String(value ?? '');
-                return `<div><label class="block text-slate-400 mb-1">${projectInfoEscape(label)}</label><textarea class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" rows="${typeof value === 'object' && value !== null ? 3 : 2}" data-project-extra="${projectInfoEscape(key)}" data-project-type="${Array.isArray(value)?'array':value===null?'null':typeof value}">${projectInfoEscape(serialized)}</textarea></div>`;
+                const fieldType = Array.isArray(value)?'array':value===null?'null':typeof value;
+                const dateField = typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && /(date|日|開始|終了)/i.test(key+label);
+                const attrs = `class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" data-project-extra="${projectInfoEscape(key)}" data-project-type="${fieldType}"`;
+                const control = fieldType === 'number' ? `<input type="number" step="any" ${attrs} value="${projectInfoEscape(serialized)}">` : dateField ? `<input type="date" ${attrs} value="${projectInfoEscape(serialized)}">` : `<textarea ${attrs} rows="${typeof value === 'object' && value !== null ? 3 : 2}">${projectInfoEscape(serialized)}</textarea>`;
+                return `<div><label class="block text-slate-400 mb-1">${projectInfoEscape(label)}</label>${control}</div>`;
             }).join('') : '';
         }
         function readProjectExtraFields() {
@@ -5614,6 +5704,7 @@
 
             saveStoredData();
             closeModal('modal-project');
+            if (id) { const index = db.projects.findIndex(p => p.id === id); if (index >= 0) openProjectInfoByIndex(index); }
         }
 
         function getProjectParticipants(project) {
@@ -5697,7 +5788,9 @@
             document.getElementById('member-id').value = '';
             const hireInput = document.getElementById('member-hire-date'); if (hireInput) hireInput.value = '';
             document.getElementById('member-exp').value = '';
-            document.getElementById('modal-member-title').innerText = '新規エンジニア登録';
+            document.getElementById('modal-member-title').innerText = '新規社員登録';
+            memberExtraEditor({});
+            document.getElementById('member-next-month-status').value='稼働中';
             document.getElementById('modal-member').classList.remove('hidden');
         }
 
@@ -5715,7 +5808,9 @@
             document.getElementById('member-available').value = m.available;
             document.getElementById('member-status').value = m.status;
             document.getElementById('member-waiting-start').value = m.waitingStartDate || '';
-            document.getElementById('modal-member-title').innerText = 'エンジニア情報編集';
+            document.getElementById('modal-member-title').innerText = '社員情報編集';
+            document.getElementById('member-next-month-status').value=m.nextMonthStatus || m.status || '稼働中';
+            memberExtraEditor(m);
             document.getElementById('modal-member').classList.remove('hidden');
         }
 
@@ -5732,17 +5827,20 @@
             const available = document.getElementById('member-available').value;
             const status = document.getElementById('member-status').value;
             const waitingStartDate = document.getElementById('member-waiting-start').value;
+            const nextMonthStatus = document.getElementById('member-next-month-status').value;
 
             if (id) {
                 const index = db.members.findIndex(m => m.id === id);
-                if (index !== -1) db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate };
+                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus }; saveMemberExtra(db.members[index]); }
             } else {
                 const newId = `MEM-${String(db.members.length + 1).padStart(3, '0')}`;
-                db.members.push({ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate });
+                const member={ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus };
+                saveMemberExtra(member); db.members.push(member);
             }
 
             saveStoredData();
             closeModal('modal-member');
+            if (id) { const index=db.members.findIndex(m=>m.id===id); if(index>=0)openMemberDetailByIndex(index); }
         }
 
         function deleteMember(id) {

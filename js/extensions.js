@@ -456,12 +456,14 @@
             ['面談予定', (month) => db.interviews.filter(i => ['予定調整済','面談予定','予定','調整済み'].includes(i.status) && interviewMonth(i) === month).length]
         ];
         const colors = ['#00f5ff','#ff39d4','#ffe75b','#00ffba','#66e9b6'];
-        target.className = 'grid grid-cols-2 lg:grid-cols-5 gap-3';
-        target.innerHTML = [ ['今月',monthKey(thisMonth)], ['先月',monthKey(lastMonth)] ].map(([title,month]) =>
-            `<div class="col-span-2 lg:col-span-5 text-xs font-bold text-cyan-300 mt-2">${title}（${month}）</div>` +
-            labels.map(([name,calc],i) => `<div class="rounded-lg p-3 bg-slate-900/70 border h-full min-h-[100px]" style="border-color:${colors[i]};box-shadow:0 0 12px ${colors[i]}55,inset 0 0 10px ${colors[i]}15"><div class="text-xs text-slate-300">${name}</div><div class="text-xl font-bold mt-1" style="color:${colors[i]};text-shadow:0 0 12px ${colors[i]}99">${calc(month)}件</div></div>`).join('') +
-            `<div class="rounded-lg p-3 bg-slate-900/70 border h-full min-h-[100px]" style="border-color:${colors[4]};box-shadow:0 0 12px ${colors[4]}55,inset 0 0 10px ${colors[4]}15"><div class="text-xs text-slate-300">待機要員</div><div class="text-xl font-bold mt-1" style="color:${colors[4]};text-shadow:0 0 12px ${colors[4]}99">${waitingForMonth(month).length}名</div><div class="text-xs text-slate-300 mt-2 space-y-1">${waitingForMonth(month).map(m => `<div class="break-words">${safeText(m.name)}（${safeText(m.waitingStartDate)}〜）</div>`).join('') || '<div>該当者なし</div>'}</div></div>`
-        ).join('');
+        // モバイル: 待機要員を横幅いっぱいに、その他4項目を均等な2列×2行に配置。
+        target.className = 'dashboard-sales-kpi-grid grid grid-cols-2 gap-3';
+        target.innerHTML = [ ['今月',monthKey(thisMonth)], ['先月',monthKey(lastMonth)] ].map(([title,month]) => {
+            const benchMembers = waitingForMonth(month);
+            const benchCard = `<div class="dashboard-sales-kpi-card dashboard-sales-kpi-bench rounded-lg p-3 bg-slate-900/70 border" style="border-color:${colors[4]};box-shadow:0 0 12px ${colors[4]}55,inset 0 0 10px ${colors[4]}15"><div class="text-xs text-slate-300">待機要員</div><div class="text-xl font-bold mt-1" style="color:${colors[4]};text-shadow:0 0 12px ${colors[4]}99">${benchMembers.length}名</div><div class="text-xs text-slate-300 mt-2 space-y-1">${benchMembers.map(m => `<div class="break-words">${safeText(m.name)} / 待機開始日：${safeText(m.waitingStartDate || '未登録')}</div>`).join('') || '<div>該当者なし</div>'}</div></div>`;
+            const metricCards = labels.map(([name,calc],i) => `<div class="dashboard-sales-kpi-card rounded-lg p-3 bg-slate-900/70 border" style="border-color:${colors[i]};box-shadow:0 0 12px ${colors[i]}55,inset 0 0 10px ${colors[i]}15"><div class="text-xs text-slate-300">${name}</div><div class="text-xl font-bold mt-1" style="color:${colors[i]};text-shadow:0 0 12px ${colors[i]}99">${calc(month)}件</div></div>`).join('');
+            return `<section class="dashboard-sales-kpi-month"><div class="dashboard-sales-kpi-month-title text-xs font-bold text-cyan-300">${title}（${month}）</div><div class="dashboard-sales-kpi-month-grid">${benchCard}${metricCards}</div></section>`;
+        }).join('');
     };
     let searchIndex=[];
     function updateGlobalSearchData(){if(typeof db === 'undefined')return;ensureSchema();searchIndex=[...db.clients.map(x=>({type:'取引先',id:x.id,name:x.name,detail:x.contact,tab:'clients'})),...db.projects.map(x=>({type:'案件',id:x.id,name:x.title,detail:x.clientName,tab:'projects'})),...db.members.map(x=>({type:'エンジニア',id:x.id,name:x.name,detail:(x.skills||[]).join(', '),tab:'members'})),...db.interviews.map(x=>({type:'面談',id:x.id,name:x.memberName,detail:x.projectTitle,tab:'interviews'})),...db.tasks.map(x=>({type:'タスク',id:x.id,name:x.title,detail:x.date,tab:'tasks'}))];}
@@ -546,7 +548,19 @@
     }
 
     const baseSwitchTab=window.switchTab;
-    window.switchTab=function(tab){if(typeof baseSwitchTab==='function')baseSwitchTab(tab);if(tab==='current-assignments')renderCurrentAssignments();if(['oneonones','feedback','meetings'].includes(tab))window.renderMemberSupportScreens?.();const link=document.getElementById('nav-'+tab);if(link){const group=link.closest('.menu-accordion-group');if(group){group.querySelector('.menu-accordion-body')?.classList.remove('hidden');group.querySelector('button i')?.classList.add('rotate-180')}}};
+    window.switchTab=function(tab){if(typeof baseSwitchTab==='function')baseSwitchTab(tab);if(tab==='current-assignments')renderCurrentAssignments();if(['oneonones','feedback','meetings'].includes(tab))window.renderMemberSupportScreens?.();const link=document.getElementById('nav-'+tab);if(link){const group=link.closest('.menu-accordion-group');if(group){group.querySelector('.menu-accordion-body')?.classList.remove('hidden');group.querySelector('button i')?.classList.add('rotate-180')}}
+        // The extension overrides app.js switchTab; reset the real scroll viewport here.
+        const resetViewScroll=()=>{
+          const main=document.querySelector('#app-container > div main')||document.querySelector('#app-container main');
+          if(main)main.scrollTop=0;
+          const panel=document.getElementById('view-'+tab);
+          if(panel)panel.scrollTop=0;
+          document.scrollingElement?.scrollTo(0,0);
+        };
+        resetViewScroll();
+        requestAnimationFrame(resetViewScroll);
+        setTimeout(resetViewScroll,50);
+      };
     document.addEventListener('DOMContentLoaded',()=>{
       const main=document.querySelector('main')||document.querySelector('#main-content')||document.querySelector('.flex-1.overflow-y-auto');
       if(main&&!document.getElementById('view-current-assignments')){const p=document.createElement('section');p.id='view-current-assignments';p.className='view-panel hidden h-full overflow-y-auto';main.appendChild(p)}

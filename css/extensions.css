@@ -17,3 +17,21 @@
 .global-result{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;padding:10px 12px;border-bottom:1px solid rgba(100,116,139,.15);color:#e2e8f0}.global-result:hover{background:rgba(34,211,238,.08)}.global-result span:last-child{display:flex;flex-direction:column;gap:3px;min-width:0}.global-result strong{font-size:12px;overflow:hidden;text-overflow:ellipsis}.global-result small{font-size:10px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis}
 .theme-standard .ext-input{background:#fff;color:#0f172a;border-color:#cbd5e1}.theme-standard .ext-table td{color:#334155}.theme-standard .ext-table th{background:#f1f5f9;color:#475569}.theme-standard #global-search{background:#fff;color:#0f172a}
 @media(max-width:760px){.global-search-wrap{width:36px}.global-search-wrap:focus-within{width:min(200px,35vw)}.global-search-wrap:not(:focus-within) #global-search{padding-left:30px}.global-search-wrap:not(:focus-within) #global-search::placeholder{color:transparent}.ext-table{font-size:11px}}
+
+/* Dashboard sales KPI: consistent card sizes, full-width waiting card on mobile. */
+#dashboard-sales-kpis.dashboard-sales-kpi-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#dashboard-sales-kpis .dashboard-sales-kpi-card { min-width:0; min-height:105px; height:100%; box-sizing:border-box; }
+#dashboard-sales-kpis .dashboard-sales-kpi-bench { grid-column:1/-1; min-height:105px; }
+@media (min-width:1024px) {
+  #dashboard-sales-kpis.dashboard-sales-kpi-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  #dashboard-sales-kpis .dashboard-sales-kpi-bench { grid-column:1/-1; }
+  #dashboard-sales-kpis > .col-span-2 { grid-column:1/-1; }
+}
+
+/* v3.2.47: independent month grids, consistent mobile KPI card sizing. */
+#dashboard-sales-kpis.dashboard-sales-kpi-grid {display:grid;grid-template-columns:minmax(0,1fr)!important;gap:18px}
+#dashboard-sales-kpis .dashboard-sales-kpi-month {min-width:0}
+#dashboard-sales-kpis .dashboard-sales-kpi-month-title {margin:0 0 10px}
+#dashboard-sales-kpis .dashboard-sales-kpi-month-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px;align-items:stretch}
+#dashboard-sales-kpis .dashboard-sales-kpi-month-grid > .dashboard-sales-kpi-bench {grid-column:1/-1!important;width:100%;height:auto}
+#dashboard-sales-kpis .dashboard-sales-kpi-month-grid > .dashboard-sales-kpi-card:not(.dashboard-sales-kpi-bench) {grid-column:auto!important;width:100%;min-width:0;min-height:104px;height:100%}
