@@ -503,11 +503,27 @@
       const esc=v=>String(v??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
       panel.innerHTML=`<div class="p-6 space-y-5"><div class="flex flex-wrap items-center justify-between gap-3"><div><h2 class="text-2xl font-bold neon-heading">現在の参画状況</h2><p class="text-sm opacity-70 mt-1">現在、実際に案件へ参画しているメンバーの確認画面です。案件がない人・退場予定者向けの人材マッチングとは分けて管理します。</p></div><div class="px-4 py-2 rounded-xl border border-emerald-400/40 text-emerald-300">稼働中 ${members.length} 名</div></div><div class="glass-card rounded-xl overflow-x-auto"><table class="w-full text-sm"><thead><tr class="text-left border-b border-white/10"><th class="p-3">メンバー</th><th class="p-3">参画案件</th><th class="p-3">取引先</th><th class="p-3">月額単価</th><th class="p-3">ステータス</th><th class="p-3">備考</th></tr></thead><tbody>${members.map(m=>{const pname=m.currentProject||m.projectName||m.projectTitle||m.assignment||m.project||'案件情報未登録';const proj=(db.projects||[]).find(p=>p.id===pname||p.title===pname);return `<tr class="border-b border-white/5 hover:bg-white/5"><td class="p-3 font-semibold">${esc(m.name||m.fullName||m.id)}</td><td class="p-3">${esc(proj?.title||pname)}</td><td class="p-3">${esc(proj?.clientName||m.clientName||'—')}</td><td class="p-3 text-emerald-300">${Number(m.rate||m.monthlyRate||0).toLocaleString('ja-JP')} 万円</td><td class="p-3"><span class="px-2 py-1 rounded-full bg-emerald-400/10 text-emerald-300">${esc(m.status)}</span></td><td class="p-3">${esc(m.assignmentNote||m.note||'—')}</td></tr>`}).join('')||'<tr><td colspan="6" class="p-8 text-center opacity-60">稼働中のメンバーがいません。メンバー管理でステータスを確認してください。</td></tr>'}</tbody></table></div><p class="text-xs opacity-60">※参画案件の紐付け情報が登録されていない場合は「案件情報未登録」と表示されます。</p></div>`;
     }
+    window.openCurrentAssignmentsDialog=function(){
+      renderCurrentAssignments();
+      const source=document.getElementById('view-current-assignments');
+      if(!source)return;
+      let modal=document.getElementById('ses-current-assignments-dialog');
+      if(!modal){
+        modal=document.createElement('div');modal.id='ses-current-assignments-dialog';modal.className='ses-assignment-overlay';
+        modal.innerHTML='<div class="ses-assignment-dialog" role="dialog" aria-modal="true" aria-label="現在の参画状況"><div class="ses-assignment-dialog-header"><strong>現在の参画状況</strong><button type="button" aria-label="閉じる" onclick="closeCurrentAssignmentsDialog()"><i class="fa-solid fa-xmark"></i></button></div><div class="ses-assignment-dialog-body"></div></div>';
+        modal.addEventListener('click',e=>{if(e.target===modal)window.closeCurrentAssignmentsDialog()});
+        document.body.appendChild(modal);
+      }
+      modal.querySelector('.ses-assignment-dialog-body').innerHTML=source.innerHTML;
+      modal.classList.add('is-open');
+    };
+    window.closeCurrentAssignmentsDialog=function(){document.getElementById('ses-current-assignments-dialog')?.classList.remove('is-open')};
     function setupGroupedNavigation(){
       const sidebar=document.querySelector('#sidebar > div.py-4'); if(!sidebar||sidebar.dataset.grouped==='1')return;
-      const ids=['dashboard','clients','projects','members','interviews','revenue','matching','tasks','reports','spot-jobs','expenses','merchandise','current-assignments','oneonones','feedback','meetings'];
+      const ids=['dashboard','clients','projects','members','interviews','revenue','matching','tasks','reports','spot-jobs','expenses','merchandise','oneonones','feedback','meetings'];
+      sidebar.querySelector('#nav-current-assignments')?.remove();
       const links=Array.from(sidebar.querySelectorAll('a.nav-item'));
-      const groupDefs=[['概要',['dashboard']],['営業・案件管理',['clients','projects','matching','interviews']],['メンバー管理',['members','current-assignments','oneonones','feedback','meetings']],['売上・経費',['revenue','spot','expenses','merchandise']],['業務支援',['tasks','reports']],['マイメニュー',['chat','mypage','accounts','logout','settings']]];
+      const groupDefs=[['概要',['dashboard']],['営業・案件管理',['clients','projects','matching','interviews']],['メンバー管理',['members','oneonones','feedback','meetings']],['売上・経費',['revenue','spot','expenses','merchandise']],['業務支援',['tasks','reports']],['マイメニュー',['chat','mypage','accounts','logout','settings']]];
       const linkMap={}; links.forEach(a=>{const id=(a.id||'').replace('nav-','');if(id)linkMap[id]=a});
       // Keep any existing non-link header; move only known menu links into accordion groups.
       sidebar.innerHTML='';
@@ -566,7 +582,7 @@
       if(main&&!document.getElementById('view-current-assignments')){const p=document.createElement('section');p.id='view-current-assignments';p.className='view-panel hidden h-full overflow-y-auto';main.appendChild(p)}
       // Insert a navigation entry before grouping existing navigation.
       const navRoot=document.querySelector('#sidebar > div.py-4');
-      if(navRoot&&!document.getElementById('nav-current-assignments')){const a=document.createElement('a');a.href='#';a.id='nav-current-assignments';a.className='nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50';a.innerHTML='<i class="fa-solid fa-user-check w-5 text-center text-base"></i><span class="sidebar-text">現在の参画状況</span>';a.onclick=e=>{e.preventDefault();window.switchTab('current-assignments')};navRoot.appendChild(a)}
+      if(false&&navRoot&&!document.getElementById('nav-current-assignments')){const a=document.createElement('a');a.href='#';a.id='nav-current-assignments';a.className='nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50';a.innerHTML='<i class="fa-solid fa-user-check w-5 text-center text-base"></i><span class="sidebar-text">現在の参画状況</span>';a.onclick=e=>{e.preventDefault();window.switchTab('current-assignments')};navRoot.appendChild(a)}
       if(typeof renderAllViews==='function'){const old=window.renderAllViews;window.renderAllViews=function(){if(old)old();renderCurrentAssignments();renderMerchandise()};}
     });
 

@@ -265,3 +265,27 @@ body.theme-standard .ses-member-actual-id{color:#17243a}
   .ses-member-list-table .ses-member-status-label {font-size:9px;white-space:nowrap;}
   .ses-member-list-table .ses-member-status-value {font-size:10px;line-height:1.2;white-space:nowrap;overflow-wrap:normal;max-width:none;padding:2px 5px;}
 }
+
+/* v3.2.66: member toolbar and assignment modal */
+#view-members .ses-member-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:10px;width:100%}
+#view-members .ses-member-add-button{margin-left:auto;white-space:nowrap}
+#view-members .ses-member-assignment-button{border:1px solid #22d3ee;color:#a5f3fc;background:rgba(8,47,73,.6);box-shadow:0 0 12px rgba(34,211,238,.35)}
+.ses-assignment-overlay{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(2,6,23,.78);backdrop-filter:blur(6px)}
+.ses-assignment-overlay.is-open{display:flex}
+.ses-assignment-dialog{width:min(1200px,95vw);max-height:90vh;display:flex;flex-direction:column;overflow:hidden;border:1px solid #22d3ee;border-radius:18px;background:#081426;color:#e2e8f0;box-shadow:0 0 22px rgba(34,211,238,.55),0 0 45px rgba(217,70,239,.22)}
+.ses-assignment-dialog-header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid rgba(34,211,238,.4);flex:none}
+.ses-assignment-dialog-header button{padding:7px 12px;border:1px solid #22d3ee;border-radius:9px;color:inherit}
+.ses-assignment-dialog-body{overflow:auto;min-height:0}
+body.standard-theme .ses-assignment-dialog,body.theme-standard .ses-assignment-dialog{background:#fff;color:#142d4b}
+@media(max-width:640px){#view-members .ses-member-toolbar{justify-content:stretch}#view-members .ses-member-toolbar select,#view-members .ses-member-toolbar input{flex:1 1 100%;width:100%}#view-members .ses-member-add-button{margin-left:auto}}
+
+/* v3.2.67: keep member action buttons adjacent on all viewport widths. */
+#view-members .ses-member-action-pair{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:0 0 auto;margin-left:auto;order:3}
+#view-members .ses-member-action-pair .ses-member-add-button{margin-left:0}
+#view-members .ses-member-action-pair button{white-space:nowrap;min-width:0;justify-content:center}
+@media(max-width:767px){
+ #view-members .ses-member-toolbar{display:flex;flex-wrap:wrap;gap:10px}
+ #view-members #member-filter-status,#view-members #member-search{flex:1 1 100%;width:100%;height:40px}
+ #view-members .ses-member-action-pair{width:100%;justify-content:flex-end;order:3;margin-left:0;gap:7px}
+ #view-members .ses-member-action-pair button{height:40px;padding:7px 9px;font-size:10px;line-height:1.2}
+}

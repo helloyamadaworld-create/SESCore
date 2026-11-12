@@ -521,6 +521,12 @@ body.theme-standard #modal-client-detail .ses-client-detail-dialog>div:first-chi
                             <p class="text-xs text-slate-400">自社社員・パートナー要員の保有スキル・稼働状況・提案管理</p>
                         </div>
                         <div class="ses-member-toolbar">
+                            <div class="ses-member-action-pair">
+                            <button type="button" onclick="openCurrentAssignmentsDialog()" class="ses-member-assignment-button px-3 py-2 rounded-lg text-xs font-semibold transition flex items-center"><i class="fa-solid fa-user-check mr-1"></i> 現在の参画状況</button>
+                            <button onclick="openMemberModal()" class="ses-member-add-button px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
+                                <i class="fa-solid fa-plus mr-1"></i> 新規社員登録
+                            </button>
+                            </div>
                             <select id="member-filter-status" onchange="renderMembersTable()" class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400">
                                 <option value="ALL">全員表示</option>
                                 <option value="稼働中">稼働中</option>
@@ -529,9 +535,7 @@ body.theme-standard #modal-client-detail .ses-client-detail-dialog>div:first-chi
                                 <option value="未設定">未設定</option>
                             </select>
                             <input type="text" id="member-search" oninput="renderMembersTable()" placeholder="氏名、言語、フレームワークで検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
-                            <button onclick="openMemberModal()" class="ses-member-add-button px-3 py-2 rounded-lg text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition flex items-center">
-                                <i class="fa-solid fa-plus mr-1"></i> 新規社員登録
-                            </button>
+
                         </div>
                     </div>
 
@@ -1040,6 +1044,10 @@ body.theme-standard #modal-client-detail .ses-client-detail-dialog>div:first-chi
     <script src="js/app.js"></script>
     <script src="js/extensions.js"></script>
     <script src="js/fiscal-dashboard.js"></script>
+    <script src="js/customer-meetings.js"></script>
+    <script src="js/sales-feedback.js"></script>
+    <script src="js/oneonone-records.js"></script>
+    <script src="js/regular-meetings.js"></script>
     <script src="js/mobile.js"></script>
     <script src="js/user-features.js"></script>
     <script src="js/neon-preferences.js"></script>
@@ -1074,5 +1082,15 @@ body.theme-standard #modal-client-detail .ses-client-detail-dialog>div:first-chi
 <link rel="stylesheet" href="css/theme-color.css">
 <link rel="stylesheet" href="css/theme-advanced.css">
 <link rel="stylesheet" href="css/standard-readability.css">
+<link rel="stylesheet" href="css/customer-meetings.css">
+<link rel="stylesheet" href="css/sales-feedback.css">
+<link rel="stylesheet" href="css/oneonone-records.css">
+<link rel="stylesheet" href="css/regular-meetings.css">
+<link rel="stylesheet" href="css/v3265-unified-neon.css">
+<link rel="stylesheet" href="css/v3269-dialog-viewport.css">
+<link rel="stylesheet" href="css/v3270-dialog-unified.css">
+<script src="js/v3270-dialog-portal.js"></script>
+<link rel="stylesheet" href="css/v3271-fiscal-target-dialog.css">
+<script src="js/v3271-fiscal-target-dialog.js"></script>
 </body>
 </html>

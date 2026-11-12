@@ -1,0 +1,17 @@
+/* v3.2.69: Dialog outer frames stay inside the visible viewport; only content scrolls. */
+:root{--ses-dialog-safe-height:calc(100dvh - 32px)}
+[id^="modal-"].fixed.inset-0,.cm-overlay,.sf-overlay,.oo-overlay,.rm-overlay,.ses-assignment-modal,.support-detail-modal{box-sizing:border-box;max-height:100dvh;overflow:hidden}
+[id^="modal-"].fixed.inset-0>div:first-child,.app-dialog-panel,.cm-dialog,.sf-dialog,.oo-dialog,.rm-dialog,.ses-assignment-dialog,.support-detail-dialog{box-sizing:border-box!important;max-height:var(--ses-dialog-safe-height)!important;min-height:0!important;overflow:hidden!important}
+/* Unified fixed frame / scrollable body, matching the 1on1 editor. */
+.cm-dialog,.sf-dialog,.oo-dialog,.rm-dialog,.ses-assignment-dialog,.support-detail-dialog,#modal-member .ses-member-form-dialog,#modal-client .ses-client-edit-dialog,#modal-project .ses-project-edit-dialog{display:flex!important;flex-direction:column!important}
+.cm-dialog>header,.sf-dialog>header,.oo-dialog>header,.rm-dialog>header,.cm-dialog>footer,.sf-dialog>footer,.oo-dialog>footer,.rm-dialog>footer,.ses-assignment-dialog-header,.support-detail-header{flex:0 0 auto!important;position:relative;z-index:2}
+.cm-dialog-body,.sf-modal-body,.oo-body,.rm-modal-body,.ses-assignment-dialog-body,.support-detail-form,#modal-member .ses-member-form-content,#modal-client .ses-client-edit-form,#modal-project .ses-project-edit-form{min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain}
+/* Read-only details: header stays visible while the information scrolls. */
+#modal-client-detail .ses-client-detail-dialog,#modal-project-info .ses-project-info-dialog,#modal-member-detail .ses-member-detail-dialog{display:flex!important;flex-direction:column!important;overflow:hidden!important}
+#modal-client-detail .ses-client-detail-dialog>div:first-child,#modal-project-info .ses-project-info-dialog>div:first-child,#modal-member-detail .ses-member-detail-dialog>div:first-child{position:relative!important;top:auto!important;flex:0 0 auto!important}
+#modal-client-detail .ses-client-detail-dialog>dl,#modal-project-info .ses-project-info-dialog>dl,#modal-member-detail .ses-member-detail-dialog>dl{min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain}
+/* Other legacy dialogs: retain the existing structure but scroll inside their bounded panel. */
+#modal-import>div:first-child,#modal-interview>div:first-child,#modal-project-detail>div:first-child,#modal-account .app-dialog-panel{overflow-y:auto!important;overscroll-behavior:contain}
+/* Keep the close control visible and comfortably clickable. */
+.cm-dialog>header button[aria-label="閉じる"],.sf-dialog>header button[aria-label="閉じる"],.oo-dialog>header button[aria-label="閉じる"],.rm-dialog>header button[aria-label="閉じる"],.ses-assignment-dialog-header button[aria-label="閉じる"],.support-detail-header button[aria-label="閉じる"]{flex:0 0 auto;min-width:36px;min-height:36px;display:inline-flex;align-items:center;justify-content:center;font-size:22px;line-height:1}
+@media(max-width:640px){:root{--ses-dialog-safe-height:calc(100dvh - 20px)}[id^="modal-"].fixed.inset-0{padding:10px!important}.cm-overlay,.sf-overlay,.oo-overlay,.rm-overlay{padding:10px!important}.cm-dialog,.sf-dialog,.oo-dialog,.rm-dialog{width:100%!important;max-width:100%!important}}

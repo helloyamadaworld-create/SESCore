@@ -1,0 +1,18 @@
+/* Dashboard target dialog: viewport-contained, scroll confined to body. */
+.ses-fiscal-target-overlay{position:fixed!important;inset:0!important;z-index:12000!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:16px!important;box-sizing:border-box!important;background:rgba(0,3,16,.78)!important;backdrop-filter:blur(7px);overflow:hidden!important}
+.ses-fiscal-target-overlay.hidden{display:none!important}
+.ses-fiscal-target-dialog{display:flex;flex-direction:column;width:min(920px,100%);max-height:calc(100dvh - 32px);min-height:0;overflow:hidden;border:1px solid #00dafa;border-radius:18px;background:#0b142a;color:#e7f4ff;box-shadow:0 0 20px rgba(0,224,255,.38),0 0 35px rgba(215,30,255,.25)}
+.ses-fiscal-target-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:0 0 auto;padding:18px 24px;border-bottom:1px solid rgba(148,163,184,.2)}
+.ses-fiscal-target-header h2{font-size:20px;font-weight:800;text-shadow:0 0 12px rgba(0,224,255,.6)}
+.ses-fiscal-target-close{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:1px solid #079cc4;border-radius:10px;font-size:28px;line-height:1;color:inherit;background:#07152b}
+.ses-fiscal-target-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:22px 24px}
+.ses-fiscal-target-body>.glass-card{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;max-width:none!important}
+.ses-fiscal-target-body>.glass-card>h2{display:none}
+.ses-fiscal-target-body input,.ses-fiscal-target-body select{width:100%;max-width:100%;box-sizing:border-box;background:#06152b;color:#e7f4ff;border:1px solid #087ca3;border-radius:9px}
+.ses-fiscal-target-footer{flex:0 0 auto;display:flex;justify-content:flex-end;padding:14px 24px;border-top:1px solid rgba(148,163,184,.2)}
+.ses-fiscal-target-cancel{padding:10px 22px;border:1px solid #087ca3;border-radius:10px;background:#07152b;color:inherit}
+body.ses-fiscal-dialog-open{overflow:hidden!important}
+body.theme-standard .ses-fiscal-target-dialog{background:#fff;color:#17243a;border-color:#cbd5e1;box-shadow:0 12px 42px rgba(15,23,42,.22)}
+body.theme-standard .ses-fiscal-target-close,body.theme-standard .ses-fiscal-target-cancel{background:#f8fafc;color:#17243a;border-color:#cbd5e1}
+body.theme-standard .ses-fiscal-target-body input,body.theme-standard .ses-fiscal-target-body select{background:#fff;color:#17243a;border-color:#94a3b8}
+@media(max-width:640px){.ses-fiscal-target-overlay{padding:10px!important}.ses-fiscal-target-dialog{max-height:calc(100dvh - 20px)}.ses-fiscal-target-header,.ses-fiscal-target-body,.ses-fiscal-target-footer{padding:14px}}

@@ -5331,7 +5331,7 @@
 
             tbody.innerHTML = filtered.map((m, index) => `
                 <tr class="ses-member-row hover:bg-slate-800/40 transition">
-                    <td class="p-2 font-mono text-cyan-400"><div class="ses-member-id-cell"><span class="ses-member-number">${String(orderedMembers.indexOf(m) + 1).padStart(3, '0')}</span><span class="ses-member-actual-id" title="要員ID：${memberDetailEscape(m.id || '未設定')}">${memberDetailEscape(m.id || '未設定')}</span></div></td>
+                    <td class="p-2 font-mono text-cyan-400"><div class="ses-member-id-cell"><span class="ses-member-actual-id" title="登録済み内部ID：${memberDetailEscape(m.id || '未設定')}">MEN-${String(orderedMembers.indexOf(m) + 1).padStart(3, '0')}</span></div></td>
                     <td class="p-2 font-bold text-slate-200">${memberDetailEscape(m.name)} <span class="ml-1 text-[9px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 font-normal">${memberDetailEscape(m.type)}</span></td>
                     <td class="p-2 text-slate-300">${memberDetailEscape(m.department || '未登録')}</td>
                     <td class="p-2 text-slate-300">${memberDetailEscape(m.role || '未登録')}</td>
@@ -5403,6 +5403,7 @@
         // --- INTERVIEWS TABLE ---
         function renderInterviewsTable() {
             const tbody = document.getElementById('interviews-table-body');
+            if (!tbody) return; // customer-meetings module replaces the legacy table view
 
             tbody.innerHTML = db.interviews.map(i => `
                 <tr class="hover:bg-slate-800/40 transition">
