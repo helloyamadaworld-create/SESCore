@@ -17,143 +17,25 @@
 
     <script src="js/tailwind-config.js"></script>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/extensions.css">
-    <link rel="stylesheet" href="css/neon-overdrive.css">
-    <link rel="stylesheet" href="css/palette-switch.css">
-    <link rel="stylesheet" href="css/neon-v316.css">
-    <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" href="css/viewport-fix.css">
-    <link rel="stylesheet" href="css/revenue-layout-fix.css">
-    <link rel="stylesheet" href="css/mobile-overhaul.css">
-    <link rel="stylesheet" href="css/mobile-portrait-fix.css">
-    <link rel="stylesheet" href="css/user-features.css">
-    <link rel="stylesheet" href="css/cyber-neon-v317.css">
-    <link rel="stylesheet" href="css/cyber-flow-v318.css">
-    <link rel="stylesheet" href="css/cyber-system-v319.css">
-    <link rel="stylesheet" href="css/theme-switch-restore.css">
-<style>
-body.theme-neon #view-clients .ses-client-row{border-bottom:1px solid rgba(0,245,255,.12)}
-body.theme-neon #view-clients .ses-client-row:hover{background:linear-gradient(90deg,rgba(0,245,255,.09),rgba(255,57,212,.05))}
-body.theme-neon #view-clients .ses-client-company{font-weight:700;font-size:13px;color:#f1faff;letter-spacing:.025em}
-body.theme-neon #view-clients .ses-client-status{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(148,163,184,.3);background:rgba(30,41,59,.55);border-radius:999px;padding:6px 12px;color:#cbd5e1;font-weight:600}
-body.theme-neon #view-clients .ses-client-status.is-active{color:#6fffd6;border-color:rgba(0,255,186,.4);background:rgba(0,255,186,.07)}
-body.theme-neon #view-clients .ses-client-dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
-#view-clients .ses-client-detail-button{font-size:21px;min-width:44px;min-height:44px;color:#67e8f9;border:1px solid rgba(103,232,249,.35);border-radius:12px;transition:transform .2s,box-shadow .2s}
-body.theme-neon #view-clients .ses-client-detail-button:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,245,255,.4)}
-.ses-client-detail-dialog{max-height:90vh;overflow-y:auto}
-.ses-client-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.ses-client-detail-field{min-width:0;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:13px;background:rgba(15,23,42,.45)}
-.ses-client-detail-field dt{font-size:11px;color:#94a3b8;margin-bottom:7px}
-.ses-client-detail-field dd{font-size:13px;color:#f1f5f9;white-space:pre-wrap;overflow-wrap:anywhere}
-.ses-client-edit-action,.ses-client-delete-action{padding:10px 18px;border-radius:10px;font-weight:700;font-size:12px}
-.ses-client-edit-action{background:#0891b2;color:white}.ses-client-delete-action{border:1px solid rgba(251,113,133,.4);color:#fda4af}
-body.theme-neon .ses-client-detail-field{border-color:rgba(0,245,255,.22);box-shadow:inset 0 0 12px rgba(0,245,255,.035)}
-#view-clients .ses-clients-table{table-layout:fixed;min-width:620px;border-collapse:collapse}
-#view-clients .ses-clients-table th,#view-clients .ses-clients-table td{padding:15px 18px;vertical-align:middle;box-sizing:border-box}
-#view-clients .ses-clients-table th:nth-child(3),#view-clients .ses-clients-table td:nth-child(3){text-align:center}
-#view-clients .ses-clients-table th:last-child,#view-clients .ses-clients-table td:last-child{text-align:center}
-#view-clients .ses-clients-table th{letter-spacing:.08em;font-weight:700;white-space:nowrap}
-#view-clients .ses-client-company{overflow-wrap:anywhere;line-height:1.55}
-#view-clients .ses-client-detail-button{display:inline-flex;align-items:center;justify-content:center;font-size:23px;min-width:48px;min-height:48px}
-/* Keep animated neon decoration attached to the dialog rather than the scrollable content. */
-body.theme-neon #modal-client-detail .ses-client-detail-dialog::before,
-body.theme-neon #modal-client-detail .ses-client-detail-dialog::after{content:none!important;animation:none!important;display:none!important}
-body.theme-neon #modal-client-detail .ses-client-detail-dialog{background-image:none!important;overflow-y:auto;overscroll-behavior:contain}
-.ses-client-detail-field dd{line-height:1.6}
-@media(max-width:560px){.ses-client-detail-grid{grid-template-columns:1fr}}
-/* Borderless close icons across all dialogs, including account dialog. */
-[id^="modal-"] button:has(.fa-xmark),#modal-account button[aria-label="閉じる"]{border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;background-image:none!important}
-.ses-client-header-action{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;font-size:16px;transition:background .2s,transform .2s}
-.ses-client-header-edit{color:#67e8f9;background:rgba(6,182,212,.12);border:1px solid rgba(103,232,249,.3)}
-.ses-client-header-delete{color:#fda4af;background:rgba(244,63,94,.1);border:1px solid rgba(251,113,133,.3)}
-.ses-client-header-action:hover{transform:translateY(-1px);filter:brightness(1.2)}
-.ses-client-extra-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.ses-client-extra-fields:empty{display:none}
-.ses-client-extra-fields label{display:block;color:#94a3b8;margin-bottom:5px}
-.ses-client-extra-fields input,.ses-client-extra-fields textarea{width:100%;background:#1e293b;border:1px solid #475569;border-radius:8px;padding:10px;color:#fff}
-@media(max-width:560px){.ses-client-extra-fields{grid-template-columns:1fr}}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-/* v3.2.38: client editor matches the detail dialog, with internal scrolling. */
-#modal-client .ses-client-edit-dialog{display:flex;flex-direction:column;max-height:min(90dvh,900px);overflow:hidden;padding:0;min-height:0}
-#modal-client .ses-client-edit-header{flex:none;padding:20px 24px 16px}
-#modal-client .ses-client-edit-form{display:flex;flex-direction:column;min-height:0;flex:1;overflow:hidden}
-#modal-client .ses-client-edit-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;overflow-y:auto;overscroll-behavior:contain;min-height:0;padding:20px 24px;align-content:start}
-#modal-client .ses-client-edit-fields>div:not([id="client-extra-fields"]){min-width:0;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:13px;background:rgba(15,23,42,.45)}
-#modal-client .ses-client-edit-fields>div.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;grid-column:1/-1}
-#modal-client .ses-client-edit-fields>div.grid>div{min-width:0}
-#modal-client .ses-client-edit-fields input,#modal-client .ses-client-edit-fields select,#modal-client .ses-client-edit-fields textarea{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
-#modal-client .ses-client-extra-fields{grid-column:1/-1;gap:12px}
-#modal-client .ses-client-extra-fields>div{min-width:0;border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:13px;background:rgba(15,23,42,.45)}
-#modal-client .ses-client-edit-footer{flex:none;padding:15px 24px;background:rgba(15,23,42,.9)}
-body.theme-neon #modal-client .ses-client-edit-fields>div:not([id="client-extra-fields"]),body.theme-neon #modal-client .ses-client-extra-fields>div{border-color:rgba(0,245,255,.22);box-shadow:inset 0 0 12px rgba(0,245,255,.035)}
-body.theme-neon #modal-client .ses-client-edit-dialog::before,body.theme-neon #modal-client .ses-client-edit-dialog::after{content:none!important;display:none!important;animation:none!important}
-body.theme-neon #modal-client .ses-client-edit-dialog{background-image:none!important}
-@media(max-width:560px){#modal-client .ses-client-edit-fields{grid-template-columns:1fr;padding:14px;gap:10px}#modal-client .ses-client-edit-fields>div.grid{grid-template-columns:1fr}#modal-client .ses-client-edit-header{padding:16px}#modal-client .ses-client-edit-footer{padding:12px 16px}#modal-client .ses-client-extra-fields{grid-template-columns:1fr}}
-/* v3.2.39: mobile client action stays within its own button. */
-@media(max-width:640px){
- #view-clients>div:first-child>div:last-child{display:flex;flex-wrap:wrap;gap:8px;min-width:0;width:100%}
- #view-clients #client-search{width:auto;flex:1 1 155px;min-width:0}
- #view-clients .ses-client-add-button{flex:0 1 auto;min-width:0;max-width:100%;white-space:nowrap;justify-content:center;gap:4px;padding:9px 10px;font-size:clamp(10px,2.7vw,12px);line-height:1.3}
- #view-clients .ses-client-add-button i{flex:none;margin-right:0}
-}
-/* Keep the mobile opening progress sentence on one line. */
-@media(max-width:640px){#opening-screen #loader-status{white-space:nowrap;font-size:clamp(8px,2.3vw,12px);letter-spacing:-.02em;min-width:0;overflow:hidden;text-overflow:clip}#opening-screen #loader-percent{flex-shrink:0;margin-left:8px}#opening-screen #terminal-logs{font-size:clamp(8px,2.1vw,12px)}#opening-screen #terminal-logs>div{white-space:nowrap}}
-
-/* v3.2.40: client sections and dialog breathing room. */
-#modal-client .ses-client-section-title{grid-column:1/-1;padding:10px 12px 9px;border-bottom:1px solid rgba(0,245,255,.55);font-size:13px;font-weight:800;letter-spacing:.08em;color:#67e8f9;text-shadow:0 0 9px rgba(0,245,255,.75);background:linear-gradient(90deg,rgba(0,245,255,.12),transparent);border-radius:8px}
-#modal-client .ses-client-edit-fields>.ses-client-section-title{border-top:0;background:linear-gradient(90deg,rgba(0,245,255,.12),transparent);box-shadow:none}
-/* Limit all modal content panels, without changing the fullscreen backdrop. */
-[id^="modal-"].fixed.inset-0>div:first-child{max-width:min(90vw,1100px)!important;box-sizing:border-box;min-width:0}
-#modal-client .ses-client-edit-dialog,#modal-client-detail .ses-client-detail-dialog{width:min(90vw,900px)!important;max-width:900px!important}
-@media(max-width:640px){[id^="modal-"].fixed.inset-0{padding:12px!important}[id^="modal-"].fixed.inset-0>div:first-child{max-width:90vw!important}#modal-client .ses-client-edit-dialog,#modal-client-detail .ses-client-detail-dialog{width:90vw!important}}
+    
 
 
-/* v3.2.43 project toolbar and client-consistent detail/edit presentation */
-#view-projects .ses-project-toolbar{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:10px;padding:12px;border:1px solid rgba(0,245,255,.27);border-radius:16px;background:rgba(8,24,45,.55);box-shadow:inset 0 0 15px rgba(0,245,255,.045)}
-#view-projects .ses-project-mode{display:flex;overflow:hidden;border:1px solid rgba(0,245,255,.5);border-radius:11px;flex-shrink:0}
-#view-projects .ses-project-mode button{min-height:40px;padding:9px 14px;font-weight:700;white-space:nowrap}
-#view-projects #project-filter-status,#view-projects #project-search{min-height:40px;min-width:0;border-radius:11px;border:1px solid rgba(0,245,255,.35);padding:9px 12px;font-size:12px}
-#view-projects #project-search{flex:1 1 180px;width:auto;max-width:300px}
-#view-projects .ses-project-toolbar>button{min-height:40px;border-radius:11px;padding:9px 14px;font-weight:700;white-space:nowrap;box-shadow:0 0 13px rgba(0,245,255,.23)}
-#view-projects .ses-project-list table{table-layout:fixed;min-width:580px}
-#view-projects .ses-project-list th:nth-child(1){width:16%}#view-projects .ses-project-list th:nth-child(2){width:34%}#view-projects .ses-project-list th:nth-child(3){width:25%}#view-projects .ses-project-list th:nth-child(4){width:16%}#view-projects .ses-project-list th:nth-child(5){width:9%}
-#view-projects .ses-project-list th,#view-projects .ses-project-list td{padding:14px 12px;overflow-wrap:anywhere;vertical-align:middle}
-#view-projects .ses-project-list th:nth-child(5),#view-projects .ses-project-list td:nth-child(5){text-align:center}
-/* Match the member detail action to the client/project detail icon. */
-#view-members .ses-client-detail-button{display:inline-flex;align-items:center;justify-content:center;font-size:23px;min-width:48px;min-height:48px;color:#67e8f9;border:1px solid rgba(103,232,249,.35);border-radius:12px;transition:transform .2s,box-shadow .2s}
-body.theme-neon #view-members .ses-client-detail-button:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,245,255,.4)}
-#view-projects .ses-client-detail-button{display:inline-flex;align-items:center;justify-content:center;font-size:23px;min-width:48px;min-height:48px;color:#67e8f9;border:1px solid rgba(103,232,249,.35);border-radius:12px;transition:transform .2s,box-shadow .2s}
-body.theme-neon #view-projects .ses-client-detail-button:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,245,255,.4)}
-#modal-project-info .ses-project-info-dialog{width:min(90vw,900px)!important;max-width:900px!important;max-height:90vh;overflow-y:auto}
-body.theme-neon #modal-project-info .ses-project-info-dialog::before,body.theme-neon #modal-project-info .ses-project-info-dialog::after,body.theme-neon #modal-project .ses-project-edit-dialog::before,body.theme-neon #modal-project .ses-project-edit-dialog::after{content:none!important;display:none!important;animation:none!important}
-#modal-project .ses-project-edit-dialog{width:min(90vw,900px)!important;max-width:900px!important;max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
-#modal-project .ses-project-edit-header{flex:none;padding:20px 24px}
-#modal-project .ses-project-edit-form{display:flex;flex-direction:column;min-height:0;overflow:hidden;gap:0}
-#modal-project .ses-project-edit-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:18px 24px;overflow-y:auto;min-height:0}
-#modal-project .ses-project-edit-fields>div:not(.ses-client-section-title){min-width:0}
-#modal-project .ses-project-edit-fields>div.grid{grid-column:1/-1}
-#modal-project .ses-client-section-title{grid-column:1/-1;padding:10px 12px;border-bottom:1px solid rgba(0,245,255,.55);font-size:13px;font-weight:800;color:#67e8f9;text-shadow:0 0 9px rgba(0,245,255,.75);background:linear-gradient(90deg,rgba(0,245,255,.12),transparent);border-radius:8px}
-#modal-project .ses-project-extra-fields{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-#modal-project .ses-project-edit-footer{flex:none;padding:15px 24px;background:rgba(15,23,42,.9)}
-@media(max-width:640px){#view-projects .ses-project-toolbar{justify-content:stretch}#view-projects .ses-project-mode{width:100%}#view-projects .ses-project-mode button{flex:1}#view-projects #project-filter-status{flex:1 1 140px}#view-projects #project-search{max-width:none}#view-projects .ses-project-toolbar>button{flex:1 1 130px;justify-content:center}#modal-project .ses-project-edit-fields{grid-template-columns:1fr;padding:14px}#modal-project .ses-project-edit-fields>div.grid,#modal-project .ses-project-extra-fields{grid-template-columns:1fr}}
-body:not(.theme-neon) #view-projects .ses-project-toolbar{background:#fff;border-color:#c9d9ef;box-shadow:none}
-body:not(.theme-neon) #view-projects .ses-project-mode{border-color:#b9d1ef}
-body:not(.theme-neon) #view-projects #project-filter-status,body:not(.theme-neon) #view-projects #project-search{background:#fff!important;color:#17243a!important;border-color:#c9d9ef!important}
-body:not(.theme-neon) #modal-project .ses-project-edit-footer{background:#fff}
-body:not(.theme-neon) #modal-project .ses-client-section-title{background:#eaf3ff;color:#17385f;text-shadow:none;border-color:#bdd6f5}
-
-/* v3.2.48: project toolbar and fixed detail headers */
-#view-projects .ses-project-toolbar{display:flex;flex-direction:column;align-items:stretch;gap:12px}
-#view-projects .ses-project-toolbar-top,#view-projects .ses-project-toolbar-bottom{display:flex;align-items:center;gap:12px;width:100%;min-width:0}
-#view-projects .ses-project-toolbar-top{justify-content:flex-start}
-#view-projects .ses-project-toolbar-bottom #project-search{flex:1 1 auto;max-width:none;width:100%}
-#view-projects .ses-project-toolbar-bottom>button{flex:0 0 auto;min-height:40px;white-space:nowrap}
-#modal-client-detail .ses-client-detail-dialog,#modal-project-info .ses-project-info-dialog{max-height:90dvh;overflow-y:auto;overscroll-behavior:contain;padding-top:0!important}
-#modal-client-detail .ses-client-detail-dialog>div:first-child,#modal-project-info .ses-project-info-dialog>div:first-child{position:sticky;top:0;z-index:5;margin:0 -1px;padding:20px 1px 15px;background:#0c1429;box-shadow:0 8px 15px rgba(0,0,0,.15)}
-body.theme-standard #modal-client-detail .ses-client-detail-dialog>div:first-child,body.theme-standard #modal-project-info .ses-project-info-dialog>div:first-child{background:#fff}
-@media(max-width:640px){#view-projects .ses-project-toolbar-top{flex-wrap:wrap}#view-projects .ses-project-toolbar-bottom{flex-wrap:nowrap}#view-projects .ses-project-toolbar-bottom>button{font-size:11px;padding:8px}#view-projects .ses-project-toolbar-bottom #project-search{min-width:0}}
-</style>
 </head>
 <body class="theme-neon h-screen flex flex-col overflow-hidden select-none">
 
@@ -1076,24 +958,37 @@ body.theme-standard #modal-client-detail .ses-client-detail-dialog>div:first-chi
 
       });
     </script>
-<link rel="stylesheet" href="css/neon-preferences.css">
-<link rel="stylesheet" href="css/mobile-header-v322.css">
-<link rel="stylesheet" href="css/mobile-header-v323.css">
-<link rel="stylesheet" href="css/theme-color.css">
-<link rel="stylesheet" href="css/theme-advanced.css">
-<link rel="stylesheet" href="css/standard-readability.css">
-<link rel="stylesheet" href="css/customer-meetings.css">
-<link rel="stylesheet" href="css/sales-feedback.css">
-<link rel="stylesheet" href="css/member-feedback-analytics.css">
-<link rel="stylesheet" href="css/oneonone-records.css">
-<link rel="stylesheet" href="css/regular-meetings.css">
-<link rel="stylesheet" href="css/v3265-unified-neon.css">
-<link rel="stylesheet" href="css/v3269-dialog-viewport.css">
-<link rel="stylesheet" href="css/v3270-dialog-unified.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="js/v3270-dialog-portal.js"></script>
-<link rel="stylesheet" href="css/v3271-fiscal-target-dialog.css">
+
 <script src="js/v3271-fiscal-target-dialog.js"></script>
-<link rel="stylesheet" href="css/v3273-workflow-integration.css">
+
 <script src="js/v3273-workflow-integration.js"></script>
+
+
+
+
+<script src="js/v3279-global-feedback.js"></script>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css">
 </body>
 </html>
