@@ -5834,6 +5834,7 @@
             document.getElementById('member-exp').value = '';
             document.getElementById('modal-member-title').innerText = '新規社員登録';
             memberExtraEditor({});
+            window.fillMemberGradeSelect?.('');
             document.getElementById('member-next-month-status').value='稼働中';
             document.getElementById('modal-member').classList.remove('hidden');
         }
@@ -5855,6 +5856,7 @@
             document.getElementById('modal-member-title').innerText = '社員情報編集';
             document.getElementById('member-next-month-status').value=m.nextMonthStatus || m.status || '稼働中';
             memberExtraEditor(m);
+            window.fillMemberGradeSelect?.(m.grade||'');
             document.getElementById('modal-member').classList.remove('hidden');
         }
 
@@ -5872,13 +5874,14 @@
             const status = document.getElementById('member-status').value;
             const waitingStartDate = document.getElementById('member-waiting-start').value;
             const nextMonthStatus = document.getElementById('member-next-month-status').value;
+            const grade = document.getElementById('member-grade')?.value || '';
 
             if (id) {
                 const index = db.members.findIndex(m => m.id === id);
-                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus }; saveMemberExtra(db.members[index]); }
+                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade }; saveMemberExtra(db.members[index]); }
             } else {
                 const newId = `MEM-${String(db.members.length + 1).padStart(3, '0')}`;
-                const member={ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus };
+                const member={ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade };
                 saveMemberExtra(member); db.members.push(member);
             }
 

@@ -4,6 +4,13 @@
   const currentEndYear = now.getFullYear() - (now.getMonth() < 10 ? 1 : 0);
   let selectedYear = currentEndYear;
   const charts = {};
+  let trendYear = currentEndYear;
+  let trendMetric = 'both';
+  let trendMode = 'actual';
+  let trendType = 'bar';
+  let trendScope = 'all';
+  let trendDepartment = '';
+  let trendMember = '';
   const man = n => { const v = Math.round(Number(n)||0); const sign = v < 0 ? '-' : ''; const abs = Math.abs(v); return sign + '¥' + (abs >= 10000 ? `${Math.floor(abs/10000).toLocaleString('ja-JP')}億${(abs%10000).toLocaleString('ja-JP')}万円` : `${abs.toLocaleString('ja-JP')}万円`); };
   const monthsFor = y => Array.from({length:12}, (_,i) => {
     const month = (i + 10) % 12 + 1;
@@ -43,12 +50,66 @@
     const accent=typeof window.getSesThemeAccent==='function'?window.getSesThemeAccent():'#00eaff';
     const ctx=canvas.getContext('2d');
     function gradient(top,bottom){const g=ctx.createLinearGradient(0,0,0,280);g.addColorStop(0,top);g.addColorStop(.52,bottom);g.addColorStop(1,'rgba(8,12,35,.8)');return g;}
-    const targetGradient=gradient('#fff27c','#ffb900');
-    const actualGradient=gradient(accent,color);
+    const neon=document.body.classList.contains('theme-neon');
+    const targetGradient=neon?gradient('#ff5b78','#ac0c40'):gradient('#e69ba3','#bd5361');
+    const actualGradient=neon?gradient('#34ff9d','#087a50'):gradient('#57c6a2','#20866a');
     charts[id]=new Chart(canvas,{type:'bar',data:{labels:[title],datasets:[
-      {label:'年間目標',data:[target],backgroundColor:targetGradient,borderColor:'#fff27c',borderWidth:2,borderRadius:9,maxBarThickness:110},
-      {label:'確定実績',data:[actual],backgroundColor:actualGradient,borderColor:accent,borderWidth:2,borderRadius:9,maxBarThickness:110}
-    ]},plugins:[glowPlugin],options:{responsive:true,maintainAspectRatio:false,animation:{duration:850,easing:'easeOutQuart'},plugins:{legend:{labels:{color:'#e8f7ff',font:{weight:'bold'},usePointStyle:true}},tooltip:{backgroundColor:'rgba(5,10,32,.95)',borderColor:accent,borderWidth:1,titleColor:accent,bodyColor:'#fff',callbacks:{label:c=>`${c.dataset.label}: ${man(c.parsed.y)}`}}},scales:{x:{ticks:{color:'#e5faff',font:{weight:'bold'}},grid:{display:false},border:{color:accent}},y:{beginAtZero:true,ticks:{color:'#b9e9ff'},grid:{color:'rgba(0,234,255,.15)',lineWidth:1},border:{color:'rgba(0,234,255,.4)'},title:{display:true,text:'万円',color:accent}}}}});
+      {label:'年間目標',data:[target],backgroundColor:targetGradient,borderColor:neon?'#ff365d':'#bf4050',borderWidth:2,borderRadius:9,maxBarThickness:110},
+      {label:'確定実績',data:[actual],backgroundColor:actualGradient,borderColor:neon?'#34ff9d':'#20866a',borderWidth:2,borderRadius:9,maxBarThickness:110}
+    ]},plugins:neon?[glowPlugin]:[],options:{responsive:true,maintainAspectRatio:false,animation:{duration:850,easing:'easeOutQuart'},plugins:{legend:{labels:{color:neon?'#e8f7ff':'#334155',font:{weight:'bold'},usePointStyle:true}},tooltip:{backgroundColor:'rgba(5,10,32,.95)',borderColor:accent,borderWidth:1,titleColor:accent,bodyColor:'#fff',callbacks:{label:c=>`${c.dataset.label}: ${man(c.parsed.y)}`}}},scales:{x:{ticks:{color:neon?'#e5faff':'#334155',font:{weight:'bold'}},grid:{display:false},border:{color:accent}},y:{beginAtZero:true,ticks:{color:neon?'#b9e9ff':'#334155'},grid:{color:neon?'rgba(0,234,255,.15)':'rgba(100,116,139,.17)',lineWidth:1},border:{color:'rgba(0,234,255,.4)'},title:{display:true,text:'万円',color:accent}}}}});
+  }
+  window.setFiscalTrendYear=value=>{trendYear=Number(value)||currentEndYear;renderFiscalTrend();};
+  window.setFiscalTrendMetric=value=>{trendMetric=['both','revenue','profit'].includes(value)?value:'both';renderFiscalTrend();};
+  window.setFiscalTrendMode=value=>{trendMode=['actual','plan','compare'].includes(value)?value:'actual';renderFiscalTrend();};
+  window.setFiscalTrendType=value=>{trendType=['bar','line','cumulative'].includes(value)?value:'bar';renderFiscalTrend();};
+  window.setFiscalTrendScope=value=>{trendScope=['all','department','member'].includes(value)?value:'all';trendDepartment='';trendMember='';renderFiscalTrend();};
+  window.setFiscalTrendDepartment=value=>{trendDepartment=value;trendMember='';renderFiscalTrend();};
+  window.setFiscalTrendMember=value=>{trendMember=value;renderFiscalTrend();};
+  function renderFiscalTrend(){
+    const d=getDb(),canvas=document.getElementById('fy-trend-chart');if(!d||!canvas||typeof Chart==='undefined')return;
+    const select=document.getElementById('fy-trend-year');if(select){select.innerHTML=options();select.value=String(trendYear);}
+    [['fy-trend-metric',trendMetric],['fy-trend-mode',trendMode],['fy-trend-type',trendType]].forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.value=value;});
+    const neon=document.body.classList.contains('theme-neon'),text=neon?'#e8f7ff':'#334155';
+    const members=d.members||[];
+    const departments=[...new Set(members.map(m=>String(m.department||'未登録')))].sort((a,b)=>a.localeCompare(b,'ja'));
+    const escapeOption=v=>String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const scopeSelect=document.getElementById('fy-trend-scope');if(scopeSelect)scopeSelect.value=trendScope;
+    const deptSelect=document.getElementById('fy-trend-department');
+    if(deptSelect){deptSelect.innerHTML='<option value="">すべての部門</option>'+departments.map(v=>`<option value="${escapeOption(v)}">${escapeOption(v)}</option>`).join('');deptSelect.value=trendDepartment;deptSelect.disabled=trendScope==='all';}
+    const memberSelect=document.getElementById('fy-trend-member');
+    const availableMembers=members.filter(m=>!trendDepartment||String(m.department||'未登録')===trendDepartment);
+    if(memberSelect){memberSelect.innerHTML='<option value="">すべての社員</option>'+availableMembers.map(m=>`<option value="${escapeOption(m.id)}">${escapeOption(m.name||m.id)}</option>`).join('');memberSelect.value=trendMember;memberSelect.disabled=trendScope!=='member';}
+    const selectedIds=new Set(members.filter(m=>(trendScope==='all'||!trendDepartment||String(m.department||'未登録')===trendDepartment)&&(trendScope!=='member'||!trendMember||String(m.id)===trendMember)).map(m=>String(m.id)));
+    const scopedSum=(store,month)=>Object.entries(store||{}).reduce((total,[key,value])=>{
+      if(!key.endsWith(`|${month}`))return total;
+      if(trendScope==='all')return total+(Number(value)||0);
+      const memberId=key.slice(0,key.length-month.length-1);
+      return total+(selectedIds.has(memberId)?Number(value)||0:0);
+    },0);
+    const months=monthsFor(trendYear);
+    const stores={actual:[d.monthlyRevenueActual||{},d.monthlyCostActual||{},d.monthlyTransportActual||{}],plan:[d.monthlyRevenue||{},d.monthlyCost||{},d.monthlyTransport||{}]};
+    const rows=mode=>months.map(month=>{const [revenues,costs,transports]=stores[mode];const revenue=scopedSum(revenues,month);return {revenue,profit:revenue-scopedSum(costs,month)-scopedSum(transports,month)};});
+    const datasets=[];
+    const types=trendMetric==='both'?['revenue','profit']:[trendMetric];
+    const modes=trendMode==='compare'?['plan','actual']:[trendMode];
+    const isLine=trendType!=='bar';
+    const colors=neon?{plan:'#2de59a',actual:'#12ff72'}:{plan:'#82bfa2',actual:'#17875c'};
+    for(const mode of modes){
+      const data=rows(mode);
+      for(const metric of types){
+        const label=`${metric==='revenue'?'売上':'粗利'}（${mode==='plan'?'予定':'実績'}）`;
+        let values=data.map(r=>r[metric]);
+        if(trendType==='cumulative'){let running=0;values=values.map(v=>(running+=v));}
+        const base=colors[mode];
+        const alpha=metric==='revenue'?(neon?'.72':'.72'):(neon?'.40':'.42');
+        const fill=metric==='revenue'?base:(neon?'#80ffc1':'#a5d6bd');
+        datasets.push({label,data:values,type:isLine?'line':'bar',borderColor:base,backgroundColor:isLine?base:fill,
+          borderWidth:isLine?3:1,borderDash:mode==='plan'&&isLine?[6,4]:[],tension:.28,pointRadius:isLine?3:0,
+          borderRadius:5,maxBarThickness:28,fill:false});
+      }
+    }
+    if(charts.trend)charts.trend.destroy();
+    charts.trend=new Chart(canvas,{type:isLine?'line':'bar',data:{labels:months.map(m=>`${Number(m.slice(5))}月`),datasets},plugins:neon?[glowPlugin]:[],options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:text,usePointStyle:true}},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${man(c.parsed.y)}`}}},scales:{x:{ticks:{color:text},grid:{display:false}},y:{ticks:{color:text},grid:{color:neon?'rgba(0,234,255,.15)':'rgba(100,116,139,.17)'},title:{display:true,text:'万円',color:text}}}}});
   }
   window.addEventListener('ses-theme-color-changed',()=>{if(typeof db!=='undefined')renderFiscalDashboard();});
   window.setDashboardFiscalYear = value => {selectedYear=Number(value)||currentEndYear;renderFiscalDashboard();renderFiscalTargetSettings();};
@@ -91,6 +152,7 @@
     const note=document.getElementById('fy-data-note');if(note)note.textContent='※確定実績のみを集計しています。未入力月は0として扱い、計画値では補完しません。';
     chart('fy-revenue-chart','売上',target.revenue||0,totalRevenue,'#ff35c5');
     chart('fy-profit-chart','粗利',target.profit||0,totalProfit,'#00efb7');
+    renderFiscalTrend();
   };
   const originalRender=window.renderAllViews;
   window.renderAllViews=function(...args){const result=typeof originalRender==='function'?originalRender.apply(this,args):undefined;renderFiscalDashboard();return result;};

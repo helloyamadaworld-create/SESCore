@@ -194,6 +194,7 @@
 
                     <a href="#" onclick="switchTab('fiscal-targets'); renderFiscalTargetSettings(); return false" id="nav-fiscal-targets" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50"><i class="fa-solid fa-bullseye w-5 text-center text-base"></i><span class="sidebar-text">売上目標と粗利管理</span></a>
 
+                    <a href="#" onclick="openGradeManagement(); return false" id="nav-grades" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50"><i class="fa-solid fa-layer-group w-5 text-center text-base"></i><span class="sidebar-text">グレード管理</span></a>
                     <a href="#" onclick="switchTab('revenue')" id="nav-revenue" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
                         <i class="fa-solid fa-sack-dollar w-5 text-center text-base"></i>
                         <span class="sidebar-text">売上・粗利管理</span>
@@ -291,6 +292,19 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       <div class="glass-card p-5 rounded-xl space-y-3"><h3 class="font-bold text-sm">今期の目標売上と現状の売上</h3><div class="h-64 relative"><canvas id="fy-revenue-chart"></canvas></div></div>
                       <div class="glass-card p-5 rounded-xl space-y-3"><h3 class="font-bold text-sm">今期の目標粗利と現状の粗利</h3><div class="h-64 relative"><canvas id="fy-profit-chart"></canvas></div></div>
+                    </div>
+                    <div class="glass-card p-5 rounded-xl space-y-4 ses-fiscal-trend-card">
+                      <div class="ses-fiscal-trend-heading"><div><h3 class="font-bold text-sm">期別・月次グラフ</h3><p class="text-xs opacity-70 mt-1">対象期・集計区分・表示方法を切り替えて比較できます</p></div></div>
+                      <div class="ses-fiscal-trend-controls">
+                        <label>対象期<select id="fy-trend-year" class="ext-input" onchange="setFiscalTrendYear(this.value)"></select></label>
+                        <label>集計項目<select id="fy-trend-metric" class="ext-input" onchange="setFiscalTrendMetric(this.value)"><option value="both">売上・粗利</option><option value="revenue">売上</option><option value="profit">粗利</option></select></label>
+                        <label>データ区分<select id="fy-trend-mode" class="ext-input" onchange="setFiscalTrendMode(this.value)"><option value="actual">実績</option><option value="plan">予定</option><option value="compare">予定・実績比較</option></select></label>
+                        <label>集計範囲<select id="fy-trend-scope" class="ext-input" onchange="setFiscalTrendScope(this.value)"><option value="all">全体</option><option value="department">部門別</option><option value="member">社員別</option></select></label>
+                        <label>部門<select id="fy-trend-department" class="ext-input" onchange="setFiscalTrendDepartment(this.value)"><option value="">すべての部門</option></select></label>
+                        <label>社員<select id="fy-trend-member" class="ext-input" onchange="setFiscalTrendMember(this.value)"><option value="">すべての社員</option></select></label>
+                        <label>グラフ形式<select id="fy-trend-type" class="ext-input" onchange="setFiscalTrendType(this.value)"><option value="bar">棒グラフ</option><option value="line">折れ線グラフ</option><option value="cumulative">累計推移</option></select></label>
+                      </div>
+                      <div class="ses-fiscal-trend-canvas"><canvas id="fy-trend-chart"></canvas></div>
                     </div>
                     <p class="text-xs text-slate-400" id="fy-data-note">※確定実績のみを集計します。未入力月は0として扱います。</p>
 
@@ -819,6 +833,7 @@
                         <input type="text" id="member-exp" placeholder="入社日から自動計算" readonly class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-slate-300">
                     </div>
                     <div>
+                    <div><label class="block text-slate-400 mb-1">グレード</label><select id="member-grade" class="ext-input w-full" onchange="updateMemberGradeCostPreview()"><option value="">未設定</option></select></div>
                         <label class="block text-slate-400 mb-1">受注単価(万円)</label>
                         <input type="number" id="member-rate" placeholder="80" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
                     </div>
@@ -982,6 +997,7 @@
 
 
 <script src="js/v3279-global-feedback.js"></script>
+    <script src="js/grade-management.js"></script>
 
 
 

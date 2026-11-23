@@ -2034,3 +2034,24 @@ body.theme-standard #modal-project-info #project-info-fields > .ses-client-detai
 body.theme-standard #modal-project-info #project-info-fields > .ses-client-detail-field > dd{color:#172b48!important}
 @media(max-width:640px){#modal-project-info #project-info-fields{grid-template-columns:minmax(0,1fr)!important}}
 
+
+/* v3.2.92: fiscal-period trend card */
+.ses-fiscal-trend-canvas{height:300px;position:relative;min-width:0}
+.ses-fiscal-trend-card select{min-width:125px;max-width:220px}
+body.theme-standard .ses-fiscal-trend-card{background:#fff;color:#24344a;border-color:#d9e2ef;box-shadow:0 5px 18px rgba(27,52,89,.07)}
+body.theme-standard .ses-fiscal-trend-card select{background:#fff;color:#24344a;border:1px solid #cbd5e1;box-shadow:none;text-shadow:none}
+@media(max-width:640px){.ses-fiscal-trend-canvas{height:260px}.ses-fiscal-trend-card select{min-width:110px}}
+
+/* v3.2.93 fiscal trend selectors: single horizontal control row */
+.ses-fiscal-trend-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
+.ses-fiscal-trend-controls label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:600;min-width:0}
+.ses-fiscal-trend-controls select{width:100%;max-width:none;min-width:0}
+@media(max-width:760px){.ses-fiscal-trend-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.ses-fiscal-trend-controls{gap:8px}}
+
+/* v3.2.94: responsive fiscal chart scope selectors */
+.ses-fiscal-trend-controls{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ses-fiscal-trend-controls select:disabled{opacity:.48;cursor:not-allowed}
+@media(max-width:760px){.ses-fiscal-trend-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Grade management (STANDARD and NEON) */
+#view-grades .ext-table{min-width:1120px}#view-grades .ext-table th,#view-grades .ext-table td{white-space:nowrap;padding:11px 12px}#view-grades .grade-action{border:1px solid var(--border-color,#2c6381);border-radius:8px;padding:7px 10px;color:inherit}#view-grades .grade-action:disabled{opacity:.4}.grade-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:16px}.grade-modal.hidden{display:none}.grade-dialog{width:min(860px,100%);max-height:calc(100dvh - 32px);display:flex;flex-direction:column;background:#0c1630;color:#e9f4ff;border:1px solid #35bde5;border-radius:16px;overflow:hidden;box-shadow:0 0 28px rgba(0,220,255,.23)}.grade-dialog-head,.grade-dialog-footer{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid rgba(120,175,210,.18)}.grade-dialog-head button{border:1px solid #35bde5;border-radius:8px;width:36px;height:36px;font-size:22px}.grade-dialog form{display:flex;flex-direction:column;min-height:0}.grade-dialog-body{overflow:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:20px}.grade-dialog-body label{display:flex;flex-direction:column;gap:6px;font-size:12px}.grade-dialog-footer{border-top:1px solid rgba(120,175,210,.18);border-bottom:0;justify-content:flex-end;gap:10px}.grade-primary{padding:10px 20px;border-radius:8px;background:linear-gradient(120deg,#d52ac5,#6849e9);color:white;font-weight:700}body.theme-standard .grade-dialog{background:#fff;color:#24344a;border-color:#cbd5e1;box-shadow:0 16px 45px rgba(15,23,42,.2)}body.theme-standard .grade-dialog-head button{border-color:#cbd5e1}body.theme-standard .grade-dialog .ext-input{background:#fff;color:#24344a;border:1px solid #cbd5e1;box-shadow:none}@media(max-width:640px){.grade-dialog-body{grid-template-columns:1fr}}
