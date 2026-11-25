@@ -1,12 +1,17 @@
 
         // Default System Database Preset (initialData.json)
         const DEFAULT_INITIAL_DATA = {
-          "fiscalTargets": {"2026":{"revenue":10800,"profit":1184}},
+    "fiscalTargets": {
+        "2026": {
+            "revenue": 10800,
+            "profit": 1184
+        }
+    },
     "metadata": {
         "systemName": "SES_Core",
         "version": "3.2.12",
-        "exportedAt": "2026-10-29T04:56:42.226Z",
-        "schemaVersion": "3.2.12",
+        "exportedAt": "2026-11-25T06:42:27.424Z",
+        "schemaVersion": "3.0.0",
         "clientProjectImport": {
             "sourceFile": "【仙台営業所】取引先・案件情報(2).xlsx",
             "sourceSheets": [
@@ -4201,19 +4206,20 @@
             "department": "営業",
             "role": "所長代理",
             "skills": [],
-            "exp": "1年9か月",
+            "exp": "1年10か月",
             "rate": 0,
-            "cost": 36,
+            "cost": 36.35,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.831,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2025-01-01"
+            "hireDate": "2025-01-01",
+            "grade": "G3"
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "J001",
             "contractEnd": "",
             "id": "MEM-102",
             "name": "山田 裕也",
@@ -4221,9 +4227,9 @@
             "department": "開発部門統括",
             "role": "課長代理",
             "skills": [],
-            "exp": "3年11か月",
+            "exp": "4年",
             "rate": 51,
-            "cost": 49,
+            "cost": 49.65,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
@@ -4235,7 +4241,9 @@
             ],
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2022-11-01"
+            "hireDate": "2022-11-01",
+            "grade": "M2",
+            "waitingStartDate": ""
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4246,19 +4254,20 @@
             "department": "ITソリューション部",
             "role": "リーダー",
             "skills": [],
-            "exp": "3年8か月",
+            "exp": "3年9か月",
             "rate": 41,
-            "cost": 40,
+            "cost": 40.25,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.151,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2023-02-01"
+            "hireDate": "2023-02-01",
+            "grade": "G4"
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "",
             "contractEnd": "",
             "id": "MEM-109",
             "name": "生天目 慧海",
@@ -4266,16 +4275,18 @@
             "department": "開発2部",
             "role": "メンバー",
             "skills": [],
-            "exp": "3年8か月",
+            "exp": "3年9か月",
             "rate": 65,
-            "cost": 36,
+            "cost": 36.35,
             "available": "未登録",
-            "status": "稼働中",
+            "status": "待機中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.265,
-            "currentStatus": "稼働中",
-            "nextMonthStatus": "稼働中",
-            "hireDate": "2023-02-01"
+            "currentStatus": "待機中",
+            "nextMonthStatus": "待機中",
+            "hireDate": "2023-02-01",
+            "grade": "G3",
+            "waitingStartDate": ""
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4286,16 +4297,17 @@
             "department": "開発2部",
             "role": "リーダー",
             "skills": [],
-            "exp": "3年3か月",
+            "exp": "3年4か月",
             "rate": 50,
-            "cost": 36,
+            "cost": 36.35,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2023-07-01"
+            "hireDate": "2023-07-01",
+            "grade": "G3"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4306,16 +4318,17 @@
             "department": "ITソリューション部",
             "role": "メンバー",
             "skills": [],
-            "exp": "2年7か月",
+            "exp": "2年8か月",
             "rate": 43,
-            "cost": 36,
+            "cost": 36.35,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.78,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2024-03-01"
+            "hireDate": "2024-03-01",
+            "grade": "G3"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4326,19 +4339,20 @@
             "department": "開発2部",
             "role": "メンバー",
             "skills": [],
-            "exp": "2年7か月",
+            "exp": "2年8か月",
             "rate": 48,
-            "cost": 36,
+            "cost": 36.35,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.312,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2024-03-01"
+            "hireDate": "2024-03-01",
+            "grade": "G3"
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "",
             "contractEnd": "",
             "id": "MEM-104",
             "name": "佐々木 七海",
@@ -4346,16 +4360,18 @@
             "department": "開発1部",
             "role": "メンバー",
             "skills": [],
-            "exp": "2年5か月",
+            "exp": "2年6か月",
             "rate": 44,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
-            "status": "稼働中",
+            "status": "待機中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 0.987,
-            "currentStatus": "稼働中",
-            "nextMonthStatus": "稼働中",
-            "hireDate": "2024-05-01"
+            "currentStatus": "待機中",
+            "nextMonthStatus": "待機中",
+            "hireDate": "2024-05-01",
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4366,16 +4382,17 @@
             "department": "ITソリューション部",
             "role": "メンバー",
             "skills": [],
-            "exp": "2年4か月",
+            "exp": "2年5か月",
             "rate": 35,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.571,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2024-06-01"
+            "hireDate": "2024-06-01",
+            "grade": "G2"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4386,16 +4403,17 @@
             "department": "開発2部",
             "role": "メンバー",
             "skills": [],
-            "exp": "1年11か月",
+            "exp": "2年",
             "rate": 37,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2024-11-01"
+            "hireDate": "2024-11-01",
+            "grade": "G2"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4406,16 +4424,17 @@
             "department": "開発2部",
             "role": "メンバー",
             "skills": [],
-            "exp": "1年6か月",
+            "exp": "1年7か月",
             "rate": 40,
-            "cost": 36,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2025-04-01"
+            "hireDate": "2025-04-01",
+            "grade": "G2"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4426,16 +4445,17 @@
             "department": "ITソリューション部",
             "role": "メンバー",
             "skills": [],
-            "exp": "1年5か月",
+            "exp": "1年6か月",
             "rate": 40,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.661,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2025-05-01"
+            "hireDate": "2025-05-01",
+            "grade": "G2"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4446,16 +4466,17 @@
             "department": "開発1部",
             "role": "メンバー",
             "skills": [],
-            "exp": "1年4か月",
+            "exp": "1年5か月",
             "rate": 35,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.606,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2025-06-01"
+            "hireDate": "2025-06-01",
+            "grade": "G2"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4466,16 +4487,17 @@
             "department": "開発2部",
             "role": "メンバー",
             "skills": [],
-            "exp": "1年3か月",
+            "exp": "1年4か月",
             "rate": 35,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 0.784,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2025-07-01"
+            "hireDate": "2025-07-01",
+            "grade": "G2"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4486,16 +4508,17 @@
             "department": "ITソリューション部",
             "role": "メンバー",
             "skills": [],
-            "exp": "1年3か月",
+            "exp": "1年4か月",
             "rate": 35,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.775,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2025-07-01"
+            "hireDate": "2025-07-01",
+            "grade": "G2"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4506,16 +4529,17 @@
             "department": "開発1部",
             "role": "リーダー",
             "skills": [],
-            "exp": "1年1か月",
+            "exp": "1年2か月",
             "rate": 45,
-            "cost": 36,
+            "cost": 36.35,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.151,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2025-09-01"
+            "hireDate": "2025-09-01",
+            "grade": "G3"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4526,16 +4550,17 @@
             "department": "ITソリューション部",
             "role": "メンバー",
             "skills": [],
-            "exp": "1年1か月",
+            "exp": "1年2か月",
             "rate": 38,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 1.74,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2025-09-01"
+            "hireDate": "2025-09-01",
+            "grade": "G2"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4546,7 +4571,7 @@
             "department": "開発1部",
             "role": "メンバー",
             "skills": [],
-            "exp": "9か月",
+            "exp": "10か月",
             "rate": 40,
             "cost": 30,
             "available": "未登録",
@@ -4555,7 +4580,8 @@
             "transportCost": 1.478,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2026-01-01"
+            "hireDate": "2026-01-01",
+            "grade": "G1"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4566,7 +4592,7 @@
             "department": "ITソリューション部",
             "role": "メンバー",
             "skills": [],
-            "exp": "9か月",
+            "exp": "10か月",
             "rate": 36,
             "cost": 30,
             "available": "未登録",
@@ -4575,7 +4601,8 @@
             "transportCost": 1.74,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2026-01-01"
+            "hireDate": "2026-01-01",
+            "grade": "G1"
         },
         {
             "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
@@ -4586,16 +4613,17 @@
             "department": "開発1部",
             "role": "メンバー",
             "skills": [],
-            "exp": "6か月",
+            "exp": "7か月",
             "rate": 10,
-            "cost": 33,
+            "cost": 33.1,
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
             "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
-            "hireDate": "2026-04-01"
+            "hireDate": "2026-04-01",
+            "grade": "G2"
         }
     ],
     "interviews": [
@@ -4662,6 +4690,874 @@
         }
     ],
     "auditLog": [
+        {
+            "id": "LOG-MWVR059O-14H3",
+            "at": "2026-11-25T06:34:12.780Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQYRCQ-9VJG",
+            "at": "2026-11-25T06:33:08.090Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQYJ6P-W5R6",
+            "at": "2026-11-25T06:32:57.505Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQXTR7-LPSN",
+            "at": "2026-11-25T06:32:24.547Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQXNMG-3TIV",
+            "at": "2026-11-25T06:32:16.600Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQXFPN-1ZUG",
+            "at": "2026-11-25T06:32:06.348Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQWWUL-7TWL",
+            "at": "2026-11-25T06:31:41.901Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQWIUM-WKVI",
+            "at": "2026-11-25T06:31:23.758Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQWD3X-REU4",
+            "at": "2026-11-25T06:31:16.317Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQW8CL-0KNK",
+            "at": "2026-11-25T06:31:10.149Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQSN32-4P21",
+            "at": "2026-11-25T06:28:22.622Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQPP78-GNPL",
+            "at": "2026-11-25T06:26:05.396Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQCX0R-PB3W",
+            "at": "2026-11-25T06:16:09.003Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQBMS4-UQ0E",
+            "at": "2026-11-25T06:15:09.076Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQ8OVN-DFPX",
+            "at": "2026-11-25T06:12:51.827Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQ8576-FQP4",
+            "at": "2026-11-25T06:12:26.322Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQ7LG3-4SPC",
+            "at": "2026-11-25T06:12:00.723Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQ71WE-TS4O",
+            "at": "2026-11-25T06:11:35.390Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVQ5S8L-IFWW",
+            "at": "2026-11-25T06:10:36.213Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVPY4QT-RVMB",
+            "at": "2026-11-25T06:04:39.173Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVPXQNV-X1I8",
+            "at": "2026-11-25T06:04:20.923Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVPXBFY-CAEW",
+            "at": "2026-11-25T06:04:01.198Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVPVOEP-JEC1",
+            "at": "2026-11-25T06:02:44.689Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVPR80O-JS97",
+            "at": "2026-11-25T05:59:16.824Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVPL72D-L1NH",
+            "at": "2026-11-25T05:54:35.653Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVPCG0J-WYB5",
+            "at": "2026-11-25T05:47:47.347Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVP9HKK-QWZG",
+            "at": "2026-11-25T05:45:29.396Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVP2CRJ-CQQ9",
+            "at": "2026-11-25T05:39:56.575Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVP21WX-S9LV",
+            "at": "2026-11-25T05:39:42.513Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVP1Q7N-MACN",
+            "at": "2026-11-25T05:39:27.347Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVP1MLF-6MS0",
+            "at": "2026-11-25T05:39:22.659Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVP1ENT-T2UI",
+            "at": "2026-11-25T05:39:12.377Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVP0ZR1-I2JB",
+            "at": "2026-11-25T05:38:53.053Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOZLKJ-Q50B",
+            "at": "2026-11-25T05:37:48.019Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOZ8RA-0Q0I",
+            "at": "2026-11-25T05:37:31.414Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOZ1P7-C2CM",
+            "at": "2026-11-25T05:37:22.267Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOYM8L-217B",
+            "at": "2026-11-25T05:37:02.229Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOYBXB-V3MP",
+            "at": "2026-11-25T05:36:48.863Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOXT7F-2NSW",
+            "at": "2026-11-25T05:36:24.603Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOX97X-ZNIV",
+            "at": "2026-11-25T05:35:58.701Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOWVYO-2IK9",
+            "at": "2026-11-25T05:35:41.520Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOWE4T-RA05",
+            "at": "2026-11-25T05:35:18.413Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVOVJJB-1XS2",
+            "at": "2026-11-25T05:34:38.759Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVO47NS-4FZY",
+            "at": "2026-11-25T05:13:23.656Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVO47KN-VEO7",
+            "at": "2026-11-25T05:13:23.543Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVO1DQ9-79Z8",
+            "at": "2026-11-25T05:11:11.553Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVO13EH-TR3X",
+            "at": "2026-11-25T05:10:58.169Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVNXWKD-KJCK",
+            "at": "2026-11-25T05:08:29.341Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVNHING-HSBF",
+            "at": "2026-11-25T04:55:44.812Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVNH5DV-KY0J",
+            "at": "2026-11-25T04:55:27.619Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVNGDZA-8CSD",
+            "at": "2026-11-25T04:54:52.102Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVNAXYX-FW94",
+            "at": "2026-11-25T04:50:38.073Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVN85JU-RQA4",
+            "at": "2026-11-25T04:48:27.930Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVN3H8P-G93L",
+            "at": "2026-11-25T04:44:49.801Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVN03MQ-IA11",
+            "at": "2026-11-25T04:42:12.194Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVMW7DJ-K2I1",
+            "at": "2026-11-25T04:39:10.423Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVMK83E-RTFE",
+            "at": "2026-11-25T04:29:51.482Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVLLO7B-GEKV",
+            "at": "2026-11-25T04:02:59.399Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVLG9Q4-45LJ",
+            "at": "2026-11-25T03:58:47.356Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVLFD1Y-LOT1",
+            "at": "2026-11-25T03:58:05.014Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVJ9KJ3-17U9",
+            "at": "2026-11-25T02:57:35.535Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVJ6MEC-T4V5",
+            "at": "2026-11-25T02:55:17.988Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVJ2G59-5OKH",
+            "at": "2026-11-25T02:52:03.261Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVIHDRD-0B0O",
+            "at": "2026-11-25T02:35:40.393Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVIHDOI-ES46",
+            "at": "2026-11-25T02:35:40.290Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVIDDSY-ZRE6",
+            "at": "2026-11-25T02:32:33.826Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVI7GTX-A3WJ",
+            "at": "2026-11-25T02:27:57.813Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVI3HQY-XFHF",
+            "at": "2026-11-25T02:24:52.378Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVHVPQ6-R7BG",
+            "at": "2026-11-25T02:18:49.470Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVHSVMV-MCFP",
+            "at": "2026-11-25T02:16:37.159Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVHLZQ0-5HJ7",
+            "at": "2026-11-25T02:11:15.864Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVHL4JV-Y42Z",
+            "at": "2026-11-25T02:10:35.467Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVHBP38-RU0J",
+            "at": "2026-11-25T02:03:15.524Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVHBP36-YXTJ",
+            "at": "2026-11-25T02:03:15.522Z",
+            "user": "admin",
+            "action": "スポット売上登録",
+            "detail": "病院キッティング"
+        },
+        {
+            "id": "LOG-MWVHAJF6-3A0F",
+            "at": "2026-11-25T02:02:21.522Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9SKJ-L0N3",
+            "at": "2026-11-25T02:01:46.723Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9QM2-FS89",
+            "at": "2026-11-25T02:01:44.186Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9OW2-K06O",
+            "at": "2026-11-25T02:01:41.954Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9MMV-GB1L",
+            "at": "2026-11-25T02:01:39.031Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9KEZ-4PE1",
+            "at": "2026-11-25T02:01:36.155Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9IAJ-A2XE",
+            "at": "2026-11-25T02:01:33.403Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9G5M-A6PA",
+            "at": "2026-11-25T02:01:30.634Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9DOA-10BY",
+            "at": "2026-11-25T02:01:27.418Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH9B6X-YFPP",
+            "at": "2026-11-25T02:01:24.201Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH999Y-333W",
+            "at": "2026-11-25T02:01:21.718Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH978U-26XE",
+            "at": "2026-11-25T02:01:19.086Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH94V6-ADOD",
+            "at": "2026-11-25T02:01:16.002Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH924R-LNDI",
+            "at": "2026-11-25T02:01:12.459Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH8ZHN-ENFK",
+            "at": "2026-11-25T02:01:09.035Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH8WRV-4RZR",
+            "at": "2026-11-25T02:01:05.515Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH8TCX-QQAE",
+            "at": "2026-11-25T02:01:01.089Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH8OHU-R5F9",
+            "at": "2026-11-25T02:00:54.786Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH8LT3-NQZP",
+            "at": "2026-11-25T02:00:51.303Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH8ISR-0E6H",
+            "at": "2026-11-25T02:00:47.403Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH8FP6-RJR5",
+            "at": "2026-11-25T02:00:43.386Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH8BEB-5K8P",
+            "at": "2026-11-25T02:00:37.811Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH7COV-438T",
+            "at": "2026-11-25T01:59:52.831Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH6Z7K-LP0W",
+            "at": "2026-11-25T01:59:35.360Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH5RKG-QZQ7",
+            "at": "2026-11-25T01:58:38.800Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH5RKF-QFXT",
+            "at": "2026-11-25T01:58:38.799Z",
+            "user": "admin",
+            "action": "タスク削除",
+            "detail": "アクシス社提案案件 (PRJ-101) パートナー要員の追加提出"
+        },
+        {
+            "id": "LOG-MWVH5PSN-O7EE",
+            "at": "2026-11-25T01:58:36.503Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH5PSN-H1LL",
+            "at": "2026-11-25T01:58:36.503Z",
+            "user": "admin",
+            "action": "タスク削除",
+            "detail": "伊藤 結衣：AI搭載社内ナレッジ検索ツール構築 の提案可否確認"
+        },
+        {
+            "id": "LOG-MWVH5NRZ-EL7L",
+            "at": "2026-11-25T01:58:33.887Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH5NRZ-S9EU",
+            "at": "2026-11-25T01:58:33.887Z",
+            "user": "admin",
+            "action": "タスク削除",
+            "detail": "木村 拓也：大手ECサイト マイクロサービス刷新PJ の提案可否確認"
+        },
+        {
+            "id": "LOG-MWVH5LZ3-1N7N",
+            "at": "2026-11-25T01:58:31.551Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH5LZ2-FQ5K",
+            "at": "2026-11-25T01:58:31.550Z",
+            "user": "admin",
+            "action": "タスク削除",
+            "detail": "木村 拓也：大手ECサイト マイクロサービス刷新PJ の提案可否確認"
+        },
+        {
+            "id": "LOG-MWVH5JOI-DUNA",
+            "at": "2026-11-25T01:58:28.578Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVH5JOH-E7IV",
+            "at": "2026-11-25T01:58:28.577Z",
+            "user": "admin",
+            "action": "タスク状態変更",
+            "detail": "木村 拓也：大手ECサイト マイクロサービス刷新PJ の提案可否確認: 完了"
+        },
+        {
+            "id": "LOG-MWVH2Z6A-SEK6",
+            "at": "2026-11-25T01:56:28.690Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGWKQT-K9QC",
+            "at": "2026-11-25T01:51:30.053Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGWDZL-KBXC",
+            "at": "2026-11-25T01:51:21.297Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGW85G-JFPP",
+            "at": "2026-11-25T01:51:13.732Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGW045-RBRL",
+            "at": "2026-11-25T01:51:03.317Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGV1FT-MX81",
+            "at": "2026-11-25T01:50:18.377Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGUW70-J39L",
+            "at": "2026-11-25T01:50:11.580Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGUIV8-OU05",
+            "at": "2026-11-25T01:49:54.308Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGU0MP-1KSH",
+            "at": "2026-11-25T01:49:30.673Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGU0JL-DXF9",
+            "at": "2026-11-25T01:49:30.561Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGSYI3-94KA",
+            "at": "2026-11-25T01:48:41.259Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGIV4D-20UQ",
+            "at": "2026-11-25T01:40:50.317Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVGDQ68-37KK",
+            "at": "2026-11-25T01:36:50.624Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWD8U2KP-72OW",
+            "at": "2026-11-12T07:45:45.097Z",
+            "user": "admin",
+            "action": "ログアウト",
+            "detail": "デモセッションを終了"
+        },
+        {
+            "id": "LOG-MWD2BFNZ-HOEL",
+            "at": "2026-11-12T04:43:17.903Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MVT2MQYD-UUV8",
+            "at": "2026-10-29T04:56:42.229Z",
+            "user": "admin",
+            "action": "JSONバックアップ",
+            "detail": "データバックアップを出力しました"
+        },
         {
             "id": "LOG-MVT2GHYM-R7YI",
             "at": "2026-10-29T04:51:50.638Z",
@@ -4748,20 +5644,1368 @@
         "MEM-002|2026-05": 87,
         "MEM-002|2026-06": 87,
         "MEM-002|2026-07": 87,
-        "MEM-002|2026-12": 87
+        "MEM-002|2026-12": 87,
+        "MEM-102|2027-04": 65,
+        "MEM-102|2027-05": 65,
+        "MEM-102|2027-06": 65,
+        "MEM-102|2027-07": 65,
+        "MEM-102|2027-08": 65,
+        "MEM-102|2027-09": 65,
+        "MEM-102|2027-10": 65,
+        "MEM-103|2027-08": 48,
+        "MEM-103|2027-09": 48,
+        "MEM-103|2027-10": 48,
+        "MEM-104|2027-01": 45,
+        "MEM-104|2027-02": 45,
+        "MEM-104|2027-03": 45,
+        "MEM-104|2027-04": 45,
+        "MEM-104|2027-05": 45,
+        "MEM-104|2027-06": 45,
+        "MEM-104|2027-07": 45,
+        "MEM-104|2027-08": 45,
+        "MEM-104|2027-09": 45,
+        "MEM-104|2027-10": 45,
+        "MEM-105|2027-04": 40,
+        "MEM-105|2027-05": 40,
+        "MEM-105|2027-06": 40,
+        "MEM-105|2027-07": 40,
+        "MEM-105|2027-08": 40,
+        "MEM-105|2027-09": 40,
+        "MEM-105|2027-10": 40,
+        "MEM-106|2027-04": 44,
+        "MEM-106|2027-05": 44,
+        "MEM-106|2027-06": 44,
+        "MEM-106|2027-07": 44,
+        "MEM-106|2027-08": 44,
+        "MEM-106|2027-09": 44,
+        "MEM-106|2027-10": 44,
+        "MEM-107|2027-01": 40,
+        "MEM-107|2027-02": 40,
+        "MEM-107|2027-03": 40,
+        "MEM-107|2027-04": 40,
+        "MEM-107|2027-05": 40,
+        "MEM-107|2027-06": 40,
+        "MEM-107|2027-07": 40,
+        "MEM-107|2027-08": 40,
+        "MEM-107|2027-09": 40,
+        "MEM-107|2027-10": 40,
+        "MEM-108|2027-04": 53,
+        "MEM-108|2027-05": 53,
+        "MEM-108|2027-06": 53,
+        "MEM-108|2027-07": 53,
+        "MEM-108|2027-08": 53,
+        "MEM-108|2027-09": 53,
+        "MEM-108|2027-10": 53,
+        "MEM-110|2027-04": 52,
+        "MEM-110|2027-05": 52,
+        "MEM-110|2027-06": 52,
+        "MEM-110|2027-07": 52,
+        "MEM-110|2027-08": 52,
+        "MEM-110|2027-09": 52,
+        "MEM-110|2027-10": 52,
+        "MEM-111|2027-07": 40,
+        "MEM-111|2027-08": 40,
+        "MEM-111|2027-09": 40,
+        "MEM-111|2027-10": 40,
+        "MEM-112|2027-04": 45,
+        "MEM-112|2027-05": 45,
+        "MEM-112|2027-06": 45,
+        "MEM-112|2027-07": 45,
+        "MEM-112|2027-08": 45,
+        "MEM-112|2027-09": 45,
+        "MEM-112|2027-10": 45,
+        "MEM-113|2027-07": 37,
+        "MEM-113|2027-08": 37,
+        "MEM-113|2027-09": 37,
+        "MEM-113|2027-10": 37,
+        "MEM-116|2027-04": 40,
+        "MEM-116|2027-05": 40,
+        "MEM-116|2027-06": 40,
+        "MEM-116|2027-07": 40,
+        "MEM-116|2027-08": 40,
+        "MEM-116|2027-09": 40,
+        "MEM-116|2027-10": 40,
+        "MEM-117|2027-04": 41,
+        "MEM-117|2027-05": 41,
+        "MEM-117|2027-06": 41,
+        "MEM-117|2027-07": 41,
+        "MEM-117|2027-08": 41,
+        "MEM-117|2027-09": 41,
+        "MEM-117|2027-10": 41,
+        "MEM-118|2027-04": 38,
+        "MEM-118|2027-05": 38,
+        "MEM-118|2027-06": 38,
+        "MEM-118|2027-07": 38,
+        "MEM-118|2027-08": 38,
+        "MEM-118|2027-09": 38,
+        "MEM-118|2027-10": 38,
+        "MEM-119|2027-04": 40,
+        "MEM-119|2027-05": 40,
+        "MEM-119|2027-06": 40,
+        "MEM-119|2027-07": 40,
+        "MEM-119|2027-08": 40,
+        "MEM-119|2027-09": 40,
+        "MEM-119|2027-10": 40,
+        "MEM-120|2027-04": 40,
+        "MEM-120|2027-05": 40,
+        "MEM-120|2027-06": 40,
+        "MEM-120|2027-07": 40,
+        "MEM-120|2027-08": 40,
+        "MEM-120|2027-09": 40,
+        "MEM-120|2027-10": 40,
+        "MEM-109|2027-01": 45,
+        "MEM-109|2027-02": 45,
+        "MEM-109|2027-03": 45,
+        "MEM-109|2027-04": 45,
+        "MEM-109|2027-05": 45,
+        "MEM-109|2027-06": 45,
+        "MEM-109|2027-07": 45,
+        "MEM-109|2027-08": 45,
+        "MEM-109|2027-09": 45,
+        "MEM-109|2027-10": 45
     },
     "spotJobs": [],
     "expenses": [],
     "monthlyCost": {},
     "monthlyTransport": {},
-    "monthlyRevenueActual": {},
-    "monthlyCostActual": {},
-    "monthlyTransportActual": {},
+    "monthlyRevenueActual": {
+        "MEM-101|2026-11": 0,
+        "MEM-101|2026-12": 0,
+        "MEM-101|2027-01": 0,
+        "MEM-101|2027-02": 0,
+        "MEM-101|2027-03": 0,
+        "MEM-101|2027-04": 0,
+        "MEM-101|2027-05": 0,
+        "MEM-101|2027-06": 0,
+        "MEM-101|2027-07": 0,
+        "MEM-101|2027-08": 0,
+        "MEM-101|2027-09": 0,
+        "MEM-101|2027-10": 0,
+        "MEM-102|2026-11": 51,
+        "MEM-102|2026-12": 51,
+        "MEM-102|2027-01": 51,
+        "MEM-102|2027-02": 51,
+        "MEM-102|2027-03": 51,
+        "MEM-102|2027-04": 65,
+        "MEM-102|2027-05": 65,
+        "MEM-102|2027-06": 65,
+        "MEM-102|2027-07": 65,
+        "MEM-102|2027-08": 65,
+        "MEM-102|2027-09": 65,
+        "MEM-102|2027-10": 65,
+        "MEM-114|2026-11": 42,
+        "MEM-114|2026-12": 42,
+        "MEM-114|2027-01": 42,
+        "MEM-114|2027-02": 42,
+        "MEM-114|2027-03": 42,
+        "MEM-114|2027-04": 42,
+        "MEM-114|2027-05": 42,
+        "MEM-114|2027-06": 42,
+        "MEM-114|2027-07": 42,
+        "MEM-114|2027-08": 42,
+        "MEM-114|2027-09": 42,
+        "MEM-114|2027-10": 42,
+        "MEM-109|2026-11": 0,
+        "MEM-109|2026-12": 0,
+        "MEM-109|2027-01": 45,
+        "MEM-109|2027-02": 45,
+        "MEM-109|2027-03": 45,
+        "MEM-109|2027-04": 45,
+        "MEM-109|2027-05": 45,
+        "MEM-109|2027-06": 45,
+        "MEM-109|2027-07": 45,
+        "MEM-109|2027-08": 45,
+        "MEM-109|2027-09": 45,
+        "MEM-109|2027-10": 45,
+        "MEM-108|2026-11": 50,
+        "MEM-108|2026-12": 50,
+        "MEM-108|2027-01": 50,
+        "MEM-108|2027-02": 50,
+        "MEM-108|2027-03": 50,
+        "MEM-108|2027-04": 53,
+        "MEM-108|2027-05": 53,
+        "MEM-108|2027-06": 53,
+        "MEM-108|2027-07": 53,
+        "MEM-108|2027-08": 53,
+        "MEM-108|2027-09": 53,
+        "MEM-108|2027-10": 53,
+        "MEM-115|2026-11": 43,
+        "MEM-115|2026-12": 43,
+        "MEM-115|2027-01": 43,
+        "MEM-115|2027-02": 43,
+        "MEM-115|2027-03": 43,
+        "MEM-115|2027-04": 43,
+        "MEM-115|2027-05": 43,
+        "MEM-115|2027-06": 43,
+        "MEM-115|2027-07": 43,
+        "MEM-115|2027-08": 43,
+        "MEM-115|2027-09": 43,
+        "MEM-115|2027-10": 43,
+        "MEM-110|2026-11": 48,
+        "MEM-110|2026-12": 48,
+        "MEM-110|2027-01": 48,
+        "MEM-110|2027-02": 48,
+        "MEM-110|2027-03": 48,
+        "MEM-110|2027-04": 52,
+        "MEM-110|2027-05": 52,
+        "MEM-110|2027-06": 52,
+        "MEM-110|2027-07": 52,
+        "MEM-110|2027-08": 52,
+        "MEM-110|2027-09": 52,
+        "MEM-110|2027-10": 52,
+        "MEM-104|2026-11": 0,
+        "MEM-104|2026-12": 0,
+        "MEM-104|2027-01": 45,
+        "MEM-104|2027-02": 45,
+        "MEM-104|2027-03": 45,
+        "MEM-104|2027-04": 45,
+        "MEM-104|2027-05": 45,
+        "MEM-104|2027-06": 45,
+        "MEM-104|2027-07": 45,
+        "MEM-104|2027-08": 45,
+        "MEM-104|2027-09": 45,
+        "MEM-104|2027-10": 45,
+        "MEM-116|2026-11": 35,
+        "MEM-116|2026-12": 35,
+        "MEM-116|2027-01": 35,
+        "MEM-116|2027-02": 35,
+        "MEM-116|2027-03": 35,
+        "MEM-116|2027-04": 40,
+        "MEM-116|2027-05": 40,
+        "MEM-116|2027-06": 40,
+        "MEM-116|2027-07": 40,
+        "MEM-116|2027-08": 40,
+        "MEM-116|2027-09": 40,
+        "MEM-116|2027-10": 40,
+        "MEM-111|2026-11": 37,
+        "MEM-111|2026-12": 37,
+        "MEM-111|2027-01": 37,
+        "MEM-111|2027-02": 37,
+        "MEM-111|2027-03": 37,
+        "MEM-111|2027-04": 37,
+        "MEM-111|2027-05": 37,
+        "MEM-111|2027-06": 37,
+        "MEM-111|2027-07": 40,
+        "MEM-111|2027-08": 40,
+        "MEM-111|2027-09": 40,
+        "MEM-111|2027-10": 40,
+        "MEM-112|2026-11": 40,
+        "MEM-112|2026-12": 40,
+        "MEM-112|2027-01": 40,
+        "MEM-112|2027-02": 40,
+        "MEM-112|2027-03": 40,
+        "MEM-112|2027-04": 45,
+        "MEM-112|2027-05": 45,
+        "MEM-112|2027-06": 45,
+        "MEM-112|2027-07": 45,
+        "MEM-112|2027-08": 45,
+        "MEM-112|2027-09": 45,
+        "MEM-112|2027-10": 45,
+        "MEM-117|2026-11": 40,
+        "MEM-117|2026-12": 40,
+        "MEM-117|2027-01": 40,
+        "MEM-117|2027-02": 40,
+        "MEM-117|2027-03": 40,
+        "MEM-117|2027-04": 41,
+        "MEM-117|2027-05": 41,
+        "MEM-117|2027-06": 41,
+        "MEM-117|2027-07": 41,
+        "MEM-117|2027-08": 41,
+        "MEM-117|2027-09": 41,
+        "MEM-117|2027-10": 41,
+        "MEM-105|2026-11": 35,
+        "MEM-105|2026-12": 35,
+        "MEM-105|2027-01": 39,
+        "MEM-105|2027-02": 39,
+        "MEM-105|2027-03": 39,
+        "MEM-105|2027-04": 42,
+        "MEM-105|2027-05": 42,
+        "MEM-105|2027-06": 42,
+        "MEM-105|2027-07": 42,
+        "MEM-105|2027-08": 42,
+        "MEM-105|2027-09": 42,
+        "MEM-105|2027-10": 42,
+        "MEM-113|2026-11": 35,
+        "MEM-113|2026-12": 35,
+        "MEM-113|2027-01": 35,
+        "MEM-113|2027-02": 35,
+        "MEM-113|2027-03": 35,
+        "MEM-113|2027-04": 35,
+        "MEM-113|2027-05": 35,
+        "MEM-113|2027-06": 35,
+        "MEM-113|2027-07": 37,
+        "MEM-113|2027-08": 37,
+        "MEM-113|2027-09": 37,
+        "MEM-113|2027-10": 37,
+        "MEM-118|2026-11": 35,
+        "MEM-118|2026-12": 35,
+        "MEM-118|2027-01": 35,
+        "MEM-118|2027-02": 35,
+        "MEM-118|2027-03": 35,
+        "MEM-118|2027-04": 38,
+        "MEM-118|2027-05": 38,
+        "MEM-118|2027-06": 38,
+        "MEM-118|2027-07": 38,
+        "MEM-118|2027-08": 38,
+        "MEM-118|2027-09": 38,
+        "MEM-118|2027-10": 38,
+        "MEM-103|2026-11": 45,
+        "MEM-103|2026-12": 45,
+        "MEM-103|2027-01": 45,
+        "MEM-103|2027-02": 45,
+        "MEM-103|2027-03": 45,
+        "MEM-103|2027-04": 45,
+        "MEM-103|2027-05": 45,
+        "MEM-103|2027-06": 45,
+        "MEM-103|2027-07": 45,
+        "MEM-103|2027-08": 48,
+        "MEM-103|2027-09": 48,
+        "MEM-103|2027-10": 48,
+        "MEM-119|2026-11": 38,
+        "MEM-119|2026-12": 38,
+        "MEM-119|2027-01": 38,
+        "MEM-119|2027-02": 38,
+        "MEM-119|2027-03": 38,
+        "MEM-119|2027-04": 40,
+        "MEM-119|2027-05": 40,
+        "MEM-119|2027-06": 40,
+        "MEM-119|2027-07": 40,
+        "MEM-119|2027-08": 40,
+        "MEM-119|2027-09": 40,
+        "MEM-119|2027-10": 40,
+        "MEM-106|2026-11": 40,
+        "MEM-106|2026-12": 40,
+        "MEM-106|2027-01": 40,
+        "MEM-106|2027-02": 40,
+        "MEM-106|2027-03": 40,
+        "MEM-106|2027-04": 44,
+        "MEM-106|2027-05": 44,
+        "MEM-106|2027-06": 44,
+        "MEM-106|2027-07": 44,
+        "MEM-106|2027-08": 44,
+        "MEM-106|2027-09": 44,
+        "MEM-106|2027-10": 44,
+        "MEM-120|2026-11": 36,
+        "MEM-120|2026-12": 36,
+        "MEM-120|2027-01": 36,
+        "MEM-120|2027-02": 36,
+        "MEM-120|2027-03": 36,
+        "MEM-120|2027-04": 40,
+        "MEM-120|2027-05": 40,
+        "MEM-120|2027-06": 40,
+        "MEM-120|2027-07": 40,
+        "MEM-120|2027-08": 40,
+        "MEM-120|2027-09": 40,
+        "MEM-120|2027-10": 40,
+        "MEM-107|2026-11": 10,
+        "MEM-107|2026-12": 10,
+        "MEM-107|2027-01": 40,
+        "MEM-107|2027-02": 40,
+        "MEM-107|2027-03": 40,
+        "MEM-107|2027-04": 40,
+        "MEM-107|2027-05": 40,
+        "MEM-107|2027-06": 40,
+        "MEM-107|2027-07": 40,
+        "MEM-107|2027-08": 40,
+        "MEM-107|2027-09": 40,
+        "MEM-107|2027-10": 40
+    },
+    "monthlyCostActual": {
+        "MEM-101|2026-11": 36.35,
+        "MEM-101|2026-12": 36.35,
+        "MEM-101|2027-01": 36.35,
+        "MEM-101|2027-02": 36.35,
+        "MEM-101|2027-03": 36.35,
+        "MEM-101|2027-04": 36.35,
+        "MEM-101|2027-05": 36.35,
+        "MEM-101|2027-06": 36.35,
+        "MEM-101|2027-07": 36.35,
+        "MEM-101|2027-08": 36.35,
+        "MEM-101|2027-09": 36.35,
+        "MEM-101|2027-10": 36.35,
+        "MEM-102|2026-11": 49.65,
+        "MEM-102|2026-12": 49.65,
+        "MEM-102|2027-01": 49.65,
+        "MEM-102|2027-02": 49.65,
+        "MEM-102|2027-03": 49.65,
+        "MEM-102|2027-04": 49.65,
+        "MEM-102|2027-05": 49.65,
+        "MEM-102|2027-06": 49.65,
+        "MEM-102|2027-07": 49.65,
+        "MEM-102|2027-08": 49.65,
+        "MEM-102|2027-09": 49.65,
+        "MEM-102|2027-10": 49.65,
+        "MEM-114|2026-11": 40.25,
+        "MEM-114|2026-12": 40.25,
+        "MEM-114|2027-01": 40.25,
+        "MEM-114|2027-02": 40.25,
+        "MEM-114|2027-03": 40.25,
+        "MEM-114|2027-04": 40.25,
+        "MEM-114|2027-05": 40.25,
+        "MEM-114|2027-06": 40.25,
+        "MEM-114|2027-07": 40.25,
+        "MEM-114|2027-08": 40.25,
+        "MEM-114|2027-09": 40.25,
+        "MEM-114|2027-10": 40.25,
+        "MEM-109|2026-11": 36.35,
+        "MEM-109|2026-12": 36.35,
+        "MEM-109|2027-01": 36.35,
+        "MEM-109|2027-02": 36.35,
+        "MEM-109|2027-03": 36.35,
+        "MEM-109|2027-04": 36.35,
+        "MEM-109|2027-05": 36.35,
+        "MEM-109|2027-06": 36.35,
+        "MEM-109|2027-07": 36.35,
+        "MEM-109|2027-08": 36.35,
+        "MEM-109|2027-09": 36.35,
+        "MEM-109|2027-10": 36.35,
+        "MEM-108|2026-11": 36.35,
+        "MEM-108|2026-12": 36.35,
+        "MEM-108|2027-01": 36.35,
+        "MEM-108|2027-02": 36.35,
+        "MEM-108|2027-03": 36.35,
+        "MEM-108|2027-04": 36.35,
+        "MEM-108|2027-05": 36.35,
+        "MEM-108|2027-06": 36.35,
+        "MEM-108|2027-07": 36.35,
+        "MEM-108|2027-08": 36.35,
+        "MEM-108|2027-09": 36.35,
+        "MEM-108|2027-10": 36.35,
+        "MEM-115|2026-11": 36.35,
+        "MEM-115|2026-12": 36.35,
+        "MEM-115|2027-01": 36.35,
+        "MEM-115|2027-02": 36.35,
+        "MEM-115|2027-03": 36.35,
+        "MEM-115|2027-04": 36.35,
+        "MEM-115|2027-05": 36.35,
+        "MEM-115|2027-06": 36.35,
+        "MEM-115|2027-07": 36.35,
+        "MEM-115|2027-08": 36.35,
+        "MEM-115|2027-09": 36.35,
+        "MEM-115|2027-10": 36.35,
+        "MEM-110|2026-11": 36.35,
+        "MEM-110|2026-12": 36.35,
+        "MEM-110|2027-01": 36.35,
+        "MEM-110|2027-02": 36.35,
+        "MEM-110|2027-03": 36.35,
+        "MEM-110|2027-04": 36.35,
+        "MEM-110|2027-05": 36.35,
+        "MEM-110|2027-06": 36.35,
+        "MEM-110|2027-07": 36.35,
+        "MEM-110|2027-08": 36.35,
+        "MEM-110|2027-09": 36.35,
+        "MEM-110|2027-10": 36.35,
+        "MEM-104|2026-11": 33.1,
+        "MEM-104|2026-12": 33.1,
+        "MEM-104|2027-01": 33.1,
+        "MEM-104|2027-02": 33.1,
+        "MEM-104|2027-03": 33.1,
+        "MEM-104|2027-04": 33.1,
+        "MEM-104|2027-05": 33.1,
+        "MEM-104|2027-06": 33.1,
+        "MEM-104|2027-07": 33.1,
+        "MEM-104|2027-08": 33.1,
+        "MEM-104|2027-09": 33.1,
+        "MEM-104|2027-10": 33.1,
+        "MEM-116|2026-11": 33.1,
+        "MEM-116|2026-12": 33.1,
+        "MEM-116|2027-01": 33.1,
+        "MEM-116|2027-02": 33.1,
+        "MEM-116|2027-03": 33.1,
+        "MEM-116|2027-04": 33.1,
+        "MEM-116|2027-05": 33.1,
+        "MEM-116|2027-06": 33.1,
+        "MEM-116|2027-07": 33.1,
+        "MEM-116|2027-08": 33.1,
+        "MEM-116|2027-09": 33.1,
+        "MEM-116|2027-10": 33.1,
+        "MEM-111|2026-11": 33.1,
+        "MEM-111|2026-12": 33.1,
+        "MEM-111|2027-01": 33.1,
+        "MEM-111|2027-02": 33.1,
+        "MEM-111|2027-03": 33.1,
+        "MEM-111|2027-04": 33.1,
+        "MEM-111|2027-05": 33.1,
+        "MEM-111|2027-06": 33.1,
+        "MEM-111|2027-07": 33.1,
+        "MEM-111|2027-08": 33.1,
+        "MEM-111|2027-09": 33.1,
+        "MEM-111|2027-10": 33.1,
+        "MEM-112|2026-11": 33.1,
+        "MEM-112|2026-12": 33.1,
+        "MEM-112|2027-01": 33.1,
+        "MEM-112|2027-02": 33.1,
+        "MEM-112|2027-03": 33.1,
+        "MEM-112|2027-04": 33.1,
+        "MEM-112|2027-05": 33.1,
+        "MEM-112|2027-06": 33.1,
+        "MEM-112|2027-07": 33.1,
+        "MEM-112|2027-08": 33.1,
+        "MEM-112|2027-09": 33.1,
+        "MEM-112|2027-10": 33.1,
+        "MEM-117|2026-11": 33.1,
+        "MEM-117|2026-12": 33.1,
+        "MEM-117|2027-01": 33.1,
+        "MEM-117|2027-02": 33.1,
+        "MEM-117|2027-03": 33.1,
+        "MEM-117|2027-04": 33.1,
+        "MEM-117|2027-05": 33.1,
+        "MEM-117|2027-06": 33.1,
+        "MEM-117|2027-07": 33.1,
+        "MEM-117|2027-08": 33.1,
+        "MEM-117|2027-09": 33.1,
+        "MEM-117|2027-10": 33.1,
+        "MEM-105|2026-11": 33.1,
+        "MEM-105|2026-12": 33.1,
+        "MEM-105|2027-01": 33.1,
+        "MEM-105|2027-02": 33.1,
+        "MEM-105|2027-03": 33.1,
+        "MEM-105|2027-04": 33.1,
+        "MEM-105|2027-05": 33.1,
+        "MEM-105|2027-06": 33.1,
+        "MEM-105|2027-07": 33.1,
+        "MEM-105|2027-08": 33.1,
+        "MEM-105|2027-09": 33.1,
+        "MEM-105|2027-10": 33.1,
+        "MEM-113|2026-11": 33.1,
+        "MEM-113|2026-12": 33.1,
+        "MEM-113|2027-01": 33.1,
+        "MEM-113|2027-02": 33.1,
+        "MEM-113|2027-03": 33.1,
+        "MEM-113|2027-04": 33.1,
+        "MEM-113|2027-05": 33.1,
+        "MEM-113|2027-06": 33.1,
+        "MEM-113|2027-07": 33.1,
+        "MEM-113|2027-08": 33.1,
+        "MEM-113|2027-09": 33.1,
+        "MEM-113|2027-10": 33.1,
+        "MEM-118|2026-11": 33.1,
+        "MEM-118|2026-12": 33.1,
+        "MEM-118|2027-01": 33.1,
+        "MEM-118|2027-02": 33.1,
+        "MEM-118|2027-03": 33.1,
+        "MEM-118|2027-04": 33.1,
+        "MEM-118|2027-05": 33.1,
+        "MEM-118|2027-06": 33.1,
+        "MEM-118|2027-07": 33.1,
+        "MEM-118|2027-08": 33.1,
+        "MEM-118|2027-09": 33.1,
+        "MEM-118|2027-10": 33.1,
+        "MEM-103|2026-11": 36.35,
+        "MEM-103|2026-12": 36.35,
+        "MEM-103|2027-01": 36.35,
+        "MEM-103|2027-02": 36.35,
+        "MEM-103|2027-03": 36.35,
+        "MEM-103|2027-04": 36.35,
+        "MEM-103|2027-05": 36.35,
+        "MEM-103|2027-06": 36.35,
+        "MEM-103|2027-07": 36.35,
+        "MEM-103|2027-08": 36.35,
+        "MEM-103|2027-09": 36.35,
+        "MEM-103|2027-10": 36.35,
+        "MEM-119|2026-11": 33.1,
+        "MEM-119|2026-12": 33.1,
+        "MEM-119|2027-01": 33.1,
+        "MEM-119|2027-02": 33.1,
+        "MEM-119|2027-03": 33.1,
+        "MEM-119|2027-04": 33.1,
+        "MEM-119|2027-05": 33.1,
+        "MEM-119|2027-06": 33.1,
+        "MEM-119|2027-07": 33.1,
+        "MEM-119|2027-08": 33.1,
+        "MEM-119|2027-09": 33.1,
+        "MEM-119|2027-10": 33.1,
+        "MEM-106|2026-11": 30,
+        "MEM-106|2026-12": 30,
+        "MEM-106|2027-01": 30,
+        "MEM-106|2027-02": 30,
+        "MEM-106|2027-03": 30,
+        "MEM-106|2027-04": 30,
+        "MEM-106|2027-05": 30,
+        "MEM-106|2027-06": 30,
+        "MEM-106|2027-07": 30,
+        "MEM-106|2027-08": 30,
+        "MEM-106|2027-09": 30,
+        "MEM-106|2027-10": 30,
+        "MEM-120|2026-11": 30,
+        "MEM-120|2026-12": 30,
+        "MEM-120|2027-01": 30,
+        "MEM-120|2027-02": 30,
+        "MEM-120|2027-03": 30,
+        "MEM-120|2027-04": 30,
+        "MEM-120|2027-05": 30,
+        "MEM-120|2027-06": 30,
+        "MEM-120|2027-07": 30,
+        "MEM-120|2027-08": 30,
+        "MEM-120|2027-09": 30,
+        "MEM-120|2027-10": 30,
+        "MEM-107|2026-11": 33.1,
+        "MEM-107|2026-12": 33.1,
+        "MEM-107|2027-01": 33.1,
+        "MEM-107|2027-02": 33.1,
+        "MEM-107|2027-03": 33.1,
+        "MEM-107|2027-04": 33.1,
+        "MEM-107|2027-05": 33.1,
+        "MEM-107|2027-06": 33.1,
+        "MEM-107|2027-07": 33.1,
+        "MEM-107|2027-08": 33.1,
+        "MEM-107|2027-09": 33.1,
+        "MEM-107|2027-10": 33.1
+    },
+    "monthlyTransportActual": {
+        "MEM-101|2026-11": 1.831,
+        "MEM-101|2026-12": 1.831,
+        "MEM-101|2027-01": 1.831,
+        "MEM-101|2027-02": 1.831,
+        "MEM-101|2027-03": 1.831,
+        "MEM-101|2027-04": 1.831,
+        "MEM-101|2027-05": 1.831,
+        "MEM-101|2027-06": 1.831,
+        "MEM-101|2027-07": 1.831,
+        "MEM-101|2027-08": 1.831,
+        "MEM-101|2027-09": 1.831,
+        "MEM-101|2027-10": 1.831,
+        "MEM-102|2026-11": 0.987,
+        "MEM-102|2026-12": 0.987,
+        "MEM-102|2027-01": 0.987,
+        "MEM-102|2027-02": 0.987,
+        "MEM-102|2027-03": 0.987,
+        "MEM-102|2027-04": 0.987,
+        "MEM-102|2027-05": 0.987,
+        "MEM-102|2027-06": 0.987,
+        "MEM-102|2027-07": 0.987,
+        "MEM-102|2027-08": 0.987,
+        "MEM-102|2027-09": 0.987,
+        "MEM-102|2027-10": 0.987,
+        "MEM-114|2026-11": 1.151,
+        "MEM-114|2026-12": 1.151,
+        "MEM-114|2027-01": 1.151,
+        "MEM-114|2027-02": 1.151,
+        "MEM-114|2027-03": 1.151,
+        "MEM-114|2027-04": 1.151,
+        "MEM-114|2027-05": 1.151,
+        "MEM-114|2027-06": 1.151,
+        "MEM-114|2027-07": 1.151,
+        "MEM-114|2027-08": 1.151,
+        "MEM-114|2027-09": 1.151,
+        "MEM-114|2027-10": 1.151,
+        "MEM-109|2026-11": 1.265,
+        "MEM-109|2026-12": 1.265,
+        "MEM-109|2027-01": 1.265,
+        "MEM-109|2027-02": 1.265,
+        "MEM-109|2027-03": 1.265,
+        "MEM-109|2027-04": 1.265,
+        "MEM-109|2027-05": 1.265,
+        "MEM-109|2027-06": 1.265,
+        "MEM-109|2027-07": 1.265,
+        "MEM-109|2027-08": 1.265,
+        "MEM-109|2027-09": 1.265,
+        "MEM-109|2027-10": 1.265,
+        "MEM-108|2026-11": 0.987,
+        "MEM-108|2026-12": 0.987,
+        "MEM-108|2027-01": 0.987,
+        "MEM-108|2027-02": 0.987,
+        "MEM-108|2027-03": 0.987,
+        "MEM-108|2027-04": 0.987,
+        "MEM-108|2027-05": 0.987,
+        "MEM-108|2027-06": 0.987,
+        "MEM-108|2027-07": 0.987,
+        "MEM-108|2027-08": 0.987,
+        "MEM-108|2027-09": 0.987,
+        "MEM-108|2027-10": 0.987,
+        "MEM-115|2026-11": 1.78,
+        "MEM-115|2026-12": 1.78,
+        "MEM-115|2027-01": 1.78,
+        "MEM-115|2027-02": 1.78,
+        "MEM-115|2027-03": 1.78,
+        "MEM-115|2027-04": 1.78,
+        "MEM-115|2027-05": 1.78,
+        "MEM-115|2027-06": 1.78,
+        "MEM-115|2027-07": 1.78,
+        "MEM-115|2027-08": 1.78,
+        "MEM-115|2027-09": 1.78,
+        "MEM-115|2027-10": 1.78,
+        "MEM-110|2026-11": 1.312,
+        "MEM-110|2026-12": 1.312,
+        "MEM-110|2027-01": 1.312,
+        "MEM-110|2027-02": 1.312,
+        "MEM-110|2027-03": 1.312,
+        "MEM-110|2027-04": 1.312,
+        "MEM-110|2027-05": 1.312,
+        "MEM-110|2027-06": 1.312,
+        "MEM-110|2027-07": 1.312,
+        "MEM-110|2027-08": 1.312,
+        "MEM-110|2027-09": 1.312,
+        "MEM-110|2027-10": 1.312,
+        "MEM-104|2026-11": 0.987,
+        "MEM-104|2026-12": 0.987,
+        "MEM-104|2027-01": 0.987,
+        "MEM-104|2027-02": 0.987,
+        "MEM-104|2027-03": 0.987,
+        "MEM-104|2027-04": 0.987,
+        "MEM-104|2027-05": 0.987,
+        "MEM-104|2027-06": 0.987,
+        "MEM-104|2027-07": 0.987,
+        "MEM-104|2027-08": 0.987,
+        "MEM-104|2027-09": 0.987,
+        "MEM-104|2027-10": 0.987,
+        "MEM-116|2026-11": 1.571,
+        "MEM-116|2026-12": 1.571,
+        "MEM-116|2027-01": 1.571,
+        "MEM-116|2027-02": 1.571,
+        "MEM-116|2027-03": 1.571,
+        "MEM-116|2027-04": 1.571,
+        "MEM-116|2027-05": 1.571,
+        "MEM-116|2027-06": 1.571,
+        "MEM-116|2027-07": 1.571,
+        "MEM-116|2027-08": 1.571,
+        "MEM-116|2027-09": 1.571,
+        "MEM-116|2027-10": 1.571,
+        "MEM-111|2026-11": 0.987,
+        "MEM-111|2026-12": 0.987,
+        "MEM-111|2027-01": 0.987,
+        "MEM-111|2027-02": 0.987,
+        "MEM-111|2027-03": 0.987,
+        "MEM-111|2027-04": 0.987,
+        "MEM-111|2027-05": 0.987,
+        "MEM-111|2027-06": 0.987,
+        "MEM-111|2027-07": 0.987,
+        "MEM-111|2027-08": 0.987,
+        "MEM-111|2027-09": 0.987,
+        "MEM-111|2027-10": 0.987,
+        "MEM-112|2026-11": 0.987,
+        "MEM-112|2026-12": 0.987,
+        "MEM-112|2027-01": 0.987,
+        "MEM-112|2027-02": 0.987,
+        "MEM-112|2027-03": 0.987,
+        "MEM-112|2027-04": 0.987,
+        "MEM-112|2027-05": 0.987,
+        "MEM-112|2027-06": 0.987,
+        "MEM-112|2027-07": 0.987,
+        "MEM-112|2027-08": 0.987,
+        "MEM-112|2027-09": 0.987,
+        "MEM-112|2027-10": 0.987,
+        "MEM-117|2026-11": 1.661,
+        "MEM-117|2026-12": 1.661,
+        "MEM-117|2027-01": 1.661,
+        "MEM-117|2027-02": 1.661,
+        "MEM-117|2027-03": 1.661,
+        "MEM-117|2027-04": 1.661,
+        "MEM-117|2027-05": 1.661,
+        "MEM-117|2027-06": 1.661,
+        "MEM-117|2027-07": 1.661,
+        "MEM-117|2027-08": 1.661,
+        "MEM-117|2027-09": 1.661,
+        "MEM-117|2027-10": 1.661,
+        "MEM-105|2026-11": 1.606,
+        "MEM-105|2026-12": 1.606,
+        "MEM-105|2027-01": 1.606,
+        "MEM-105|2027-02": 1.606,
+        "MEM-105|2027-03": 1.606,
+        "MEM-105|2027-04": 1.606,
+        "MEM-105|2027-05": 1.606,
+        "MEM-105|2027-06": 1.606,
+        "MEM-105|2027-07": 1.606,
+        "MEM-105|2027-08": 1.606,
+        "MEM-105|2027-09": 1.606,
+        "MEM-105|2027-10": 1.606,
+        "MEM-113|2026-11": 0.784,
+        "MEM-113|2026-12": 0.784,
+        "MEM-113|2027-01": 0.784,
+        "MEM-113|2027-02": 0.784,
+        "MEM-113|2027-03": 0.784,
+        "MEM-113|2027-04": 0.784,
+        "MEM-113|2027-05": 0.784,
+        "MEM-113|2027-06": 0.784,
+        "MEM-113|2027-07": 0.784,
+        "MEM-113|2027-08": 0.784,
+        "MEM-113|2027-09": 0.784,
+        "MEM-113|2027-10": 0.784,
+        "MEM-118|2026-11": 1.775,
+        "MEM-118|2026-12": 1.775,
+        "MEM-118|2027-01": 1.775,
+        "MEM-118|2027-02": 1.775,
+        "MEM-118|2027-03": 1.775,
+        "MEM-118|2027-04": 1.775,
+        "MEM-118|2027-05": 1.775,
+        "MEM-118|2027-06": 1.775,
+        "MEM-118|2027-07": 1.775,
+        "MEM-118|2027-08": 1.775,
+        "MEM-118|2027-09": 1.775,
+        "MEM-118|2027-10": 1.775,
+        "MEM-103|2026-11": 1.151,
+        "MEM-103|2026-12": 1.151,
+        "MEM-103|2027-01": 1.151,
+        "MEM-103|2027-02": 1.151,
+        "MEM-103|2027-03": 1.151,
+        "MEM-103|2027-04": 1.151,
+        "MEM-103|2027-05": 1.151,
+        "MEM-103|2027-06": 1.151,
+        "MEM-103|2027-07": 1.151,
+        "MEM-103|2027-08": 1.151,
+        "MEM-103|2027-09": 1.151,
+        "MEM-103|2027-10": 1.151,
+        "MEM-119|2026-11": 1.74,
+        "MEM-119|2026-12": 1.74,
+        "MEM-119|2027-01": 1.74,
+        "MEM-119|2027-02": 1.74,
+        "MEM-119|2027-03": 1.74,
+        "MEM-119|2027-04": 1.74,
+        "MEM-119|2027-05": 1.74,
+        "MEM-119|2027-06": 1.74,
+        "MEM-119|2027-07": 1.74,
+        "MEM-119|2027-08": 1.74,
+        "MEM-119|2027-09": 1.74,
+        "MEM-119|2027-10": 1.74,
+        "MEM-106|2026-11": 1.478,
+        "MEM-106|2026-12": 1.478,
+        "MEM-106|2027-01": 1.478,
+        "MEM-106|2027-02": 1.478,
+        "MEM-106|2027-03": 1.478,
+        "MEM-106|2027-04": 1.478,
+        "MEM-106|2027-05": 1.478,
+        "MEM-106|2027-06": 1.478,
+        "MEM-106|2027-07": 1.478,
+        "MEM-106|2027-08": 1.478,
+        "MEM-106|2027-09": 1.478,
+        "MEM-106|2027-10": 1.478,
+        "MEM-120|2026-11": 1.74,
+        "MEM-120|2026-12": 1.74,
+        "MEM-120|2027-01": 1.74,
+        "MEM-120|2027-02": 1.74,
+        "MEM-120|2027-03": 1.74,
+        "MEM-120|2027-04": 1.74,
+        "MEM-120|2027-05": 1.74,
+        "MEM-120|2027-06": 1.74,
+        "MEM-120|2027-07": 1.74,
+        "MEM-120|2027-08": 1.74,
+        "MEM-120|2027-09": 1.74,
+        "MEM-120|2027-10": 1.74,
+        "MEM-107|2026-11": 0.987,
+        "MEM-107|2026-12": 0.987,
+        "MEM-107|2027-01": 0.987,
+        "MEM-107|2027-02": 0.987,
+        "MEM-107|2027-03": 0.987,
+        "MEM-107|2027-04": 0.987,
+        "MEM-107|2027-05": 0.987,
+        "MEM-107|2027-06": 0.987,
+        "MEM-107|2027-07": 0.987,
+        "MEM-107|2027-08": 0.987,
+        "MEM-107|2027-09": 0.987,
+        "MEM-107|2027-10": 0.987
+    },
     "oneOnOnes": [],
     "feedbacks": [],
     "merchandiseProducts": [],
     "merchandiseSales": [],
-    "merchandiseExpenses": []
+    "merchandiseExpenses": [],
+    "gradeMaster": [
+        {
+            "grade": "G1",
+            "role": "-（新人）",
+            "roleAllowance": 0,
+            "skillAllowance": 5000,
+            "incentive": "",
+            "salary": 255000,
+            "annualIncome": 3120000,
+            "tokyoCost": 390000,
+            "tokyoRate": 400000,
+            "localCost": 300000,
+            "localRate": 330000
+        },
+        {
+            "grade": "G2",
+            "role": "-（一般）1年相当",
+            "roleAllowance": 0,
+            "skillAllowance": 10000,
+            "incentive": "",
+            "salary": 260000,
+            "annualIncome": 3240000,
+            "tokyoCost": 421000,
+            "tokyoRate": 450000,
+            "localCost": 331000,
+            "localRate": 380000
+        },
+        {
+            "grade": "G3",
+            "role": "-（一般）3年相当",
+            "roleAllowance": 0,
+            "skillAllowance": 20000,
+            "incentive": "",
+            "salary": 275000,
+            "annualIncome": 3540000,
+            "tokyoCost": 453500,
+            "tokyoRate": 500000,
+            "localCost": 363500,
+            "localRate": 430000
+        },
+        {
+            "grade": "G4",
+            "role": "-（一般）5年相当",
+            "roleAllowance": 0,
+            "skillAllowance": 40000,
+            "incentive": "",
+            "salary": 285000,
+            "annualIncome": 3900000,
+            "tokyoCost": 492500,
+            "tokyoRate": 550000,
+            "localCost": 402500,
+            "localRate": 480000
+        },
+        {
+            "grade": "G5",
+            "role": "-（一般）7年相当",
+            "roleAllowance": 0,
+            "skillAllowance": 70000,
+            "incentive": "",
+            "salary": 300000,
+            "annualIncome": 4440000,
+            "tokyoCost": 551000,
+            "tokyoRate": 650000,
+            "localCost": 461000,
+            "localRate": 580000
+        },
+        {
+            "grade": "G6",
+            "role": "-（一般）10年相当",
+            "roleAllowance": 0,
+            "skillAllowance": 100000,
+            "incentive": "",
+            "salary": 325000,
+            "annualIncome": 5100000,
+            "tokyoCost": 622500,
+            "tokyoRate": 750000,
+            "localCost": 532500,
+            "localRate": 680000
+        },
+        {
+            "grade": "S1",
+            "role": "-（スペシャリスト）",
+            "roleAllowance": 0,
+            "skillAllowance": 150000,
+            "incentive": "",
+            "salary": 280000,
+            "annualIncome": 5160000,
+            "tokyoCost": 644000,
+            "tokyoRate": 850000,
+            "localCost": 554000,
+            "localRate": 780000
+        },
+        {
+            "grade": "S2",
+            "role": "-（スペシャリスト）",
+            "roleAllowance": 0,
+            "skillAllowance": 200000,
+            "incentive": "",
+            "salary": 300000,
+            "annualIncome": 6000000,
+            "tokyoCost": 720000,
+            "tokyoRate": 1000000,
+            "localCost": 630000,
+            "localRate": 930000
+        },
+        {
+            "grade": "S3",
+            "role": "-（スペシャリスト）",
+            "roleAllowance": 0,
+            "skillAllowance": 300000,
+            "incentive": "",
+            "salary": 325000,
+            "annualIncome": 7500000,
+            "tokyoCost": 882500,
+            "tokyoRate": 1200000,
+            "localCost": 792500,
+            "localRate": 1130000
+        },
+        {
+            "grade": "M1",
+            "role": "課長代理",
+            "roleAllowance": 85000,
+            "skillAllowance": 0,
+            "incentive": "",
+            "salary": 275000,
+            "annualIncome": 4320000,
+            "tokyoCost": 571000,
+            "tokyoRate": 700000,
+            "localCost": 481000,
+            "localRate": 630000
+        },
+        {
+            "grade": "M2",
+            "role": "課長代理",
+            "roleAllowance": 100000,
+            "skillAllowance": 0,
+            "incentive": "",
+            "salary": 285000,
+            "annualIncome": 4620000,
+            "tokyoCost": 586000,
+            "tokyoRate": 725000,
+            "localCost": 496500,
+            "localRate": 655000
+        },
+        {
+            "grade": "M3",
+            "role": "課長代理",
+            "roleAllowance": 120000,
+            "skillAllowance": 0,
+            "incentive": "",
+            "salary": 300000,
+            "annualIncome": 5040000,
+            "tokyoCost": 616000,
+            "tokyoRate": 750000,
+            "localCost": 526000,
+            "localRate": 680000
+        },
+        {
+            "grade": "M4",
+            "role": "課長",
+            "roleAllowance": 100000,
+            "skillAllowance": 0,
+            "incentive": "0～3000000",
+            "salary": 300000,
+            "annualIncome": 5300000,
+            "tokyoCost": 590000,
+            "tokyoRate": 800000,
+            "localCost": 500000,
+            "localRate": 730000
+        },
+        {
+            "grade": "M5",
+            "role": "課長",
+            "roleAllowance": 100000,
+            "skillAllowance": 0,
+            "incentive": "0～4000000",
+            "salary": 300000,
+            "annualIncome": 6300000,
+            "tokyoCost": 590000,
+            "tokyoRate": 800000,
+            "localCost": 500000,
+            "localRate": 730000
+        },
+        {
+            "grade": "M6",
+            "role": "課長",
+            "roleAllowance": 100000,
+            "skillAllowance": 0,
+            "incentive": "0～5000000",
+            "salary": 300000,
+            "annualIncome": 7300000,
+            "tokyoCost": 590000,
+            "tokyoRate": 800000,
+            "localCost": 500000,
+            "localRate": 730000
+        },
+        {
+            "grade": "M7",
+            "role": "部長代理",
+            "roleAllowance": 150000,
+            "skillAllowance": 0,
+            "incentive": "",
+            "salary": 400000,
+            "annualIncome": 8000000,
+            "tokyoCost": 755000,
+            "tokyoRate": 850000,
+            "localCost": 665000,
+            "localRate": 780000
+        },
+        {
+            "grade": "M8",
+            "role": "部長代理",
+            "roleAllowance": 150000,
+            "skillAllowance": 0,
+            "incentive": "",
+            "salary": 400000,
+            "annualIncome": 8000000,
+            "tokyoCost": 820000,
+            "tokyoRate": 850000,
+            "localCost": 730000,
+            "localRate": 780000
+        },
+        {
+            "grade": "M9",
+            "role": "部長・所長",
+            "roleAllowance": 150000,
+            "skillAllowance": 0,
+            "incentive": "0～7000000",
+            "salary": 400000,
+            "annualIncome": 8000000,
+            "tokyoCost": 755000,
+            "tokyoRate": 850000,
+            "localCost": 665000,
+            "localRate": 780000
+        }
+    ],
+    "gradeMasterRevision": 2,
+    "customerMeetings": [],
+    "customerMeetingActions": [],
+    "customerMeetingMasters": {
+        "methods": [
+            "訪問",
+            "Teams",
+            "Zoom",
+            "電話",
+            "その他"
+        ]
+    },
+    "memberTransportDefaultsApplied": {
+        "MEM-101": true,
+        "MEM-102": true,
+        "MEM-114": true,
+        "MEM-109": true,
+        "MEM-108": true,
+        "MEM-115": true,
+        "MEM-110": true,
+        "MEM-104": true,
+        "MEM-116": true,
+        "MEM-111": true,
+        "MEM-112": true,
+        "MEM-117": true,
+        "MEM-105": true,
+        "MEM-113": true,
+        "MEM-118": true,
+        "MEM-103": true,
+        "MEM-119": true,
+        "MEM-106": true,
+        "MEM-120": true,
+        "MEM-107": true
+    },
+    "memberGradeNabatameCorrected": true,
+    "memberRates": [
+        {
+            "memberId": "MEM-102",
+            "year": 2026,
+            "previous": 510000,
+            "rate": 650000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 650000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-103",
+            "year": 2026,
+            "previous": 450000,
+            "rate": 480000,
+            "startMonth": 8,
+            "status": "未交渉",
+            "applied": {
+                "rate": 480000,
+                "startMonth": 8,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-104",
+            "year": 2026,
+            "previous": 440000,
+            "rate": 450000,
+            "startMonth": 1,
+            "status": "未交渉",
+            "applied": {
+                "rate": 500000,
+                "startMonth": 1,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-105",
+            "year": 2026,
+            "previous": 350000,
+            "rate": 400000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 400000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-106",
+            "year": 2026,
+            "previous": 400000,
+            "rate": 440000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 440000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-107",
+            "year": 2026,
+            "previous": 100000,
+            "rate": 400000,
+            "startMonth": 1,
+            "status": "未交渉",
+            "applied": {
+                "rate": 400000,
+                "startMonth": 1,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-108",
+            "year": 2026,
+            "previous": 500000,
+            "rate": 530000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 530000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-109",
+            "year": 2026,
+            "previous": 650000,
+            "rate": 450000,
+            "startMonth": null,
+            "status": "未交渉"
+        },
+        {
+            "memberId": "MEM-110",
+            "year": 2026,
+            "previous": 480000,
+            "rate": 520000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 520000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-111",
+            "year": 2026,
+            "previous": 370000,
+            "rate": 400000,
+            "startMonth": 7,
+            "status": "未交渉",
+            "applied": {
+                "rate": 400000,
+                "startMonth": 7,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-112",
+            "year": 2026,
+            "previous": 400000,
+            "rate": 450000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 450000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-113",
+            "year": 2026,
+            "previous": 350000,
+            "rate": 370000,
+            "startMonth": 7,
+            "status": "未交渉",
+            "applied": {
+                "rate": 370000,
+                "startMonth": 7,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-115",
+            "year": 2026,
+            "previous": 430000,
+            "rate": 430000,
+            "startMonth": null,
+            "status": "未交渉"
+        },
+        {
+            "memberId": "MEM-114",
+            "year": 2026,
+            "previous": 420000,
+            "rate": 420000,
+            "startMonth": null,
+            "status": "未交渉"
+        },
+        {
+            "memberId": "MEM-116",
+            "year": 2026,
+            "previous": 350000,
+            "rate": 400000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 400000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-117",
+            "year": 2026,
+            "previous": 400000,
+            "rate": 410000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 410000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-118",
+            "year": 2026,
+            "previous": 350000,
+            "rate": 380000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 380000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-119",
+            "year": 2026,
+            "previous": 380000,
+            "rate": 400000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 400000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        },
+        {
+            "memberId": "MEM-120",
+            "year": 2026,
+            "previous": 360000,
+            "rate": 400000,
+            "startMonth": 4,
+            "status": "未交渉",
+            "applied": {
+                "rate": 400000,
+                "startMonth": 4,
+                "at": "2026-11-25T05:35:58.700Z"
+            }
+        }
+    ],
+    "memberRates15Seeded": true,
+    "memberGrades15Linked": true
 };
         const PREFERRED_MEMBER_ORDER = [
             '川合 要', '山田 裕也', '佐々木 翔平', '生天目 慧海', '梶原 悠羽', '古山 淳詞',
@@ -5075,6 +7319,7 @@
             return String(value || '').normalize('NFKC').toLowerCase().replace(/[\s　]/g, '').replace(/[‐‑‒–—−]/g, '-');
         }
         function normalizeAndDedupeData() {
+            (db.members || []).forEach(m => { for (const k of ["status","currentStatus","nextMonthStatus"]) if(m[k] === "提案中") m[k] = "待機中"; });
             const clientByName = new Map();
             const clientIdMap = {};
             const uniqueClients = [];
@@ -5162,10 +7407,10 @@
         }
 
         function loadStoredData() {
-            const INITIAL_DATA_SEED_VERSION = 'sescore-seed-2026-10-29-v3.2.12';
+            const INITIAL_DATA_SEED_VERSION = 'sescore-seed-2026-11-25-v3.2.129';
             const appliedSeedVersion = localStorage.getItem('ses_access_seed_version');
             const stored = localStorage.getItem('ses_access_db');
-            // Apply the supplied 2026-10-29 backup as the initial data exactly once for this release.
+            // Apply the supplied 2026-11-25 backup as the initial data exactly once for this release.
             // After this one-time setup, subsequent user edits are preserved normally.
             if (appliedSeedVersion !== INITIAL_DATA_SEED_VERSION) {
                 db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
@@ -5201,6 +7446,7 @@
         }
 
         function confirmResetData() {
+            if(window.sesRestricted?.()) return;
             if (confirm("すべてのデータを初期のサンプルデータにリセットしますか？この操作は取り消せません。")) {
                 db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
                 seedMemberRates15();
@@ -5213,6 +7459,7 @@
         // 5. JSON IMPORT / EXPORT
         // ----------------------------------------------------
         function exportDataJSON() {
+            if(window.sesRestricted?.()) return;
             db.metadata.exportedAt = new Date().toISOString();
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(db, null, 2));
             const downloadAnchor = document.createElement('a');
@@ -5224,6 +7471,7 @@
         }
 
         function openImportModal() {
+            if(window.sesRestricted?.()) return;
             selectedImportFileContent = null;
             document.getElementById('import-file-name').innerText = '';
             document.getElementById('modal-import').classList.remove('hidden');
@@ -5242,6 +7490,7 @@
         }
 
         function processJSONImport() {
+            if(window.sesRestricted?.()) return;
             if (!selectedImportFileContent) {
                 alert("インポートするJSONファイルを選択してください。");
                 return;
@@ -5327,15 +7576,16 @@
             const heading = title => `<div class="ses-client-section-title">${title}</div>`;
             const extras = [];
             const walk = (value,path,label) => {
+                if(window.sesRestricted() && (path.some(window.sesMoneyField)||window.sesMoneyField(label)||Array.isArray(value)))return;
                 if(value && typeof value === 'object' && !Array.isArray(value)) {
-                    Object.entries(value).forEach(([key,child]) => walk(child,[...path,key],path.length ? key : (clientFieldLabels[key] || key)));
+                    Object.entries(value).forEach(([key,child]) => walk(child,[...path,key],clientFieldLabels[key] || memberJapaneseLabel(key)));
                     return;
                 }
                 const display = Array.isArray(value) ? value.map(v => v && typeof v === 'object' ? Object.values(v).join('・') : v).join('、') : value;
                 extras.push(field(label,display));
             };
-            Object.entries(c).filter(([key]) => !clientStandardFields.has(key)).forEach(([key,value]) => walk(value,[key],clientFieldLabels[key] || key));
-            document.getElementById('client-detail-fields').innerHTML = heading('基本情報') + field('企業名',c.name) + '<div class="client-read-spacer"></div>' + '<div class="client-read-wide">'+field('取引先区分',c.type)+'</div>' + heading('担当者情報') + field('担当者名',c.contact) + field('連絡先メールアドレス',c.email) + field('ステータス',c.status) + heading('その他情報') + extras.join('') + heading('管理情報') + field('取引先ID',c.id);
+            Object.entries(c).filter(([key]) => !clientStandardFields.has(key)).forEach(([key,value]) => walk(value,[key],clientFieldLabels[key] || memberJapaneseLabel(key)));
+            document.getElementById('client-detail-fields').innerHTML = heading('基本情報') + field('企業名',c.name) + '<div class="client-read-spacer"></div>' + '<div class="client-read-wide">'+field('取引先区分',c.type)+'</div>' + heading('担当者情報') + field('担当者名',c.contact) + field('連絡先メールアドレス',c.email) + field('ステータス',c.status) + heading('取引先・打合せ情報') + extras.join('') + heading('管理情報') + field('取引先ID',c.id);
             document.getElementById('client-detail-edit').onclick = () => { closeModal('modal-client-detail'); editClient(c.id); };
             document.getElementById('client-detail-delete').onclick = () => { closeModal('modal-client-detail'); deleteClient(c.id); };
             modal.classList.remove('hidden');
@@ -5401,19 +7651,22 @@
                     <td class="p-2 text-slate-300">${memberDetailEscape(m.department || '未登録')}</td>
                     <td class="p-2 text-slate-300">${memberDetailEscape(m.role || '未登録')}</td>
                     <td class="p-2 whitespace-nowrap">${memberDetailEscape(window.calculateTenure ? window.calculateTenure(m.hireDate) : (m.exp || '未登録'))}</td>
-                    <td class="p-2"><div class="ses-member-status-compact"><span class="ses-member-status-label">現在</span><span class="ses-member-status-value">${memberDetailEscape(m.status || '未設定')}</span><span class="ses-member-status-label">来月以降</span><span class="ses-member-status-value">${memberDetailEscape(m.nextMonthStatus || m.status || '未設定')}</span></div></td>
+                    <td class="p-2"><div class="ses-member-status-compact"><span class="ses-member-status-label">現在</span><span class="ses-member-status-value" data-member-status="${memberDetailEscape(m.status || '未設定')}">${memberDetailEscape(m.status || '未設定')}</span><span class="ses-member-status-label">来月以降</span><span class="ses-member-status-value" data-member-status="${memberDetailEscape(m.nextMonthStatus || m.status || '未設定')}">${memberDetailEscape(m.nextMonthStatus || m.status || '未設定')}</span></div></td>
                     <td class="p-2 text-right"><button type="button" onclick="openMemberDetailByIndex(${db.members.indexOf(m)})" class="ses-client-detail-button ses-member-detail-action" title="社員の詳細を開く" aria-label="社員の詳細を開く"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></td>
                 </tr>
             `).join('');
         }
 
-        const memberFieldNames = {grade:'グレード',id:'社員ID',name:'氏名',type:'区分',department:'所属部署',role:'役職',skills:'保有スキル',hireDate:'入社日',exp:'在籍年数',rate:'受注単価（万円）',cost:'原価単価（万円）',available:'稼働可能日',status:'現在の状態',nextMonthStatus:'来月以降の状態',waitingStartDate:'待機開始日',email:'メールアドレス',phone:'電話番号',notes:'備考',createdAt:'登録日時',updatedAt:'更新日時',address:'住所',birthday:'生年月日',birthDate:'生年月日',gender:'性別',age:'年齢',company:'所属会社',companyName:'所属会社名',nearestStation:'最寄り駅',station:'最寄り駅',nationality:'国籍',experience:'経験年数',qualifications:'資格',certifications:'資格',employmentType:'雇用形態',contractType:'契約形態',project:'参画案件',projectName:'参画案件名',startDate:'開始日',endDate:'終了日',memo:'メモ',remark:'備考',remarks:'備考',sales:'営業担当',salesPerson:'営業担当',updatedBy:'更新者'};
+        const memberFieldNames = {currentProject:'現在の参画案件',currentStatus:'現在のステータス',assignedProjectId:'参画案件ID',contractEnd:'契約終了日',transportCost:'基本交通費',manages:'管理対象メンバー',grade:'グレード',id:'社員ID',name:'氏名',type:'区分',department:'所属部署',role:'役職',skills:'保有スキル',hireDate:'入社日',exp:'在籍年数',rate:'受注単価（万円）',cost:'原価単価（万円）',available:'稼働可能日',status:'現在の状態',nextMonthStatus:'来月以降の状態',waitingStartDate:'待機開始日',email:'メールアドレス',phone:'電話番号',notes:'備考',createdAt:'登録日時',updatedAt:'更新日時',address:'住所',birthday:'生年月日',birthDate:'生年月日',gender:'性別',age:'年齢',company:'所属会社',companyName:'所属会社名',nearestStation:'最寄り駅',station:'最寄り駅',nationality:'国籍',experience:'経験年数',qualifications:'資格',certifications:'資格',employmentType:'雇用形態',contractType:'契約形態',project:'参画案件',projectName:'参画案件名',startDate:'開始日',endDate:'終了日',memo:'メモ',remark:'備考',remarks:'備考',sales:'営業担当',salesPerson:'営業担当',updatedBy:'更新者'};
         function memberJapaneseLabel(key) {
             const label=memberFieldNames[key]; if(label)return label;
             const words=String(key).replace(/([a-z])([A-Z])/g,'$1 $2').toLowerCase().split(/[\s_-]+/);
             const dict={member:'要員',employee:'社員',contact:'連絡先',date:'日',time:'時刻',start:'開始',end:'終了',price:'金額',amount:'金額',monthly:'月額',daily:'日額',hourly:'時間単価',work:'勤務',location:'場所',skill:'スキル',level:'レベル',year:'年',years:'年数',month:'月',months:'月数',name:'名称',number:'番号',code:'コード',url:'URL',link:'リンク',description:'説明',history:'履歴',details:'詳細',detail:'詳細',information:'情報',info:'情報',manager:'管理者',assigned:'担当',client:'取引先',contract:'契約',status:'状態',type:'区分',category:'分類',value:'値',flag:'フラグ',active:'有効',is:'',has:''};
-            return words.map(w=>dict[w]||'追加情報').join('') || '追加情報';
+            if (/[\u3040-\u30ff\u3400-\u9fff]/.test(String(key))) return String(key);
+            return words.map(w=>dict[w]||'').join('') || '登録項目';
         }
+        window.sesRestricted = () => window.sesCurrentAccount?.role === 'user';
+        window.sesMoneyField = key => /単価|原価|交通費|売上|粗利|金額|給与|報酬|rate|cost|price|salary|revenue|profit|amount|sourceData|participants|grade|グレード/i.test(String(key));
         const memberCoreFields = new Set(['id','name','type','skills','hireDate','exp','rate','cost','available','status','waitingStartDate','nextMonthStatus','grade','assignedProjectId','contractEnd','transportCost','currentStatus']);
         function memberExtraEditor(member) {
             const root=document.getElementById('member-extra-fields'); if(!root)return;
@@ -5421,6 +7674,7 @@
             const entries=[];
             const collect=(obj,path=[])=>Object.entries(obj).forEach(([key,value])=>{
                 if(path.length===0 && memberCoreFields.has(key))return;
+                if(window.sesRestricted() && window.sesMoneyField(key))return;
                 if(value && typeof value==='object' && !Array.isArray(value))collect(value,[...path,key]);
                 else entries.push({path:[...path,key],value});
             });
@@ -5458,8 +7712,9 @@
                 ['稼働・ステータス', ['available','status','waitingStartDate','nextMonthStatus']]
             ];
             const used = new Set(['id']);
-            const field = (key,val) => `<div class="ses-client-detail-field"><dt>${memberDetailEscape(memberFieldNames[key] || memberJapaneseLabel(key))}</dt><dd>${memberDetailEscape(val == null || val === '' ? '未登録' : String(val))}</dd></div>`;
+            const field = (key,val) => window.sesRestricted() && window.sesMoneyField(key) ? '' : `<div class="ses-client-detail-field"><dt>${memberDetailEscape(memberFieldNames[key] || memberJapaneseLabel(key))}</dt><dd>${memberDetailEscape(val == null || val === '' ? '未登録' : String(val))}</dd></div>`;
             const flatten = (obj,prefix='') => Object.entries(obj||{}).flatMap(([key,value]) => {
+                if(window.sesRestricted() && window.sesMoneyField(key))return [];
                 const label = prefix ? prefix+' / '+(memberFieldNames[key]||memberJapaneseLabel(key)) : (memberFieldNames[key]||memberJapaneseLabel(key));
                 if(value && typeof value==='object' && !Array.isArray(value)) return flatten(value,label);
                 return [[label,Array.isArray(value)?value.join('、'):value]];
@@ -5470,7 +7725,7 @@
             }).join('');
             const extras=Object.fromEntries(Object.entries(m).filter(([k])=>!used.has(k)));
             const more=flatten(extras);
-            if(more.length) html+=`<div class="ses-client-detail-section-title">その他情報</div>`+more.map(([k,v])=>`<div class="ses-client-detail-field"><dt>${memberDetailEscape(k)}</dt><dd>${memberDetailEscape(v==null||v===''?'未登録':String(v))}</dd></div>`).join('');
+            if(more.length) html+=`<div class="ses-client-detail-section-title">所属・参画情報</div>`+more.map(([k,v])=>`<div class="ses-client-detail-field"><dt>${memberDetailEscape(k)}</dt><dd>${memberDetailEscape(v==null||v===''?'未登録':String(v))}</dd></div>`).join('');
             html+=`<div class="ses-client-detail-section-title">管理情報</div>`+field('id',window.getMemberDisplayId(m));
             document.getElementById('member-detail-fields').innerHTML=html;
             document.getElementById('member-detail-edit').onclick=()=>{closeModal('modal-member-detail');editMember(m.id);};
@@ -5578,7 +7833,7 @@
             const fields = [];
             const walk = (value, path, label) => {
                 if (value && typeof value === 'object' && !Array.isArray(value)) {
-                    Object.entries(value).forEach(([key, child]) => walk(child, [...path,key], path.length ? key : (clientFieldLabels[key] || key)));
+                    Object.entries(value).forEach(([key, child]) => walk(child, [...path,key], clientFieldLabels[key] || memberJapaneseLabel(key)));
                     return;
                 }
                 const index = clientExtraPaths.push({path,original:value}) - 1;
@@ -5587,7 +7842,7 @@
                 const input = typeof value === 'number' ? `<input type="number" step="any" id="client-extra-${index}" data-client-extra="${index}" value="${clientDisplayText(display)}">` : isDate ? `<input type="date" id="client-extra-${index}" data-client-extra="${index}" value="${clientDisplayText(display)}">` : `<textarea id="client-extra-${index}" rows="2" data-client-extra="${index}">${clientDisplayText(display)}</textarea>`;
                 fields.push(`<div><label for="client-extra-${index}">${clientDisplayText(label)}</label>${input}</div>`);
             };
-            Object.entries(client || {}).filter(([key]) => !clientStandardFields.has(key)).forEach(([key,value]) => walk(value,[key],clientFieldLabels[key] || key));
+            Object.entries(client || {}).filter(([key]) => !clientStandardFields.has(key)).forEach(([key,value]) => walk(value,[key],clientFieldLabels[key] || memberJapaneseLabel(key)));
             area.innerHTML = fields.join('');
         }
         function saveClientExtraFields(client) {
@@ -5693,7 +7948,7 @@
         function projectInfoEntries(data, prefix = '') {
             if (!data || typeof data !== 'object') return '';
             return Object.entries(data).map(([key, value]) => {
-                const name = projectInfoLabels[key] || (prefix ? key : '追加情報');
+                const name = projectInfoLabels[key] || memberJapaneseLabel(key);
                 const label = prefix ? `${prefix} / ${name}` : name;
                 if (Array.isArray(value)) {
                     if (!value.length) return projectInfoField(label, '未登録');
@@ -5710,12 +7965,12 @@
         function openProjectInfoByIndex(index) {
             const p = db.projects[index]; if (!p) return;
             document.getElementById('project-info-title').textContent = p.title || '案件詳細';
-            const field = (label, value) => `<div class="project-read-field"><label>${projectInfoEscape(label)}</label><div class="project-read-value">${projectInfoEscape(value == null || value === '' ? '未登録' : value)}</div></div>`;
+            const field = (label, value) => window.sesRestricted() && window.sesMoneyField(label) ? '' : `<div class="project-read-field"><label>${projectInfoEscape(label)}</label><div class="project-read-value">${projectInfoEscape(value == null || value === '' ? '未登録' : value)}</div></div>`;
             const section = label => `<div class="ses-client-section-title">${label}</div>`;
             const group = content => `<div class="project-read-group">${content}</div>`;
-            const extra = Object.entries(p).filter(([key]) => !projectCoreKeys.has(key)).map(([key,value]) => field(projectInfoLabels[key] || '追加情報', value !== null && typeof value === 'object' ? JSON.stringify(value,null,2) : value)).join('');
+            const extra = Object.entries(p).filter(([key]) => !projectCoreKeys.has(key) && (!window.sesRestricted() || (!window.sesMoneyField(key) && typeof p[key] !== 'object'))).map(([key,value]) => field(projectInfoLabels[key] || memberJapaneseLabel(key), Array.isArray(value) ? value.map(v=>typeof v==='object' && v!==null ? Object.entries(v).map(([k,x])=>`${projectInfoLabels[k]||memberJapaneseLabel(k)}：${x}`).join(' / ') : v).join('、') : value !== null && typeof value === 'object' ? Object.entries(value).map(([k,v])=>`${projectInfoLabels[k]||memberJapaneseLabel(k)}：${v}`).join('\n') : value)).join('');
             const client = db.clients.find(c => c.id === p.clientId);
-            document.getElementById('project-info-fields').innerHTML = section('基本情報') + field('案件名称',p.title) + group(field('発注元クライアント',client?.name || p.clientName) + field('案件想定単価（円/月）',projectPriceYen(p).toLocaleString('ja-JP'))) + field('必須スキル・技術 (カンマ区切り)',(p.skills || []).join(', ')) + group(field('勤務形態',p.location)+field('案件区分',inferredProjectType(p))+field('ステータス',p.status)) + section('その他情報') + group(extra) + `<div class="project-read-group project-date-row">${field('開始日',p.startDate)}${field('契約終了日',p.contractEnd)}</div>`;
+            document.getElementById('project-info-fields').innerHTML = section('基本情報') + field('案件名称',p.title) + group(field('発注元クライアント',client?.name || p.clientName) + field('案件想定単価（円/月）',projectPriceYen(p).toLocaleString('ja-JP'))) + field('必須スキル・技術 (カンマ区切り)',(p.skills || []).join(', ')) + group(field('勤務形態',p.location)+field('案件区分',inferredProjectType(p))+field('ステータス',p.status)) + section('案件・契約情報') + group(extra) + `<div class="project-read-group project-date-row">${field('開始日',p.startDate)}${field('契約終了日',p.contractEnd)}</div>`;
             document.getElementById('project-info-fields').scrollTop = 0;
             document.getElementById('project-info-edit').onclick = () => {closeModal('modal-project-info');editProject(p.id);};
             document.getElementById('project-info-delete').onclick = () => {closeModal('modal-project-info');deleteProject(p.id);};
@@ -5725,8 +7980,8 @@
         const projectCoreKeys = new Set(['id','title','clientId','clientName','price','priceYen','skills','location','status','projectType','startDate','contractEnd']);
         function renderProjectExtraFields(p) {
             const target = document.getElementById('project-extra-fields'); if (!target) return;
-            target.innerHTML = p ? Object.entries(p).filter(([k])=>!projectCoreKeys.has(k)).map(([key,value]) => {
-                const label=projectInfoLabels[key]||'追加情報';
+            target.innerHTML = p ? Object.entries(p).filter(([k])=>!projectCoreKeys.has(k) && (!window.sesRestricted() || (!window.sesMoneyField(k) && typeof p[k] !== 'object'))).map(([key,value]) => {
+                const label=projectInfoLabels[key]||memberJapaneseLabel(key);
                 const serialized = value !== null && typeof value === 'object' ? JSON.stringify(value,null,2) : String(value ?? '');
                 const fieldType = Array.isArray(value)?'array':value===null?'null':typeof value;
                 const dateField = typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && /(date|日|開始|終了)/i.test(key+label);
@@ -5782,7 +8037,7 @@
             const clientId = document.getElementById('project-client').value;
             const clientObj = db.clients.find(c => c.id === clientId);
             const clientName = clientObj ? clientObj.name : '不明クライアント';
-            const priceYen = Math.max(0, Math.round(Number(document.getElementById('project-price').value) || 0));
+            const priceYen = window.sesRestricted() ? projectPriceYen(db.projects.find(p=>p.id===id)||{}) : Math.max(0, Math.round(Number(document.getElementById('project-price').value) || 0));
             const price = priceYen / 10000;
             const skills = document.getElementById('project-skills').value.split(',').map(s => s.trim()).filter(s => s);
             const location = document.getElementById('project-location').value;
@@ -5818,7 +8073,7 @@
             const p = db.projects.find(x => x.id === id); if (!p) return;
             projectDetailId = id;
             document.getElementById('project-detail-title').textContent = p.title;
-            document.getElementById('project-detail-subtitle').textContent = `${p.clientName || '取引先未登録'} ／ 案件想定単価：${formatYenAsMan(projectPriceYen(p))}万円/月 ／ ステータス：${p.status || '未設定'}`;
+            document.getElementById('project-detail-subtitle').textContent = `${p.clientName || '取引先未登録'}${window.sesRestricted()?'':` ／ 案件想定単価：${formatYenAsMan(projectPriceYen(p))}万円/月`} ／ ステータス：${p.status || '未設定'}`;
             const select = document.getElementById('participant-member');
             const participants = getProjectParticipants(p);
             select.innerHTML = '<option value="">メンバーを選択</option>' + db.members.map(m => `<option value="${m.id}" ${participants.some(x => x.memberId === m.id) ? 'disabled' : ''}>${m.name}（${m.id}）${participants.some(x => x.memberId === m.id) ? '・登録済み' : ''}</option>`).join('');
@@ -5829,6 +8084,7 @@
         function renderProjectParticipants() {
             const p = db.projects.find(x => x.id === projectDetailId); if (!p) return;
             const participants = getProjectParticipants(p);
+            if(window.sesRestricted()){document.getElementById("project-participants-body").innerHTML=participants.map(x=>`<tr><td class="p-3">${projectInfoEscape(db.members.find(m=>m.id===x.memberId)?.name||x.memberId)}</td></tr>`).join("");return;}
             document.getElementById('project-participants-body').innerHTML = participants.length ? participants.map(x => {
                 const m = db.members.find(mm => mm.id === x.memberId);
                 return `<tr><td class="p-3 font-semibold text-slate-200">${m ? m.name : '削除済みメンバー'} <span class="text-slate-500">${x.memberId}</span></td><td class="p-3 font-mono text-amber-300">${formatYenAsMan(x.rateYen)}万円/月</td><td class="p-3 font-mono">¥${Math.round(Number(x.rateYen)||0).toLocaleString('ja-JP')}</td><td class="p-3 text-right whitespace-nowrap"><button onclick="editProjectParticipant('${x.memberId}')" class="text-cyan-400 mr-3">単価変更</button><button onclick="removeProjectParticipant('${x.memberId}')" class="text-rose-400">解除</button></td></tr>`;
@@ -5837,6 +8093,7 @@
             if (select) Array.from(select.options).forEach(o => { if (o.value) { const exists = participants.some(x => x.memberId === o.value); o.disabled = exists; o.textContent = (db.members.find(m => m.id === o.value)?.name || o.value) + (exists ? '・登録済み' : ''); } });
         }
         function addProjectParticipant() {
+            if(window.sesRestricted?.()) return;
             const p = db.projects.find(x => x.id === projectDetailId); if (!p) return;
             const memberId = document.getElementById('participant-member').value;
             const rateField = document.getElementById('participant-rate-yen');
@@ -5851,6 +8108,7 @@
             saveStoredData(); openProjectDetail(projectDetailId);
         }
         function editProjectParticipant(memberId) {
+            if(window.sesRestricted?.()) return;
             const p = db.projects.find(x => x.id === projectDetailId); if (!p) return;
             const item = getProjectParticipants(p).find(x => x.memberId === memberId); if (!item) return;
             const input = prompt('参画単価を円単位で入力してください（1円単位）', String(Math.round(Number(item.rateYen)||0)));
@@ -5863,6 +8121,7 @@
             saveStoredData(); openProjectDetail(projectDetailId);
         }
         function removeProjectParticipant(memberId) {
+            if(window.sesRestricted?.()) return;
             const p = db.projects.find(x => x.id === projectDetailId); if (!p) return;
             const m = db.members.find(x => x.id === memberId);
             if (!confirm(`${m ? m.name : memberId} をこの案件の参画メンバーから解除しますか？`)) return;
@@ -5927,16 +8186,17 @@
             const skills = document.getElementById('member-skills').value.split(',').map(s => s.trim()).filter(s => s);
             const hireDate = document.getElementById('member-hire-date').value;
             const exp = window.calculateTenure ? window.calculateTenure(hireDate) : ''; 
-            const rate = Math.round(Number(document.getElementById('member-rate').value)||0)/10000;
-            const cost = window.gradeCostFor?.({grade:document.getElementById('member-grade')?.value}) ?? (Math.round(Number(document.getElementById('member-cost').value)||0)/10000);
+            const prior = db.members.find(m=>m.id===id);
+            const rate = window.sesRestricted() ? Number(prior?.rate||0) : Math.round(Number(document.getElementById('member-rate').value)||0)/10000;
+            const cost = window.sesRestricted() ? Number(prior?.cost||0) : window.gradeCostFor?.({grade:document.getElementById('member-grade')?.value}) ?? (Math.round(Number(document.getElementById('member-cost').value)||0)/10000);
             const available = document.getElementById('member-available').value;
             const status = document.getElementById('member-status').value;
             const waitingStartDate = document.getElementById('member-waiting-start').value;
             const nextMonthStatus = document.getElementById('member-next-month-status').value;
-            const grade = document.getElementById('member-grade')?.value || '';
+            const grade = window.sesRestricted() ? (prior?.grade||'') : document.getElementById('member-grade')?.value || '';
             const assignedProjectId = document.getElementById('member-project').value;
             const contractEnd = document.getElementById('member-contract-end').value;
-            const transportCost = Math.round(Math.max(0, Number(document.getElementById('member-transport-cost').value)||0))/10000;
+            const transportCost = window.sesRestricted() ? Number(prior?.transportCost||0) : Math.round(Math.max(0, Number(document.getElementById('member-transport-cost').value)||0))/10000;
             const currentStatus = status;
 
             if (id) {

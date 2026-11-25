@@ -62,10 +62,11 @@
   window.setFiscalTrendMetric=value=>{trendMetric=['both','revenue','profit'].includes(value)?value:'both';renderFiscalTrend();};
   window.setFiscalTrendMode=value=>{trendMode=['actual','plan','compare'].includes(value)?value:'actual';renderFiscalTrend();};
   window.setFiscalTrendType=value=>{trendType=['bar','line','cumulative'].includes(value)?value:'bar';renderFiscalTrend();};
-  window.setFiscalTrendScope=value=>{trendScope=['all','department','member'].includes(value)?value:'all';trendDepartment='';trendMember='';renderFiscalTrend();};
+  window.setFiscalTrendScope=value=>{trendScope=window.sesRestricted?.()&&value==='member'?'all':['all','department','member'].includes(value)?value:'all';trendDepartment='';trendMember='';renderFiscalTrend();};
   window.setFiscalTrendDepartment=value=>{trendDepartment=value;trendMember='';renderFiscalTrend();};
   window.setFiscalTrendMember=value=>{trendMember=value;renderFiscalTrend();};
   function renderFiscalTrend(){
+    if(window.sesRestricted?.()&&trendScope==='member'){trendScope='all';trendMember='';}
     const d=getDb(),canvas=document.getElementById('fy-trend-chart');if(!d||!canvas||typeof Chart==='undefined')return;
     const select=document.getElementById('fy-trend-year');if(select){select.innerHTML=options();select.value=String(trendYear);}
     [['fy-trend-metric',trendMetric],['fy-trend-mode',trendMode],['fy-trend-type',trendType]].forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.value=value;});
@@ -147,7 +148,7 @@
     const range=document.getElementById('dashboard-fiscal-range');if(range)range.textContent=`${selectedYear}年11月〜${selectedYear+1}年10月`;
     const {totalRevenue,totalProfit,current}=calc(d);
     const target=getTargets(d)[selectedYear]||{};
-    const kpis={'target-revenue':target.revenue==null?'未設定':man(target.revenue),'target-profit':target.profit==null?'未設定':man(target.profit),'total-revenue':man(totalRevenue),'total-profit':man(totalProfit),'profit-rate':totalRevenue?`${(totalProfit/totalRevenue*100).toFixed(1)}%`:'0%','bench':`${(d.members||[]).filter(m=>m.status==='待機中').length}名`,'month-revenue':man(current.revenue),'month-profit':man(current.profit)};
+    const kpis={'target-revenue':target.revenue==null?'未設定':man(target.revenue),'target-profit':target.profit==null?'未設定':man(target.profit),'total-revenue':man(totalRevenue),'total-profit':man(totalProfit),'profit-rate':totalRevenue?`${(totalProfit/totalRevenue*100).toFixed(1)}%`:'0%','active':`${(d.members||[]).filter(m=>(m.currentStatus||m.status)==='稼働中').length}名`,'bench':`${(d.members||[]).filter(m=>['待機中','待机中'].includes(m.currentStatus||m.status)).length}名`,'month-revenue':man(current.revenue),'month-profit':man(current.profit)};
     Object.entries(kpis).forEach(([key,value])=>{const el=document.getElementById(`fy-kpi-${key}`);if(el)el.textContent=value;});
     const note=document.getElementById('fy-data-note');if(note)note.textContent='※確定実績のみを集計しています。未入力月は0として扱い、計画値では補完しません。';
     chart('fy-revenue-chart','売上',target.revenue||0,totalRevenue,'#ff35c5');

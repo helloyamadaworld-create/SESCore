@@ -180,8 +180,8 @@
                         <a href="#" onclick="switchTab('mypage'); return false" id="nav-mypage" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
                             <i class="fa-solid fa-user-circle w-5 text-center text-base"></i><span class="sidebar-text">マイページ</span>
                         </a>
-                        <a href="#" onclick="openAccountCreate(); return false" id="nav-accounts" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
-                        <i class="fa-solid fa-user-shield w-5 text-center text-base"></i><span class="sidebar-text">アカウント登録</span>
+                        <a href="#" onclick="openAccountManagement(); return false" id="nav-accounts" style="display:none!important" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50">
+                        <i class="fa-solid fa-user-shield w-5 text-center text-base"></i><span class="sidebar-text">アカウント管理</span>
                         </a>
                         <a href="#" onclick="logoutSES(); return false" id="nav-logout" style="display:flex" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-rose-300 hover:text-white hover:bg-rose-500/10"><i class="fa-solid fa-right-from-bracket w-5 text-center text-base"></i><span class="sidebar-text">ログアウト</span></a>
                         <a href="#" onclick="switchTab('settings'); return false" id="nav-settings" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50"><i class="fa-solid fa-gear w-5 text-center text-base"></i><span class="sidebar-text">設定</span></a>
@@ -286,7 +286,7 @@
 <div class="glass-card p-4 rounded-xl space-y-2"><div class="text-xs text-slate-400 flex justify-between"><span>今期の売上合計</span><i class="fa-solid fa-yen-sign text-cyan-400"></i></div><div id="fy-kpi-total-revenue" class="text-xl md:text-2xl font-bold font-tech">—</div></div>
 <div class="glass-card p-4 rounded-xl space-y-2"><div class="text-xs text-slate-400 flex justify-between"><span>今期の粗利合計</span><i class="fa-solid fa-coins text-cyan-400"></i></div><div id="fy-kpi-total-profit" class="text-xl md:text-2xl font-bold font-tech">—</div></div>
 <div class="glass-card p-4 rounded-xl space-y-2"><div class="text-xs text-slate-400 flex justify-between"><span>現在の粗利率</span><i class="fa-solid fa-percent text-cyan-400"></i></div><div id="fy-kpi-profit-rate" class="text-xl md:text-2xl font-bold font-tech">—</div></div>
-<div class="glass-card p-4 rounded-xl space-y-2"><div class="text-xs text-slate-400 flex justify-between"><span>待機要員</span><i class="fa-solid fa-user-clock text-cyan-400"></i></div><div id="fy-kpi-bench" class="text-xl md:text-2xl font-bold font-tech">—</div></div>
+<div class="glass-card p-4 rounded-xl space-y-2"><div class="text-xs text-slate-400">現在の要員状況</div><div class="ses-status-summary"><div><small>稼働中</small><strong id="fy-kpi-active" data-status-color="稼働中">—</strong></div><div><small>待機中</small><strong id="fy-kpi-bench" data-status-color="待機中">—</strong></div></div></div>
 <div class="glass-card p-4 rounded-xl space-y-2"><div class="text-xs text-slate-400 flex justify-between"><span>今月の売上</span><i class="fa-solid fa-chart-line text-cyan-400"></i></div><div id="fy-kpi-month-revenue" class="text-xl md:text-2xl font-bold font-tech">—</div></div>
 <div class="glass-card p-4 rounded-xl space-y-2"><div class="text-xs text-slate-400 flex justify-between"><span>今月の粗利</span><i class="fa-solid fa-wallet text-cyan-400"></i></div><div id="fy-kpi-month-profit" class="text-xl md:text-2xl font-bold font-tech">—</div></div></div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -427,7 +427,7 @@
                                 <option value="ALL">全員表示</option>
                                 <option value="稼働中">稼働中</option>
                                 <option value="待機中">待機中 (即提案可)</option>
-                                <option value="提案中">提案中</option>
+                                
                                 <option value="未設定">未設定</option>
                             </select>
                             <input type="text" id="member-search" oninput="renderMembersTable()" placeholder="氏名、言語、フレームワークで検索..." class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-cyan-400">
@@ -674,7 +674,7 @@
                         <option value="取引停止">取引停止</option>
                     </select>
                 </div>
-                <div class="ses-client-section-title">その他情報</div>
+                <div class="ses-client-section-title">取引先情報</div>
                 <div id="client-extra-fields" class="ses-client-extra-fields"></div>
                 </div>
                 <div class="ses-client-edit-footer flex justify-end space-x-2 border-t border-slate-800">
@@ -746,7 +746,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="ses-client-section-title">その他情報</div>
+                <div class="ses-client-section-title">案件・契約情報</div>
                 <div id="project-extra-fields" class="ses-project-extra-fields"></div>
                 <div class="grid grid-cols-2 gap-3 project-date-row"><div><label class="block text-slate-400 mb-1" for="project-start-date">開始日</label><input id="project-start-date" type="date" class="ext-input"></div><div><label class="block text-slate-400 mb-1" for="project-contract-end">契約終了日</label><input id="project-contract-end" type="date" class="ext-input"></div></div>
                 </div>
@@ -840,7 +840,7 @@
 <select class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-status">
 <option value="稼働中">稼働中</option>
 <option value="待機中">待機中</option>
-<option value="提案中">提案中</option>
+
 </select>
 <p class="text-[10px] text-slate-500 mt-1">通常の一覧・ダッシュボードはこのステータスを参照します。</p>
 </div><div class="ses-member-field">
@@ -852,10 +852,10 @@
 <select class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-next-month-status">
 <option value="稼働中">稼働中</option>
 <option value="待機中">待機中</option>
-<option value="提案中">提案中</option>
+
 </select>
 <p class="text-[10px] text-slate-500 mt-1">人材マッチングは「来月以降」のステータスを参照します。</p>
-</div><div class="ses-member-field"><label for="member-project">参画案件</label><select id="member-project" class="ext-input"><option value="">未紐付け</option></select></div><div class="ses-member-field"><label for="member-contract-end">契約終了日</label><input id="member-contract-end" type="date" class="ext-input"></div><div class="ses-member-field"><label for="member-transport-cost">基本交通費（月額・円）</label><input id="member-transport-cost" type="number" min="0" step="1" value="0" class="ext-input"></div><div class="ses-member-extra-section"><h4 class="ses-client-detail-section-title">その他情報</h4><div class="ses-member-extra-grid" id="member-extra-fields"></div></div><div class="ses-client-detail-section-title">管理情報</div><div class="ses-member-field"><label>社員ID</label><div id="member-display-id">登録時に採番</div></div></div><div class="ses-member-footer">
+</div><div class="ses-member-field"><label for="member-project">参画案件</label><select id="member-project" class="ext-input"><option value="">未紐付け</option></select></div><div class="ses-member-field"><label for="member-contract-end">契約終了日</label><input id="member-contract-end" type="date" class="ext-input"></div><div class="ses-member-field"><label for="member-transport-cost">基本交通費（月額・円）</label><input id="member-transport-cost" type="number" min="0" step="1" value="0" class="ext-input"></div><div class="ses-member-extra-section"><h4 class="ses-client-detail-section-title">所属・参画情報</h4><div class="ses-member-extra-grid" id="member-extra-fields"></div></div><div class="ses-client-detail-section-title">管理情報</div><div class="ses-member-field"><label>社員ID</label><div id="member-display-id">登録時に採番</div></div></div><div class="ses-member-footer">
 <button class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300" onclick="closeModal('modal-member')" type="button">閉じる</button>
 <button class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white" id="member-submit" type="submit">登録</button>
 </div></form>
@@ -914,7 +914,7 @@
 
     <div id="modal-account" class="app-dialog-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="account-modal-title">
       <div class="app-dialog-panel glass-card rounded-2xl p-5 w-full max-w-lg"><div class="flex items-center justify-between mb-4"><h3 id="account-modal-title" class="font-bold text-cyan-400">アカウント追加</h3><button type="button" onclick="closeAccountModal()" aria-label="閉じる" class="text-xl">×</button></div>
-      <form id="account-form" onsubmit="saveAccount(event)" class="space-y-3"><div><label class="block text-xs text-slate-400 mb-1">ユーザーID</label><input id="account-username" required minlength="3" autocomplete="off" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white"></div><div><label class="block text-xs text-slate-400 mb-1">表示名</label><input id="account-name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white"></div><div><label class="block text-xs text-slate-400 mb-1">初期パスワード</label><input id="account-password" type="password" required minlength="8" autocomplete="new-password" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white"><p class="text-[11px] text-slate-500 mt-1">8文字以上。運用環境ではサーバー認証の利用を推奨します。</p></div><div><label class="block text-xs text-slate-400 mb-1">権限</label><select id="account-role" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white"><option value="user">一般ユーザー</option><option value="admin">管理者</option></select></div><div class="flex justify-end gap-2 pt-3"><button type="button" onclick="closeAccountModal()" class="px-4 py-2 rounded-lg bg-slate-700">キャンセル</button><button type="submit" class="px-4 py-2 rounded-lg bg-cyan-600 font-bold">作成</button></div></form></div>
+      <form id="account-form" onsubmit="saveAccount(event)" class="space-y-3"><div><label class="block text-xs text-slate-400 mb-1">ユーザーID</label><input id="account-username" required minlength="3" autocomplete="off" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white"></div><div><label class="block text-xs text-slate-400 mb-1">表示名</label><input id="account-name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white"></div><div><label class="block text-xs text-slate-400 mb-1">初期パスワード</label><input id="account-password" type="password" required minlength="8" autocomplete="new-password" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white"><p class="text-[11px] text-slate-500 mt-1">8文字以上。運用環境ではサーバー認証の利用を推奨します。</p></div><div><label class="block text-xs text-slate-400 mb-1">権限</label><select id="account-role" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white"><option value="user">標準ユーザー</option><option value="admin">管理者</option></select></div><div class="flex justify-end gap-2 pt-3"><button type="button" onclick="closeAccountModal()" class="px-4 py-2 rounded-lg bg-slate-700">キャンセル</button><button type="submit" class="px-4 py-2 rounded-lg bg-cyan-600 font-bold">保存</button></div></form></div>
     </div>
 
     <!-- ========================================== -->
@@ -935,6 +935,7 @@
     <script>
       // v3.2.11: アカウント画面への導線を直接固定し、既存の権限・ナビ処理に依存させない。
       window.openAccountManagement = function () {
+        if (!window.isAccountOwner?.()) return;
         document.querySelectorAll('.view-panel').forEach(function (panel) { panel.classList.add('hidden'); });
         document.querySelectorAll('.nav-item').forEach(function (item) {
           item.classList.remove('text-cyan-400','bg-cyan-500/10','border-l-4','border-cyan-400');
@@ -951,7 +952,7 @@
       };
       document.addEventListener('DOMContentLoaded', function () {
         var nav = document.getElementById('nav-accounts');
-        if (nav) { nav.classList.remove('hidden'); nav.style.display='flex'; nav.removeAttribute('data-admin-only'); }
+        if (nav) { nav.classList.add('hidden'); nav.style.setProperty('display','none','important'); }
 
       });
     </script>
@@ -982,6 +983,7 @@
     <script src="js/grade-management.js"></script>
     <script src="js/yen-input.js"></script>
 <script src="js/member-rates.js"></script>
+<script src="js/financial-permissions.js"></script>
 
 
 

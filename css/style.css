@@ -2181,3 +2181,25 @@ body.theme-neon #view-member-rates .mr-table tbody td[data-mr-delta="none"]{colo
 body.theme-neon #view-member-rates .mr-table tbody td[data-mr-status="交渉中"]{color:#ffe780!important;text-shadow:0 0 8px #ffbf00!important}
 body.theme-neon #view-member-rates .mr-table tbody td[data-mr-status="確定"]{color:#67ffb7!important;text-shadow:0 0 8px #00ff88!important}
 body.theme-neon #view-member-rates .mr-table tbody td[data-mr-status="見送り"]{color:#ff91b3!important;text-shadow:0 0 8px #ff207b!important}
+
+/* Member list: semantic status colors, both themes. */
+body.theme-standard .ses-member-list-table .ses-member-status-value[data-member-status="稼働中"]{color:#166534!important;background:#dcfce7!important;border-color:#86efac!important}
+body.theme-neon .ses-member-list-table .ses-member-status-value[data-member-status="稼働中"]{color:#6dffac!important;background:rgba(34,197,94,.13)!important;border-color:rgba(34,197,94,.75)!important;text-shadow:0 0 7px rgba(34,197,94,.85)!important;box-shadow:0 0 8px rgba(34,197,94,.45)!important}
+body.theme-standard .ses-member-list-table .ses-member-status-value[data-member-status="待機中"]{color:#b91c1c!important;background:#fee2e2!important;border-color:#fca5a5!important}
+body.theme-neon .ses-member-list-table .ses-member-status-value[data-member-status="待機中"]{color:#ff8190!important;background:rgba(239,68,68,.13)!important;border-color:rgba(239,68,68,.75)!important;text-shadow:0 0 7px rgba(239,68,68,.85)!important;box-shadow:0 0 8px rgba(239,68,68,.45)!important}
+body.theme-standard .ses-member-list-table .ses-member-status-value[data-member-status="提案中"]{color:#854d0e!important;background:#fef9c3!important;border-color:#fde047!important}
+body.theme-neon .ses-member-list-table .ses-member-status-value[data-member-status="提案中"]{color:#ffe66b!important;background:rgba(234,179,8,.13)!important;border-color:rgba(234,179,8,.75)!important;text-shadow:0 0 7px rgba(234,179,8,.85)!important;box-shadow:0 0 8px rgba(234,179,8,.45)!important}
+
+.ses-status-summary{display:flex;flex-wrap:wrap;gap:8px 12px}.ses-status-summary>div{flex:1;min-width:48px}.ses-status-summary small,.ses-status-summary strong{display:block}.ses-status-summary strong{font-size:18px}
+body.theme-standard [data-status-color="稼働中"]{color:#166534!important}
+body.theme-neon [data-status-color="稼働中"]{color:#6dffac!important;text-shadow:0 0 8px #6dffac!important}
+body.theme-standard [data-status-color="待機中"]{color:#b91c1c!important}
+body.theme-neon [data-status-color="待機中"]{color:#ff8190!important;text-shadow:0 0 8px #ff8190!important}
+body.theme-standard [data-status-color="提案中"]{color:#854d0e!important}
+body.theme-neon [data-status-color="提案中"]{color:#ffe66b!important;text-shadow:0 0 8px #ffe66b!important}
+body.theme-standard #dashboard-sales-kpis .dashboard-sales-kpi-bench .text-xl{color:#b91c1c!important}body.theme-neon #dashboard-sales-kpis .dashboard-sales-kpi-bench .text-xl{color:#ff8190!important}
+/* Standard users: financial views and controls are unavailable in the local UI. */
+body.ses-standard-user :is(#nav-member-rates,#nav-grades,#nav-revenue,#nav-spot,#nav-expenses,#nav-merchandise,#nav-audit,#nav-fiscal-targets,#nav-accounts,#view-member-rates,#view-grades,#view-revenue,#view-spot,#view-expenses,#view-merchandise,#view-audit,#view-fiscal-targets,#view-accounts),
+body.ses-standard-user :is(button,a)[onclick*="export"],body.ses-standard-user :is(button,a)[onclick*="Import"],body.ses-standard-user button[onclick*="confirmResetData"],body.ses-standard-user label:has(#fy-trend-member),body.ses-standard-user #fy-trend-scope option[value="member"],body.ses-standard-user :is(.ses-member-field,div):has(> #member-rate),body.ses-standard-user :is(.ses-member-field,div):has(> #member-cost),body.ses-standard-user .ses-member-field:has(> #member-transport-cost),body.ses-standard-user .ses-member-field:has(> #member-grade),body.ses-standard-user div:has(> #project-price),body.ses-standard-user div:has(> div > #participant-rate-yen),body.ses-standard-user #modal-project-detail p:has(+ div table),body.ses-standard-user #modal-project-detail thead th:not(:first-child){display:none!important}
+body.ses-standard-user .ses-readonly-action{display:none!important}
+body.ses-standard-user #member-support-detail-modal:not([data-type="oneonones"]):not([data-type="meetings"]) #support-detail-form button[type="submit"]{display:none!important}
