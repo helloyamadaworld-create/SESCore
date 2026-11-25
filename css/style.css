@@ -2203,3 +2203,22 @@ body.ses-standard-user :is(#nav-member-rates,#nav-grades,#nav-revenue,#nav-spot,
 body.ses-standard-user :is(button,a)[onclick*="export"],body.ses-standard-user :is(button,a)[onclick*="Import"],body.ses-standard-user button[onclick*="confirmResetData"],body.ses-standard-user label:has(#fy-trend-member),body.ses-standard-user #fy-trend-scope option[value="member"],body.ses-standard-user :is(.ses-member-field,div):has(> #member-rate),body.ses-standard-user :is(.ses-member-field,div):has(> #member-cost),body.ses-standard-user .ses-member-field:has(> #member-transport-cost),body.ses-standard-user .ses-member-field:has(> #member-grade),body.ses-standard-user div:has(> #project-price),body.ses-standard-user div:has(> div > #participant-rate-yen),body.ses-standard-user #modal-project-detail p:has(+ div table),body.ses-standard-user #modal-project-detail thead th:not(:first-child){display:none!important}
 body.ses-standard-user .ses-readonly-action{display:none!important}
 body.ses-standard-user #member-support-detail-modal:not([data-type="oneonones"]):not([data-type="meetings"]) #support-detail-form button[type="submit"]{display:none!important}
+
+/* Remove multicolor perimeter overlays throughout NEON; retain normal glow and input borders. */
+body.theme-neon #sidebar .nav-item::after,
+body.theme-neon #top-navbar::after,
+body.theme-neon :is(.glass-card,.ext-card,.stat-card,.app-dialog-panel)::after {
+ content:none!important;display:none!important;animation:none!important;
+}
+body.theme-neon .ses73-body form.glass-card {
+ border:0!important;box-shadow:none!important;background:transparent!important;
+ animation:none!important;transform:none!important;outline:none!important;
+}
+body.theme-neon #view-member-rates .oo-panel,
+body.theme-neon #mr-overlay .oo-dialog {
+ border:1px solid #00dafa!important;
+ background:linear-gradient(135deg,#081b30,#100a25 65%,#10152d)!important;
+}
+
+/* In-app user guide */
+#view-manual .manual-hero{padding:24px;border-radius:14px}#view-manual .manual-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;color:#2563eb}#view-manual h2{font-size:26px;font-weight:800;margin:6px 0}#view-manual .manual-hero label{display:block;font-size:12px;font-weight:700;margin:18px 0 6px}#view-manual #manual-search{max-width:560px;width:100%}#view-manual .manual-tabs{display:flex;flex-wrap:wrap;gap:8px}#view-manual .manual-tabs button{border:1px solid #94a3b8;border-radius:8px;padding:8px 14px;font-size:13px}#view-manual .manual-tabs button[aria-pressed=true]{background:#2563eb;color:white;border-color:#2563eb}#view-manual .manual-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px}#view-manual .manual-card{padding:20px;border-radius:12px}#view-manual .manual-card h3{font-size:17px;font-weight:700;margin:7px 0 12px}#view-manual .manual-card ol{list-style:decimal;padding-left:22px;font-size:14px;line-height:1.8}#view-manual .manual-card li{padding-left:4px;margin:6px 0}#view-manual .manual-card li::marker{font-weight:700;color:#2563eb}#view-manual [hidden]{display:none!important}body.theme-neon #view-manual :is(.manual-kicker,.manual-card li::marker){color:#67e8f9}body.theme-neon #view-manual .manual-tabs button[aria-pressed=true]{background:#164e63;border-color:#22d3ee;color:#ecfeff}#view-manual .manual-card::after,#view-manual .manual-hero::after{display:none!important}

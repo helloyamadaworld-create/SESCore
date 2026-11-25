@@ -26,6 +26,16 @@
     return [...years].filter(Number.isFinite).sort((a,b)=>b-a).map(y=>`<option value="${y}">${y}年（${y-2011}期）</option>`).join('');
   };
   const sumStore = (store, month) => Object.entries(store || {}).reduce((sum,[key,value]) => key.endsWith(`|${month}`) ? sum+(Number(value)||0) : sum, 0);
+  // 登録経費・スポット・物販は予定／実績共通。金額は万円に統一。
+  function monthlyExtras(d, month, match=()=>true, all=true){
+    const inMonth=x=>String(x.date||'').slice(0,7)===month;
+    const sum=(list,fn,filter=match)=>(list||[]).filter(x=>inMonth(x)&&filter(x.memberId)).reduce((a,x)=>a+fn(x),0);
+    const n=x=>Number(x)||0;
+    const revenue=sum(d.spotJobs,x=>Math.round(n(x.amount)*10000))+sum(d.merchandiseSales,x=>Math.round(n(x.quantity)*n(x.unitPrice)));
+    const cost=sum(d.merchandiseSales,x=>Math.round(n(x.quantity)*n(x.unitCost)));
+    const expense=sum(d.expenses,x=>Math.round(n(x.amount)*10000))+(all?sum(d.merchandiseExpenses,x=>n(x.amount),()=>true):0);
+    return {revenue:revenue/10000,profit:(revenue-cost-expense)/10000};
+  }
   function calc(d) {
     const months = monthsFor(selectedYear);
     const revActual = d.monthlyRevenueActual || {};
@@ -35,7 +45,7 @@
     const revenue = revActual;
     const cost = costActual;
     const transport = transportActual;
-    const rows = months.map(month => {const r=sumStore(revenue,month); return {month,revenue:r,profit:r-sumStore(cost,month)-sumStore(transport,month)};});
+    const rows = months.map(month => {const r=sumStore(revenue,month), extra=monthlyExtras(d,month); return {month,revenue:r+extra.revenue,profit:r-sumStore(cost,month)-sumStore(transport,month)+extra.profit};});
     const totalRevenue=rows.reduce((s,r)=>s+r.revenue,0), totalProfit=rows.reduce((s,r)=>s+r.profit,0);
     const monthNow = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
     const current=rows.find(r=>r.month===monthNow) || {revenue:0,profit:0};
@@ -89,7 +99,7 @@
     },0);
     const months=monthsFor(trendYear);
     const stores={actual:[d.monthlyRevenueActual||{},d.monthlyCostActual||{},d.monthlyTransportActual||{}],plan:[d.monthlyRevenue||{},d.monthlyCost||{},d.monthlyTransport||{}]};
-    const rows=mode=>months.map(month=>{const [revenues,costs,transports]=stores[mode];if(mode==='actual'){const revenue=scopedSum(revenues,month);return {revenue,profit:revenue-scopedSum(costs,month)-scopedSum(transports,month)};}let revenue=0,profit=0;for(const m of d.members||[]){if(trendScope!=='all'&&!selectedIds.has(m.id))continue;const key=m.id+'|'+month;const active=m.status==='稼働中'&&(!(m.contractStart||m.startDate)||(m.contractStart||m.startDate).slice(0,7)<=month)&&(!m.contractEnd||m.contractEnd.slice(0,7)>=month);const val=(store,field)=>Number(store[key]??((active||field==='transportCost')?m[field]:0))||0;const r=window.memberRatePlan?.(m,month)??val(revenues,'rate'),g=window.gradeCostFor?.(m),c=g!=null?(active?g:0):val(costs,'cost');revenue+=r;profit+=r-c-val(transports,'transportCost');}return {revenue:Math.round(revenue*10000)/10000,profit:Math.round(profit*10000)/10000};});
+    const rows=mode=>months.map(month=>{const extra=monthlyExtras(d,month,id=>trendScope==='all'||selectedIds.has(String(id)),trendScope==='all');const [revenues,costs,transports]=stores[mode];if(mode==='actual'){const revenue=scopedSum(revenues,month);return {revenue:revenue+extra.revenue,profit:revenue-scopedSum(costs,month)-scopedSum(transports,month)+extra.profit};}let revenue=0,profit=0;for(const m of d.members||[]){if(trendScope!=='all'&&!selectedIds.has(m.id))continue;const key=m.id+'|'+month;const active=m.status==='稼働中'&&(!(m.contractStart||m.startDate)||(m.contractStart||m.startDate).slice(0,7)<=month)&&(!m.contractEnd||m.contractEnd.slice(0,7)>=month);const val=(store,field)=>Number(store[key]??((active||field==='transportCost')?m[field]:0))||0;const r=window.memberRatePlan?.(m,month)??val(revenues,'rate'),g=window.gradeCostFor?.(m),c=val(costs,'cost');revenue+=r;profit+=r-c-val(transports,'transportCost');}return {revenue:Math.round((revenue+extra.revenue)*10000)/10000,profit:Math.round((profit+extra.profit)*10000)/10000};});
     const datasets=[];
     const types=trendMetric==='both'?['revenue','profit']:[trendMetric];
     const modes=trendMode==='compare'?['plan','actual']:[trendMode];
@@ -137,7 +147,7 @@
     const revenue=Number(document.getElementById('target-revenue-input').value);
     const profit=Number(document.getElementById('target-profit-input').value);
     if(!Number.isFinite(revenue)||!Number.isFinite(profit)||revenue<0||profit<0||!document.getElementById('target-revenue-input').value||!document.getElementById('target-profit-input').value){alert('目標は0以上の数値で入力してください。');return;}
-    getTargets(d)[selectedYear]={revenue:Math.round(revenue*10000)/10000,profit:Math.round(profit*10000)/10000};
+    getTargets(d)[selectedYear]={revenue:Math.round((revenue+extra.revenue)*10000)/10000,profit:Math.round((profit+extra.profit)*10000)/10000};
     if(typeof saveStoredData==='function')saveStoredData();else localStorage.setItem('ses_access_db',JSON.stringify(d));
     const msg=document.getElementById('target-save-message');if(msg)msg.textContent=`${selectedYear}年（${selectedYear-2011}期）の目標を保存しました。`;
     renderFiscalDashboard();updateMonthlyTargetPreview();
@@ -150,7 +160,7 @@
     const target=getTargets(d)[selectedYear]||{};
     const kpis={'target-revenue':target.revenue==null?'未設定':man(target.revenue),'target-profit':target.profit==null?'未設定':man(target.profit),'total-revenue':man(totalRevenue),'total-profit':man(totalProfit),'profit-rate':totalRevenue?`${(totalProfit/totalRevenue*100).toFixed(1)}%`:'0%','active':`${(d.members||[]).filter(m=>(m.currentStatus||m.status)==='稼働中').length}名`,'bench':`${(d.members||[]).filter(m=>['待機中','待机中'].includes(m.currentStatus||m.status)).length}名`,'month-revenue':man(current.revenue),'month-profit':man(current.profit)};
     Object.entries(kpis).forEach(([key,value])=>{const el=document.getElementById(`fy-kpi-${key}`);if(el)el.textContent=value;});
-    const note=document.getElementById('fy-data-note');if(note)note.textContent='※確定実績のみを集計しています。未入力月は0として扱い、計画値では補完しません。';
+    const note=document.getElementById('fy-data-note');if(note)note.textContent='※社員の確定実績と登録済みスポット・物販・経費を集計しています。社員の未入力月は0とし、予定値では補完しません。';
     chart('fy-revenue-chart','売上',target.revenue||0,totalRevenue,'#ff35c5');
     chart('fy-profit-chart','粗利',target.profit||0,totalProfit,'#00efb7');
     renderFiscalTrend();

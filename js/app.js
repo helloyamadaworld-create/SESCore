@@ -10,7 +10,7 @@
     "metadata": {
         "systemName": "SES_Core",
         "version": "3.2.12",
-        "exportedAt": "2026-11-25T06:42:27.424Z",
+        "exportedAt": "2026-11-25T08:04:12.702Z",
         "schemaVersion": "3.0.0",
         "clientProjectImport": {
             "sourceFile": "【仙台営業所】取引先・案件情報(2).xlsx",
@@ -198,7 +198,7 @@
             "type": "取引先",
             "contact": "吉田 一彦",
             "email": "",
-            "activeProjects": 3,
+            "activeProjects": 2,
             "status": "アクティブ",
             "meetingDate": "2025-02-04",
             "meetingRoute": "問い合せ＠仙台",
@@ -390,7 +390,7 @@
             "type": "取引先",
             "contact": "菊地 一宏",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-02-19",
             "meetingRoute": "MISA",
@@ -422,7 +422,7 @@
             "type": "取引先",
             "contact": "遊佐 賢司",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-02-25",
             "meetingRoute": "MISA",
@@ -454,7 +454,7 @@
             "type": "取引先",
             "contact": "阿部 昭典",
             "email": "",
-            "activeProjects": 2,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-03-10",
             "meetingRoute": "問い合せ＠仙台",
@@ -582,7 +582,7 @@
             "type": "取引先",
             "contact": "白井 賢治",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-03-12",
             "meetingRoute": "問い合せ＠仙台",
@@ -710,7 +710,7 @@
             "type": "取引先",
             "contact": "高田 淳史",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-03-26",
             "meetingRoute": "問い合せ＠仙台",
@@ -774,7 +774,7 @@
             "type": "取引先",
             "contact": "阿部 勉",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-04-07",
             "meetingRoute": "紹介＠業者",
@@ -934,7 +934,7 @@
             "type": "取引先",
             "contact": "外山 伸一",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-04-16",
             "meetingRoute": "紹介＠業者",
@@ -966,7 +966,7 @@
             "type": "取引先",
             "contact": "中居 和優",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-04-24",
             "meetingRoute": "紹介＠業者",
@@ -998,7 +998,7 @@
             "type": "取引先",
             "contact": "相川 弥都",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-05-09",
             "meetingRoute": "MISA",
@@ -1254,7 +1254,7 @@
             "type": "取引先",
             "contact": "川島 徹",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-06-23",
             "meetingRoute": "問い合わせ＠仙台",
@@ -1286,7 +1286,7 @@
             "type": "取引先",
             "contact": "渡部 光昌",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-06-24",
             "meetingRoute": "MISA",
@@ -1478,7 +1478,7 @@
             "type": "取引先",
             "contact": "兼平 真衣",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-10-08",
             "meetingRoute": "その他",
@@ -1542,7 +1542,7 @@
             "type": "取引先",
             "contact": "佐々木 七彩",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-11-27",
             "meetingRoute": "問い合わせ＠仙台",
@@ -1574,7 +1574,7 @@
             "type": "取引先",
             "contact": "佐藤 正",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2025-12-04",
             "meetingRoute": "MISA",
@@ -1606,7 +1606,7 @@
             "type": "取引先",
             "contact": "鈴木 寿明",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2026-01-23",
             "meetingRoute": "MISA",
@@ -1638,7 +1638,7 @@
             "type": "取引先",
             "contact": "遠藤 千太郎",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2026-02-12",
             "meetingRoute": "その他",
@@ -1734,7 +1734,7 @@
             "type": "取引先",
             "contact": "佐藤 丈",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2026-03-06",
             "meetingRoute": "紹介＠業者",
@@ -1766,7 +1766,7 @@
             "type": "取引先",
             "contact": "千葉 高幹 様 村田 淳",
             "email": "",
-            "activeProjects": 2,
+            "activeProjects": 1,
             "status": "アクティブ",
             "meetingDate": "2026-03-13",
             "meetingRoute": "紹介＠業者",
@@ -1798,7 +1798,7 @@
             "type": "取引先",
             "contact": "日野 浩彰",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2026-03-13",
             "meetingRoute": "紹介＠業者",
@@ -2054,7 +2054,7 @@
             "type": "取引先",
             "contact": "大山 賢治",
             "email": "",
-            "activeProjects": 1,
+            "activeProjects": 0,
             "status": "アクティブ",
             "meetingDate": "2026-05-18",
             "meetingRoute": "問い合わせ＠仙台",
@@ -2342,7 +2342,7 @@
             "contractEnd": "",
             "startDate": "2023-06-01",
             "assignedMemberIds": [],
-            "id": "J001",
+            "id": "PRJ-001",
             "title": "保安協会システム改修",
             "clientId": "C004",
             "clientName": "株式会社エヌエスシー(NSC)",
@@ -2351,7 +2351,7 @@
                 "JavaScript",
                 "ColdFusion"
             ],
-            "location": "仙台駅周辺/出社",
+            "location": "",
             "status": "参画中",
             "proposedMember": "山田",
             "settlementHours": "140h-180h",
@@ -2366,7 +2366,7 @@
             "nextAction": "参画中",
             "clientContact": "監物　一輝　様",
             "sourceData": {
-                "案件ID": "J001",
+                "案件ID": "PRJ-001",
                 "取引先ID": "C004",
                 "会社名": "株式会社エヌエスシー(NSC)",
                 "案件名": "保安協会システム改修",
@@ -2385,14 +2385,14 @@
                 "取引先担当者": "監物　一輝　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 380000
         },
         {
             "contractEnd": "",
             "startDate": "2026-08-01",
             "assignedMemberIds": [],
-            "id": "J002",
+            "id": "PRJ-002",
             "title": "電力システム開発（テスト）",
             "clientId": "C043",
             "clientName": "株式会社ソフトウェア・ビーンズ",
@@ -2400,7 +2400,7 @@
             "skills": [
                 "java"
             ],
-            "location": "仙台駅周辺/出社",
+            "location": "",
             "status": "参画中",
             "proposedMember": "伊藤",
             "settlementHours": "140h-180h",
@@ -2414,7 +2414,7 @@
             "nextAction": "参画中",
             "clientContact": "佐藤　正人　様",
             "sourceData": {
-                "案件ID": "J002",
+                "案件ID": "PRJ-002",
                 "取引先ID": "C043",
                 "会社名": "株式会社ソフトウェア・ビーンズ",
                 "案件名": "電力システム開発（テスト）",
@@ -2433,17 +2433,17 @@
                 "取引先担当者": "佐藤　正人　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 430000
         },
         {
             "contractEnd": "",
             "startDate": "2025-09-01",
             "assignedMemberIds": [],
-            "id": "J004",
+            "id": "PRJ-003",
             "title": "RPA保守開発",
             "clientId": "",
-            "clientName": "株式会社テレコミリサーチ",
+            "clientName": "不明クライアント",
             "price": 30,
             "skills": [],
             "location": "",
@@ -2458,7 +2458,7 @@
             "nextAction": "参画中",
             "clientContact": "-",
             "sourceData": {
-                "案件ID": "J004",
+                "案件ID": "PRJ-003",
                 "取引先ID": "-",
                 "会社名": "株式会社テレコミリサーチ",
                 "案件名": "RPA保守開発",
@@ -2477,14 +2477,14 @@
                 "取引先担当者": "-"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 300000
         },
         {
             "contractEnd": "",
             "startDate": "2026-06-01",
             "assignedMemberIds": [],
-            "id": "J005",
+            "id": "PRJ-004",
             "title": "NTTデータ維持保守",
             "clientId": "C004",
             "clientName": "株式会社エヌエスシー(NSC)",
@@ -2502,7 +2502,7 @@
             "nextAction": "参画中",
             "clientContact": "監物　一輝　様",
             "sourceData": {
-                "案件ID": "J005",
+                "案件ID": "PRJ-004",
                 "取引先ID": "C004",
                 "会社名": "株式会社エヌエスシー(NSC)",
                 "案件名": "NTTデータ維持保守",
@@ -2521,14 +2521,14 @@
                 "取引先担当者": "監物　一輝　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 400000
         },
         {
             "contractEnd": "",
             "startDate": "2026-08-01",
             "assignedMemberIds": [],
-            "id": "J006",
+            "id": "PRJ-005",
             "title": "新幹線改修",
             "clientId": "C010",
             "clientName": "株式会社ビッツ",
@@ -2546,7 +2546,7 @@
             "nextAction": "参画中",
             "clientContact": "田中　宏明　様",
             "sourceData": {
-                "案件ID": "J006",
+                "案件ID": "PRJ-005",
                 "取引先ID": "C010",
                 "会社名": "株式会社ビッツ",
                 "案件名": "新幹線改修",
@@ -2565,14 +2565,14 @@
                 "取引先担当者": "田中　宏明　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 100000
         },
         {
             "contractEnd": "",
             "startDate": "2026-04-01",
             "assignedMemberIds": [],
-            "id": "J007",
+            "id": "PRJ-006",
             "title": "電力システム開発",
             "clientId": "C056",
             "clientName": "株式会社クラウドスミス",
@@ -2590,7 +2590,7 @@
             "nextAction": "参画中",
             "clientContact": "千葉　高幹　様\n村田　淳　様",
             "sourceData": {
-                "案件ID": "J007",
+                "案件ID": "PRJ-006",
                 "取引先ID": "C056",
                 "会社名": "株式会社クラウドスミス",
                 "案件名": "電力システム開発",
@@ -2609,14 +2609,14 @@
                 "取引先担当者": "千葉　高幹　様\n村田　淳　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 500000
         },
         {
             "contractEnd": "",
             "startDate": "2024-08-01",
             "assignedMemberIds": [],
-            "id": "J009",
+            "id": "PRJ-007",
             "title": "データ案件",
             "clientId": "C010",
             "clientName": "株式会社ビッツ",
@@ -2634,7 +2634,7 @@
             "nextAction": "参画中",
             "clientContact": "田中　宏明　様",
             "sourceData": {
-                "案件ID": "J009",
+                "案件ID": "PRJ-007",
                 "取引先ID": "C010",
                 "会社名": "株式会社ビッツ",
                 "案件名": "データ案件",
@@ -2653,14 +2653,14 @@
                 "取引先担当者": "田中　宏明　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 450000
         },
         {
             "contractEnd": "",
             "startDate": "2025-07-01",
             "assignedMemberIds": [],
-            "id": "J010",
+            "id": "PRJ-008",
             "title": "G-PDM運用",
             "clientId": "C006",
             "clientName": "アルファーテクノロジー株式会社",
@@ -2678,7 +2678,7 @@
             "nextAction": "参画中",
             "clientContact": "吉田　一彦　様",
             "sourceData": {
-                "案件ID": "J010",
+                "案件ID": "PRJ-008",
                 "取引先ID": "C006",
                 "会社名": "アルファーテクノロジー株式会社",
                 "案件名": "G-PDM運用",
@@ -2697,14 +2697,14 @@
                 "取引先担当者": "吉田　一彦　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 350000
         },
         {
             "contractEnd": "",
             "startDate": "2025-07-01",
             "assignedMemberIds": [],
-            "id": "J011",
+            "id": "PRJ-009",
             "title": "土木・施工現場Webアプリ改修",
             "clientId": "C010",
             "clientName": "株式会社ビッツ",
@@ -2722,7 +2722,7 @@
             "nextAction": "参画中",
             "clientContact": "田中　宏明　様",
             "sourceData": {
-                "案件ID": "J011",
+                "案件ID": "PRJ-009",
                 "取引先ID": "C010",
                 "会社名": "株式会社ビッツ",
                 "案件名": "土木・施工現場Webアプリ改修",
@@ -2741,14 +2741,14 @@
                 "取引先担当者": "田中　宏明　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 350000
         },
         {
             "contractEnd": "",
             "startDate": "2026-07-01",
             "assignedMemberIds": [],
-            "id": "J012",
+            "id": "PRJ-010",
             "title": "自動車部品管理の開発運用保守",
             "clientId": "C006",
             "clientName": "アルファーテクノロジー株式会社",
@@ -2766,7 +2766,7 @@
             "nextAction": "参画中",
             "clientContact": "吉田　一彦　様",
             "sourceData": {
-                "案件ID": "J012",
+                "案件ID": "PRJ-010",
                 "取引先ID": "C006",
                 "会社名": "アルファーテクノロジー株式会社",
                 "案件名": "自動車部品管理の開発運用保守",
@@ -2785,14 +2785,14 @@
                 "取引先担当者": "吉田　一彦　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 350000
         },
         {
             "contractEnd": "",
             "startDate": "2023-07-01",
             "assignedMemberIds": [],
-            "id": "J013",
+            "id": "PRJ-011",
             "title": "仙台市税システム運用保守",
             "clientId": "C010",
             "clientName": "株式会社ビッツ",
@@ -2802,7 +2802,7 @@
                 "報連相",
                 "社会人マナー"
             ],
-            "location": "仙台泉中央/出社",
+            "location": "",
             "status": "参画中",
             "proposedMember": "古山",
             "settlementHours": "140h-180h",
@@ -2818,7 +2818,7 @@
             "nextAction": "参画中",
             "clientContact": "田中　宏明　様",
             "sourceData": {
-                "案件ID": "J013",
+                "案件ID": "PRJ-011",
                 "取引先ID": "C010",
                 "会社名": "株式会社ビッツ",
                 "案件名": "仙台市税システム運用保守",
@@ -2837,1363 +2837,24 @@
                 "取引先担当者": "田中　宏明　様"
             },
             "participants": [],
-            "projectType": "共有案件",
+            "projectType": "参画案件",
             "priceYen": 350000
         },
         {
             "contractEnd": "",
-            "startDate": "2026-11-01",
+            "startDate": "",
             "assignedMemberIds": [],
-            "id": "J020",
-            "title": "官公庁向けの地図情報案件",
-            "clientId": "C002",
-            "clientName": "株式会社ビー・エス・アール",
-            "price": 50,
-            "skills": [
-                "JavaScript",
-                "Node.js",
-                "AWS認定資格",
-                "Docker"
-            ],
-            "location": "仙台/出社",
-            "status": "見送り",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "140h-180h",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "JavaScript",
-                "Node.js"
-            ],
-            "desirableSkills": [
-                "AWS認定資格",
-                "Docker"
-            ],
-            "interviewCount": "1回(対面)",
-            "description": "作業内容：航空機の地図情報GISシステムを活用して位置情報を取り出して地図上にマッピングする。\n時期：10月から製造～長期　2030年頃まで\n募集人数：1~2名",
-            "nextAction": "今回は見送り\n引き続き案件情報あれば\n共有していただける",
-            "clientContact": "本間　圭一　様",
-            "sourceData": {
-                "案件ID": "J020",
-                "取引先ID": "C002",
-                "会社名": "株式会社ビー・エス・アール",
-                "案件名": "官公庁向けの地図情報案件",
-                "提案要員": "佐々木（七）",
-                "ステータス": "見送り",
-                "開始予定時期": "2026-11-01",
-                "単価": 500000,
-                "精算時間": "140h-180h",
-                "商流": "不明",
-                "勤務地 / 働き方": "仙台/出社",
-                "必須スキル": "JavaScript, Node.js",
-                "尚可スキル": "AWS認定資格, Docker",
-                "面談回数": "1回(対面)",
-                "案件概要・詳細": "作業内容：航空機の地図情報GISシステムを活用して位置情報を取り出して地図上にマッピングする。\n時期：10月から製造～長期　2030年頃まで\n募集人数：1~2名",
-                "次回アクション・備考": "今回は見送り\n引き続き案件情報あれば\n共有していただける",
-                "取引先担当者": "本間　圭一　様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 500000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J021",
-            "title": "顔合わせ",
+            "id": "PRJ-012",
+            "title": "大量帳票",
             "clientId": "C010",
             "clientName": "株式会社ビッツ",
-            "price": 52,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "保留",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "1回(対面)",
-            "description": "不明",
-            "nextAction": "マッチしそうな案件が\n出てくれば共有いただける",
-            "clientContact": "只野 寿和 様\n坪川 拓海 様",
-            "sourceData": {
-                "案件ID": "J021",
-                "取引先ID": "C010",
-                "会社名": "株式会社ビッツ",
-                "案件名": "顔合わせ",
-                "提案要員": "佐々木（七）",
-                "ステータス": "保留",
-                "開始予定時期": "不明",
-                "単価": 520000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "1回(対面)",
-                "案件概要・詳細": "不明",
-                "次回アクション・備考": "マッチしそうな案件が\n出てくれば共有いただける",
-                "取引先担当者": "只野 寿和 様\n坪川 拓海 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 520000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "2026-11-01",
-            "assignedMemberIds": [],
-            "id": "J022",
-            "title": "面談（Web）",
-            "clientId": "C034",
-            "clientName": "株式会社東北システムズ・サポート",
-            "price": 53,
-            "skills": [
-                "typescript Angular"
-            ],
-            "location": "仙台/出社",
-            "status": "見送り",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "2次",
-            "requiredSkills": [
-                "typescript Angular"
-            ],
-            "desirableSkills": [],
-            "interviewCount": "1回(対面)",
-            "description": "電力の営業システム\nお客様の問い合わせ、機能改修",
-            "nextAction": "今回は見送り",
-            "clientContact": "小林 喜久子 様\n田中 真理子 様",
-            "sourceData": {
-                "案件ID": "J022",
-                "取引先ID": "C034",
-                "会社名": "株式会社東北システムズ・サポート",
-                "案件名": "面談（Web）",
-                "提案要員": "佐々木（七）",
-                "ステータス": "見送り",
-                "開始予定時期": "2026-11-01",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "2次",
-                "勤務地 / 働き方": "仙台/出社",
-                "必須スキル": "typescript Angular",
-                "尚可スキル": "",
-                "面談回数": "1回(対面)",
-                "案件概要・詳細": "電力の営業システム\nお客様の問い合わせ、機能改修",
-                "次回アクション・備考": "今回は見送り",
-                "取引先担当者": "小林 喜久子 様\n田中 真理子 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "2026-11-01",
-            "assignedMemberIds": [],
-            "id": "J023",
-            "title": "顔合わせ",
-            "clientId": "C065",
-            "clientName": "キャロルシステム仙台株式会社",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "保留",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "不明",
-            "nextAction": "マッチしそうな案件が\n出てくれば共有いただける",
-            "clientContact": "大山 賢治 様",
-            "sourceData": {
-                "案件ID": "J023",
-                "取引先ID": "C065",
-                "会社名": "キャロルシステム仙台株式会社",
-                "案件名": "顔合わせ",
-                "提案要員": "佐々木（七）",
-                "ステータス": "保留",
-                "開始予定時期": "2026-11-01",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "不明",
-                "次回アクション・備考": "マッチしそうな案件が\n出てくれば共有いただける",
-                "取引先担当者": "大山 賢治 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "2026-11-01",
-            "assignedMemberIds": [],
-            "id": "J024",
-            "title": "面談（Web）",
-            "clientId": "C021",
-            "clientName": "株式会社テクノプラン",
-            "price": 50,
-            "skills": [
-                "RPA(Ui-Path)",
-                "コミュニケーション"
-            ],
-            "location": "五橋",
-            "status": "見送り",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "2次",
-            "requiredSkills": [
-                "RPA(Ui-Path)"
-            ],
-            "desirableSkills": [
-                "コミュニケーション"
-            ],
-            "interviewCount": "2回（対面）",
-            "description": "人事給与システム保守開発",
-            "nextAction": "顧客事情で12月に延期",
-            "clientContact": "高木 伸彰 様",
-            "sourceData": {
-                "案件ID": "J024",
-                "取引先ID": "C021",
-                "会社名": "株式会社テクノプラン",
-                "案件名": "面談（Web）",
-                "提案要員": "佐々木（七）",
-                "ステータス": "見送り",
-                "開始予定時期": "2026-11-01",
-                "単価": 500000,
-                "精算時間": "不明",
-                "商流": "2次",
-                "勤務地 / 働き方": "五橋",
-                "必須スキル": "RPA(Ui-Path)",
-                "尚可スキル": "コミュニケーション",
-                "面談回数": "2回（対面）",
-                "案件概要・詳細": "人事給与システム保守開発",
-                "次回アクション・備考": "顧客事情で12月に延期",
-                "取引先担当者": "高木 伸彰 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 500000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "2026-11-01",
-            "assignedMemberIds": [],
-            "id": "J025",
-            "title": "面談",
-            "clientId": "C039",
-            "clientName": "株式会社ステップ",
-            "price": 52,
-            "skills": [
-                "GeneXuus",
-                "Java"
-            ],
-            "location": "不明",
-            "status": "見送り",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "2次",
-            "requiredSkills": [
-                "GeneXuus",
-                "Java"
-            ],
-            "desirableSkills": [],
-            "interviewCount": "1回(対面)",
-            "description": "社内経理システム\nGeneZusで構築されている部分の開発・試験",
-            "nextAction": "10月13日(月)面談済み\n回答は10月15日（水）",
-            "clientContact": "柏木 健吾 様",
-            "sourceData": {
-                "案件ID": "J025",
-                "取引先ID": "C039",
-                "会社名": "株式会社ステップ",
-                "案件名": "面談",
-                "提案要員": "佐々木（七）",
-                "ステータス": "見送り",
-                "開始予定時期": "2026-11-01",
-                "単価": 520000,
-                "精算時間": "不明",
-                "商流": "2次",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "GeneXuus、Java",
-                "尚可スキル": "",
-                "面談回数": "1回(対面)",
-                "案件概要・詳細": "社内経理システム\nGeneZusで構築されている部分の開発・試験",
-                "次回アクション・備考": "10月13日(月)面談済み\n回答は10月15日（水）",
-                "取引先担当者": "柏木 健吾 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 520000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J026",
-            "title": "現状無し",
-            "clientId": "C013",
-            "clientName": "株式会社ティー・エス・シー",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "",
-            "clientContact": "菊地 一宏 様",
-            "sourceData": {
-                "案件ID": "J026",
-                "取引先ID": "C013",
-                "会社名": "株式会社ティー・エス・シー",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "",
-                "取引先担当者": "菊地 一宏 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J027",
-            "title": "現状無し",
-            "clientId": "C023",
-            "clientName": "株式会社ユニバーサルコンピューターシステム",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "",
-            "clientContact": "髙田 淳史 様",
-            "sourceData": {
-                "案件ID": "J027",
-                "取引先ID": "C023",
-                "会社名": "株式会社ユニバーサルコンピューターシステム",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "",
-                "取引先担当者": "髙田 淳史 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J028",
-            "title": "現状無し",
-            "clientId": "C056",
-            "clientName": "株式会社クラウドスミス",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "2027年杉瀬様の\nプロジェクトで増員の可能性あり",
-            "clientContact": "村田 淳 様",
-            "sourceData": {
-                "案件ID": "J028",
-                "取引先ID": "C056",
-                "会社名": "株式会社クラウドスミス",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "2027年杉瀬様の\nプロジェクトで増員の可能性あり",
-                "取引先担当者": "村田 淳 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J029",
-            "title": "現状無し",
-            "clientId": "C006",
-            "clientName": "アルファーテクノロジー株式会社",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "アルプスアルパインの案件であれば1月から面談可能",
-            "nextAction": "",
-            "clientContact": "後藤 国宏 様",
-            "sourceData": {
-                "案件ID": "J029",
-                "取引先ID": "C006",
-                "会社名": "アルファーテクノロジー株式会社",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "アルプスアルパインの案件であれば1月から面談可能",
-                "次回アクション・備考": "",
-                "取引先担当者": "後藤 国宏 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J030",
-            "title": "各電力会社向け基幹システムの新規開発",
-            "clientId": "C052",
-            "clientName": "ハートコネクション株式会社",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "面談調整",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "遠藤 千太郎 様",
-            "sourceData": {
-                "案件ID": "J030",
-                "取引先ID": "C052",
-                "会社名": "ハートコネクション株式会社",
-                "案件名": "各電力会社向け基幹システムの新規開発",
-                "提案要員": "佐々木（七）",
-                "ステータス": "面談調整",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "遠藤 千太郎 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J031",
-            "title": "現状無し",
-            "clientId": "C014",
-            "clientName": "株式会社アクシス",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "",
-            "clientContact": "遊佐 賢司 様",
-            "sourceData": {
-                "案件ID": "J031",
-                "取引先ID": "C014",
-                "会社名": "株式会社アクシス",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "",
-                "取引先担当者": "遊佐 賢司 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "2026-11-01",
-            "assignedMemberIds": [],
-            "id": "J032",
-            "title": "JavaおよびPL/SQLによる\nシステム開発",
-            "clientId": "C015",
-            "clientName": "株式会社モノクロ",
-            "price": 55,
-            "skills": [
-                "・Eclipseを用いたJava開発",
-                "・SQLをコード内に記述する",
-                "開発経験2年",
-                "HTML",
-                "CSS JavaScript"
-            ],
-            "location": "泉中央",
-            "status": "提案中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "140-180",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "・Eclipseを用いたJava開発",
-                "・SQLをコード内に記述する",
-                "開発経験2年"
-            ],
-            "desirableSkills": [
-                "HTML",
-                "CSS JavaScript"
-            ],
-            "interviewCount": "1回(対面)",
-            "description": " ①仕様書を読み込んでExcelでテストケースを作成できる（サンプルあり）\n ②SQL（Oracle）でテストデータを検索・更新・作成できる\n ③テストケースに沿ったテストデータ（Oracleのトランデータ、CSVファイル）を作成できる\n ④Excelにデータベースの内容を貼付け、エビデンスとして客観的に分かりやすく纏められる\n（サンプルあり）",
-            "nextAction": "調整中",
-            "clientContact": "阿部 昭典 様",
-            "sourceData": {
-                "案件ID": "J032",
-                "取引先ID": "C015",
-                "会社名": "株式会社モノクロ",
-                "案件名": "JavaおよびPL/SQLによる\nシステム開発",
-                "提案要員": "佐々木（七）",
-                "ステータス": "提案中",
-                "開始予定時期": "2026-11-01",
-                "単価": 550000,
-                "精算時間": "140-180",
-                "商流": "不明",
-                "勤務地 / 働き方": "泉中央",
-                "必須スキル": "・Eclipseを用いたJava開発\n・SQLをコード内に記述する\n開発経験2年",
-                "尚可スキル": "HTML/CSS JavaScript",
-                "面談回数": "1回(対面)",
-                "案件概要・詳細": " ①仕様書を読み込んでExcelでテストケースを作成できる（サンプルあり）\n ②SQL（Oracle）でテストデータを検索・更新・作成できる\n ③テストケースに沿ったテストデータ（Oracleのトランデータ、CSVファイル）を作成できる\n ④Excelにデータベースの内容を貼付け、エビデンスとして客観的に分かりやすく纏められる\n（サンプルあり）",
-                "次回アクション・備考": "調整中",
-                "取引先担当者": "阿部 昭典 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 550000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "2026-11-01",
-            "assignedMemberIds": [],
-            "id": "J033",
-            "title": "オンプレミス環境から\nAzure VMへの移行に伴う環境構築",
-            "clientId": "C015",
-            "clientName": "株式会社モノクロ",
-            "price": 55,
+            "price": 35,
+            "priceYen": 350000,
             "skills": [],
-            "location": "泉中央",
-            "status": "提案中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "140-180",
-            "commercialFlow": "不明",
-            "requiredSkills": [],
-            "desirableSkills": [],
-            "interviewCount": "",
-            "description": "オンプレミス環境からAzure VMへの移行に伴う環境構築",
-            "nextAction": "調整中",
-            "clientContact": "阿部　昭典　様",
-            "sourceData": {
-                "案件ID": "J033",
-                "取引先ID": "C015",
-                "会社名": "株式会社モノクロ",
-                "案件名": "オンプレミス環境から\nAzure VMへの移行に伴う環境構築",
-                "提案要員": "佐々木（七）",
-                "ステータス": "提案中",
-                "開始予定時期": "2026-11-01",
-                "単価": 550000,
-                "精算時間": "140-180",
-                "商流": "不明",
-                "勤務地 / 働き方": "泉中央",
-                "必須スキル": "",
-                "尚可スキル": "",
-                "面談回数": "",
-                "案件概要・詳細": "オンプレミス環境からAzure VMへの移行に伴う環境構築",
-                "次回アクション・備考": "調整中",
-                "取引先担当者": "阿部　昭典　様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 550000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J034",
-            "title": "現状無し",
-            "clientId": "C019",
-            "clientName": "株式会社ジンアース",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "白井 賢治 様",
-            "sourceData": {
-                "案件ID": "J034",
-                "取引先ID": "C019",
-                "会社名": "株式会社ジンアース",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "白井 賢治 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J035",
-            "title": "現状無し",
-            "clientId": "C025",
-            "clientName": "株式会社インストーク",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "阿部 勉 様",
-            "sourceData": {
-                "案件ID": "J035",
-                "取引先ID": "C025",
-                "会社名": "株式会社インストーク",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "阿部 勉 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J036",
-            "title": "現状無し",
-            "clientId": "C030",
-            "clientName": "株式会社クロスリード",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "外山 伸一 様",
-            "sourceData": {
-                "案件ID": "J036",
-                "取引先ID": "C030",
-                "会社名": "株式会社クロスリード",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "外山 伸一 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J037",
-            "title": "現状無し",
-            "clientId": "C032",
-            "clientName": "株式会社ワールドインテック",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "相川 弥都 様",
-            "sourceData": {
-                "案件ID": "J037",
-                "取引先ID": "C032",
-                "会社名": "株式会社ワールドインテック",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "相川 弥都 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J038",
-            "title": "現状無し",
-            "clientId": "C041",
-            "clientName": "株式会社GEAR",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "渡部 光昌 様",
-            "sourceData": {
-                "案件ID": "J038",
-                "取引先ID": "C041",
-                "会社名": "株式会社GEAR",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "渡部 光昌 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J039",
-            "title": "現状無し",
-            "clientId": "C031",
-            "clientName": "株式会社コア",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "中居 和優 様",
-            "sourceData": {
-                "案件ID": "J039",
-                "取引先ID": "C031",
-                "会社名": "株式会社コア",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "中居 和優 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J040",
-            "title": "現状無し",
-            "clientId": "C049",
-            "clientName": "株式会社アクセル・モード",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "佐々木 七彩 様",
-            "sourceData": {
-                "案件ID": "J040",
-                "取引先ID": "C049",
-                "会社名": "株式会社アクセル・モード",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "佐々木 七彩 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J041",
-            "title": "現状無し",
-            "clientId": "C047",
-            "clientName": "キャル株式会社",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "兼平 真衣 様",
-            "sourceData": {
-                "案件ID": "J041",
-                "取引先ID": "C047",
-                "会社名": "キャル株式会社",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "兼平 真衣 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J042",
-            "title": "現状無し",
-            "clientId": "C040",
-            "clientName": "株式会社東北電子計算センター",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "川島 徹 様",
-            "sourceData": {
-                "案件ID": "J042",
-                "取引先ID": "C040",
-                "会社名": "株式会社東北電子計算センター",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "川島 徹 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J043",
-            "title": "現状無し",
-            "clientId": "C050",
-            "clientName": "株式会社第一コンピュータサービス",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "福原 勇樹 様",
-            "sourceData": {
-                "案件ID": "J043",
-                "取引先ID": "C050",
-                "会社名": "株式会社第一コンピュータサービス",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "福原 勇樹 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J044",
-            "title": "現状無し",
-            "clientId": "C055",
-            "clientName": "ルネッサンス ルパン株式会社",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "佐藤 丈 様",
-            "sourceData": {
-                "案件ID": "J044",
-                "取引先ID": "C055",
-                "会社名": "ルネッサンス ルパン株式会社",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "佐藤 丈 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J045",
-            "title": "現状無し",
-            "clientId": "C051",
-            "clientName": "株式会社システムロード",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "鈴木 寿明 様",
-            "sourceData": {
-                "案件ID": "J045",
-                "取引先ID": "C051",
-                "会社名": "株式会社システムロード",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "鈴木 寿明 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
-        },
-        {
-            "contractEnd": "",
-            "startDate": "不明",
-            "assignedMemberIds": [],
-            "id": "J046",
-            "title": "現状無し",
-            "clientId": "C057",
-            "clientName": "株式会社栗菱コンピューターズ",
-            "price": 53,
-            "skills": [
-                "不明"
-            ],
-            "location": "不明",
-            "status": "情報収集中",
-            "proposedMember": "佐々木（七）",
-            "settlementHours": "不明",
-            "commercialFlow": "不明",
-            "requiredSkills": [
-                "不明"
-            ],
-            "desirableSkills": [
-                "不明"
-            ],
-            "interviewCount": "不明",
-            "description": "現状案件なし",
-            "nextAction": "共有待ち",
-            "clientContact": "加藤 泰弘 様",
-            "sourceData": {
-                "案件ID": "J046",
-                "取引先ID": "C057",
-                "会社名": "株式会社栗菱コンピューターズ",
-                "案件名": "現状無し",
-                "提案要員": "佐々木（七）",
-                "ステータス": "情報収集中",
-                "開始予定時期": "不明",
-                "単価": 530000,
-                "精算時間": "不明",
-                "商流": "不明",
-                "勤務地 / 働き方": "不明",
-                "必須スキル": "不明",
-                "尚可スキル": "不明",
-                "面談回数": "不明",
-                "案件概要・詳細": "現状案件なし",
-                "次回アクション・備考": "共有待ち",
-                "取引先担当者": "加藤 泰弘 様"
-            },
-            "participants": [],
-            "projectType": "共有案件",
-            "priceYen": 530000
+            "location": "常駐(仙台)",
+            "status": "参画中",
+            "projectType": "参画案件",
+            "participants": []
         }
     ],
     "members": [
@@ -4219,7 +2880,7 @@
             "grade": "G3"
         },
         {
-            "assignedProjectId": "J001",
+            "assignedProjectId": "PRJ-001",
             "contractEnd": "",
             "id": "MEM-102",
             "name": "山田 裕也",
@@ -4246,7 +2907,7 @@
             "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-011",
             "contractEnd": "",
             "id": "MEM-114",
             "name": "佐々木 翔平",
@@ -4264,7 +2925,8 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2023-02-01",
-            "grade": "G4"
+            "grade": "G4",
+            "waitingStartDate": ""
         },
         {
             "assignedProjectId": "",
@@ -4286,10 +2948,10 @@
             "nextMonthStatus": "待機中",
             "hireDate": "2023-02-01",
             "grade": "G3",
-            "waitingStartDate": ""
+            "waitingStartDate": "2026-11-01"
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-006",
             "contractEnd": "",
             "id": "MEM-108",
             "name": "梶原 悠羽",
@@ -4307,10 +2969,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2023-07-01",
-            "grade": "G3"
+            "grade": "G3",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-011",
             "contractEnd": "",
             "id": "MEM-115",
             "name": "古山 淳詞",
@@ -4328,10 +2991,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-03-01",
-            "grade": "G3"
+            "grade": "G3",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-007",
             "contractEnd": "",
             "id": "MEM-110",
             "name": "内海 未奈子",
@@ -4349,7 +3013,8 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-03-01",
-            "grade": "G3"
+            "grade": "G3",
+            "waitingStartDate": ""
         },
         {
             "assignedProjectId": "",
@@ -4371,10 +3036,10 @@
             "nextMonthStatus": "待機中",
             "hireDate": "2024-05-01",
             "grade": "G2",
-            "waitingStartDate": ""
+            "waitingStartDate": "2026-11-01"
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-011",
             "contractEnd": "",
             "id": "MEM-116",
             "name": "稲毛 遼河",
@@ -4392,10 +3057,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-06-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-008",
             "contractEnd": "",
             "id": "MEM-111",
             "name": "高橋 響哉",
@@ -4413,10 +3079,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-11-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-009",
             "contractEnd": "",
             "id": "MEM-112",
             "name": "澤村 吏久",
@@ -4434,10 +3101,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-04-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-011",
             "contractEnd": "",
             "id": "MEM-117",
             "name": "鹿又 翔二朗",
@@ -4455,10 +3123,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-05-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-003",
             "contractEnd": "",
             "id": "MEM-105",
             "name": "小関 彩乃",
@@ -4476,10 +3145,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-06-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-008",
             "contractEnd": "",
             "id": "MEM-113",
             "name": "正木 裕多竜",
@@ -4497,10 +3167,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-07-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-011",
             "contractEnd": "",
             "id": "MEM-118",
             "name": "遠藤 新太",
@@ -4518,10 +3189,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-07-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-002",
             "contractEnd": "",
             "id": "MEM-103",
             "name": "伊藤 快成",
@@ -4539,10 +3211,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-09-01",
-            "grade": "G3"
+            "grade": "G3",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-012",
             "contractEnd": "",
             "id": "MEM-119",
             "name": "鈴木 裕斗",
@@ -4560,10 +3233,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-09-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-004",
             "contractEnd": "",
             "id": "MEM-106",
             "name": "曽根 美咲",
@@ -4581,10 +3255,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2026-01-01",
-            "grade": "G1"
+            "grade": "G1",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-011",
             "contractEnd": "",
             "id": "MEM-120",
             "name": "滝沢 陽",
@@ -4602,10 +3277,11 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2026-01-01",
-            "grade": "G1"
+            "grade": "G1",
+            "waitingStartDate": ""
         },
         {
-            "assignedProjectId": "PRJ-SENDAI-ASSIGNED-001",
+            "assignedProjectId": "PRJ-005",
             "contractEnd": "",
             "id": "MEM-107",
             "name": "久保 奈美礼",
@@ -4623,7 +3299,8 @@
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2026-04-01",
-            "grade": "G2"
+            "grade": "G2",
+            "waitingStartDate": ""
         }
     ],
     "interviews": [
@@ -4690,6 +3367,419 @@
         }
     ],
     "auditLog": [
+        {
+            "id": "LOG-MWVU71D3-00EO",
+            "at": "2026-11-25T08:03:33.159Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU71A6-SNOQ",
+            "at": "2026-11-25T08:03:33.054Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU6OG5-DJLN",
+            "at": "2026-11-25T08:03:16.421Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU6OCM-OVOY",
+            "at": "2026-11-25T08:03:16.294Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU6HQO-BY7W",
+            "at": "2026-11-25T08:03:07.728Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU6HNL-PZTL",
+            "at": "2026-11-25T08:03:07.617Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU6BA0-148I",
+            "at": "2026-11-25T08:02:59.352Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU6B6V-CHXW",
+            "at": "2026-11-25T08:02:59.239Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU65EG-YV60",
+            "at": "2026-11-25T08:02:51.736Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU65B8-7V6T",
+            "at": "2026-11-25T08:02:51.620Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU5XF8-A8AK",
+            "at": "2026-11-25T08:02:41.396Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU5XC1-291G",
+            "at": "2026-11-25T08:02:41.281Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU5RKS-5FNC",
+            "at": "2026-11-25T08:02:33.820Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU5RHQ-P0D5",
+            "at": "2026-11-25T08:02:33.710Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU5KOJ-IJVE",
+            "at": "2026-11-25T08:02:24.883Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU5KL0-75V1",
+            "at": "2026-11-25T08:02:24.756Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU5BK5-DU6B",
+            "at": "2026-11-25T08:02:13.061Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU5BGY-XRKD",
+            "at": "2026-11-25T08:02:12.946Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU552Z-LIDD",
+            "at": "2026-11-25T08:02:04.667Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU54ZS-LNQ3",
+            "at": "2026-11-25T08:02:04.552Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU4TCJ-ORNH",
+            "at": "2026-11-25T08:01:49.459Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU4T8A-V6FK",
+            "at": "2026-11-25T08:01:49.306Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU4NID-75BA",
+            "at": "2026-11-25T08:01:41.893Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU4NF4-N69R",
+            "at": "2026-11-25T08:01:41.776Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU43LL-AWS7",
+            "at": "2026-11-25T08:01:16.089Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU3RWJ-71Z3",
+            "at": "2026-11-25T08:01:00.931Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU3RT8-XSNL",
+            "at": "2026-11-25T08:01:00.812Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU2V7V-2JID",
+            "at": "2026-11-25T08:00:18.571Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU2KZ7-KQRV",
+            "at": "2026-11-25T08:00:05.299Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU2BE6-CJA5",
+            "at": "2026-11-25T07:59:52.878Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU15B6-78I5",
+            "at": "2026-11-25T07:58:58.338Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU0TTR-8UGV",
+            "at": "2026-11-25T07:58:43.455Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU0HTF-BFKN",
+            "at": "2026-11-25T07:58:27.891Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVU03SA-4W02",
+            "at": "2026-11-25T07:58:09.706Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTZS5T-XMST",
+            "at": "2026-11-25T07:57:54.641Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTZI25-1OLE",
+            "at": "2026-11-25T07:57:41.549Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTZ61E-FC24",
+            "at": "2026-11-25T07:57:25.970Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTYTVP-XU6Z",
+            "at": "2026-11-25T07:57:10.213Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTYANO-7H4K",
+            "at": "2026-11-25T07:56:45.300Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTXRWR-FW8H",
+            "at": "2026-11-25T07:56:21.003Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTXA7G-UWFC",
+            "at": "2026-11-25T07:55:58.060Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTWYFU-KEJS",
+            "at": "2026-11-25T07:55:42.810Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTWFZG-7I5J",
+            "at": "2026-11-25T07:55:18.892Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTVSCQ-3J8H",
+            "at": "2026-11-25T07:54:48.266Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTVC08-IXV9",
+            "at": "2026-11-25T07:54:27.080Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTU3LP-4ZDJ",
+            "at": "2026-11-25T07:53:29.533Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTTTA6-AS25",
+            "at": "2026-11-25T07:53:16.158Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTTN3W-ZO53",
+            "at": "2026-11-25T07:53:08.156Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTTEN0-KNDT",
+            "at": "2026-11-25T07:52:57.180Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTRRDA-LE84",
+            "at": "2026-11-25T07:51:40.366Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTP5JZ-IASY",
+            "at": "2026-11-25T07:49:38.783Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTO36E-ME3V",
+            "at": "2026-11-25T07:48:49.046Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTKJ0E-2GDF",
+            "at": "2026-11-25T07:46:02.942Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTKAIO-Q7SU",
+            "at": "2026-11-25T07:45:51.936Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTK7SW-EU3C",
+            "at": "2026-11-25T07:45:48.416Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTK51T-OH7C",
+            "at": "2026-11-25T07:45:44.849Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTK2Q9-WG5S",
+            "at": "2026-11-25T07:45:41.841Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTK0KH-SFUD",
+            "at": "2026-11-25T07:45:39.041Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
+        {
+            "id": "LOG-MWVTIKWF-O9YS",
+            "at": "2026-11-25T07:44:32.079Z",
+            "user": "admin",
+            "action": "データ保存・更新",
+            "detail": "業務データを保存しました"
+        },
         {
             "id": "LOG-MWVR059O-14H3",
             "at": "2026-11-25T06:34:12.780Z",
@@ -5766,7 +4856,32 @@
     },
     "spotJobs": [],
     "expenses": [],
-    "monthlyCost": {},
+    "monthlyCost": {
+        "MEM-109|2026-11": 36.35,
+        "MEM-109|2026-12": 36.35,
+        "MEM-109|2027-01": 36.35,
+        "MEM-109|2027-02": 36.35,
+        "MEM-109|2027-03": 36.35,
+        "MEM-109|2027-04": 36.35,
+        "MEM-109|2027-05": 36.35,
+        "MEM-109|2027-06": 36.35,
+        "MEM-109|2027-07": 36.35,
+        "MEM-109|2027-08": 36.35,
+        "MEM-109|2027-09": 36.35,
+        "MEM-109|2027-10": 36.35,
+        "MEM-104|2026-11": 33.1,
+        "MEM-104|2026-12": 33.1,
+        "MEM-104|2027-01": 33.1,
+        "MEM-104|2027-02": 33.1,
+        "MEM-104|2027-03": 33.1,
+        "MEM-104|2027-04": 33.1,
+        "MEM-104|2027-05": 33.1,
+        "MEM-104|2027-06": 33.1,
+        "MEM-104|2027-07": 33.1,
+        "MEM-104|2027-08": 33.1,
+        "MEM-104|2027-09": 33.1,
+        "MEM-104|2027-10": 33.1
+    },
     "monthlyTransport": {},
     "monthlyRevenueActual": {
         "MEM-101|2026-11": 0,
@@ -5793,18 +4908,18 @@
         "MEM-102|2027-08": 65,
         "MEM-102|2027-09": 65,
         "MEM-102|2027-10": 65,
-        "MEM-114|2026-11": 42,
-        "MEM-114|2026-12": 42,
-        "MEM-114|2027-01": 42,
-        "MEM-114|2027-02": 42,
-        "MEM-114|2027-03": 42,
-        "MEM-114|2027-04": 42,
-        "MEM-114|2027-05": 42,
-        "MEM-114|2027-06": 42,
-        "MEM-114|2027-07": 42,
-        "MEM-114|2027-08": 42,
-        "MEM-114|2027-09": 42,
-        "MEM-114|2027-10": 42,
+        "MEM-114|2026-11": 41,
+        "MEM-114|2026-12": 41,
+        "MEM-114|2027-01": 41,
+        "MEM-114|2027-02": 41,
+        "MEM-114|2027-03": 41,
+        "MEM-114|2027-04": 41,
+        "MEM-114|2027-05": 41,
+        "MEM-114|2027-06": 41,
+        "MEM-114|2027-07": 41,
+        "MEM-114|2027-08": 41,
+        "MEM-114|2027-09": 41,
+        "MEM-114|2027-10": 41,
         "MEM-109|2026-11": 0,
         "MEM-109|2026-12": 0,
         "MEM-109|2027-01": 45,
@@ -5915,16 +5030,16 @@
         "MEM-117|2027-10": 41,
         "MEM-105|2026-11": 35,
         "MEM-105|2026-12": 35,
-        "MEM-105|2027-01": 39,
-        "MEM-105|2027-02": 39,
-        "MEM-105|2027-03": 39,
-        "MEM-105|2027-04": 42,
-        "MEM-105|2027-05": 42,
-        "MEM-105|2027-06": 42,
-        "MEM-105|2027-07": 42,
-        "MEM-105|2027-08": 42,
-        "MEM-105|2027-09": 42,
-        "MEM-105|2027-10": 42,
+        "MEM-105|2027-01": 35,
+        "MEM-105|2027-02": 35,
+        "MEM-105|2027-03": 35,
+        "MEM-105|2027-04": 40,
+        "MEM-105|2027-05": 40,
+        "MEM-105|2027-06": 40,
+        "MEM-105|2027-07": 40,
+        "MEM-105|2027-08": 40,
+        "MEM-105|2027-09": 40,
+        "MEM-105|2027-10": 40,
         "MEM-113|2026-11": 35,
         "MEM-113|2026-12": 35,
         "MEM-113|2027-01": 35,
@@ -6814,7 +5929,7 @@
             "memberId": "MEM-105",
             "year": 2026,
             "previous": 350000,
-            "rate": 400000,
+            "rate": 420000,
             "startMonth": 4,
             "status": "未交渉",
             "applied": {
@@ -7005,7 +6120,8 @@
         }
     ],
     "memberRates15Seeded": true,
-    "memberGrades15Linked": true
+    "memberGrades15Linked": true,
+    "projectIdSequence": 12
 };
         const PREFERRED_MEMBER_ORDER = [
             '川合 要', '山田 裕也', '佐々木 翔平', '生天目 慧海', '梶原 悠羽', '古山 淳詞',
@@ -7406,8 +6522,18 @@
             db.memberGrades15Linked = true;
         }
 
+        function alignClientIds(data) {
+            const map = new Map();
+            let seq = Math.max(Number(data.clientIdSequence)||0, ...data.clients.map(c=>/^CLI-\d+$/.test(c.id)?Number(c.id.slice(4)):0));
+            for(const c of data.clients) if(!/^CLI-\d+$/.test(c.id)) map.set(c.id, `CLI-${String(++seq).padStart(3,'0')}`);
+            function walk(o){if(!o||typeof o!=='object')return;for(const k of Object.keys(o)){if(typeof o[k]==='string'&&map.has(o[k]))o[k]=map.get(o[k]);else if(typeof o[k]==='object')walk(o[k]);}}
+            walk(data); data.clientIdSequence=seq;
+        }
+        alignClientIds(DEFAULT_INITIAL_DATA);
+        alignClientIds(db);
+
         function loadStoredData() {
-            const INITIAL_DATA_SEED_VERSION = 'sescore-seed-2026-11-25-v3.2.129';
+            const INITIAL_DATA_SEED_VERSION = 'sescore-seed-2026-11-25-v3.2.131';
             const appliedSeedVersion = localStorage.getItem('ses_access_seed_version');
             const stored = localStorage.getItem('ses_access_db');
             // Apply the supplied 2026-11-25 backup as the initial data exactly once for this release.
@@ -7440,6 +6566,7 @@
                 if (!db[key] || typeof db[key] !== 'object' || Array.isArray(db[key])) db[key] = {};
             });
             normalizeAndDedupeData();
+            alignClientIds(db);
             window.sortMembersByPreferredOrder(db.members);
             seedMemberRates15();
             try { localStorage.setItem('ses_access_db', JSON.stringify(db)); } catch (e) {}
@@ -7503,6 +6630,7 @@
                 }
                 db = parsed;
                 normalizeAndDedupeData();
+            alignClientIds(db);
                 saveStoredData();
                 closeModal('modal-import');
                 alert("JSONデータの正常インポートが完了しました。");
@@ -7768,7 +6896,7 @@
             tbody.innerHTML = activeMembers.map(m => {
                 const assignedPrj = db.projects[0]; // Example fallback link
                 const rateYen = Math.round((Number(m.rate)||0)*10000);
-                const costYen = Math.round((Number(window.gradeCostFor?.(m) ?? m.cost)||0)*10000);
+                const costYen = Math.round((Number(m.cost)||0)*10000);
                 const margin = rateYen - costYen;
                 const marginRate = m.rate > 0 ? ((margin / rateYen) * 100).toFixed(1) : 0;
 
@@ -7909,7 +7037,8 @@
                     db.clients[index] = updated;
                 }
             } else {
-                const newId = `CLI-${String(db.clients.length + 1).padStart(3, '0')}`;
+                db.clientIdSequence = Math.max(Number(db.clientIdSequence)||0, ...db.clients.map(c=>/^CLI-\d+$/.test(c.id)?Number(c.id.slice(4)):0))+1;
+                const newId = `CLI-${String(db.clientIdSequence).padStart(3, '0')}`;
                 const created = { id: newId, name, type, contact, email, activeProjects: 0, status };
                 clientExtraPaths.forEach(({path}) => {
                     let target = created;
@@ -8049,7 +7178,9 @@
                 const index = db.projects.findIndex(p => p.id === id);
                 if (index !== -1) db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, priceYen, skills, location, status, projectType, ...extra };
             } else {
-                const newId = `PRJ-${String(db.projects.length + 101)}`;
+                const maxId = db.projects.reduce((max, p) => { const match = /^PRJ-(\d+)$/.exec(p.id); return match ? Math.max(max, Number(match[1])) : max; }, 0);
+                db.projectIdSequence = Math.max(Number(db.projectIdSequence) || 0, maxId) + 1;
+                const newId = `PRJ-${String(db.projectIdSequence).padStart(3, '0')}`;
                 db.projects.push({ id: newId, title, clientId, clientName, price, priceYen, skills, location, status, projectType, assignedMemberIds: [], participants: [], ...extra });
             }
 
@@ -8188,7 +7319,7 @@
             const exp = window.calculateTenure ? window.calculateTenure(hireDate) : ''; 
             const prior = db.members.find(m=>m.id===id);
             const rate = window.sesRestricted() ? Number(prior?.rate||0) : Math.round(Number(document.getElementById('member-rate').value)||0)/10000;
-            const cost = window.sesRestricted() ? Number(prior?.cost||0) : window.gradeCostFor?.({grade:document.getElementById('member-grade')?.value}) ?? (Math.round(Number(document.getElementById('member-cost').value)||0)/10000);
+            const cost = window.sesRestricted() ? Number(prior?.cost||0) : (Math.round(Number(document.getElementById('member-cost').value)||0)/10000);
             const available = document.getElementById('member-available').value;
             const status = document.getElementById('member-status').value;
             const waitingStartDate = document.getElementById('member-waiting-start').value;
@@ -8201,9 +7332,10 @@
 
             if (id) {
                 const index = db.members.findIndex(m => m.id === id);
-                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost }; saveMemberExtra(db.members[index]); }
+                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost }; saveMemberExtra(db.members[index]); if(prior.grade!==grade){window.applyGradeToPlan?.(db.members[index]); db.members[index].cost=cost;} }
             } else {
-                const newId = `MEM-${String(db.members.length + 1).padStart(3, '0')}`;
+                db.memberIdSequence = Math.max(Number(db.memberIdSequence)||0, ...db.members.map(c=>/^MEM-\d+$/.test(c.id)?Number(c.id.slice(4)):0))+1;
+                const newId = `MEM-${String(db.memberIdSequence).padStart(3, '0')}`;
                 const member={ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost };
                 saveMemberExtra(member); db.members.push(member);
             }
@@ -8239,7 +7371,8 @@
             const member = db.members.find(m => m.id === memberId);
             const project = db.projects.find(p => p.id === projectId);
 
-            const newId = `INT-${String(db.interviews.length + 501)}`;
+            db.interviewIdSequence = Math.max(500,Number(db.interviewIdSequence)||0,...db.interviews.map(c=>/^INT-\d+$/.test(c.id)?Number(c.id.slice(4)):0))+1;
+            const newId = `INT-${String(db.interviewIdSequence).padStart(3,'0')}`;
             db.interviews.push({
                 id: newId,
                 memberId,
