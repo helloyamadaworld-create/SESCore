@@ -1623,22 +1623,24 @@ body.neon-mode .oo-panel,body.neon-mode #view-feedback .sf-panel{box-shadow:0 0 
 
 /* ===== Original: css/v3265-unified-neon.css ===== */
 /* v3.2.65: use actual theme classes; match meeting panels and dashboard actions. */
+body.theme-neon #view-member-rates .oo-panel,
 body.theme-neon #view-oneonones .oo-panel,
 body.theme-neon #view-feedback .sf-panel{
  background:linear-gradient(135deg,rgba(7,15,38,.94),rgba(10,12,34,.93),rgba(4,23,34,.90))!important;
  color:#e2f5ff!important;border:1px solid rgba(0,229,255,.75)!important;
  box-shadow:0 0 12px rgba(0,229,255,.28),0 0 25px rgba(255,38,215,.12),inset 0 0 15px rgba(0,229,255,.055)!important;
 }
-body.theme-neon #view-oneonones .oo-dialog,body.theme-neon #view-feedback .sf-dialog{
+body.theme-neon #mr-overlay .oo-dialog,body.theme-neon #view-oneonones .oo-dialog,body.theme-neon #view-feedback .sf-dialog{
  background:#0b142b!important;color:#e2f5ff!important;border-color:#00eaff!important;
  box-shadow:0 0 19px rgba(0,234,255,.38),0 0 35px rgba(255,38,215,.14)!important;
 }
+body.theme-neon #view-member-rates input,body.theme-neon #view-member-rates select,body.theme-neon #mr-overlay input,body.theme-neon #mr-overlay select,
 body.theme-neon #view-oneonones input,body.theme-neon #view-oneonones select,body.theme-neon #view-oneonones textarea,
 body.theme-neon #view-feedback input,body.theme-neon #view-feedback select,body.theme-neon #view-feedback textarea{
  background:#08172d!important;color:#e7f8ff!important;border-color:rgba(0,220,255,.55)!important;
  -webkit-text-fill-color:#e7f8ff!important;
 }
-body.theme-neon #view-oneonones .oo-page-heading h2,body.theme-neon #view-feedback .sf-page-heading h2{color:#e7f8ff!important;text-shadow:0 0 12px rgba(0,220,255,.65)!important}
+body.theme-neon #view-member-rates .oo-page-heading h2,body.theme-neon #view-oneonones .oo-page-heading h2,body.theme-neon #view-feedback .sf-page-heading h2{color:#e7f8ff!important;text-shadow:0 0 12px rgba(0,220,255,.65)!important}
 /* Dashboard target-settings appearance for primary actions across application views and dialogs. */
 body.theme-neon .view-panel button.bg-cyan-600,body.theme-neon .view-panel button.bg-cyan-500,
 body.theme-neon .view-panel button.bg-blue-600,body.theme-neon .view-panel button.bg-indigo-600,
@@ -2055,3 +2057,127 @@ body.theme-standard .ses-fiscal-trend-card select{background:#fff;color:#24344a;
 @media(max-width:760px){.ses-fiscal-trend-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Grade management (STANDARD and NEON) */
 #view-grades .ext-table{min-width:1120px}#view-grades .ext-table th,#view-grades .ext-table td{white-space:nowrap;padding:11px 12px}#view-grades .grade-action{border:1px solid var(--border-color,#2c6381);border-radius:8px;padding:7px 10px;color:inherit}#view-grades .grade-action:disabled{opacity:.4}.grade-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:16px}.grade-modal.hidden{display:none}.grade-dialog{width:min(860px,100%);max-height:calc(100dvh - 32px);display:flex;flex-direction:column;background:#0c1630;color:#e9f4ff;border:1px solid #35bde5;border-radius:16px;overflow:hidden;box-shadow:0 0 28px rgba(0,220,255,.23)}.grade-dialog-head,.grade-dialog-footer{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid rgba(120,175,210,.18)}.grade-dialog-head button{border:1px solid #35bde5;border-radius:8px;width:36px;height:36px;font-size:22px}.grade-dialog form{display:flex;flex-direction:column;min-height:0}.grade-dialog-body{overflow:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:20px}.grade-dialog-body label{display:flex;flex-direction:column;gap:6px;font-size:12px}.grade-dialog-footer{border-top:1px solid rgba(120,175,210,.18);border-bottom:0;justify-content:flex-end;gap:10px}.grade-primary{padding:10px 20px;border-radius:8px;background:linear-gradient(120deg,#d52ac5,#6849e9);color:white;font-weight:700}body.theme-standard .grade-dialog{background:#fff;color:#24344a;border-color:#cbd5e1;box-shadow:0 16px 45px rgba(15,23,42,.2)}body.theme-standard .grade-dialog-head button{border-color:#cbd5e1}body.theme-standard .grade-dialog .ext-input{background:#fff;color:#24344a;border:1px solid #cbd5e1;box-shadow:none}@media(max-width:640px){.grade-dialog-body{grid-template-columns:1fr}}
+
+/* Revenue workspace */
+#monthly-revenue-matrix .revenue-copy-tools{display:flex;flex-wrap:wrap;align-items:end;gap:12px;padding:12px 14px;margin:12px 0 16px;border:1px solid #34546b;border-radius:10px;background:rgba(40,85,110,.09)}
+#monthly-revenue-matrix .revenue-copy-tools>label:first-child{flex:1 1 260px;align-self:center;white-space:normal}
+#monthly-revenue-matrix #revenue-repeat-future{appearance:auto!important;width:18px!important;height:18px!important;min-width:18px!important;flex:none;box-shadow:none!important;accent-color:#159d83}
+#monthly-revenue-matrix .revenue-copy-tools>span{flex-basis:100%;font-size:11px}
+#monthly-revenue-matrix .revenue-scroll{max-height:65vh;overflow:auto;border:1px solid #34546b;border-radius:10px;position:relative}
+#monthly-revenue-matrix .revenue-finance-table{border-collapse:separate!important;border-spacing:0;min-width:1600px!important;width:max-content!important}
+#monthly-revenue-matrix .revenue-finance-table thead th{position:sticky;top:0;z-index:15;background:#20364d!important;background-image:none!important}
+#monthly-revenue-matrix .revenue-finance-table thead th:first-child{z-index:25;left:0}
+#monthly-revenue-matrix .revenue-finance-table tbody th{background:#102238!important;background-image:none!important;box-shadow:none!important}
+#monthly-revenue-matrix .revenue-finance-table td{padding:10px!important;font-variant-numeric:tabular-nums}
+#monthly-revenue-matrix .revenue-finance-table input{text-align:right;box-sizing:border-box}
+#monthly-revenue-matrix .revenue-extra th{padding:9px 12px 9px 24px!important;border-left:3px solid #23a98b;text-align:left}
+#monthly-revenue-matrix .revenue-extra td{text-align:right;color:#65d9ae;background:rgba(35,169,139,.06)}
+#monthly-revenue-matrix .revenue-extra small{font-size:10px;color:#65d9ae}
+body.theme-standard #monthly-revenue-matrix .revenue-finance-table thead th{background:#e3edf8!important;color:#193c60!important}
+body.theme-standard #monthly-revenue-matrix .revenue-finance-table tbody th{background:#f3f7fc!important;color:#193c60!important}
+body.theme-standard #monthly-revenue-matrix .revenue-extra td,body.theme-standard #monthly-revenue-matrix .revenue-extra small{color:#16734e!important;text-shadow:none!important}
+body.theme-standard #monthly-revenue-matrix .revenue-copy-tools{background:#f5f9ff;border-color:#cbdced}
+
+/* Client dialogs: shared editor geometry, read-only values in place of controls. */
+#modal-client-detail .ses-client-detail-dialog,#modal-client .ses-client-edit-dialog{width:100%!important;max-height:min(90dvh,900px)!important}
+#modal-client-detail .ses-client-detail-dialog>div:first-child,#modal-client .ses-client-edit-header{padding:20px 24px 16px!important;flex:none!important}
+#modal-client-detail #client-detail-fields{padding:20px 24px!important;grid-auto-rows:max-content!important;align-items:start!important;gap:12px!important;flex:1 1 auto!important}
+#modal-client-detail #client-detail-fields>.ses-client-section-title{grid-column:1/-1!important;font-size:13px;font-weight:800;color:#67e8f9;text-shadow:0 0 9px rgba(0,245,255,.75)}
+#modal-client-detail #client-detail-fields :is(.client-read-field,.client-read-wide,.ses-client-section-title){box-sizing:border-box;min-width:0;height:auto!important;border:1px solid rgba(0,245,255,.22);border-radius:12px;padding:13px;background:rgba(15,23,42,.45)}
+#modal-client-detail #client-detail-fields>.client-read-wide{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#modal-client-detail #client-detail-fields>.client-read-wide>.client-read-field{border:0;padding:0;background:transparent}
+#modal-client-detail .client-read-field label{display:block;color:#94a3b8;font-size:12px;margin-bottom:4px;line-height:1.4}
+#modal-client-detail .client-read-value{min-height:36px;box-sizing:border-box;padding:9px 10px;border:1px solid #20536c;border-radius:8px;background:#071327;color:#e2e8f0;font-size:12px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+#modal-client-detail .client-read-footer{flex:none;display:flex;justify-content:flex-end;padding:15px 24px;border-top:1px solid rgba(148,163,184,.2);background:rgba(15,23,42,.9)}
+body.theme-standard #modal-client-detail #client-detail-fields :is(.client-read-field,.client-read-wide,.ses-client-section-title),body.theme-standard #modal-client-detail .client-read-footer{background:#f8faff!important;border-color:#d9e2ef!important;color:#17243a!important;text-shadow:none!important;box-shadow:none!important}
+body.theme-standard #modal-client-detail .client-read-value{background:#fff;color:#17243a;border-color:#cbd5e1}
+body.theme-standard #modal-client-detail .client-read-field label{color:#53677c}
+@media(max-width:640px){#modal-client-detail #client-detail-fields>.client-read-wide{grid-template-columns:1fr}#modal-client-detail .client-read-spacer{display:none}#modal-client-detail #client-detail-fields{padding:14px!important}}
+
+#modal-client-detail .client-read-footer{gap:8px;flex-wrap:wrap;align-items:center}
+#modal-client-detail .client-read-footer button{min-width:76px;white-space:nowrap}
+#modal-client-detail .client-footer-delete{color:#fda4af;background:rgba(159,18,57,.16);border:1px solid #9f4960}
+body.theme-standard #modal-client-detail .client-footer-delete{color:#b91c1c!important;background:#fff!important;border-color:#e4b4b4!important;box-shadow:none!important;text-shadow:none!important}
+/* Project dialogs: registration layout shared by edit and read-only detail. */
+#modal-project-info .ses-project-info-dialog,#modal-project .ses-project-edit-dialog{max-height:min(90dvh,900px)!important}
+#modal-project-info #project-info-fields{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:max-content!important;gap:12px!important;padding:18px 24px!important;align-content:start!important;align-items:start!important;overflow:auto!important;flex:1 1 auto!important;min-height:0!important}
+#modal-project-info #project-info-fields>.ses-client-section-title,#modal-project-info .project-read-group{grid-column:1/-1!important}
+#modal-project-info .project-read-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
+#modal-project-info .project-read-field,#modal-project-info .ses-client-section-title{min-width:0;border:1px solid rgba(0,245,255,.22);border-radius:12px;padding:12px;background:rgba(15,23,42,.45);height:auto!important;box-sizing:border-box}
+#modal-project-info .ses-client-section-title{color:#67e8f9;font-size:13px;font-weight:800}
+#modal-project-info .project-read-field label{display:block;font-size:12px;color:#94a3b8;margin-bottom:4px}
+#modal-project-info .project-read-value{padding:9px 10px;min-height:36px;border:1px solid #20536c;border-radius:8px;background:#071327;color:#e2e8f0;font-size:12px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+#modal-project .project-date-row,#modal-project-info .project-date-row{grid-column:1/-1!important;grid-template-columns:repeat(2,minmax(0,220px))!important;justify-content:start;gap:12px}
+#modal-project .project-date-row input{width:100%!important;min-width:0!important;max-width:220px!important;box-sizing:border-box}
+#modal-project-info .project-read-footer{display:flex;justify-content:flex-end;gap:8px;flex:0 0 auto;padding:15px 24px;border-top:1px solid rgba(148,163,184,.2);background:#0f172a}
+#modal-project-info .project-read-footer button{min-width:76px;white-space:nowrap}
+#modal-project-info .project-footer-delete{color:#fda4af;background:rgba(159,18,57,.16);border:1px solid #9f4960}
+body.theme-standard #modal-project-info :is(.project-read-field,.ses-client-section-title,.project-read-footer){background:#f8faff!important;border-color:#d9e2ef!important;color:#17243a!important;box-shadow:none!important;text-shadow:none!important}
+body.theme-standard #modal-project-info .project-read-value{background:#fff;color:#17243a;border-color:#cbd5e1}
+body.theme-standard #modal-project-info .project-read-field label{color:#53677c}
+body.theme-standard #modal-project-info .project-footer-delete{color:#b91c1c!important;background:#fff!important;border-color:#e4b4b4!important}
+@media(max-width:640px){#modal-project-info #project-info-fields,#modal-project-info .project-read-group{grid-template-columns:minmax(0,1fr)!important}#modal-project-info #project-info-fields{padding:14px!important}#modal-project .project-date-row,#modal-project-info .project-date-row{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+/* Member rate management */
+#view-member-rates .mr-table th,#view-member-rates .mr-table td{white-space:nowrap;padding:10px 12px}#view-member-rates .mr-table{min-width:1300px}#mr-overlay .oo-field input,#mr-overlay .oo-field select{width:100%}#mr-overlay .oo-detail,#mr-overlay .oo-field{min-width:0;height:auto!important;min-height:65px}#mr-overlay .oo-grid{grid-auto-rows:auto!important;gap:12px}#mr-overlay{z-index:99990}
+
+/* Member rates: same surfaces and contrast as the shared list and dialog design. */
+#view-member-rates .oo-filters{grid-template-columns:repeat(4,minmax(0,1fr)) auto}
+#view-member-rates .oo-table-wrap{max-width:100%;overflow-x:auto}
+body.theme-neon #view-member-rates .mr-table tbody tr{background:#0b1a30!important}
+body.theme-neon #view-member-rates .mr-table tbody tr:nth-child(even){background:#0e1f37!important}
+body.theme-neon #view-member-rates .mr-table tbody tr:hover{background:#1e435d!important}
+body.theme-neon #view-member-rates .mr-table tbody td{color:#e4f1fb!important;background:transparent!important}
+body.theme-neon #view-member-rates button,body.theme-neon #mr-overlay button{background:#0c2338;color:#e0f4ff;border-color:#327b9b}
+body.theme-neon #mr-overlay .oo-primary{background:linear-gradient(110deg,#f01dbd,#7639ff);color:white;border-color:#ff76ec}
+#mr-overlay :is(.oo-detail,.oo-field){display:flex;flex-direction:column;justify-content:flex-start;gap:5px;padding:12px;border:1px solid #327b9b;border-radius:9px;background:#091d34;color:#e4f1fb}
+#mr-overlay :is(.oo-detail,.oo-field) small{margin:0;opacity:1;color:#9db4ca}
+body.theme-standard #mr-overlay :is(.oo-detail,.oo-field){background:#fff;color:#172b48;border-color:#cbd5e1}
+body.theme-standard #mr-overlay :is(.oo-detail,.oo-field) small{color:#53677c}
+body.theme-standard #view-member-rates .oo-panel h3{color:#233b58!important;text-shadow:none!important}
+body.theme-standard #view-member-rates button,body.theme-standard #mr-overlay button{background:#edf6ff;color:#173655;border-color:#bed5e8;box-shadow:none;text-shadow:none}
+body.theme-standard #mr-overlay .oo-primary{background:#1765a5;color:#fff;border-color:#1765a5}
+@media(max-width:850px){#view-member-rates .oo-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Analysis workspace and KPI period tabs */
+#view-reports{--ar-green:#19d99a;min-width:0}body.theme-standard #view-reports{--ar-green:#16845d}.ar-tabs{display:flex;flex-wrap:wrap;gap:8px}.ar-tabs .ext-button.ar-selected{background:#16758a!important;color:#fff!important;border-color:#56d7e8!important}body.theme-standard .ar-tabs .ext-button.ar-selected{background:#dbeeff!important;color:#174a78!important;border-color:#80b6df!important}.ar-grid,.ar-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.ar-kpis{grid-template-columns:repeat(auto-fit,minmax(155px,1fr))}.ar-card{padding:16px;min-width:0;border-radius:12px}.ar-card h3{font-weight:700;margin-bottom:14px}.ar-card strong{display:block;font-size:clamp(16px,2vw,25px);color:var(--ar-green);overflow-wrap:anywhere}.ar-filters{display:flex;flex-wrap:wrap;gap:12px}.ar-filters label{flex:1 1 145px;font-size:12px;min-width:0}.ar-filters select{display:block;width:100%;margin-top:6px}.ar-wide{grid-column:1/-1}.ar-bar-row{display:grid;grid-template-columns:minmax(75px,1fr) minmax(40px,1.4fr) minmax(65px,auto);align-items:center;gap:8px;margin:10px 0;font-size:12px}.ar-bar-row span{overflow-wrap:anywhere}.ar-bar-row b{text-align:right;font-variant-numeric:tabular-nums}.ar-track{height:9px;border-radius:8px;background:rgba(120,150,175,.19);overflow:hidden}.ar-track i{display:block;height:100%;background:var(--ar-green);border-radius:8px}.ar-donut{width:145px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin:12px auto 20px}.ar-donut span{display:grid;place-items:center;width:70%;aspect-ratio:1;border-radius:50%;background:#101b30;font-size:12px;font-weight:700}body.theme-standard .ar-donut span{background:white;color:#18334e}.ar-trend{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin-top:12px}.ar-trend .ar-track{margin:5px 0}.ar-target{display:grid;gap:6px;margin:12px 0;font-size:12px}#dashboard-sales-kpis .ar-tabs{grid-column:1/-1} @media(min-width:1000px){#dashboard-sales-kpis .dashboard-sales-kpi-month-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}#dashboard-sales-kpis .dashboard-sales-kpi-month-grid>.dashboard-sales-kpi-bench{grid-column:auto!important}}@media(max-width:700px){.ar-grid{grid-template-columns:1fr}.ar-bar-row{grid-template-columns:minmax(65px,1fr) minmax(30px,1fr) auto}}
+/* Member dialogs: fixed header/footer, shared detail grid */
+#modal-member .ses-member-form-dialog,#modal-member-detail .ses-member-detail-dialog{width:min(90vw,900px)!important;max-width:900px!important;max-height:min(90dvh,900px)!important;padding:0!important;overflow:hidden!important;display:flex!important;flex-direction:column!important}
+#modal-member .ses-member-form-header,#modal-member-detail .ses-member-detail-dialog>div:first-child{flex:none!important;padding:18px 24px!important;border-bottom:1px solid rgba(148,163,184,.2)!important;margin:0!important}
+#modal-member .ses-member-form-content{display:flex!important;flex-direction:column!important;min-height:0!important;overflow:hidden!important;padding:0!important;margin:0!important}
+#modal-member .ses-member-body,#modal-member-detail #member-detail-fields{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;align-content:start!important;grid-auto-rows:max-content;overflow-y:auto!important;min-height:0!important;flex:1 1 auto!important;padding:18px 24px!important;margin:0!important;overscroll-behavior:contain}
+#modal-member .ses-client-detail-section-title{grid-column:1/-1;margin:12px 0 0!important;padding:0 0 8px!important;font-size:14px;font-weight:700;color:#67e8f9}
+#modal-member .ses-member-extra-section{grid-column:1/-1;padding:0!important;border:0!important;margin:0!important}
+#modal-member .ses-member-extra-grid{gap:12px!important}
+#modal-member :is(.ses-member-field,.ses-member-extra-field){min-width:0;min-height:70px;box-sizing:border-box;padding:12px!important;border:1px solid #327b9b!important;border-radius:9px!important;background:#091d34!important;display:flex;flex-direction:column;gap:4px;box-shadow:none!important}
+#modal-member :is(.ses-member-field,.ses-member-extra-field)>:is(label,span){font-size:12px!important;color:#9db4ca!important;margin:0 0 2px!important}
+#modal-member .ses-member-body :is(input,select){min-height:36px;font-size:14px!important;width:100%!important}
+:is(#modal-member,#modal-member-detail) .ses-member-footer{flex:none!important;display:flex;justify-content:flex-end;align-items:center;gap:8px;padding:15px 24px!important;border-top:1px solid rgba(148,163,184,.2);background:#0c1429;margin:0!important}
+:is(#modal-member,#modal-member-detail) .ses-member-footer button{min-width:76px;white-space:nowrap}
+#modal-member-detail .member-footer-delete{color:#fda4af;background:rgba(159,18,57,.16);border:1px solid #9f4960}
+body.theme-standard #modal-member :is(.ses-member-field,.ses-member-extra-field),body.theme-standard :is(#modal-member,#modal-member-detail) .ses-member-footer{background:#fff!important;color:#17243a!important;border-color:#cbd5e1!important;box-shadow:none!important}
+body.theme-standard #modal-member :is(.ses-member-field,.ses-member-extra-field)>:is(label,span){color:#53677c!important}
+body.theme-standard #modal-member .ses-client-detail-section-title{color:#1e40af!important}
+body.theme-standard #modal-member-detail .member-footer-delete{color:#b91c1c!important;background:#fff!important;border-color:#e4b4b4!important;text-shadow:none!important}
+@media(max-width:640px){#modal-member .ses-member-body,#modal-member-detail #member-detail-fields,#modal-member .ses-member-extra-grid{grid-template-columns:minmax(0,1fr)!important}#modal-member .ses-member-body,#modal-member-detail #member-detail-fields{padding:14px!important}}
+
+/* Member rates: high-intensity NEON, isolated from STANDARD and other views. */
+body.theme-neon #view-member-rates .oo-panel,body.theme-neon #mr-overlay .oo-dialog{border:1px solid transparent!important;background:linear-gradient(135deg,#081b30,#100a25 65%,#10152d) padding-box,linear-gradient(115deg,#00f5ff,#477aff 40%,#ff00e6 75%,#00ffd5) border-box!important;box-shadow:0 0 12px #00eaff88,0 0 30px #006aff44,0 0 42px #f000ff33,inset 0 0 22px #00dfff18!important}
+body.theme-neon #view-member-rates :is(h2,h3),body.theme-neon #mr-overlay h3{color:#c9ffff!important;text-shadow:0 0 5px #00ffff,0 0 14px #00eaff,0 0 25px #008cff!important}
+body.theme-neon #view-member-rates :is(input,select),body.theme-neon #mr-overlay :is(input,select){background:#07172c!important;color:#e7fbff!important;border:1px solid #00bddd!important;box-shadow:inset 0 0 12px #00cfff22,0 0 8px #00dfff55!important}
+body.theme-neon #view-member-rates :is(input,select):focus,body.theme-neon #mr-overlay :is(input,select):focus{outline:2px solid #ff57f4;outline-offset:2px;box-shadow:0 0 20px #f000ff99!important}
+body.theme-neon #view-member-rates button,body.theme-neon #mr-overlay button{border:1px solid #00eaff!important;background:linear-gradient(120deg,#06364c,#21124a)!important;color:#e4ffff!important;text-shadow:0 0 7px #00eaff!important;box-shadow:0 0 10px #00dfff88,inset 0 0 10px #00eaff33!important;transition:box-shadow .18s,filter .18s}
+body.theme-neon #view-member-rates :is(#mr-new,#mr-apply-all),body.theme-neon #mr-overlay :is(.oo-primary,#mr-apply-one){background:linear-gradient(115deg,#075c9b,#6030ba,#a40089)!important;border-color:#ff6cf4!important;box-shadow:0 0 14px #ff00dd99,0 0 22px #00bfff55!important}
+body.theme-neon #view-member-rates button:hover,body.theme-neon #mr-overlay button:hover{filter:brightness(1.3);box-shadow:0 0 18px #00ffff,0 0 28px #f000ff88!important}
+body.theme-neon #view-member-rates .oo-table-wrap{border:1px solid #00c8ee!important;box-shadow:0 0 14px #00cfff55!important}
+body.theme-neon #view-member-rates .mr-table thead th{background:linear-gradient(125deg,#103d59,#29204d)!important;color:#baffff!important;border-bottom:2px solid #00f5ff!important;text-shadow:0 0 8px #00dfff!important}
+body.theme-neon #view-member-rates .mr-table tbody td{border-bottom:1px solid #167b9c88!important}
+body.theme-neon #view-member-rates .mr-table tbody tr:hover{background:linear-gradient(90deg,#123c50,#321b4e)!important}
+body.theme-neon #view-member-rates .mr-table tbody tr:has(>td:nth-child(14)) :is(td:nth-child(8),td:nth-child(11)){color:#67ffb7!important;text-shadow:0 0 8px #00ff8888!important}
+body.theme-neon #view-member-rates .mr-table tbody tr:has(>td:nth-child(14)) td:nth-child(12){color:#a6eaff!important;text-shadow:0 0 7px #00dfff88!important}
+body.theme-neon #mr-overlay :is(.oo-detail,.oo-field){border-color:#00c8ee!important;background:#0a1830!important;box-shadow:inset 0 0 12px #00cfff18,0 0 8px #00cfff44!important}
+body.theme-neon #mr-overlay :is(header,footer){border-color:#00c8ee!important;box-shadow:0 0 12px #00cfff44!important}
+@media(prefers-reduced-motion:reduce){body.theme-neon #view-member-rates button,body.theme-neon #mr-overlay button{transition:none}}
+body.theme-neon #view-member-rates .mr-table tbody td[data-mr-delta="negative"]{color:#ff91b3!important;text-shadow:0 0 8px #ff207b88!important}
+body.theme-neon #view-member-rates .mr-table tbody td[data-mr-delta="none"]{color:#b7c9df!important;text-shadow:none!important}
+body.theme-neon #view-member-rates .mr-table tbody td[data-mr-status="交渉中"]{color:#ffe780!important;text-shadow:0 0 8px #ffbf00!important}
+body.theme-neon #view-member-rates .mr-table tbody td[data-mr-status="確定"]{color:#67ffb7!important;text-shadow:0 0 8px #00ff88!important}
+body.theme-neon #view-member-rates .mr-table tbody td[data-mr-status="見送り"]{color:#ff91b3!important;text-shadow:0 0 8px #ff207b!important}

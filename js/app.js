@@ -4207,7 +4207,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.831,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-01-01"
@@ -4227,7 +4227,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 0.987,
             "manages": [
                 "開発1部",
                 "開発2部",
@@ -4252,7 +4252,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.151,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2023-02-01"
@@ -4272,7 +4272,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.265,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2023-02-01"
@@ -4292,7 +4292,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2023-07-01"
@@ -4312,7 +4312,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.78,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-03-01"
@@ -4332,7 +4332,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.312,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-03-01"
@@ -4352,7 +4352,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-05-01"
@@ -4372,7 +4372,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.571,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-06-01"
@@ -4392,7 +4392,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2024-11-01"
@@ -4412,7 +4412,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-04-01"
@@ -4432,7 +4432,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.661,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-05-01"
@@ -4452,7 +4452,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.606,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-06-01"
@@ -4472,7 +4472,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 0.784,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-07-01"
@@ -4492,7 +4492,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.775,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-07-01"
@@ -4512,7 +4512,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.151,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-09-01"
@@ -4532,7 +4532,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.74,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2025-09-01"
@@ -4552,7 +4552,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.478,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2026-01-01"
@@ -4572,7 +4572,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 1.74,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2026-01-01"
@@ -4592,7 +4592,7 @@
             "available": "未登録",
             "status": "稼働中",
             "currentProject": "仙台営業所 参画案件（詳細未登録）",
-            "transportCost": 0,
+            "transportCost": 0.987,
             "currentStatus": "稼働中",
             "nextMonthStatus": "稼働中",
             "hireDate": "2026-04-01"
@@ -4780,6 +4780,11 @@
                 return ai - bi || aName.localeCompare(bName, 'ja');
             });
             return source;
+        };
+        window.getMemberDisplayId = function(member, ordered) {
+            const list = ordered || window.sortMembersByPreferredOrder([...db.members]);
+            const index = list.findIndex(m => m.id === member.id);
+            return index < 0 ? '未登録' : `MEN-${String(index + 1).padStart(3, '0')}`;
         };
         let db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
         let selectedImportFileContent = null;
@@ -5060,6 +5065,7 @@
         // 4. LOCALSTORAGE STATE MANAGEMENT
         // ----------------------------------------------------
         function saveStoredData() {
+            window.syncGradeCosts?.();
             window.sortMembersByPreferredOrder(db.members);
             localStorage.setItem('ses_access_db', JSON.stringify(db));
             renderAllViews();
@@ -5109,6 +5115,52 @@
         function formatYenAsMan(yen) { return (Number(yen || 0) / 10000).toLocaleString('ja-JP', { minimumFractionDigits: 0, maximumFractionDigits: 4 }); }
         let projectDetailId = null;
 
+
+        function seedMemberTransportDefaults() {
+            const seed = [["MEM-101", "川合 要", 18310], ["MEM-102", "山田 裕也", 9870], ["MEM-114", "佐々木 翔平", 11510], ["MEM-109", "生天目 慧海", 12650], ["MEM-108", "梶原 悠羽", 9870], ["MEM-115", "古山 淳詞", 17800], ["MEM-110", "内海 未奈子", 13120], ["MEM-104", "佐々木 七海", 9870], ["MEM-116", "稲毛 遼河", 15710], ["MEM-111", "高橋 響哉", 9870], ["MEM-112", "澤村 吏久", 9870], ["MEM-117", "鹿又 翔二朗", 16610], ["MEM-105", "小関 彩乃", 16060], ["MEM-113", "正木 裕多竜", 7840], ["MEM-118", "遠藤 新太", 17750], ["MEM-103", "伊藤 快成", 11510], ["MEM-119", "鈴木 裕斗", 17400], ["MEM-106", "曽根 美咲", 14780], ["MEM-120", "滝沢 陽", 17400], ["MEM-107", "久保 奈美礼", 9870]];
+            db.memberTransportDefaultsApplied = db.memberTransportDefaultsApplied || {};
+            for (const [id,name,yen] of seed) {
+                if (db.memberTransportDefaultsApplied[id]) continue;
+                const member = db.members.find(m => m.id === id && String(m.name).replace(/\s/g,'') === name.replace(/\s/g,''));
+                if (!member) continue;
+                member.transportCost = yen / 10000;
+                for (const key of Object.keys(db.monthlyTransport || {})) {
+                    if (key.startsWith(id+'|')) delete db.monthlyTransport[key];
+                }
+                db.memberTransportDefaultsApplied[id] = true;
+            }
+        }
+
+        function seedMemberRates15() {
+            seedMemberTransportDefaults();
+            if (!db.memberGradeNabatameCorrected) {
+                const member = db.members.find(m => m.id === "MEM-109" && m.name.replace(/\s/g, "") === "生天目慧海");
+                if (member) {
+                    member.grade = "G3";
+                    db.memberGradeNabatameCorrected = true;
+                }
+            }
+            if (db.memberRates15Seeded && db.memberGrades15Linked) return;
+            const seedRates = !db.memberRates15Seeded;
+            const linkGrades = !db.memberGrades15Linked;
+            if (!Array.isArray(db.memberRates)) db.memberRates = [];
+            const seed = [[102, "山田 裕也", "M2", 510000, 650000, 4], [103, "伊藤 快成", "G3", 450000, 480000, 8], [104, "佐々木 七海", "G2", 440000, 500000, 1], [105, "小関 彩乃", "G2", 350000, 400000, 4], [106, "曽根 美咲", "G1", 400000, 440000, 4], [107, "久保 奈美礼", "G2", 100000, 400000, 1], [108, "梶原 悠羽", "G3", 500000, 530000, 4], [109, "生天目 慧海", "G3", 650000, 650000, null], [110, "内海 未奈子", "G3", 480000, 520000, 4], [111, "高橋 響哉", "G2", 370000, 400000, 7], [112, "澤村 吏久", "G2", 400000, 450000, 4], [113, "正木 裕多竜", "G2", 350000, 370000, 7], [115, "古山 淳詞", "G3", 430000, 430000, null], [114, "佐々木 翔平", "G4", 420000, 420000, null], [116, "稲毛 遼河", "G2", 350000, 400000, 4], [117, "鹿又 翔二朗", "G2", 400000, 410000, 4], [118, "遠藤 新太", "G2", 350000, 380000, 4], [119, "鈴木 裕斗", "G2", 380000, 400000, 4], [120, "滝沢 陽", "G1", 360000, 400000, 4]];
+            if (linkGrades) {
+                const kawai = db.members.find(m => m.id === "MEM-101" && m.name.replace(/\s/g, "") === "川合要");
+                if (kawai) kawai.grade = "G3";
+            }
+            for (const [id,name,grade,previous,rate,startMonth] of seed) {
+                const member = db.members.find(m => m.id === 'MEM-'+id && m.name.replace(/\s/g,'') === name.replace(/\s/g,''));
+                if (!member) continue;
+                if (linkGrades) member.grade = grade;
+                if (seedRates && !db.memberRates.some(r => r.memberId === member.id && r.year === 2026)) {
+                    db.memberRates.push({memberId:member.id,year:2026,previous,rate,startMonth,status:'未交渉'});
+                }
+            }
+            db.memberRates15Seeded = true;
+            db.memberGrades15Linked = true;
+        }
+
         function loadStoredData() {
             const INITIAL_DATA_SEED_VERSION = 'sescore-seed-2026-10-29-v3.2.12';
             const appliedSeedVersion = localStorage.getItem('ses_access_seed_version');
@@ -5144,12 +5196,15 @@
             });
             normalizeAndDedupeData();
             window.sortMembersByPreferredOrder(db.members);
+            seedMemberRates15();
             try { localStorage.setItem('ses_access_db', JSON.stringify(db)); } catch (e) {}
         }
 
         function confirmResetData() {
             if (confirm("すべてのデータを初期のサンプルデータにリセットしますか？この操作は取り消せません。")) {
                 db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
+                seedMemberRates15();
+                window.syncGradeCosts?.();
                 saveStoredData();
             }
         }
@@ -5268,30 +5323,19 @@
             const modal = document.getElementById('modal-client-detail');
             if (!modal) return;
             document.getElementById('client-detail-title').textContent = c.name || '取引先詳細';
-            const names = {id:'取引先ID',name:'企業名',type:'種別',contact:'担当者名',email:'連絡先メール',status:'ステータス',activeProjects:'公開中案件数',meetingDate:'打合せ日',meetingRoute:'打合せまでの流れ',department:'部署名',position:'役職',address:'住所',url:'企業URL',notes:'備考',skillMemo:'スキルメモ',enteredBy:'記入者名',sourceData:'登録元の詳細情報'};
-            const renderField = (label, value, wide = false) => `<div class="ses-client-detail-field${wide ? ' ses-detail-wide' : ''}"><dt>${clientDisplayText(label)}</dt><dd>${clientDisplayText(value == null || value === '' ? '未登録' : String(value))}</dd></div>`;
-            const formatValue = value => Array.isArray(value) ? value.map(v => v && typeof v === 'object' ? Object.values(v).join('・') : v).join('、') : value;
-            const used = new Set(['name','type','contact','email','status','id']);
-            const sections = [
-                ['基本情報', [['企業名',c.name],['取引先区分',c.type]]],
-                ['担当者情報', [['担当者名',c.contact],['連絡先メールアドレス',c.email],['ステータス',c.status]]]
-            ];
+            const field = (label,value) => `<div class="client-read-field"><label>${clientDisplayText(label)}</label><div class="client-read-value">${clientDisplayText(value == null || value === '' ? '未登録' : String(value))}</div></div>`;
+            const heading = title => `<div class="ses-client-section-title">${title}</div>`;
             const extras = [];
-            const appendExtra = (key,value, prefix = '') => {
-                if (value && typeof value === 'object' && !Array.isArray(value)) {
-                    Object.entries(value).forEach(([child, v]) => appendExtra(child,v,prefix ? `${prefix} / ${key}` : key));
-                } else {
-                    const label = prefix ? `${prefix} / ${names[key] || key}` : (names[key] || key);
-                    extras.push([label,formatValue(value)]);
+            const walk = (value,path,label) => {
+                if(value && typeof value === 'object' && !Array.isArray(value)) {
+                    Object.entries(value).forEach(([key,child]) => walk(child,[...path,key],path.length ? key : (clientFieldLabels[key] || key)));
+                    return;
                 }
+                const display = Array.isArray(value) ? value.map(v => v && typeof v === 'object' ? Object.values(v).join('・') : v).join('、') : value;
+                extras.push(field(label,display));
             };
-            Object.entries(c).filter(([key]) => !used.has(key)).forEach(([key,value]) => appendExtra(key,value));
-            if (extras.length) sections.push(['その他情報',extras]);
-            sections.push(['管理情報', [['取引先ID',c.id]]]);
-            document.getElementById('client-detail-fields').innerHTML = sections.map(([heading, fields]) =>
-                `<div class="ses-client-detail-section-title">${clientDisplayText(heading)}</div>` +
-                fields.map(([label,value]) => renderField(label,value)).join('')
-            ).join('');
+            Object.entries(c).filter(([key]) => !clientStandardFields.has(key)).forEach(([key,value]) => walk(value,[key],clientFieldLabels[key] || key));
+            document.getElementById('client-detail-fields').innerHTML = heading('基本情報') + field('企業名',c.name) + '<div class="client-read-spacer"></div>' + '<div class="client-read-wide">'+field('取引先区分',c.type)+'</div>' + heading('担当者情報') + field('担当者名',c.contact) + field('連絡先メールアドレス',c.email) + field('ステータス',c.status) + heading('その他情報') + extras.join('') + heading('管理情報') + field('取引先ID',c.id);
             document.getElementById('client-detail-edit').onclick = () => { closeModal('modal-client-detail'); editClient(c.id); };
             document.getElementById('client-detail-delete').onclick = () => { closeModal('modal-client-detail'); deleteClient(c.id); };
             modal.classList.remove('hidden');
@@ -5352,7 +5396,7 @@
 
             tbody.innerHTML = filtered.map((m, index) => `
                 <tr class="ses-member-row hover:bg-slate-800/40 transition">
-                    <td class="p-2 font-mono text-cyan-400"><div class="ses-member-id-cell"><span class="ses-member-actual-id" title="登録済み内部ID：${memberDetailEscape(m.id || '未設定')}">MEN-${String(orderedMembers.indexOf(m) + 1).padStart(3, '0')}</span></div></td>
+                    <td class="p-2 font-mono text-cyan-400"><div class="ses-member-id-cell"><span class="ses-member-actual-id" title="登録済み内部ID：${memberDetailEscape(m.id || '未設定')}">${window.getMemberDisplayId(m, orderedMembers)}</span></div></td>
                     <td class="p-2 font-bold text-slate-200">${memberDetailEscape(m.name)} <span class="ml-1 text-[9px] px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 font-normal">${memberDetailEscape(m.type)}</span></td>
                     <td class="p-2 text-slate-300">${memberDetailEscape(m.department || '未登録')}</td>
                     <td class="p-2 text-slate-300">${memberDetailEscape(m.role || '未登録')}</td>
@@ -5363,14 +5407,14 @@
             `).join('');
         }
 
-        const memberFieldNames = {id:'要員ID',name:'氏名',type:'区分',department:'所属部署',role:'役職',skills:'保有スキル',hireDate:'入社日',exp:'在籍年数',rate:'受注単価（万円）',cost:'原価単価（万円）',available:'稼働可能日',status:'現在の状態',nextMonthStatus:'来月以降の状態',waitingStartDate:'待機開始日',email:'メールアドレス',phone:'電話番号',notes:'備考',createdAt:'登録日時',updatedAt:'更新日時',address:'住所',birthday:'生年月日',birthDate:'生年月日',gender:'性別',age:'年齢',company:'所属会社',companyName:'所属会社名',nearestStation:'最寄り駅',station:'最寄り駅',nationality:'国籍',experience:'経験年数',qualifications:'資格',certifications:'資格',employmentType:'雇用形態',contractType:'契約形態',project:'参画案件',projectName:'参画案件名',startDate:'開始日',endDate:'終了日',memo:'メモ',remark:'備考',remarks:'備考',sales:'営業担当',salesPerson:'営業担当',updatedBy:'更新者'};
+        const memberFieldNames = {grade:'グレード',id:'社員ID',name:'氏名',type:'区分',department:'所属部署',role:'役職',skills:'保有スキル',hireDate:'入社日',exp:'在籍年数',rate:'受注単価（万円）',cost:'原価単価（万円）',available:'稼働可能日',status:'現在の状態',nextMonthStatus:'来月以降の状態',waitingStartDate:'待機開始日',email:'メールアドレス',phone:'電話番号',notes:'備考',createdAt:'登録日時',updatedAt:'更新日時',address:'住所',birthday:'生年月日',birthDate:'生年月日',gender:'性別',age:'年齢',company:'所属会社',companyName:'所属会社名',nearestStation:'最寄り駅',station:'最寄り駅',nationality:'国籍',experience:'経験年数',qualifications:'資格',certifications:'資格',employmentType:'雇用形態',contractType:'契約形態',project:'参画案件',projectName:'参画案件名',startDate:'開始日',endDate:'終了日',memo:'メモ',remark:'備考',remarks:'備考',sales:'営業担当',salesPerson:'営業担当',updatedBy:'更新者'};
         function memberJapaneseLabel(key) {
             const label=memberFieldNames[key]; if(label)return label;
             const words=String(key).replace(/([a-z])([A-Z])/g,'$1 $2').toLowerCase().split(/[\s_-]+/);
             const dict={member:'要員',employee:'社員',contact:'連絡先',date:'日',time:'時刻',start:'開始',end:'終了',price:'金額',amount:'金額',monthly:'月額',daily:'日額',hourly:'時間単価',work:'勤務',location:'場所',skill:'スキル',level:'レベル',year:'年',years:'年数',month:'月',months:'月数',name:'名称',number:'番号',code:'コード',url:'URL',link:'リンク',description:'説明',history:'履歴',details:'詳細',detail:'詳細',information:'情報',info:'情報',manager:'管理者',assigned:'担当',client:'取引先',contract:'契約',status:'状態',type:'区分',category:'分類',value:'値',flag:'フラグ',active:'有効',is:'',has:''};
             return words.map(w=>dict[w]||'追加情報').join('') || '追加情報';
         }
-        const memberCoreFields = new Set(['id','name','type','skills','hireDate','exp','rate','cost','available','status','waitingStartDate','nextMonthStatus']);
+        const memberCoreFields = new Set(['id','name','type','skills','hireDate','exp','rate','cost','available','status','waitingStartDate','nextMonthStatus','grade','assignedProjectId','contractEnd','transportCost','currentStatus']);
         function memberExtraEditor(member) {
             const root=document.getElementById('member-extra-fields'); if(!root)return;
             root.innerHTML='';
@@ -5410,7 +5454,7 @@
             document.getElementById('member-detail-title').textContent = m.name || '社員詳細';
             // Detail follows the registration form's field order and grouping.
             const groups = [
-                ['基本情報', ['name','type','skills','hireDate','exp','rate','cost']],
+                ['基本情報', ['name','type','skills','hireDate','exp','rate','cost','grade']],
                 ['稼働・ステータス', ['available','status','waitingStartDate','nextMonthStatus']]
             ];
             const used = new Set(['id']);
@@ -5427,12 +5471,12 @@
             const extras=Object.fromEntries(Object.entries(m).filter(([k])=>!used.has(k)));
             const more=flatten(extras);
             if(more.length) html+=`<div class="ses-client-detail-section-title">その他情報</div>`+more.map(([k,v])=>`<div class="ses-client-detail-field"><dt>${memberDetailEscape(k)}</dt><dd>${memberDetailEscape(v==null||v===''?'未登録':String(v))}</dd></div>`).join('');
-            html+=`<div class="ses-client-detail-section-title">管理情報</div>`+field('id',m.id);
+            html+=`<div class="ses-client-detail-section-title">管理情報</div>`+field('id',window.getMemberDisplayId(m));
             document.getElementById('member-detail-fields').innerHTML=html;
             document.getElementById('member-detail-edit').onclick=()=>{closeModal('modal-member-detail');editMember(m.id);};
             document.getElementById('member-detail-delete').onclick=()=>{closeModal('modal-member-detail');deleteMember(m.id);};
             modal.classList.remove('hidden');
-            const dialog=modal.querySelector('.ses-member-detail-dialog');if(dialog)dialog.scrollTop=0;
+            document.getElementById('member-detail-fields').scrollTop=0;
         }
         // --- INTERVIEWS TABLE ---
         function renderInterviewsTable() {
@@ -5468,20 +5512,22 @@
 
             tbody.innerHTML = activeMembers.map(m => {
                 const assignedPrj = db.projects[0]; // Example fallback link
-                const margin = m.rate - m.cost;
-                const marginRate = m.rate > 0 ? ((margin / m.rate) * 100).toFixed(1) : 0;
+                const rateYen = Math.round((Number(m.rate)||0)*10000);
+                const costYen = Math.round((Number(window.gradeCostFor?.(m) ?? m.cost)||0)*10000);
+                const margin = rateYen - costYen;
+                const marginRate = m.rate > 0 ? ((margin / rateYen) * 100).toFixed(1) : 0;
 
-                totalRev += m.rate;
-                totalCost += m.cost;
+                totalRev += rateYen;
+                totalCost += costYen;
 
                 return `
                     <tr class="hover:bg-slate-800/40 transition">
                         <td class="p-3 font-bold text-slate-200">${m.name}</td>
                         <td class="p-3 text-slate-300">${assignedPrj ? assignedPrj.title : '未紐付け'}</td>
                         <td class="p-3 text-slate-400">${assignedPrj ? assignedPrj.clientName : '-'}</td>
-                        <td class="p-3 font-mono font-bold text-emerald-400">¥${m.rate}0,000</td>
-                        <td class="p-3 font-mono text-slate-300">¥${m.cost}0,000</td>
-                        <td class="p-3 font-mono font-bold text-purple-400">¥${margin}0,000</td>
+                        <td class="p-3 font-mono font-bold text-emerald-400">¥${rateYen.toLocaleString('ja-JP')}</td>
+                        <td class="p-3 font-mono text-slate-300">¥${costYen.toLocaleString('ja-JP')}</td>
+                        <td class="p-3 font-mono font-bold text-purple-400">¥${margin.toLocaleString('ja-JP')}</td>
                         <td class="p-3 font-mono">${marginRate}%</td>
                     </tr>
                 `;
@@ -5491,8 +5537,8 @@
             const avgMargin = totalRev > 0 ? ((totalProfit / totalRev) * 100).toFixed(1) : 0;
 
             document.getElementById('rev-summary-count').innerText = `${activeMembers.length}名`;
-            document.getElementById('rev-summary-total').innerText = `¥${totalRev}0,000`;
-            document.getElementById('rev-summary-cost').innerText = `¥${totalCost}0,000`;
+            document.getElementById('rev-summary-total').innerText = `¥${totalRev.toLocaleString('ja-JP')}`;
+            document.getElementById('rev-summary-cost').innerText = `¥${totalCost.toLocaleString('ja-JP')}`;
             document.getElementById('rev-summary-margin').innerText = `${avgMargin}%`;
         }
 
@@ -5664,13 +5710,19 @@
         function openProjectInfoByIndex(index) {
             const p = db.projects[index]; if (!p) return;
             document.getElementById('project-info-title').textContent = p.title || '案件詳細';
-            document.getElementById('project-info-fields').innerHTML = projectInfoEntries(p);
+            const field = (label, value) => `<div class="project-read-field"><label>${projectInfoEscape(label)}</label><div class="project-read-value">${projectInfoEscape(value == null || value === '' ? '未登録' : value)}</div></div>`;
+            const section = label => `<div class="ses-client-section-title">${label}</div>`;
+            const group = content => `<div class="project-read-group">${content}</div>`;
+            const extra = Object.entries(p).filter(([key]) => !projectCoreKeys.has(key)).map(([key,value]) => field(projectInfoLabels[key] || '追加情報', value !== null && typeof value === 'object' ? JSON.stringify(value,null,2) : value)).join('');
+            const client = db.clients.find(c => c.id === p.clientId);
+            document.getElementById('project-info-fields').innerHTML = section('基本情報') + field('案件名称',p.title) + group(field('発注元クライアント',client?.name || p.clientName) + field('案件想定単価（円/月）',projectPriceYen(p).toLocaleString('ja-JP'))) + field('必須スキル・技術 (カンマ区切り)',(p.skills || []).join(', ')) + group(field('勤務形態',p.location)+field('案件区分',inferredProjectType(p))+field('ステータス',p.status)) + section('その他情報') + group(extra) + `<div class="project-read-group project-date-row">${field('開始日',p.startDate)}${field('契約終了日',p.contractEnd)}</div>`;
+            document.getElementById('project-info-fields').scrollTop = 0;
             document.getElementById('project-info-edit').onclick = () => {closeModal('modal-project-info');editProject(p.id);};
             document.getElementById('project-info-delete').onclick = () => {closeModal('modal-project-info');deleteProject(p.id);};
             document.getElementById('modal-project-info').classList.remove('hidden');
         }
         window.openProjectInfoByIndex = openProjectInfoByIndex;
-        const projectCoreKeys = new Set(['id','title','clientId','clientName','price','priceYen','skills','location','status','projectType']);
+        const projectCoreKeys = new Set(['id','title','clientId','clientName','price','priceYen','skills','location','status','projectType','startDate','contractEnd']);
         function renderProjectExtraFields(p) {
             const target = document.getElementById('project-extra-fields'); if (!target) return;
             target.innerHTML = p ? Object.entries(p).filter(([k])=>!projectCoreKeys.has(k)).map(([key,value]) => {
@@ -5736,7 +5788,7 @@
             const location = document.getElementById('project-location').value;
             const status = document.getElementById('project-status').value;
             const projectType = document.getElementById('project-type')?.value || projectViewMode || '共有案件';
-            let extra; try { extra = readProjectExtraFields(); } catch (error) { alert(error.message); return; }
+            let extra; try { extra = {...readProjectExtraFields(), startDate: document.getElementById('project-start-date').value, contractEnd: document.getElementById('project-contract-end').value}; } catch (error) { alert(error.message); return; }
 
             if (id) {
                 const index = db.projects.findIndex(p => p.id === id);
@@ -5833,7 +5885,11 @@
             const hireInput = document.getElementById('member-hire-date'); if (hireInput) hireInput.value = '';
             document.getElementById('member-exp').value = '';
             document.getElementById('modal-member-title').innerText = '新規社員登録';
-            memberExtraEditor({});
+            const defaults={}; for(const item of db.members||[]) for(const [key,value] of Object.entries(item)) if(!memberCoreFields.has(key)&&!(key in defaults)) defaults[key]=Array.isArray(value)?[]:value&&typeof value==='object'?{}:typeof value==='number'?0:'';
+            memberExtraEditor(defaults);
+            document.getElementById('member-display-id').textContent='登録時に採番';
+            document.getElementById('member-submit').textContent='登録';
+            document.querySelector('#modal-member .ses-member-body').scrollTop=0;
             window.fillMemberGradeSelect?.('');
             document.getElementById('member-next-month-status').value='稼働中';
             document.getElementById('modal-member').classList.remove('hidden');
@@ -5848,14 +5904,17 @@
             document.getElementById('member-skills').value = m.skills.join(', ');
             document.getElementById('member-hire-date').value = m.hireDate || '';
             document.getElementById('member-exp').value = window.calculateTenure ? window.calculateTenure(m.hireDate) : (m.exp || '');
-            document.getElementById('member-rate').value = m.rate;
-            document.getElementById('member-cost').value = m.cost;
+            document.getElementById('member-rate').value = Math.round((Number(m.rate)||0)*10000);
+            document.getElementById('member-cost').value = Math.round((Number(m.cost)||0)*10000);
             document.getElementById('member-available').value = m.available;
             document.getElementById('member-status').value = m.status;
             document.getElementById('member-waiting-start').value = m.waitingStartDate || '';
             document.getElementById('modal-member-title').innerText = '社員情報編集';
             document.getElementById('member-next-month-status').value=m.nextMonthStatus || m.status || '稼働中';
             memberExtraEditor(m);
+            document.getElementById('member-display-id').textContent=window.getMemberDisplayId(m);
+            document.getElementById('member-submit').textContent='保存';
+            document.querySelector('#modal-member .ses-member-body').scrollTop=0;
             window.fillMemberGradeSelect?.(m.grade||'');
             document.getElementById('modal-member').classList.remove('hidden');
         }
@@ -5868,20 +5927,24 @@
             const skills = document.getElementById('member-skills').value.split(',').map(s => s.trim()).filter(s => s);
             const hireDate = document.getElementById('member-hire-date').value;
             const exp = window.calculateTenure ? window.calculateTenure(hireDate) : ''; 
-            const rate = Number(document.getElementById('member-rate').value) || 0;
-            const cost = Number(document.getElementById('member-cost').value) || 0;
+            const rate = Math.round(Number(document.getElementById('member-rate').value)||0)/10000;
+            const cost = window.gradeCostFor?.({grade:document.getElementById('member-grade')?.value}) ?? (Math.round(Number(document.getElementById('member-cost').value)||0)/10000);
             const available = document.getElementById('member-available').value;
             const status = document.getElementById('member-status').value;
             const waitingStartDate = document.getElementById('member-waiting-start').value;
             const nextMonthStatus = document.getElementById('member-next-month-status').value;
             const grade = document.getElementById('member-grade')?.value || '';
+            const assignedProjectId = document.getElementById('member-project').value;
+            const contractEnd = document.getElementById('member-contract-end').value;
+            const transportCost = Math.round(Math.max(0, Number(document.getElementById('member-transport-cost').value)||0))/10000;
+            const currentStatus = status;
 
             if (id) {
                 const index = db.members.findIndex(m => m.id === id);
-                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade }; saveMemberExtra(db.members[index]); }
+                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost }; saveMemberExtra(db.members[index]); }
             } else {
                 const newId = `MEM-${String(db.members.length + 1).padStart(3, '0')}`;
-                const member={ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade };
+                const member={ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost };
                 saveMemberExtra(member); db.members.push(member);
             }
 

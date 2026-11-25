@@ -218,7 +218,7 @@
             <!-- MAIN DYNAMIC CONTENT DISPLAY -->
             <main class="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
 
-                <section id="view-fiscal-targets" class="view-panel hidden space-y-6"><div class="glass-card p-5 rounded-xl space-y-5 w-full max-w-none"><h2 class="font-bold text-xl">売上目標と粗利管理</h2><p class="text-sm text-slate-400">11月〜翌10月の事業年度ごとに年間目標を登録します。金額は万円単位で入力します。1億円以上は億円で表示します。</p><label class="block text-sm">対象年度<select id="target-fiscal-year" class="ext-input mt-2" onchange="setDashboardFiscalYear(this.value)"></select></label><label class="block text-sm">年間売上目標（万円）<input id="target-revenue-input" class="ext-input mt-2" type="number" min="0" step="0.1"></label><label class="block text-sm">年間粗利目標（万円）<input id="target-profit-input" class="ext-input mt-2" type="number" min="0" step="0.1"></label><div class="text-sm text-slate-300 space-y-1"><p>月別売上目標（年間÷12）：<strong id="monthly-revenue-target-preview">未設定</strong></p><p>月別粗利目標（年間÷12）：<strong id="monthly-profit-target-preview">未設定</strong></p></div><button type="button" onclick="saveFiscalTargets()" class="px-5 py-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold">目標を保存</button><p id="target-save-message" class="text-sm text-emerald-400" role="status"></p></div></section>
+                <section id="view-fiscal-targets" class="view-panel hidden space-y-6"><div class="glass-card p-5 rounded-xl space-y-5 w-full max-w-none"><h2 class="font-bold text-xl">売上目標と粗利管理</h2><p class="text-sm text-slate-400">11月〜翌10月の事業年度ごとに年間目標を登録します。金額は1円単位で入力します。</p><label class="block text-sm">対象年度<select id="target-fiscal-year" class="ext-input mt-2" onchange="setDashboardFiscalYear(this.value)"></select></label><label class="block text-sm">年間売上目標（円）<input id="target-revenue-input" class="ext-input mt-2" type="number" min="0" step="1"></label><label class="block text-sm">年間粗利目標（円）<input id="target-profit-input" class="ext-input mt-2" type="number" min="0" step="1"></label><div class="text-sm text-slate-300 space-y-1"><p>月別売上目標（年間÷12）：<strong id="monthly-revenue-target-preview">未設定</strong></p><p>月別粗利目標（年間÷12）：<strong id="monthly-profit-target-preview">未設定</strong></p></div><button type="button" onclick="saveFiscalTargets()" class="px-5 py-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold">目標を保存</button><p id="target-save-message" class="text-sm text-emerald-400" role="status"></p></div></section>
 
                 <section id="view-settings" class="view-panel hidden space-y-6">
                     <div class="glass-card rounded-xl p-5 md:p-7 space-y-5 w-full max-w-none">
@@ -623,10 +623,11 @@
     <div id="modal-client-detail" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="client-detail-title">
         <div class="glass-card ses-client-detail-dialog rounded-2xl w-full max-w-2xl p-5 md:p-7 border border-slate-700">
             <div class="flex justify-between items-start gap-4 border-b border-slate-700 pb-4">
-                <div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">取引先詳細</div><div class="flex items-center justify-between gap-3"><h3 id="client-detail-title" class="font-bold text-lg text-white break-words"></h3><div class="flex items-center gap-2 shrink-0"><button type="button" id="client-detail-edit" class="ses-client-header-action ses-client-header-edit" title="編集" aria-label="取引先を編集"><i class="fa-solid fa-pen"></i></button><button type="button" id="client-detail-delete" class="ses-client-header-action ses-client-header-delete" title="削除" aria-label="取引先を削除"><i class="fa-solid fa-trash-can"></i></button></div></div></div>
+                <div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">取引先詳細</div><div class="flex items-center justify-between gap-3"><h3 id="client-detail-title" class="font-bold text-lg text-white break-words"></h3></div></div>
                 <button type="button" onclick="closeModal('modal-client-detail')" aria-label="閉じる" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <dl id="client-detail-fields" class="ses-client-detail-grid mt-5"></dl>
+            <div class="client-read-footer"><button type="button" onclick="closeModal('modal-client-detail')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">閉じる</button><button type="button" id="client-detail-delete" class="px-4 py-2 rounded-lg client-footer-delete">削除</button><button type="button" id="client-detail-edit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">編集</button></div>
 
         </div>
     </div>
@@ -747,6 +748,7 @@
                 </div>
                 <div class="ses-client-section-title">その他情報</div>
                 <div id="project-extra-fields" class="ses-project-extra-fields"></div>
+                <div class="grid grid-cols-2 gap-3 project-date-row"><div><label class="block text-slate-400 mb-1" for="project-start-date">開始日</label><input id="project-start-date" type="date" class="ext-input"></div><div><label class="block text-slate-400 mb-1" for="project-contract-end">契約終了日</label><input id="project-contract-end" type="date" class="ext-input"></div></div>
                 </div>
                 <div class="ses-project-edit-footer flex justify-end space-x-2 pt-3 border-t border-slate-800">
                     <button type="button" onclick="closeModal('modal-project')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
@@ -761,10 +763,11 @@
     <div id="modal-project-info" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="project-info-title">
         <div class="glass-card ses-client-detail-dialog ses-project-info-dialog rounded-2xl w-full p-5 md:p-7 border border-slate-700">
             <div class="flex justify-between items-start gap-4 border-b border-slate-700 pb-4">
-                <div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">案件詳細</div><div class="flex items-center justify-between gap-3"><h3 id="project-info-title" class="font-bold text-lg text-white break-words"></h3><div class="flex items-center gap-2 shrink-0"><button type="button" id="project-info-edit" class="ses-client-header-action ses-client-header-edit" title="編集" aria-label="案件を編集"><i class="fa-solid fa-pen"></i></button><button type="button" id="project-info-delete" class="ses-client-header-action ses-client-header-delete" title="削除" aria-label="案件を削除"><i class="fa-solid fa-trash-can"></i></button></div></div></div>
+                <div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">案件詳細</div><div class="flex items-center justify-between gap-3"><h3 id="project-info-title" class="font-bold text-lg text-white break-words"></h3></div></div>
                 <button type="button" onclick="closeModal('modal-project-info')" aria-label="閉じる" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <dl id="project-info-fields" class="ses-client-detail-grid mt-5"></dl>
+            <div id="project-info-fields" class="ses-project-edit-fields"></div>
+            <div class="ses-project-edit-footer project-read-footer"><button type="button" onclick="closeModal('modal-project-info')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">閉じる</button><button type="button" id="project-info-delete" class="px-4 py-2 rounded-lg project-footer-delete">削除</button><button type="button" id="project-info-edit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">編集</button></div>
         </div>
     </div>
 
@@ -786,99 +789,78 @@
         </div>
     </div>
 
-    <!-- MEMBER INFORMATION DETAIL -->
-    <div id="modal-member-detail" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="member-detail-title">
-      <div class="glass-card ses-client-detail-dialog ses-member-detail-dialog rounded-2xl w-full p-5 md:p-7 border border-slate-700">
-        <div class="flex justify-between items-start gap-4 border-b border-slate-700 pb-4">
-          <div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">社員詳細</div><div class="flex items-center justify-between gap-3"><h3 id="member-detail-title" class="font-bold text-lg text-white break-words"></h3><div class="flex gap-2 shrink-0"><button type="button" id="member-detail-edit" class="ses-client-header-action ses-client-header-edit" title="編集" aria-label="社員を編集"><i class="fa-solid fa-pen"></i></button><button type="button" id="member-detail-delete" class="ses-client-header-action ses-client-header-delete" title="削除" aria-label="社員を削除"><i class="fa-solid fa-trash-can"></i></button></div></div></div>
-          <button type="button" onclick="closeModal('modal-member-detail')" aria-label="閉じる" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <dl id="member-detail-fields" class="ses-client-detail-grid mt-5"></dl>
-      </div>
-    </div>
-    <!-- MEMBER EDIT/ADD MODAL -->
-    <div id="modal-member" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-card ses-member-form-dialog rounded-2xl w-full border border-slate-700">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h3 class="font-bold text-sm text-cyan-400" id="modal-member-title">新規社員登録</h3>
-                <button onclick="closeModal('modal-member')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <form id="form-member" onsubmit="saveMember(event)" class="ses-member-form-content space-y-3 text-xs">
-                <input type="hidden" id="member-id">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-slate-400 mb-1">氏名 <span class="text-rose-400">*</span></label>
-                        <input type="text" id="member-name" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1">区分</label>
-                        <select id="member-type" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                            <option value="正社員">正社員</option>
-                            <option value="フリーランス">フリーランス</option>
-                            <option value="パートナー">パートナーBP</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-slate-400 mb-1">保有スキル (カンマ区切り)</label>
-                    <input type="text" id="member-skills" placeholder="React, TypeScript, Node.js" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                    <div>
-                        <label class="block text-slate-400 mb-1">入社日</label>
-                        <input type="date" id="member-hire-date" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" onchange="updateMemberTenurePreview()">
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1">在籍年数（自動計算）</label>
-                        <input type="text" id="member-exp" placeholder="入社日から自動計算" readonly class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-slate-300">
-                    </div>
-                    <div>
-                    <div><label class="block text-slate-400 mb-1">グレード</label><select id="member-grade" class="ext-input w-full" onchange="updateMemberGradeCostPreview()"><option value="">未設定</option></select></div>
-                        <label class="block text-slate-400 mb-1">受注単価(万円)</label>
-                        <input type="number" id="member-rate" placeholder="80" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1">原価単価(万円)</label>
-                        <input type="number" id="member-cost" placeholder="60" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-slate-400 mb-1">稼働可能日</label>
-                        <input type="text" id="member-available" placeholder="即日 / 2026-11-01" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1">現在のステータス</label>
-                        <select id="member-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                            <option value="稼働中">稼働中</option>
-                            <option value="待機中">待機中</option>
-                            <option value="提案中">提案中</option>
-                        </select>
-                        <p class="text-[10px] text-slate-500 mt-1">通常の一覧・ダッシュボードはこのステータスを参照します。</p>
-                    </div>
-                    <div>
-                        <label class="block text-slate-400 mb-1" for="member-waiting-start">待機開始日</label>
-                        <input type="date" id="member-waiting-start" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                        <p class="text-[10px] text-slate-500 mt-1">待機中の間、ダッシュボードに表示します。</p>
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="block text-slate-400 mb-1">来月以降のステータス（人材マッチング用）</label>
-                        <select id="member-next-month-status" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white">
-                            <option value="稼働中">稼働中</option>
-                            <option value="待機中">待機中</option>
-                            <option value="提案中">提案中</option>
-                        </select>
-                        <p class="text-[10px] text-slate-500 mt-1">人材マッチングは「来月以降」のステータスを参照します。</p>
-                    </div>
-                </div>
-                <div class="ses-member-extra-section"><h4>その他情報</h4><div id="member-extra-fields" class="ses-member-extra-grid"></div></div>
-                <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
-                    <button type="button" onclick="closeModal('modal-member')" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300">キャンセル</button>
-                    <button type="submit" class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white">保存する</button>
-                </div>
-            </form>
-        </div>
-    </div>
+ <!-- MEMBER INFORMATION DETAIL -->
+<div aria-labelledby="member-detail-title" aria-modal="true" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" id="modal-member-detail" role="dialog">
+<div class="glass-card ses-client-detail-dialog ses-member-detail-dialog rounded-2xl w-full p-5 md:p-7 border border-slate-700">
+<div class="flex justify-between items-start gap-4 border-b border-slate-700 pb-4">
+<div class="min-w-0 flex-1"><div class="text-xs text-cyan-400 mb-2">社員詳細</div><div class="flex items-center justify-between gap-3"><h3 class="font-bold text-lg text-white break-words" id="member-detail-title"></h3></div></div>
+<button aria-label="閉じる" class="text-slate-400 hover:text-white text-xl" onclick="closeModal('modal-member-detail')" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<dl class="ses-client-detail-grid mt-5" id="member-detail-fields"></dl>
+<div class="ses-member-footer"><button class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300" onclick="closeModal('modal-member-detail')" type="button">閉じる</button><button class="px-4 py-2 rounded-lg member-footer-delete" id="member-detail-delete" type="button">削除</button><button class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white" id="member-detail-edit" type="button">編集</button></div></div>
+</div>
+<!-- MEMBER EDIT/ADD MODAL -->
+<div aria-labelledby="modal-member-title" aria-modal="true" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" id="modal-member" role="dialog">
+<div class="glass-card ses-member-form-dialog rounded-2xl w-full border border-slate-700">
+<div class="ses-member-form-header flex items-center justify-between">
+<h3 class="font-bold text-sm text-cyan-400" id="modal-member-title">新規社員登録</h3>
+<button aria-label="閉じる" class="text-slate-400 hover:text-white" onclick="closeModal('modal-member')" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form class="ses-member-form-content" id="form-member" onsubmit="saveMember(event)"><input id="member-id" type="hidden"/><div class="ses-member-body"><div class="ses-client-detail-section-title">基本情報</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-name">氏名 <span class="text-rose-400">*</span></label>
+<input class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-name" required="" type="text"/>
+</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-type">区分</label>
+<select class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-type">
+<option value="正社員">正社員</option>
+<option value="フリーランス">フリーランス</option>
+<option value="パートナー">パートナーBP</option>
+</select>
+</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-skills">保有スキル (カンマ区切り)</label>
+<input class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-skills" placeholder="React, TypeScript, Node.js" type="text"/>
+</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-hire-date">入社日</label>
+<input class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-hire-date" onchange="updateMemberTenurePreview()" type="date"/>
+</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-exp">在籍年数（自動計算）</label>
+<input class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-slate-300" id="member-exp" placeholder="入社日から自動計算" readonly="" type="text"/>
+</div><div class="ses-member-field">
+
+<label class="block text-slate-400 mb-1" for="member-rate">受注単価(円)</label>
+<input class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-rate" min="0" placeholder="800000" step="1" type="number"/>
+</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-cost">原価単価(円)</label>
+<input class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-cost" min="0" placeholder="600000" step="1" type="number"/>
+</div><div class="ses-member-field"><label class="block text-slate-400 mb-1" for="member-grade">グレード</label><select class="ext-input w-full" id="member-grade" onchange="updateMemberGradeCostPreview()"><option value="">未設定</option></select></div><div class="ses-client-detail-section-title">稼働・ステータス</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-available">稼働可能日</label>
+<input class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-available" placeholder="即日 / 2026-11-01" type="text"/>
+</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-status">現在のステータス</label>
+<select class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-status">
+<option value="稼働中">稼働中</option>
+<option value="待機中">待機中</option>
+<option value="提案中">提案中</option>
+</select>
+<p class="text-[10px] text-slate-500 mt-1">通常の一覧・ダッシュボードはこのステータスを参照します。</p>
+</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-waiting-start">待機開始日</label>
+<input class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-waiting-start" type="date"/>
+<p class="text-[10px] text-slate-500 mt-1">待機中の間、ダッシュボードに表示します。</p>
+</div><div class="ses-member-field">
+<label class="block text-slate-400 mb-1" for="member-next-month-status">来月以降のステータス（人材マッチング用）</label>
+<select class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white" id="member-next-month-status">
+<option value="稼働中">稼働中</option>
+<option value="待機中">待機中</option>
+<option value="提案中">提案中</option>
+</select>
+<p class="text-[10px] text-slate-500 mt-1">人材マッチングは「来月以降」のステータスを参照します。</p>
+</div><div class="ses-member-field"><label for="member-project">参画案件</label><select id="member-project" class="ext-input"><option value="">未紐付け</option></select></div><div class="ses-member-field"><label for="member-contract-end">契約終了日</label><input id="member-contract-end" type="date" class="ext-input"></div><div class="ses-member-field"><label for="member-transport-cost">基本交通費（月額・円）</label><input id="member-transport-cost" type="number" min="0" step="1" value="0" class="ext-input"></div><div class="ses-member-extra-section"><h4 class="ses-client-detail-section-title">その他情報</h4><div class="ses-member-extra-grid" id="member-extra-fields"></div></div><div class="ses-client-detail-section-title">管理情報</div><div class="ses-member-field"><label>社員ID</label><div id="member-display-id">登録時に採番</div></div></div><div class="ses-member-footer">
+<button class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300" onclick="closeModal('modal-member')" type="button">閉じる</button>
+<button class="px-4 py-2 rounded-lg font-bold bg-cyan-600 text-white" id="member-submit" type="submit">登録</button>
+</div></form>
+</div>
+</div>
 
 
     <!-- INTERVIEW EDIT/ADD MODAL -->
@@ -998,6 +980,8 @@
 
 <script src="js/v3279-global-feedback.js"></script>
     <script src="js/grade-management.js"></script>
+    <script src="js/yen-input.js"></script>
+<script src="js/member-rates.js"></script>
 
 
 

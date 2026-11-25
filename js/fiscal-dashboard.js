@@ -11,7 +11,7 @@
   let trendScope = 'all';
   let trendDepartment = '';
   let trendMember = '';
-  const man = n => { const v = Math.round(Number(n)||0); const sign = v < 0 ? '-' : ''; const abs = Math.abs(v); return sign + '¥' + (abs >= 10000 ? `${Math.floor(abs/10000).toLocaleString('ja-JP')}億${(abs%10000).toLocaleString('ja-JP')}万円` : `${abs.toLocaleString('ja-JP')}万円`); };
+  const man = n => '¥'+Math.round((Number(n)||0)*10000).toLocaleString('ja-JP');
   const monthsFor = y => Array.from({length:12}, (_,i) => {
     const month = (i + 10) % 12 + 1;
     return `${month >= 11 ? y : y+1}-${String(month).padStart(2,'0')}`;
@@ -88,7 +88,7 @@
     },0);
     const months=monthsFor(trendYear);
     const stores={actual:[d.monthlyRevenueActual||{},d.monthlyCostActual||{},d.monthlyTransportActual||{}],plan:[d.monthlyRevenue||{},d.monthlyCost||{},d.monthlyTransport||{}]};
-    const rows=mode=>months.map(month=>{const [revenues,costs,transports]=stores[mode];const revenue=scopedSum(revenues,month);return {revenue,profit:revenue-scopedSum(costs,month)-scopedSum(transports,month)};});
+    const rows=mode=>months.map(month=>{const [revenues,costs,transports]=stores[mode];if(mode==='actual'){const revenue=scopedSum(revenues,month);return {revenue,profit:revenue-scopedSum(costs,month)-scopedSum(transports,month)};}let revenue=0,profit=0;for(const m of d.members||[]){if(trendScope!=='all'&&!selectedIds.has(m.id))continue;const key=m.id+'|'+month;const active=m.status==='稼働中'&&(!(m.contractStart||m.startDate)||(m.contractStart||m.startDate).slice(0,7)<=month)&&(!m.contractEnd||m.contractEnd.slice(0,7)>=month);const val=(store,field)=>Number(store[key]??((active||field==='transportCost')?m[field]:0))||0;const r=window.memberRatePlan?.(m,month)??val(revenues,'rate'),g=window.gradeCostFor?.(m),c=g!=null?(active?g:0):val(costs,'cost');revenue+=r;profit+=r-c-val(transports,'transportCost');}return {revenue:Math.round(revenue*10000)/10000,profit:Math.round(profit*10000)/10000};});
     const datasets=[];
     const types=trendMetric==='both'?['revenue','profit']:[trendMetric];
     const modes=trendMode==='compare'?['plan','actual']:[trendMode];
@@ -118,7 +118,7 @@
     const select=document.getElementById('target-fiscal-year');if(select){select.innerHTML=options();select.value=String(selectedYear);}
     const goal=getTargets(d)[selectedYear] || {};
     const rev=document.getElementById('target-revenue-input'),profit=document.getElementById('target-profit-input');
-    if(rev)rev.value=goal.revenue ?? '';if(profit)profit.value=goal.profit ?? '';updateMonthlyTargetPreview();
+    if(rev)rev.value=goal.revenue==null?'':Math.round(goal.revenue*10000);if(profit)profit.value=goal.profit==null?'':Math.round(goal.profit*10000);updateMonthlyTargetPreview();
   };
   window.openFiscalTargetSettings = () => {
     if(typeof switchTab==='function')switchTab('fiscal-targets');
@@ -127,7 +127,7 @@
   function updateMonthlyTargetPreview(){
     [['target-revenue-input','monthly-revenue-target-preview'],['target-profit-input','monthly-profit-target-preview']].forEach(([inputId,previewId])=>{
       const input=document.getElementById(inputId), preview=document.getElementById(previewId);
-      if(preview)preview.textContent=input && input.value.trim()!=='' && Number.isFinite(Number(input.value)) && Number(input.value)>=0 ? man(Number(input.value)/12) : '未設定';
+      if(preview)preview.textContent=input && input.value.trim()!=='' && Number.isFinite(Number(input.value)) && Number(input.value)>=0 ? man(Number(input.value)/120000) : '未設定';
     });
   }
   document.addEventListener('input',e=>{if(['target-revenue-input','target-profit-input'].includes(e.target?.id))updateMonthlyTargetPreview();});
@@ -136,7 +136,7 @@
     const revenue=Number(document.getElementById('target-revenue-input').value);
     const profit=Number(document.getElementById('target-profit-input').value);
     if(!Number.isFinite(revenue)||!Number.isFinite(profit)||revenue<0||profit<0||!document.getElementById('target-revenue-input').value||!document.getElementById('target-profit-input').value){alert('目標は0以上の数値で入力してください。');return;}
-    getTargets(d)[selectedYear]={revenue,profit};
+    getTargets(d)[selectedYear]={revenue:Math.round(revenue*10000)/10000,profit:Math.round(profit*10000)/10000};
     if(typeof saveStoredData==='function')saveStoredData();else localStorage.setItem('ses_access_db',JSON.stringify(d));
     const msg=document.getElementById('target-save-message');if(msg)msg.textContent=`${selectedYear}年（${selectedYear-2011}期）の目標を保存しました。`;
     renderFiscalDashboard();updateMonthlyTargetPreview();
