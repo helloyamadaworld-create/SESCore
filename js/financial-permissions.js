@@ -1,5 +1,5 @@
 (function(){
-  const blocked=['member-rates','grades','revenue','spot','expenses','merchandise','audit','fiscal-targets','accounts'];
+  const blocked=['operations','operations-contracts','operations-projects','operations-close','operations-meeting','member-rates','grades','revenue','spot','expenses','merchandise','audit','fiscal-targets','accounts'];
   window.sesBlockedTabs=blocked;
   const restricted=()=>window.sesRestricted?.();
   const guard=(name)=>{const original=window[name];if(typeof original==='function')window[name]=function(...args){if(restricted()){args[0]?.preventDefault?.();return;}return original.apply(this,args);};};

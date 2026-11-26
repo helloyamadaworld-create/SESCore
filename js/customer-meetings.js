@@ -15,7 +15,7 @@ const FIELDS={
 const COMMON=[['date','打ち合わせ日時','datetime-local',true],['clientId','顧客会社名','client',true],['contact','顧客担当者名','text',true],['attendees','自社参加者','people',true],['type','打ち合わせ種別','type',true],['purposes','打ち合わせ目的','purposes'],['method','打ち合わせ方法','method'],['location','打ち合わせ場所','text'],['purposeDetail','打ち合わせ目的の詳細','textarea'],['content','打ち合わせ内容','textarea'],['requests','顧客からの要望・意見','textarea'],['decisions','決定事項','textarea'],['issues','課題・懸念事項','textarea'],['nextDate','次回打ち合わせ予定','datetime-local'],['projectId','関連案件','project'],['memberIds','関連メンバー','members'],['notes','備考','textarea']];
 const $=id=>document.getElementById(id), esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const store=()=>{if(!Array.isArray(db.customerMeetings))db.customerMeetings=[];if(!Array.isArray(db.customerMeetingActions))db.customerMeetingActions=[];if(!db.customerMeetingMasters)db.customerMeetingMasters={methods:['訪問','Teams','Zoom','電話','その他']};return db.customerMeetings};
-const clients=()=>db.clients||[],members=()=>db.members||[],projects=()=>db.projects||[];
+const clients=()=>db.clients||[],members=()=>window.sortMembersByPreferredOrder([...(db.members||[])]),projects=()=>db.projects||[];
 const name=(id,arr,key='name')=>(arr.find(x=>String(x.id)===String(id))||{})[key]||'未設定';
 const clientName=id=>name(id,clients());const memberName=id=>name(id,members());
 const projectName=id=>name(id,projects(),'title');

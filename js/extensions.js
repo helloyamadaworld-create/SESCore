@@ -17,6 +17,7 @@
     const originalDeleteMember = window.deleteMember;
     const originalDeleteInterview = window.deleteInterview;
     let currentSession = null;
+    window.sesOperationSession = () => currentSession;
     const DEFAULT_DEMO_USERS = [{"username": "admin", "password": "SESCore2026!", "name": "システム管理者", "role": "admin", "active": true}, {"username": "Yamada1", "password": "Yamada12026!", "name": "山田", "role": "admin", "active": true}, {"username": "Kawaai", "password": "Kawaai2026!", "name": "川合", "role": "admin", "active": true}, {"username": "Itou", "password": "Itou2026!", "name": "伊藤", "role": "user", "active": true}, {"username": "Kajiwara", "password": "Kajiwara2026!", "name": "梶原", "role": "user", "active": true}, {"username": "Sasaki", "password": "Sasaki2026!", "name": "佐々木", "role": "user", "active": true}];
 
     const safeText = value => String(value == null ? '' : value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -60,23 +61,41 @@
     function makeView(id, title, subtitle, content) {
         return `<section id="view-${id}" class="view-panel hidden space-y-5"><div><h2 class="text-xl font-bold tracking-tight">${title}</h2><p class="text-xs text-slate-400 mt-1">${subtitle}</p></div>${content}</section>`;
     }
+    const operationTabs = ['operations-contracts','operations-projects','operations-close','operations-meeting'];
     function injectUI() {
         const nav = document.querySelector('#sidebar > div.py-4');
         const main = document.querySelector('#app-container main');
         if (!nav || !main || document.getElementById('nav-tasks')) return;
         const links = [
-            ['tasks','fa-list-check','タスク・期限管理'],['matching','fa-code-branch','人材マッチング'],['spot','fa-bolt','スポット業務'],['expenses','fa-receipt','経費登録'],['merchandise','fa-bag-shopping','物販管理'],['reports','fa-chart-line','分析・レポート'],['audit','fa-clock-rotate-left','操作履歴・設定']
+            ['operations-contracts','fa-file-contract','契約更新・単価交渉'],['operations-projects','fa-chart-column','案件別収支'],['operations-close','fa-calendar-check','月次締め・差分チェック'],['operations-meeting','fa-clipboard-list','リーダー定例会資料'],['tasks','fa-list-check','タスク・期限管理'],['matching','fa-code-branch','人材マッチング'],['spot','fa-bolt','スポット業務'],['expenses','fa-receipt','経費登録'],['merchandise','fa-bag-shopping','物販管理'],['reports','fa-chart-line','分析・レポート'],['audit','fa-clock-rotate-left','操作履歴・設定']
         ].map(([id,icon,label]) => `<a href="#" onclick="switchTab('${id}');return false" id="nav-${id}" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50"><i class="fa-solid ${icon} w-5 text-center text-base"></i><span class="sidebar-text">${label}</span></a>`).join('');
         nav.insertAdjacentHTML('beforeend', links);
+        const operationView = (tab, title, description, contents) => makeView(tab, title, description, `
+          ${tab === 'operations-contracts' ? '' : '<label class="ops-month-label">対象月<input class="ext-input" data-ops-month type="month"></label>'}
+          <div class="glass-card ops-card rounded-xl space-y-3">${contents}</div>`);
+        const operationsView = [
+          operationView('operations-contracts','契約更新・単価交渉','参画案件ごとの契約期限と対応状況を確認します。',`
+            <div class="ops-toolbar"><label>表示<select id="ops-contract-filter" class="ext-input"><option value="all">すべて</option><option value="due">終了まで60日以内・期限超過</option><option>未対応</option><option>更新確認待ち</option><option>交渉中</option><option>更新確定</option><option>終了予定</option></select></label>
+            <button id="ops-rates-link" class="ext-button" type="button" onclick="switchTab('member-rates')">単価・交渉条件を開く</button></div>
+            <div id="ops-contracts"></div>`),
+          operationView('operations-projects','案件別収支','対象月の実績を集計します。案件未指定の明細は、対象月の参画先が1件の場合に配賦します。',`<div id="ops-projects"></div>`),
+          operationView('operations-close','月次締め・差分チェック','予定と実績の差分を確認します。管理者は経費確認後に締め処理を実行できます。',`
+            <div id="ops-close-status" role="status"></div>
+            <div class="ops-toolbar"><label><input id="ops-expenses-checked" type="checkbox"> 経費の計上漏れを確認済み</label>
+            <button class="ext-button" id="ops-close-button" type="button">月次締め</button></div><div id="ops-differences"></div>
+            <h3 class="font-semibold">締め・再開履歴</h3><div id="ops-history"></div>`),
+          operationView('operations-meeting','リーダー定例会資料','対象月の参画状況、顧客評価、前回の未完了事項を確認します。',`
+            <button class="ext-button" id="ops-export" type="button">CSV出力</button><div id="ops-meeting" class="whitespace-pre-line"></div>`)
+        ].join('');
         const taskView = makeView('tasks','タスク・期限管理','面談、契約更新、営業フォローの対応漏れを防止します。', `
           <div class="glass-card rounded-xl p-4 grid grid-cols-1 md:grid-cols-5 gap-3">
             <input id="task-title" class="ext-input" placeholder="タスク名 / 対応内容">
             <input id="task-date" type="date" class="ext-input" value="${today()}">
-            <select id="task-priority" class="ext-input"><option value="HIGH">高優先度</option><option value="MEDIUM" selected>通常</option><option value="LOW">低</option></select>
+            <select id="task-priority" class="ext-input"><option value="CRITICAL">最重要</option><option value="HIGH">高優先度</option><option value="MEDIUM" selected>通常</option><option value="LOW">低</option></select>
             <input id="task-assignee" class="ext-input" placeholder="担当者" value="管理者">
             <button onclick="addTask()" class="ext-button"><i class="fa-solid fa-plus mr-1"></i>タスク追加</button>
           </div>
-          <div class="glass-card rounded-xl overflow-hidden"><div class="p-3 flex flex-wrap gap-3 items-center justify-between"><div class="text-sm font-semibold">タスク一覧 <span id="task-count" class="text-cyan-400"></span></div><select id="task-filter" class="ext-input max-w-xs" onchange="renderTasks()"><option value="all">すべて</option><option value="未着手">未着手</option><option value="対応中">対応中</option><option value="完了">完了</option><option value="overdue">期限超過</option></select></div><div class="overflow-x-auto"><table class="ext-table"><thead><tr><th>期限</th><th>タスク</th><th>担当</th><th>優先度</th><th>状態</th><th>操作</th></tr></thead><tbody id="tasks-table-body"></tbody></table></div></div>`);
+          <div class="glass-card rounded-xl overflow-hidden"><div class="p-3 flex flex-wrap gap-3 items-center justify-between"><div class="text-sm font-semibold">タスク一覧 <span id="task-count" class="text-cyan-400"></span></div><select id="task-filter" class="ext-input max-w-xs" onchange="renderTasks()"><option value="all">すべて</option><option value="critical">最重要</option><option value="未着手">未着手</option><option value="対応中">対応中</option><option value="完了">完了</option><option value="overdue">期限超過</option></select></div><div class="overflow-x-auto"><table class="ext-table"><thead><tr><th>期限</th><th>タスク</th><th>担当</th><th>優先度</th><th>状態</th><th>操作</th></tr></thead><tbody id="tasks-table-body"></tbody></table></div></div>`);
         const matchingView = makeView('matching','人材マッチング','案件の必須スキルとエンジニアの保有スキルを照合します。提案可否の最終判断は担当者が行ってください。', `
           <div class="glass-card rounded-xl p-4 grid grid-cols-1 md:grid-cols-3 gap-3"><label class="text-xs text-slate-400">案件<select id="match-project" class="ext-input mt-2" onchange="renderMatching()"></select></label><label class="text-xs text-slate-400">ステータス<select id="match-status" class="ext-input mt-2" onchange="renderMatching()"><option value="eligible" selected>待機中のみ</option></select></label><div class="text-xs text-slate-400 flex items-end">一致スキル数と一致率を表示</div></div>
           <div id="matching-results" class="grid grid-cols-1 lg:grid-cols-2 gap-4"></div>`);
@@ -133,7 +152,7 @@
           <div class="glass-card rounded-xl overflow-hidden mt-4"><div class="p-4 font-bold">商品一覧・在庫</div><div class="overflow-x-auto"><table class="ext-table"><thead><tr><th>商品コード</th><th>商品名</th><th>分類</th><th>販売単価</th><th>原価</th><th>在庫</th><th>操作</th></tr></thead><tbody id="merch-products-body"></tbody></table></div></div>
           <div class="glass-card rounded-xl overflow-hidden mt-4"><div class="p-4 font-bold">販売履歴</div><div class="overflow-x-auto"><table class="ext-table"><thead><tr><th>販売日</th><th>担当メンバー</th><th>商品</th><th>数量</th><th>売上</th><th>原価</th><th>粗利</th><th>販売先</th><th>備考</th><th>操作</th></tr></thead><tbody id="merch-sales-body"></tbody></table></div></div>
           <div class="glass-card rounded-xl overflow-hidden mt-4"><div class="p-4 font-bold">物販経費履歴</div><div class="overflow-x-auto"><table class="ext-table"><thead><tr><th>発生日</th><th>費目</th><th>金額</th><th>備考</th><th>操作</th></tr></thead><tbody id="merch-expenses-body"></tbody></table></div></div>`);
-        main.insertAdjacentHTML('beforeend', taskView + matchingView + spotView + expensesView + merchandiseView + reportsView + auditView);
+        main.insertAdjacentHTML('beforeend', operationsView + taskView + matchingView + spotView + expensesView + merchandiseView + reportsView + auditView);
         
         document.getElementById('view-audit').insertAdjacentHTML('beforeend', `<div id="user-management" class="glass-card rounded-xl p-4 space-y-4"><div><h3 class="font-bold">ユーザー・権限管理（試作版）</h3><p class="text-xs text-slate-400 mt-1">デモ環境内の画面表示権限を設定します。セキュリティ境界としては使用できません。</p></div><form onsubmit="addDemoUser(event)" class="grid grid-cols-1 md:grid-cols-5 gap-2"><input id="new-user-id" class="ext-input" placeholder="ユーザーID" required><input id="new-user-name" class="ext-input" placeholder="表示名" required><input id="new-user-password" class="ext-input" type="password" placeholder="初期パスワード" required minlength="8"><select id="new-user-role" class="ext-input"><option value="sales">営業</option><option value="leader">リーダー</option><option value="employee">一般社員</option><option value="admin">管理者</option></select><button class="ext-button" type="submit">ユーザー追加</button></form><div class="overflow-x-auto"><table class="ext-table"><thead><tr><th>ユーザーID</th><th>表示名</th><th>権限</th><th>状態</th><th>操作</th></tr></thead><tbody id="users-table-body"></tbody></table></div><form onsubmit="changeDemoPassword(event)" class="grid grid-cols-1 md:grid-cols-3 gap-2 border-t border-slate-700 pt-4"><input id="password-current" class="ext-input" type="password" placeholder="現在のパスワード" required><input id="password-new" class="ext-input" type="password" placeholder="新しいパスワード（8文字以上）" minlength="8" required><button class="ext-button" type="submit">自分のパスワードを変更</button></form></div>`);
 
@@ -154,13 +173,14 @@
     }
     window.renderAllViews = function () {
         ensureSchema();
+        if(window.sesSyncCriticalTasks?.(db,new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo'}).format(new Date()))) localStorage.setItem('ses_access_db',JSON.stringify(db));
         if (typeof originalRenderAllViews === 'function') originalRenderAllViews();
         const projectSelect=document.getElementById('member-project');
         if(projectSelect){const selected=projectSelect.value;projectSelect.innerHTML='<option value="">未紐付け</option>'+db.projects.map(p=>`<option value="${safeText(p.id)}">${safeText(p.title)}</option>`).join('');if(db.projects.some(p=>p.id===selected))projectSelect.value=selected;}
         const currentMemberId=document.getElementById('member-id')?.value;const currentMember=db.members.find(m=>m.id===currentMemberId);if(currentMember&&projectSelect)projectSelect.value=currentMember.assignedProjectId||'';
         const currentProjectId=document.getElementById('project-id')?.value;const currentProject=db.projects.find(p=>p.id===currentProjectId);if(currentProject){const sd=document.getElementById('project-start-date'),ed=document.getElementById('project-contract-end');if(sd)sd.value=currentProject.startDate||'';if(ed)ed.value=currentProject.contractEnd||'';}
         if(currentMember){const ce=document.getElementById('member-contract-end');if(ce)ce.value=currentMember.contractEnd||'';}
-        renderTasks(); renderMatching(); renderReports(); renderAudit(); renderDashboardExtensions(); updateGlobalSearchData();
+        renderTasks(); window.sesRenderCriticalTasks?.(); renderMatching(); renderReports(); renderAudit(); renderDashboardExtensions(); updateGlobalSearchData();
     };
     window.saveStoredData = function () {
         ensureSchema();
@@ -215,6 +235,7 @@
         if(!canEditEntity('members')){e?.preventDefault();alert('エンジニアデータの編集権限がありません。');return;}
         if (typeof originalSaveMember === 'function') originalSaveMember(e);
     };
+    let revenueFinanceContext;
     window.renderRevenueView = function() {
         if (typeof originalRenderRevenueView === 'function') originalRenderRevenueView();
         const section = document.getElementById('view-revenue');
@@ -255,19 +276,6 @@
         const startMonthOptions = fiscalMonthOrder.map(m => `<option value="${m}" ${m===startMonth?'selected':''}>${m}月</option>`).join('');
         const endMonthOptions = fiscalMonthOrder.map(m => `<option value="${m}" ${m===endMonth?'selected':''}>${m}月</option>`).join('');
         const money = n => '¥' + Math.round(Number(n||0)*10000).toLocaleString('ja-JP');
-        const safeNum = n => Math.max(0, Number(n)||0);
-        const revenueStore = mode === 'actual' ? db.monthlyRevenueActual : db.monthlyRevenue;
-        const costStore = mode === 'actual' ? db.monthlyCostActual : db.monthlyCost;
-        const transportStore = mode === 'actual' ? db.monthlyTransportActual : db.monthlyTransport;
-        const keyFor = (m, month) => `${m.id}|${month}`;
-        const getField = (store, m, month, fallback) => {
-            const active=m.status==='稼働中'&&(!(m.contractStart||m.startDate)|| (m.contractStart||m.startDate).slice(0,7)<=month)&&(!m.contractEnd||m.contractEnd.slice(0,7)>=month);
-            if(store===revenueStore&&mode==='plan'){const negotiated=window.memberRatePlan?.(m,month);if(negotiated!=null)return negotiated;}
-            if(store===costStore&&mode==='plan'&&active) return safeNum(store[keyFor(m,month)] ?? window.gradeCostFor?.(m,year) ?? fallback);
-            if(store===transportStore&&mode==='plan')return safeNum(store[keyFor(m,month)] ?? m.transportCost);
-            return store[keyFor(m,month)] !== undefined ? safeNum(store[keyFor(m,month)]) : (active?safeNum(fallback):0);
-        };
-        const projectFor = m => (db.projects||[]).find(p=>p.id===m.assignedProjectId) || null;
         const departments = [...new Set((db.members||[]).map(m=>m.department||'未登録'))].sort((a,b)=>a.localeCompare(b,'ja'));
         const filteredMembers = (db.members||[]).filter(m=>(deptFilter==='ALL'||(m.department||'未登録')===deptFilter)&&(memberFilter==='ALL'||m.id===memberFilter));
         const memberOptions = (db.members||[]).map(m=>`<option value="${safeText(m.id)}" ${memberFilter===m.id?'selected':''}>${safeText(m.name)}</option>`).join('');
@@ -279,44 +287,77 @@
             const cell=items=>`<td title="${safeText(items.map(x=>`${x.date} ${x.label||''} / ${(db.members.find(m=>m.id===x.memberId)||{}).name||'担当未指定'} / 売上 ${money(x.rev/10000)} / 原価 ${money(x.cost/10000)}`).join('\n'))}">${money(items.reduce((a,x)=>a+x.rev,0)/10000)}</td>`;
             return `<tr class="revenue-extra"><th class="sticky left-0 z-10">${kind==='スポット'?'スポット業務':'物販'} 売上</th>${months.map(month=>cell(list.filter(x=>String(x.date).slice(0,7)===month))).join('')}${cell(list)}</tr>`;
         }).join('');
-        const memberMonthly = filteredMembers.map(member => {
+        const assignments = window.sesFinanceAssignments();
+        const projectIdsFor = (member, month) => window.sesProjectIdsForMonth(assignments, member.id, month);
+        const baseValues = (member, month) => window.sesReadProjectFinance(member, month, mode, assignments);
+        revenueFinanceContext = {mode, baseValues, projectIdsFor};
+        const memberMonthly = filteredMembers.flatMap(member => {
             const records = extras.filter(x => x.memberId === member.id);
-            const start = member.contractStart || member.startDate;
-            return {
-                member,
-                values: months.map(month => {
-                    const active = member.status === '稼働中' && (!start || start.slice(0,7) <= month)
-                        && (!member.contractEnd || member.contractEnd.slice(0,7) >= month);
-                    const fallback = key => active && mode === 'plan' ? member[key] : 0;
-                    const rev = getField(revenueStore, member, month, fallback('rate'));
-                    const cost = getField(costStore, member, month, fallback('cost'));
-                    const transport = getField(transportStore, member, month, fallback('transportCost'));
-                    const monthly = records.filter(x => x.date.slice(0,7) === month);
-                    const salesFor = kind => monthly.filter(x => x.kind === kind).reduce((sum, x) => sum + x.rev, 0) / 10000;
-                    const spot = salesFor('スポット');
-                    const merchandise = salesFor('物販');
-                    const extraCost = monthly.reduce((sum, x) => sum + x.cost, 0) / 10000;
-                    const expense = expenseFor(month, member.id);
+            const partsByMonth = months.map(month => {
+                const ids = projectIdsFor(member, month);
+                const parts = window.sesProjectFinanceParts(member.id, month, mode, ids, baseValues(member, month), assignments);
+                const monthly = records.filter(x => x.date.slice(0,7) === month);
+                const expense = expenseFor(month, member.id);
+                const associated = ids.length === 1 ? ids[0] : '';
+                if (monthly.length || expense) {
+                    const values = parts.get(associated) || {rev:0, cost:0, transport:0};
+                    values.spot = monthly.filter(x => x.kind === 'スポット').reduce((sum, x) => sum + x.rev, 0) / 10000;
+                    values.merchandise = monthly.filter(x => x.kind === '物販').reduce((sum, x) => sum + x.rev, 0) / 10000;
+                    values.extraCost = monthly.reduce((sum, x) => sum + x.cost, 0) / 10000;
+                    values.expense = expense;
+                    parts.set(associated, values);
+                }
+                return parts;
+            });
+            const rowIds = [...new Set(partsByMonth.flatMap(parts => [...parts.keys()]))];
+            return rowIds.filter(id => id || rowIds.length === 1 || partsByMonth.some(parts =>
+                Object.values(parts.get('') || {}).some(Boolean))).map(projectId => ({
+                member, projectId,
+                values: partsByMonth.map(parts => {
+                    const {rev=0, cost=0, transport=0, spot=0, merchandise=0, extraCost=0, expense=0} = parts.get(projectId) || {};
                     const sales = rev + spot + merchandise;
-                    return { rev, cost, transport, spot, merchandise, expense, sales, profit: sales - cost - extraCost - transport - expense };
+                    return {rev, cost, transport, spot, merchandise, expense, sales,
+                        profit:sales - cost - extraCost - transport - expense, editable:parts.has(projectId)};
                 })
-            };
+            }));
         });
         const sum = values => values.reduce((total, value) => total + value, 0);
-        const rows = memberMonthly.map(({ member: m, values }) => {
-            const project = projectFor(m);
-            const sub = `<div class="revenue-member-details text-[10px] leading-5 font-normal text-slate-400"><div>参画案件：${safeText(project?.title||'案件情報未登録')}</div><div>単価：${money(m.rate)}</div><div>原価：${money(m.cost)}</div><div>交通費：${money(m.transportCost)}/月</div></div>`;
-            const monthCells = values.map(({ rev, cost, transport, expense, profit }, index) => {
+        const memberTotals = new Map();
+        const periods = memberMonthly.map(({member, values}, index) => {
+            const sales = sum(values.map(value => value.sales));
+            const profit = sum(values.map(value => value.profit));
+            const total = memberTotals.get(member.id) || {sales:0, profit:0, count:0};
+            total.sales += sales;
+            total.profit += profit;
+            total.count += 1;
+            total.lastRow = index;
+            memberTotals.set(member.id, total);
+            return {sales, profit};
+        });
+        const rows = memberMonthly.map(({ member: m, projectId, values }, index) => {
+            const project = db.projects.find(item => item.id === projectId);
+            const assignment = project && assignments.find(item => item.project.id === projectId && item.member.id === m.id);
+            const rate = assignment?.row.tracked ? assignment.row.rateYen / 10000 : m.rate;
+            const sub = `<div class="revenue-member-details text-[10px] leading-5 font-normal text-slate-400"><div>参画案件：${safeText(project?.title || (projectId ? '削除済み案件' : '案件未配賦'))}</div><div>単価：${money(rate)}</div><div>原価：${money(m.cost)}</div><div>交通費：${money(m.transportCost)}/月</div></div>`;
+            const monthCells = values.map(({ rev, cost, transport, expense, profit, editable }, index) => {
                 const month = months[index];
-                return `<td class="p-1 min-w-[112px] w-[112px] align-top revenue-month-cell-container"><div class="space-y-1.5"><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">案件売上（円）<input class="ext-input revenue-month-cell" type="number" min="0" step="1" value="${Math.round(rev*10000)}" data-kind="revenue" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 売上"></label><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">原価（円）<input class="ext-input" type="number" min="0" step="1" value="${Math.round(cost*10000)}" data-kind="cost" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 原価"></label><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">交通費（円）<input class="ext-input" type="number" min="0" step="1" value="${Math.round(transport*10000)}" data-kind="transport" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 交通費"></label><div class="text-xs" title="登録経費の自動集計">経費：${money(expense)}</div><div class="text-xs pt-1 border-t border-white/10 ${profit>=0?'text-emerald-300':'text-rose-300'}">粗利：${money(profit)}</div></div></td>`;
+                if (!editable) return '<td class="revenue-month-cell-container">—</td>';
+                return `<td class="p-1 align-top revenue-month-cell-container"><div class="space-y-1.5"><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">案件売上（円）<input class="ext-input revenue-month-cell" type="number" min="0" step="1" value="${Math.round(rev*10000)}" data-kind="revenue" data-member="${safeText(m.id)}" data-project="${safeText(projectId)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${safeText(project?.title || '案件未配賦')} ${month} 売上"></label><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">原価（円）<input class="ext-input" type="number" min="0" step="1" value="${Math.round(cost*10000)}" data-kind="cost" data-member="${safeText(m.id)}" data-project="${safeText(projectId)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${safeText(project?.title || '案件未配賦')} ${month} 原価"></label><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">交通費（円）<input class="ext-input" type="number" min="0" step="1" value="${Math.round(transport*10000)}" data-kind="transport" data-member="${safeText(m.id)}" data-project="${safeText(projectId)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${safeText(project?.title || '案件未配賦')} ${month} 交通費"></label><div class="text-xs" title="登録経費の自動集計">経費：${money(expense)}</div><div class="text-xs pt-1 border-t border-white/10 ${profit>=0?'text-emerald-300':'text-rose-300'}">粗利：${money(profit)}</div></div></td>`;
             }).join('');
-            const annual = sum(values.map(value => viewMode === 'sales' ? value.sales : value.profit));
+            const annual = periods[index][viewMode === 'sales' ? 'sales' : 'profit'];
+            const total = memberTotals.get(m.id);
+            const projectAmount = total.count > 1
+                ? `<div class="font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(annual)}</div>` : '';
+            const memberTotal = total.lastRow === index ? `<div class="space-y-1 text-xs whitespace-nowrap ${total.count > 1 ? 'mt-2 border-t border-white/10 pt-2' : ''}" data-member-period-total>
+                <div class="font-semibold text-cyan-300">売上合計 ${money(total.sales)}</div>
+                <div class="font-semibold ${total.profit < 0 ? 'text-rose-300' : 'text-emerald-300'}">粗利合計 ${money(total.profit)}</div>
+            </div>` : '';
             const details = [['spot', 'スポット業務 売上'], ['merchandise', '物販 売上']].map(([key, label]) => {
                 const amounts = values.map(value => value[key]);
                 if (!amounts.some(Boolean)) return '';
                 return `<tr class="revenue-extra" data-member-detail="${safeText(m.id)}"><th scope="row" class="sticky left-0 z-10 bg-slate-950">${label}</th>${amounts.map(amount => `<td>${money(amount)}</td>`).join('')}<td>${money(sum(amounts))}</td></tr>`;
             }).join('');
-            return `<tr class="border-b border-white/5" data-revenue-member="${safeText(m.id)}"><th class="sticky left-0 z-10 bg-slate-950/95 text-left p-3 min-w-[220px] align-top"><div class="font-semibold text-slate-100">${safeText(m.name)}</div>${sub}<div class="text-[10px] text-slate-500">${safeText(m.department||'未登録')} / ${safeText(m.role||'役職未登録')}</div></th>${monthCells}<td class="p-3 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(annual)}</td></tr>${details}`;
+            return `<tr class="border-b border-white/5" data-revenue-member="${safeText(m.id)}" data-revenue-project="${safeText(projectId)}"><th class="sticky left-0 z-10 bg-slate-950/95 text-left p-3 align-top"><div class="font-semibold text-slate-100">${safeText(m.name)}</div>${sub}<div class="text-[10px] text-slate-500">${safeText(m.department||'未登録')} / ${safeText(m.role||'役職未登録')}</div></th>${monthCells}<td class="p-3 text-right">${projectAmount}${memberTotal}</td></tr>${details}`;
         }).join('') + extraRows;
         const monthlyTotals = months.map((month, index) => {
             const monthly = extras.filter(x => x.date.slice(0,7) === month);
@@ -332,46 +373,39 @@
         const annualTransport = sum(monthlyTotals.map(x => x.transport));
         const annualExpense = sum(monthlyTotals.map(x => x.expense));
         const annualProfit = sum(monthlyTotals.map(x => x.profit));
+        const clientSummary = window.sesRevenueClients?.({months, memberMonthly, extras, expenseItems, viewMode});
         const repeatFuture = matrix.dataset.repeatFuture === '1';
-        matrix.innerHTML = `<div class="glass-card rounded-xl p-4 mb-4"><div class="flex flex-wrap items-center justify-between gap-3 mb-3"><div><h3 class="font-bold text-cyan-300"><i class="fa-solid fa-table mr-2"></i>売上・粗利管理</h3><p class="text-xs text-slate-400 mt-1">売上・原価・交通費の予定と実績は別データです。登録経費（物販経費を含む）・スポット業務と物販の売上・原価は予定・実績の両方に自動合算します。全体経費は下部の経費合計に表示します。金額は円単位（1円単位）。グレード変更時は当月以降の予定原価を更新します。予定・実績とも手入力できます。</p></div><div class="flex flex-wrap gap-2 items-center"><label class="text-xs text-slate-400 revenue-filter-label">表示<select id="revenue-view-type" class="ext-input" onchange="setRevenueViewType(this.value)"><option value="sales" ${viewMode==='sales'?'selected':''}>売上</option><option value="profit" ${viewMode==='profit'?'selected':''}>粗利</option></select></label><label class="text-xs text-slate-400 revenue-filter-label">データ<select id="revenue-mode" class="ext-input" onchange="renderRevenueView()"><option value="plan" ${mode==='plan'?'selected':''}>予定</option><option value="actual" ${mode==='actual'?'selected':''}>実績</option></select></label><label class="text-xs text-slate-400 revenue-filter-label">対象年<select id="revenue-year" class="ext-input" onchange="renderRevenueView()">${[year-1,year,year+1].map(y=>`<option value="${y}" ${y===year?'selected':''}>${y}年度（${y}/11〜${y+1}/10）</option>`).join('')}</select></label><label class="text-xs text-slate-400 revenue-filter-label">開始月<select id="revenue-start-month" class="ext-input" onchange="renderRevenueView()">${startMonthOptions}</select></label><label class="text-xs text-slate-400 revenue-filter-label">終了月<select id="revenue-end-month" class="ext-input" onchange="renderRevenueView()">${endMonthOptions}</select></label></div></div><div class="revenue-copy-tools"><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="revenue-repeat-future" ${repeatFuture?'checked':''} onchange="setRevenueRepeatFuture(this.checked)"><span>翌月も反映</span></label><label class="text-xs text-slate-300">コピー対象メンバー<select id="revenue-copy-member" class="ext-input"><option value="ALL">全員</option>${(db.members||[]).map(m=>`<option value="${safeText(m.id)}">${safeText(m.name)}</option>`).join('')}</select></label><label class="text-xs text-slate-300">コピー対象月<select id="revenue-copy-month" class="ext-input"><option value="ALL">全ての月</option>${[11,12,1,2,3,4,5,6,7,8,9,10].map(m=>{const y=year+(m<=10?1:0),key=`${y}-${String(m).padStart(2,'0')}`;return `<option value="${key}">${y}年${m}月</option>`}).join('')}</select></label><button type="button" class="ext-btn px-4 py-2 rounded-lg border border-emerald-400/60 text-emerald-200 bg-emerald-500/10 hover:bg-emerald-500/20" onclick="copyPlannedFinanceToActual()"><i class="fa-solid fa-copy mr-1"></i>予定を実績にコピー</button><span class="text-xs text-slate-400">コピー対象メンバー・月を指定できます。既存実績は確認後に上書きします。</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4"><label class="text-xs text-slate-400">部署で絞り込み<select id="revenue-department-filter" class="ext-input mt-1" onchange="renderRevenueView()"><option value="ALL">全部署</option>${departments.map(d=>`<option value="${safeText(d)}" ${deptFilter===d?'selected':''}>${safeText(d)}</option>`).join('')}</select></label><label class="text-xs text-slate-400">メンバーで絞り込み<select id="revenue-member-filter" class="ext-input mt-1" onchange="renderRevenueView()"><option value="ALL">全メンバー</option>${memberOptions}</select></label></div><div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4"><div class="p-3 rounded-lg border border-cyan-400/30 bg-cyan-500/10"><div class="text-xs text-slate-400">期間売上合計</div><div class="text-xl font-bold text-cyan-300">${money(annualTotal)}</div></div><div class="p-3 rounded-lg border border-rose-400/30 bg-rose-500/10"><div class="text-xs text-slate-400">期間原価合計</div><div class="text-xl font-bold text-rose-300">${money(annualCost)}</div></div><div class="p-3 rounded-lg border border-amber-400/30 bg-amber-500/10"><div class="text-xs text-slate-400">期間交通費合計</div><div class="text-xl font-bold text-amber-300">${money(annualTransport)}</div></div><div class="p-3 rounded-lg border border-emerald-400/30 bg-emerald-500/10"><div class="text-xs text-slate-400">期間粗利合計</div><div class="text-xl font-bold text-emerald-300">${money(annualProfit)}</div></div></div><div class="revenue-scroll overflow-x-auto"><table class="ext-table revenue-finance-table min-w-[1600px]"><thead><tr><th class="sticky left-0 z-20 bg-slate-900 p-3 text-left">メンバー／案件・単価情報</th>${months.map(m=>`<th class="p-3">${Number(m.slice(5))}月</th>`).join('')}<th class="p-3">${viewMode==='sales'?'期間売上':'期間粗利'}</th></tr></thead><tbody>${rows||`<tr><td colspan="${months.length+2}" class="p-6 text-center text-slate-500">条件に一致するメンバーがいません。</td></tr>`}<tr class="revenue-extra"><th class="sticky left-0 z-10">経費合計</th>${months.map(m=>`<td title="${safeText(expenseItems.filter(x=>String(x.date).slice(0,7)===m).map(x=>`${x.date} ${x.category} ${(db.members.find(r=>r.id===x.memberId)||{}).name||'全体経費'} ${money(x.yen/10000)} ${x.note||''}`).join('\n'))}">${money(expenseFor(m))}</td>`).join('')}<td>${money(annualExpense)}</td></tr><tr class="bg-cyan-500/10"><th class="sticky left-0 z-10 bg-slate-950 p-3 text-left ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">月別${viewMode==='sales'?'売上':'粗利'}合計</th>${monthlyTotals.map(({sales, profit})=>{const v=viewMode==='sales'?sales:profit;return `<td class="p-2 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(v)}</td>`}).join('')}<td class="p-2 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(viewMode==='sales'?annualTotal:annualProfit)}</td></tr></tbody></table></div><p class="text-[11px] text-slate-500 mt-3">基本交通費はメンバー管理ダイアログで登録します。月ごとに変更がある場合は該当月の交通費欄を編集してください。粗利＝売上−原価−交通費−経費。売上・原価・交通費は予定と実績で独立して保存され、登録経費・スポット業務・物販は共通です。</p></div>`;
+        matrix.innerHTML = `<div class="glass-card rounded-xl p-4 mb-4"><div class="flex flex-wrap items-center justify-between gap-3 mb-3"><div><h3 class="font-bold text-cyan-300"><i class="fa-solid fa-table mr-2"></i>売上・粗利管理</h3><p class="text-xs text-slate-400 mt-1">予定・実績別に売上・原価・交通費を管理します。経費・スポット業務・物販は自動集計されます。</p></div><div class="flex flex-wrap gap-2 items-center"><label class="text-xs text-slate-400 revenue-filter-label">表示<select id="revenue-view-type" class="ext-input" onchange="setRevenueViewType(this.value)"><option value="sales" ${viewMode==='sales'?'selected':''}>売上</option><option value="profit" ${viewMode==='profit'?'selected':''}>粗利</option></select></label><label class="text-xs text-slate-400 revenue-filter-label">データ<select id="revenue-mode" class="ext-input" onchange="renderRevenueView()"><option value="plan" ${mode==='plan'?'selected':''}>予定</option><option value="actual" ${mode==='actual'?'selected':''}>実績</option></select></label><label class="text-xs text-slate-400 revenue-filter-label">対象年<select id="revenue-year" class="ext-input" onchange="renderRevenueView()">${[year-1,year,year+1].map(y=>`<option value="${y}" ${y===year?'selected':''}>${y}年度（${y}/11〜${y+1}/10）</option>`).join('')}</select></label><label class="text-xs text-slate-400 revenue-filter-label">開始月<select id="revenue-start-month" class="ext-input" onchange="renderRevenueView()">${startMonthOptions}</select></label><label class="text-xs text-slate-400 revenue-filter-label">終了月<select id="revenue-end-month" class="ext-input" onchange="renderRevenueView()">${endMonthOptions}</select></label></div></div><div class="revenue-copy-tools"><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="revenue-repeat-future" ${repeatFuture?'checked':''} onchange="setRevenueRepeatFuture(this.checked)"><span>翌月も反映</span></label><label class="text-xs text-slate-300">コピー対象メンバー<select id="revenue-copy-member" class="ext-input"><option value="ALL">全員</option>${(db.members||[]).map(m=>`<option value="${safeText(m.id)}">${safeText(m.name)}</option>`).join('')}</select></label><label class="text-xs text-slate-300">コピー対象月<select id="revenue-copy-month" class="ext-input"><option value="ALL">全ての月</option>${[11,12,1,2,3,4,5,6,7,8,9,10].map(m=>{const y=year+(m<=10?1:0),key=`${y}-${String(m).padStart(2,'0')}`;return `<option value="${key}">${y}年${m}月</option>`}).join('')}</select></label><button type="button" class="ext-btn px-4 py-2 rounded-lg border border-emerald-400/60 text-emerald-200 bg-emerald-500/10 hover:bg-emerald-500/20" onclick="copyPlannedFinanceToActual()"><i class="fa-solid fa-copy mr-1"></i>予定を実績にコピー</button><span class="text-xs text-slate-400">コピー対象メンバー・月を指定できます。既存実績は確認後に上書きします。</span></div><div class="revenue-member-filters"><label class="text-xs text-slate-400">部署で絞り込み<select id="revenue-department-filter" class="ext-input mt-1" onchange="renderRevenueView()"><option value="ALL">全部署</option>${departments.map(d=>`<option value="${safeText(d)}" ${deptFilter===d?'selected':''}>${safeText(d)}</option>`).join('')}</select></label><label class="text-xs text-slate-400">メンバーで絞り込み<select id="revenue-member-filter" class="ext-input mt-1" onchange="renderRevenueView()"><option value="ALL">全メンバー</option>${memberOptions}</select></label></div><div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4"><div class="p-3 rounded-lg border border-cyan-400/30 bg-cyan-500/10"><div class="text-xs text-slate-400">期間売上合計</div><div class="text-xl font-bold text-cyan-300">${money(annualTotal)}</div></div><div class="p-3 rounded-lg border border-rose-400/30 bg-rose-500/10"><div class="text-xs text-slate-400">期間原価合計</div><div class="text-xl font-bold text-rose-300">${money(annualCost)}</div></div><div class="p-3 rounded-lg border border-amber-400/30 bg-amber-500/10"><div class="text-xs text-slate-400">期間交通費合計</div><div class="text-xl font-bold text-amber-300">${money(annualTransport)}</div></div><div class="p-3 rounded-lg border border-emerald-400/30 bg-emerald-500/10"><div class="text-xs text-slate-400">期間粗利合計</div><div class="text-xl font-bold text-emerald-300">${money(annualProfit)}</div></div></div><div id="r15-revenue-toolbar" class="ops-toolbar r15-revenue-toolbar"></div><div id="revenue-members-panel" role="tabpanel" aria-labelledby="revenue-members-tab"><div class="revenue-scroll overflow-x-auto"><table class="ext-table revenue-finance-table"><thead><tr><th class="sticky left-0 z-20 bg-slate-900 p-3 text-left">メンバー／案件・単価情報</th>${months.map(m=>`<th class="p-3">${Number(m.slice(5))}月</th>`).join('')}<th class="p-3">${viewMode==='sales'?'期間売上':'期間粗利'}</th></tr></thead><tbody>${rows||`<tr><td colspan="${months.length+2}" class="p-6 text-center text-slate-500">条件に一致するメンバーがいません。</td></tr>`}<tr class="revenue-extra"><th class="sticky left-0 z-10">経費合計</th>${months.map(m=>`<td title="${safeText(expenseItems.filter(x=>String(x.date).slice(0,7)===m).map(x=>`${x.date} ${x.category} ${(db.members.find(r=>r.id===x.memberId)||{}).name||'全体経費'} ${money(x.yen/10000)} ${x.note||''}`).join('\n'))}">${money(expenseFor(m))}</td>`).join('')}<td>${money(annualExpense)}</td></tr><tr class="bg-cyan-500/10"><th class="sticky left-0 z-10 bg-slate-950 p-3 text-left ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">月別${viewMode==='sales'?'売上':'粗利'}合計</th>${monthlyTotals.map(({sales, profit})=>{const v=viewMode==='sales'?sales:profit;return `<td class="p-2 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(v)}</td>`}).join('')}<td class="p-2 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(viewMode==='sales'?annualTotal:annualProfit)}</td></tr></tbody></table></div><p class="text-[11px] text-slate-500 mt-3">基本交通費はメンバー管理ダイアログで登録します。月ごとに変更がある場合は該当月の交通費欄を編集してください。粗利＝売上−原価−交通費−経費。売上・原価・交通費は予定と実績で独立して保存され、登録経費・スポット業務・物販は共通です。</p></div><div id="revenue-clients-panel" role="tabpanel" aria-labelledby="revenue-clients-tab" hidden>${clientSummary || ''}</div></div>`;
+        window.sesApplyRevenueTab?.();
     };
     window.setRevenueRepeatFuture = function(checked){
         const matrix=document.getElementById('monthly-revenue-matrix');
         if(matrix) matrix.dataset.repeatFuture=checked?'1':'0';
     };
     window.copyPlannedFinanceToActual = function(){
+        if (window.sesRestricted?.()) return;
         const matrix=document.getElementById('monthly-revenue-matrix');
         if(!matrix || typeof db==='undefined') return;
         const year=Number(document.getElementById('revenue-year')?.value);
-        const start=Number(document.getElementById('revenue-start-month')?.value||11);
-        const end=Number(document.getElementById('revenue-end-month')?.value||10);
         const order=[11,12,1,2,3,4,5,6,7,8,9,10];
-        const months=[];
-        for(let i=order.indexOf(start),n=0;i>=0&&n<12;i=(i+1)%12,n++){
-            const m=order[i];months.push(`${year+(m<=10?1:0)}-${String(m).padStart(2,'0')}`);
-            if(m===end)break;
-        }
         const copyMember=document.getElementById('revenue-copy-member')?.value||'ALL';
         const copyMonth=document.getElementById('revenue-copy-month')?.value||'ALL';
         const selectedMonths=copyMonth==='ALL'?order.map(m=>`${year+(m<=10?1:0)}-${String(m).padStart(2,'0')}`):[copyMonth];
         const members=(db.members||[]).filter(m=>copyMember==='ALL'||m.id===copyMember);
         if(!members.length||!selectedMonths.length){alert('コピー対象がありません。');return;}
-        const sources=[['monthlyRevenue','monthlyRevenueActual','rate'],['monthlyCost','monthlyCostActual','cost'],['monthlyTransport','monthlyTransportActual','transportCost']];
-        const changes=[];
-        members.forEach(m=>selectedMonths.forEach(month=>{
-            const active=m.status==='稼働中';
-            const begin=m.contractStart||m.startDate||'';
-            const finish=m.contractEnd||'';
-            const inPeriod=active&&(!begin||begin.slice(0,7)<=month)&&(!finish||finish.slice(0,7)>=month);
-            sources.forEach(([src,dst,field])=>{
-                const key=`${m.id}|${month}`;
-                const fallback=(inPeriod||field==='transportCost')?Math.max(0,Number(m[field])||0):0;
-                const value=(Object.prototype.hasOwnProperty.call(db[src]||{},key)?Math.max(0,Number(db[src][key])||0):fallback);
-                changes.push({dst,key,value:field==='rate'?(window.memberRatePlan?.(m,month)??value):value});
-            });
-        }));
+        const assignments = window.sesFinanceAssignments();
+        const changes = members.flatMap(member => selectedMonths.map(month => ({
+            member, month, values:window.sesReadProjectFinance(member, month, 'plan', assignments)
+        })));
+        if(window.sesAllowFinanceDates?.(...selectedMonths) === false)return;
         if(!confirm(`予定を実績にコピーしますか？\n対象：${year}年11月開始の期・${selectedMonths.length}か月・${members.length}名\n売上・原価・交通費の既存実績は上書きされます。`))return;
-        changes.forEach(({dst,key,value})=>{db[dst]=db[dst]||{};db[dst][key]=value;});
+        for (const {member, month, values} of changes) {
+            const key = member.id + '|' + month;
+            db.monthlyRevenueActual[key] = values.rev;
+            db.monthlyCostActual[key] = values.cost;
+            db.monthlyTransportActual[key] = values.transport;
+            window.sesCopyProjectFinance(member.id, month, values, assignments);
+        }
         saveStoredData();
         const mode=document.getElementById('revenue-mode');if(mode)mode.value='actual';
         renderRevenueView();
@@ -382,13 +416,26 @@
         const mode=input.dataset.mode||'plan', kind=input.dataset.kind;
         const member=input.dataset.member, month=input.dataset.month;
         const value=Math.round(Math.max(0,Number(input.value)||0))/10000;
-        const stores=mode==='actual'?{revenue:db.monthlyRevenueActual,cost:db.monthlyCostActual,transport:db.monthlyTransportActual}:{revenue:db.monthlyRevenue,cost:db.monthlyCost,transport:db.monthlyTransport};
-        if(!stores[kind])stores[kind]={};
+        const stores=mode==='actual'?{rev:db.monthlyRevenueActual,cost:db.monthlyCostActual,transport:db.monthlyTransportActual}:{rev:db.monthlyRevenue,cost:db.monthlyCost,transport:db.monthlyTransport};
+        const field = kind === 'revenue' ? 'rev' : kind;
+        const person = db.members.find(entry => entry.id === member);
+        if (window.sesRestricted?.() || !stores[field] || !person) return;
         const repeat=document.getElementById('revenue-repeat-future')?.checked===true;
         const fiscalStart=Number(month.slice(5))>=11?Number(month.slice(0,4)):Number(month.slice(0,4))-1;
         const allMonths=[11,12,1,2,3,4,5,6,7,8,9,10].map(m=>`${fiscalStart+(m<=10?1:0)}-${String(m).padStart(2,'0')}`);
-        const months=repeat?allMonths.slice(allMonths.indexOf(month)): [month];
-        months.forEach(m=>{stores[kind][`${member}|${m}`]=value;});
+        const projectId = input.dataset.project || '';
+        const context = revenueFinanceContext?.mode === mode ? revenueFinanceContext : null;
+        const months = repeat ? allMonths.slice(allMonths.indexOf(month)).filter(candidate =>
+            candidate === month || input.dataset.project === undefined || (projectId
+                ? context?.projectIdsFor(person, candidate).includes(projectId)
+                : !context?.projectIdsFor(person, candidate).length)) : [month];
+        if(mode==='actual' && window.sesAllowFinanceDates?.(...months) === false){renderRevenueView();return;}
+        for (const targetMonth of months) {
+            const monthKey = `${member}|${targetMonth}`;
+            const fallback = context?.baseValues(person, targetMonth) || {};
+            if (input.dataset.project === undefined) stores[field][monthKey] = value;
+            else window.sesWriteProjectFinance(member, targetMonth, mode, projectId, field, value, stores, fallback);
+        }
         saveStoredData();renderRevenueView();
     };
     window.saveMonthlyRevenue = function(input){ input.dataset.kind='revenue'; input.dataset.mode=document.getElementById('revenue-mode')?.value||'plan'; saveMonthlyFinance(input); };
@@ -474,6 +521,7 @@
             client: spotField('client').value.trim(), note: spotField('note').value.trim()
         };
         const expenses = spotExpenses(job.id);
+        if (window.sesAllowFinanceDates?.(existing?.date, job.date, ...expenses.map(row => row.date)) === false) return;
         if (expenses.length === 1 && expenseAmount === 0 && !confirm('紐づいている経費を削除して保存しますか？')) return;
         if (existing) Object.assign(existing, job);
         else db.spotJobs.push(job);
@@ -503,7 +551,9 @@
 
     window.deleteSpotJob = function(id) {
         if (!canEditEntity('projects')) return;
-        const linked = spotExpenses(id).length > 0;
+        const expenses = spotExpenses(id);
+        if (window.sesAllowFinanceDates?.(db.spotJobs.find(row => row.id === id)?.date, ...expenses.map(row => row.date)) === false) return;
+        const linked = expenses.length > 0;
         if (!confirm(linked ? 'このスポット業務と紐づく経費を削除しますか？' : 'このスポット業務を削除しますか？')) return;
         db.spotJobs = db.spotJobs.filter(job => job.id !== id);
         db.expenses = db.expenses.filter(expense => expense.spotJobId !== id);
@@ -531,10 +581,10 @@
     window.addMerchProduct=function(e){e.preventDefault();if(!canEditEntity('merchandise')){alert('物販データの編集権限がありません。');return;}const name=document.getElementById('merch-product-name').value.trim();if(!name)return;db.merchandiseProducts.push({id:uid('PRD'),name,code:document.getElementById('merch-product-code').value.trim(),unitPrice:Number(document.getElementById('merch-product-price').value)||0,unitCost:Number(document.getElementById('merch-product-cost').value)||0,stock:Number(document.getElementById('merch-product-stock').value)||0,category:document.getElementById('merch-product-category').value.trim(),createdAt:today()});logAction('物販商品登録',name);saveStoredData();e.target.reset();renderMerchandise();renderRevenueView();};
     window.deleteMerchProduct=function(id){if(!canEditEntity('merchandise'))return;const p=db.merchandiseProducts.find(x=>x.id===id);if(!p)return;if(db.merchandiseSales.some(x=>x.productId===id)){alert('販売履歴がある商品は削除できません。');return;}if(!confirm(`商品「${p.name}」を削除しますか？`))return;db.merchandiseProducts=db.merchandiseProducts.filter(x=>x.id!==id);logAction('物販商品削除',p.name);saveStoredData();renderMerchandise();renderRevenueView();};
     window.updateMerchSalePreview=function(){const select=document.getElementById('merch-sale-product');const id=select?.value;const p=db.merchandiseProducts.find(x=>x.id===id);const qty=Number(document.getElementById('merch-sale-qty')?.value)||0;const price=document.getElementById('merch-sale-price');const cost=document.getElementById('merch-sale-cost');const productChanged=select&&select.dataset.lastProductId!==id;if(productChanged){if(price)delete price.dataset.edited;if(cost)delete cost.dataset.edited;select.dataset.lastProductId=id||'';}if(p){if(price&&!price.dataset.edited)price.value=p.unitPrice;if(cost&&!cost.dataset.edited)cost.value=p.unitCost;}const unitPrice=Number(price?.value||0),unitCost=Number(cost?.value||0);const preview=document.getElementById('merch-sale-preview');if(preview)preview.textContent=p?`在庫：${Number(p.stock||0)}個 / 売上：${merchMoney(qty*unitPrice)} / 商品原価：${merchMoney(qty*unitCost)} / 粗利：${merchMoney(qty*(unitPrice-unitCost))}`:'商品を選択してください。';if(price)price.oninput=()=>{price.dataset.edited='1';updateMerchSalePreview()};if(cost)cost.oninput=()=>{cost.dataset.edited='1';updateMerchSalePreview()};};
-    window.addMerchSale=function(e){e.preventDefault();if(!canEditEntity('merchandise')){alert('物販データの編集権限がありません。');return;}const id=document.getElementById('merch-sale-product').value,p=db.merchandiseProducts.find(x=>x.id===id),qty=Number(document.getElementById('merch-sale-qty').value)||0;if(!p){alert('商品を選択してください。');return;}if(qty<1){alert('販売数量は1以上で入力してください。');return;}if(qty>Number(p.stock||0)&&!confirm(`在庫数（${p.stock}）を超えています。登録しますか？`))return;const sale={memberId:document.getElementById('merch-sale-member').value,id:uid('SAL'),date:document.getElementById('merch-sale-date').value||today(),productId:p.id,productName:p.name,quantity:qty,unitPrice:Number(document.getElementById('merch-sale-price').value)||0,unitCost:Number(document.getElementById('merch-sale-cost').value)||0,channel:document.getElementById('merch-sale-channel').value.trim(),note:document.getElementById('merch-sale-note').value.trim()};db.merchandiseSales.push(sale);p.stock=Number(p.stock||0)-qty;logAction('物販販売登録',`${p.name} × ${qty}`);saveStoredData();e.target.reset();document.getElementById('merch-sale-date').value=today();['merch-sale-price','merch-sale-cost'].forEach(id=>{const el=document.getElementById(id);if(el)delete el.dataset.edited});renderMerchandise();renderRevenueView();};
-    window.deleteMerchSale=function(id){if(!canEditEntity('merchandise'))return;const sale=db.merchandiseSales.find(x=>x.id===id);if(!sale||!confirm('この販売を取り消し、在庫数を戻しますか？'))return;const p=db.merchandiseProducts.find(x=>x.id===sale.productId);if(p)p.stock=Number(p.stock||0)+Number(sale.quantity||0);db.merchandiseSales=db.merchandiseSales.filter(x=>x.id!==id);logAction('物販販売取消',sale.productName);saveStoredData();renderMerchandise();renderRevenueView();};
-    window.addMerchExpense=function(e){e.preventDefault();if(!canEditEntity('merchandise')){alert('物販経費の編集権限がありません。');return;}db.merchandiseExpenses.push({id:uid('MEX'),date:document.getElementById('merch-exp-date').value||today(),category:document.getElementById('merch-exp-category').value,amount:Number(document.getElementById('merch-exp-amount').value)||0,note:document.getElementById('merch-exp-note').value.trim()});logAction('物販経費登録',document.getElementById('merch-exp-category').value);saveStoredData();e.target.reset();document.getElementById('merch-exp-date').value=today();renderMerchandise();renderRevenueView();};
-    window.deleteMerchExpense=function(id){if(!canEditEntity('merchandise'))return;const x=db.merchandiseExpenses.find(x=>x.id===id);if(!x||!confirm('この物販経費を削除しますか？'))return;db.merchandiseExpenses=db.merchandiseExpenses.filter(x=>x.id!==id);logAction('物販経費削除',x.category);saveStoredData();renderMerchandise();renderRevenueView();};
+    window.addMerchSale=function(e){e.preventDefault();if(!canEditEntity('merchandise')){alert('物販データの編集権限がありません。');return;}const id=document.getElementById('merch-sale-product').value,p=db.merchandiseProducts.find(x=>x.id===id),qty=Number(document.getElementById('merch-sale-qty').value)||0;if(!p){alert('商品を選択してください。');return;}if(qty<1){alert('販売数量は1以上で入力してください。');return;}if(qty>Number(p.stock||0)&&!confirm(`在庫数（${p.stock}）を超えています。登録しますか？`))return;const sale={memberId:document.getElementById('merch-sale-member').value,id:uid('SAL'),date:document.getElementById('merch-sale-date').value||today(),productId:p.id,productName:p.name,quantity:qty,unitPrice:Number(document.getElementById('merch-sale-price').value)||0,unitCost:Number(document.getElementById('merch-sale-cost').value)||0,channel:document.getElementById('merch-sale-channel').value.trim(),note:document.getElementById('merch-sale-note').value.trim()};if(window.sesAllowFinanceDates?.(sale.date)===false)return;db.merchandiseSales.push(sale);p.stock=Number(p.stock||0)-qty;logAction('物販販売登録',`${p.name} × ${qty}`);saveStoredData();e.target.reset();document.getElementById('merch-sale-date').value=today();['merch-sale-price','merch-sale-cost'].forEach(id=>{const el=document.getElementById(id);if(el)delete el.dataset.edited});renderMerchandise();renderRevenueView();};
+    window.deleteMerchSale=function(id){if(!canEditEntity('merchandise'))return;const sale=db.merchandiseSales.find(x=>x.id===id);if(!sale||window.sesAllowFinanceDates?.(sale.date)===false||!confirm('この販売を取り消し、在庫数を戻しますか？'))return;const p=db.merchandiseProducts.find(x=>x.id===sale.productId);if(p)p.stock=Number(p.stock||0)+Number(sale.quantity||0);db.merchandiseSales=db.merchandiseSales.filter(x=>x.id!==id);logAction('物販販売取消',sale.productName);saveStoredData();renderMerchandise();renderRevenueView();};
+    window.addMerchExpense=function(e){e.preventDefault();if(!canEditEntity('merchandise')){alert('物販経費の編集権限がありません。');return;}if(window.sesAllowFinanceDates?.(document.getElementById('merch-exp-date').value||today())===false)return;db.merchandiseExpenses.push({id:uid('MEX'),date:document.getElementById('merch-exp-date').value||today(),category:document.getElementById('merch-exp-category').value,amount:Number(document.getElementById('merch-exp-amount').value)||0,note:document.getElementById('merch-exp-note').value.trim()});logAction('物販経費登録',document.getElementById('merch-exp-category').value);saveStoredData();e.target.reset();document.getElementById('merch-exp-date').value=today();renderMerchandise();renderRevenueView();};
+    window.deleteMerchExpense=function(id){if(!canEditEntity('merchandise'))return;const x=db.merchandiseExpenses.find(x=>x.id===id);if(!x||window.sesAllowFinanceDates?.(x.date)===false||!confirm('この物販経費を削除しますか？'))return;db.merchandiseExpenses=db.merchandiseExpenses.filter(x=>x.id!==id);logAction('物販経費削除',x.category);saveStoredData();renderMerchandise();renderRevenueView();};
     window.renderExpenses = function(){fillMemberSelect('expense-member',true);const body=document.getElementById('expense-table-body');if(!body)return;const list=[...(db.expenses||[])].sort((a,b)=>String(b.date).localeCompare(String(a.date)));body.innerHTML=list.map(x=>`<tr><td>${safeText(x.date)}</td><td>${safeText(x.category)}</td><td>${safeText((db.members.find(m=>m.id===x.memberId)||{}).name||'全体経費')}</td><td class="text-rose-300">${moneyLabel(x.amount)}</td><td>${x.spotJobId ? `<div class="text-cyan-300">スポット業務：${safeText(db.spotJobs.find(job=>job.id===x.spotJobId)?.title || '業務情報未登録')}</div>` : ''}${safeText(x.note||'')}</td><td><button class="text-rose-300" onclick="copyExpense('${safeText(x.id)}')">複製</button> <button class="text-rose-300" onclick="deleteExpense('${safeText(x.id)}')">削除</button></td></tr>`).join('')||'<tr><td colspan="6" class="p-5 text-center text-slate-500">登録データはありません。</td></tr>';document.getElementById('expense-total').textContent=`合計 ${moneyLabel(list.reduce((a,x)=>a+Number(x.amount||0),0))}`;};
     function expenseDates(date,end){
         if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return [];
@@ -545,11 +595,11 @@
         return Array.from({length:count},(_,i)=>{const t=new Date(y,m-1+i,1),last=new Date(t.getFullYear(),t.getMonth()+1,0).getDate();return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(Math.min(d,last)).padStart(2,'0')}`;});
     }
     window.copyExpense=function(id){if(window.sesRestricted?.()||!canEditEntity('projects'))return;const x=db.expenses.find(r=>r.id===id);if(!x)return;window.openSes73Dialog?.('ses73-expenses-0');const el=k=>document.getElementById('expense-'+k);el('date').value=today();el('category').value=x.category;el('amount').value=Math.round(Number(x.amount)*10000);el('member').value=x.memberId||'';el('note').value=x.note||'';el('repeat').value='once';el('repeat-end').value='';el('repeat-end').disabled=true;};
-    window.addExpense = function(e){e.preventDefault();if(window.sesRestricted?.()||!canEditEntity('projects'))return;const el=k=>document.getElementById('expense-'+k);const monthly=el('repeat').value==='monthly';const dates=monthly&&!el('repeat-end').value?[]:expenseDates(el('date').value,monthly?el('repeat-end').value:'');const amount=Number(el('amount').value);if(!dates.length||!Number.isSafeInteger(amount)||amount<0||el('amount').value===''){alert('金額と終了月を確認してください（最大120か月）。');return;}const base={category:el('category').value,amount:amount/10000,memberId:el('member').value,note:el('note').value.trim()};const pending=dates.filter(date=>!db.expenses.some(x=>x.date===date&&x.category===base.category&&Math.round(Number(x.amount)*10000)===amount&&(x.memberId||'')===base.memberId&&(x.note||'')===base.note));if(!pending.length){alert('同じ内容の経費が登録済みです。');return;}if(monthly&&!confirm(`${pending.length}件の経費を登録します。重複 ${dates.length-pending.length}件は除外します。`))return;if(!monthly&&pending.length!==dates.length)return;pending.forEach(date=>db.expenses.push({id:uid('EXP'),date,...base}));logAction('経費登録',`${base.category} ${pending.length}件`);saveStoredData();e.target.reset();el('date').value=today();el('repeat-end').disabled=true;renderExpenses();const mode=document.getElementById('revenue-mode');if(mode)mode.value='actual';renderRevenueView();window.closeSes73Dialog?.('ses73-expenses-0');window.renderFiscalDashboard?.();};
+    window.addExpense = function(e){e.preventDefault();if(window.sesRestricted?.()||!canEditEntity('projects'))return;const el=k=>document.getElementById('expense-'+k);const monthly=el('repeat').value==='monthly';const dates=monthly&&!el('repeat-end').value?[]:expenseDates(el('date').value,monthly?el('repeat-end').value:'');const amount=Number(el('amount').value);if(!dates.length||!Number.isSafeInteger(amount)||amount<0||el('amount').value===''){alert('金額と終了月を確認してください（最大120か月）。');return;}const base={category:el('category').value,amount:amount/10000,memberId:el('member').value,note:el('note').value.trim()};const pending=dates.filter(date=>!db.expenses.some(x=>x.date===date&&x.category===base.category&&Math.round(Number(x.amount)*10000)===amount&&(x.memberId||'')===base.memberId&&(x.note||'')===base.note));if(!pending.length){alert('同じ内容の経費が登録済みです。');return;}if(monthly&&!confirm(`${pending.length}件の経費を登録します。重複 ${dates.length-pending.length}件は除外します。`))return;if(!monthly&&pending.length!==dates.length)return;if(window.sesAllowFinanceDates?.(...pending)===false)return;pending.forEach(date=>db.expenses.push({id:uid('EXP'),date,...base}));logAction('経費登録',`${base.category} ${pending.length}件`);saveStoredData();e.target.reset();el('date').value=today();el('repeat-end').disabled=true;renderExpenses();const mode=document.getElementById('revenue-mode');if(mode)mode.value='actual';renderRevenueView();window.closeSes73Dialog?.('ses73-expenses-0');window.renderFiscalDashboard?.();};
     window.deleteExpense = function(id) {
         if (!canEditEntity('projects')) return;
         const expense = db.expenses.find(row => row.id === id);
-        if (!expense || !confirm(expense.spotJobId ? 'この経費を削除しますか？ スポット業務の経費表示にも反映されます。' : 'この経費を削除しますか？')) return;
+        if (!expense || window.sesAllowFinanceDates?.(expense.date) === false || !confirm(expense.spotJobId ? 'この経費を削除しますか？ スポット業務の経費表示にも反映されます。' : 'この経費を削除しますか？')) return;
         db.expenses = db.expenses.filter(row => row.id !== id);
         logAction('経費削除', id);
         saveStoredData();
@@ -567,14 +617,15 @@
         const ctx=document.getElementById('chart-pipeline-funnel');if(ctx){if(window.funnelChart)window.funnelChart.destroy();const labels=['提案公募','面談調整','成約','募集終了'];const values=[db.projects.filter(p=>p.status==='提案公募中').length,db.projects.filter(p=>String(p.status).includes('面談')).length,db.projects.filter(p=>String(p.status).includes('成約')).length,db.projects.filter(p=>p.status==='募集終了').length];window.funnelChart=new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data:values,backgroundColor:['#06B6D4','#3B82F6','#10B981','#64748B'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:textColor,font:{size:10}}}},cutout:'65%'}});}
     };
     window.switchTab = function (tabName) {
+        if(tabName === 'operations') tabName = 'operations-contracts';
         if(window.sesRestricted?.() && window.sesBlockedTabs.includes(tabName))return;
         if(tabName === "accounts" && !window.isAccountOwner?.()) return;
         if(currentSession && !allowedTabsForRole(currentSession.role).includes(tabName)){alert('このユーザーには当該画面の閲覧権限がありません。');return;}
         document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
         document.querySelectorAll('.nav-item').forEach(item => { item.classList.remove('text-cyan-400','bg-cyan-500/10','border-l-4','border-cyan-400'); item.classList.add('text-slate-400'); });
         const panel = document.getElementById(`view-${tabName}`); const nav = document.getElementById(`nav-${tabName}`);
-        if (panel) panel.classList.remove('hidden'); if (nav) { nav.classList.add('text-cyan-400','bg-cyan-500/10','border-l-4','border-cyan-400'); nav.classList.remove('text-slate-400'); }
-        if(tabName==='member-rates')window.renderMemberRates?.(); if (tabName === 'tasks') renderTasks(); if (tabName === 'matching') renderMatching(); if (tabName === 'spot') renderSpotJobs(); if (tabName === 'expenses') renderExpenses(); if (tabName === 'merchandise') renderMerchandise(); if (tabName === 'reports') renderReports(); if (tabName === 'audit') renderAudit(); if (tabName === 'revenue') renderRevenueView();
+        if (panel) panel.classList.remove('hidden'); if(tabName==='dashboard'){if(window.sesSyncCriticalTasks?.(db,new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo'}).format(new Date())))localStorage.setItem('ses_access_db',JSON.stringify(db));window.sesRenderCriticalTasks?.(true);} if (nav) { nav.classList.add('text-cyan-400','bg-cyan-500/10','border-l-4','border-cyan-400'); nav.classList.remove('text-slate-400'); }
+        if(operationTabs.includes(tabName))window.renderOperations?.(tabName); if(tabName==='member-rates')window.renderMemberRates?.(); if (tabName === 'tasks') renderTasks(); if (tabName === 'matching') renderMatching(); if (tabName === 'spot') renderSpotJobs(); if (tabName === 'expenses') renderExpenses(); if (tabName === 'merchandise') renderMerchandise(); if (tabName === 'reports') renderReports(); if (tabName === 'audit') renderAudit(); if (tabName === 'revenue') renderRevenueView();
     };
     window.addTask = function () {
         if(!canEditEntity('tasks')){alert('タスクの編集権限がありません。');return;}
@@ -583,13 +634,13 @@
         document.getElementById('task-title').value=''; logAction('タスク登録', title); saveStoredData();
     };
     window.updateTaskStatus = function (id, status) { if(!canEditEntity('tasks')){alert('タスクの編集権限がありません。');renderTasks();return;} const task = db.tasks.find(t => String(t.id) === String(id)); if (!window.sesCanModify(task)){renderTasks();return;} task.status=status; task.completedAt=status==='完了'?today():''; logAction('タスク状態変更', `${task.title}: ${status}`); saveStoredData(); };
-    window.deleteTask = function (id) { if(!canEditEntity('tasks')){alert('タスクの編集権限がありません。');return;} const task=db.tasks.find(t=>String(t.id)===String(id)); if (!window.sesCanModify(task) || !confirm(`「${task.title}」を削除しますか？`)) return; db.tasks=db.tasks.filter(t=>String(t.id)!==String(id)); logAction('タスク削除', task.title); saveStoredData(); };
+    window.deleteTask = function (id) { if(!canEditEntity('tasks')){alert('タスクの編集権限がありません。');return;} const task=db.tasks.find(t=>String(t.id)===String(id)); if (task?.autoCriticalKey){alert('自動登録タスクは削除できません。完了に変更してください。');return;} if (!window.sesCanModify(task) || !confirm(`「${task.title}」を削除しますか？`)) return; db.tasks=db.tasks.filter(t=>String(t.id)!==String(id)); logAction('タスク削除', task.title); saveStoredData(); };
     window.renderTasks = function () {
         const body=document.getElementById('tasks-table-body'); if(!body || typeof db === 'undefined') return; ensureSchema();
-        const filter=document.getElementById('task-filter')?.value || 'all'; const tasks=[...db.tasks].sort((a,b)=>String(a.date||'').localeCompare(String(b.date||'')));
-        const visible=tasks.filter(t=>filter==='all'||(filter==='overdue'&&t.status!=='完了'&&t.date<today())||t.status===filter);
+        const filter=document.getElementById('task-filter')?.value || 'all'; const tasks=[...db.tasks].sort((a,b)=>(Number(b.priority==='CRITICAL')-Number(a.priority==='CRITICAL'))||String(a.date||'').localeCompare(String(b.date||'')));
+        const visible=tasks.filter(t=>filter==='all'||(filter==='critical'&&t.priority==='CRITICAL')||(filter==='overdue'&&t.status!=='完了'&&t.date<today())||t.status===filter);
         document.getElementById('task-count').textContent=`${visible.length}件`;
-        body.innerHTML=visible.map(t=>{const overdue=t.status!=='完了'&&t.date<today();return `<tr><td class="${overdue?'text-rose-400 font-bold':'text-slate-400'}">${safeText(t.date||'未設定')}${overdue?' <span class="text-[10px]">期限超過</span>':''}</td><td class="font-semibold">${safeText(t.title)}</td><td>${safeText(t.assignee||'未割当')}</td><td><span class="ext-pill ${t.priority==='HIGH'?'danger':t.priority==='LOW'?'muted':'warn'}">${t.priority==='HIGH'?'高':t.priority==='LOW'?'低':'通常'}</span></td><td><select ${window.sesCanModify(t)?'':'disabled'} class="ext-input min-w-24" onchange="updateTaskStatus('${String(t.id).replace(/'/g,'')}',this.value)" aria-label="タスク状態" data-task-id="${safeText(t.id)}"><option ${t.status==='未着手'?'selected':''}>未着手</option><option ${t.status==='対応中'?'selected':''}>対応中</option><option ${t.status==='完了'?'selected':''}>完了</option></select></td><td><button ${window.sesCanModify(t)?'':'hidden'} onclick="deleteTask('${String(t.id).replace(/'/g,'')}')" class="text-rose-400 hover:text-rose-300" title="削除"><i class="fa-solid fa-trash"></i></button></td></tr>`}).join('')||'<tr><td colspan="6" class="text-center text-slate-500 p-6">該当するタスクはありません。</td></tr>';
+        body.innerHTML=visible.map(t=>{const overdue=t.status!=='完了'&&t.date<today();return `<tr><td class="${overdue?'text-rose-400 font-bold':'text-slate-400'}">${safeText(t.date||'未設定')}${overdue?' <span class="text-[10px]">期限超過</span>':''}</td><td class="font-semibold">${safeText(t.title)}</td><td>${safeText(t.assignee||'未割当')}</td><td><span class="ext-pill ${['CRITICAL','HIGH'].includes(t.priority)?'danger':t.priority==='LOW'?'muted':'warn'}">${t.priority==='CRITICAL'?'最重要':t.priority==='HIGH'?'高':t.priority==='LOW'?'低':'通常'}</span></td><td><select ${window.sesCanModify(t)?'':'disabled'} class="ext-input min-w-24" onchange="updateTaskStatus('${String(t.id).replace(/'/g,'')}',this.value)" aria-label="タスク状態" data-task-id="${safeText(t.id)}"><option ${t.status==='未着手'?'selected':''}>未着手</option><option ${t.status==='対応中'?'selected':''}>対応中</option><option ${t.status==='完了'?'selected':''}>完了</option></select></td><td><button ${window.sesCanModify(t)?'':'hidden'} onclick="deleteTask('${String(t.id).replace(/'/g,'')}')" class="text-rose-400 hover:text-rose-300" title="削除"><i class="fa-solid fa-trash"></i></button></td></tr>`}).join('')||'<tr><td colspan="6" class="text-center text-slate-500 p-6">該当するタスクはありません。</td></tr>';
         body.querySelectorAll('select[data-task-id]').forEach(sel=>sel.onchange=()=>updateTaskStatus(sel.dataset.taskId,sel.value));
     };
     window.renderMatching = function () {
@@ -677,7 +728,7 @@
     window.deleteMember=function(id){if(!canEditEntity('members')){alert('エンジニアデータの編集権限がありません。');return;}const item=db.members.find(x=>x.id===id);if(item)logAction('エンジニア削除',item.name);if(typeof originalDeleteMember==='function')originalDeleteMember(id);};
     window.deleteInterview=function(id){if(!canEditEntity('interviews')){alert('面談データの編集権限がありません。');return;}const item=db.interviews.find(x=>x.id===id);if(item)logAction('面談削除',item.memberName+' / '+item.projectTitle);if(typeof originalDeleteInterview==='function')originalDeleteInterview(id);};
     function canEditEntity(entity){if(window.sesRestricted?.())return entity==='tasks';const role=currentSession?.role||'admin';if(role==='admin')return true;if(role==='sales')return ['clients','projects','members','interviews','tasks','merchandise'].includes(entity);if(role==='leader')return ['members','interviews','tasks'].includes(entity);return false;}
-    function allowedTabsForRole(role){const memberSupportTabs=['oneonones','feedback','meetings'];if(role==='admin')return ['dashboard','clients','projects','members','interviews','revenue','tasks','matching','spot','expenses','merchandise','grades','member-rates','reports','audit','current-assignments','chat','mypage','manual','accounts','fiscal-targets',...memberSupportTabs];if(role==='sales')return ['dashboard','clients','projects','members','interviews','revenue','tasks','matching','spot','expenses','merchandise','member-rates','reports','current-assignments','chat','mypage','manual','accounts','fiscal-targets',...memberSupportTabs];if(role==='leader')return ['dashboard','members','interviews','tasks','matching','reports','current-assignments','chat','mypage','manual','accounts','fiscal-targets',...memberSupportTabs];return ['dashboard','members','tasks','current-assignments','chat','mypage','manual','accounts','fiscal-targets',...memberSupportTabs];}
+    function allowedTabsForRole(role){const memberSupportTabs=['oneonones','feedback','meetings'];if(role==='admin')return [...operationTabs,'dashboard','clients','projects','members','interviews','revenue','tasks','matching','spot','expenses','merchandise','grades','member-rates','reports','audit','current-assignments','chat','mypage','manual','accounts','fiscal-targets',...memberSupportTabs];if(role==='sales')return [...operationTabs,'dashboard','clients','projects','members','interviews','revenue','tasks','matching','spot','expenses','merchandise','member-rates','reports','current-assignments','chat','mypage','manual','accounts','fiscal-targets',...memberSupportTabs];if(role==='leader')return ['operations-contracts','operations-meeting','dashboard','members','interviews','tasks','matching','reports','current-assignments','chat','mypage','manual','accounts','fiscal-targets',...memberSupportTabs];return ['dashboard','members','tasks','current-assignments','chat','mypage','manual','accounts','fiscal-targets',...memberSupportTabs];}
     function applyRolePermissions(){const role=currentSession?.role||'admin';document.querySelectorAll('.nav-item').forEach(a=>{const tab=a.id.replace('nav-','');a.style.display=allowedTabsForRole(role).includes(tab)?'flex':'none';});const accountsNav=document.getElementById('nav-accounts');if(accountsNav){accountsNav.classList.toggle('hidden',!window.isAccountOwner?.());accountsNav.style.setProperty('display',window.isAccountOwner?.()?'flex':'none','important');}const settingsNav=document.getElementById('nav-settings');if(settingsNav){settingsNav.classList.remove('hidden');settingsNav.style.setProperty('display','flex','important');}const logoutNav=document.getElementById('nav-logout');if(logoutNav){logoutNav.classList.remove('hidden');logoutNav.style.setProperty('display','flex','important');}const userBox=document.querySelector('#sidebar .p-3.border-t');if(userBox){const name=userBox.querySelector('.text-xs.font-semibold');const roleText=userBox.querySelector('p:last-child');if(name)name.textContent=currentSession?.name||'SES営業統括部';if(roleText)roleText.textContent=({admin:'管理者権限 (Admin)',sales:'営業権限 (Sales)',leader:'リーダー権限 (Leader)',employee:'一般社員権限 (Employee)'})[role]||role;}const userPanel=document.getElementById('user-management');if(userPanel)userPanel.style.setProperty('display','none','important');document.querySelectorAll('button[onclick="confirmResetData()"],button[onclick="openImportModal()"],button[onclick="exportDataJSON()"]').forEach(b=>b.style.display=role==='admin'?'':'none');}
     window.addDemoUser=function(){return;};
     window.toggleDemoUser=function(){return;};
@@ -733,7 +784,7 @@
       const ids=['dashboard','clients','projects','members','interviews','revenue','matching','tasks','reports','spot-jobs','expenses','merchandise','oneonones','feedback','meetings'];
       sidebar.querySelector('#nav-current-assignments')?.remove();
       const links=Array.from(sidebar.querySelectorAll('a.nav-item'));
-      const groupDefs=[['概要',['dashboard']],['営業・案件管理',['clients','projects','matching','interviews']],['メンバー管理',['members','member-rates','oneonones','feedback','meetings']],['売上・経費',['revenue','grades','spot','expenses','merchandise']],['業務支援',['tasks','reports']],['マイメニュー',['chat','mypage','manual','accounts','logout','settings']]];
+      const groupDefs=[['概要',['dashboard']],['営業・案件管理',['clients','projects','matching','interviews']],['メンバー管理',['members','member-rates','oneonones','feedback','meetings']],['売上・経費',['revenue','grades','spot','expenses','merchandise']],['業務支援',[...operationTabs,'tasks','reports']],['マイメニュー',['chat','mypage','manual','accounts','logout','settings']]];
       const linkMap={}; links.forEach(a=>{const id=(a.id||'').replace('nav-','');if(id)linkMap[id]=a});
       // Keep any existing non-link header; move only known menu links into accordion groups.
       sidebar.innerHTML='';

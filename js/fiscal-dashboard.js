@@ -158,7 +158,8 @@
     const range=document.getElementById('dashboard-fiscal-range');if(range)range.textContent=`${selectedYear}年11月〜${selectedYear+1}年10月`;
     const {totalRevenue,totalProfit,current}=calc(d);
     const target=getTargets(d)[selectedYear]||{};
-    const kpis={'target-revenue':target.revenue==null?'未設定':man(target.revenue),'target-profit':target.profit==null?'未設定':man(target.profit),'total-revenue':man(totalRevenue),'total-profit':man(totalProfit),'profit-rate':totalRevenue?`${(totalProfit/totalRevenue*100).toFixed(1)}%`:'0%','active':`${(d.members||[]).filter(m=>(m.currentStatus||m.status)==='稼働中').length}名`,'bench':`${(d.members||[]).filter(m=>['待機中','待机中'].includes(m.currentStatus||m.status)).length}名`,'month-revenue':man(current.revenue),'month-profit':man(current.profit)};
+    const achievement=(actual,goal)=>Number(goal)>0 ? `${(actual/Number(goal)*100).toFixed(1)}%` : '—（目標未設定・0）';
+    const kpis={'achievement-revenue':achievement(totalRevenue,target.revenue),'achievement-profit':achievement(totalProfit,target.profit),'target-revenue':target.revenue==null?'未設定':man(target.revenue),'target-profit':target.profit==null?'未設定':man(target.profit),'total-revenue':man(totalRevenue),'total-profit':man(totalProfit),'profit-rate':totalRevenue?`${(totalProfit/totalRevenue*100).toFixed(1)}%`:'0%','active':`${(d.members||[]).filter(m=>(m.currentStatus||m.status)==='稼働中').length}名`,'bench':`${(d.members||[]).filter(m=>['待機中','待机中'].includes(m.currentStatus||m.status)).length}名`,'month-revenue':man(current.revenue),'month-profit':man(current.profit)};
     Object.entries(kpis).forEach(([key,value])=>{const el=document.getElementById(`fy-kpi-${key}`);if(el)el.textContent=value;});
     const note=document.getElementById('fy-data-note');if(note)note.textContent='※社員の確定実績と登録済みスポット・物販・経費を集計しています。社員の未入力月は0とし、予定値では補完しません。';
     chart('fy-revenue-chart','売上',target.revenue||0,totalRevenue,'#ff35c5');

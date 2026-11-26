@@ -10,7 +10,7 @@
   "metadata": {
     "systemName": "SES_Core",
     "version": "3.2.12",
-    "exportedAt": "2026-11-26T02:40:25.825Z",
+    "exportedAt": "2026-11-26T06:05:09.068Z",
     "schemaVersion": "3.0.0",
     "clientProjectImport": {
       "sourceFile": "【仙台営業所】取引先・案件情報(2).xlsx",
@@ -454,7 +454,7 @@
       "type": "取引先",
       "contact": "阿部 昭典",
       "email": "",
-      "activeProjects": 0,
+      "activeProjects": 1,
       "status": "アクティブ",
       "meetingDate": "2025-03-10",
       "meetingRoute": "問い合せ＠仙台",
@@ -2341,7 +2341,10 @@
     {
       "contractEnd": "",
       "startDate": "2023-06-01",
-      "assignedMemberIds": [],
+      "assignedMemberIds": [
+        "MEM-103",
+        "MEM-104"
+      ],
       "id": "PRJ-001",
       "title": "保安協会システム改修",
       "clientId": "CLI-004",
@@ -2384,7 +2387,26 @@
         "次回アクション・備考": "参画中",
         "取引先担当者": "監物　一輝　様"
       },
-      "participants": [],
+      "participants": [
+        {
+          "memberId": "MEM-103",
+          "startDate": "2027-02-01",
+          "endDate": "",
+          "rateYen": 480000,
+          "allocationPercent": 100,
+          "history": [],
+          "tracked": true
+        },
+        {
+          "memberId": "MEM-104",
+          "startDate": "2027-04-01",
+          "endDate": "",
+          "rateYen": 500000,
+          "allocationPercent": 100,
+          "history": [],
+          "tracked": true
+        }
+      ],
       "projectType": "参画案件",
       "priceYen": 380000
     },
@@ -2860,6 +2882,37 @@
       "status": "参画中",
       "projectType": "参画案件",
       "participants": []
+    },
+    {
+      "contractEnd": "",
+      "startDate": "",
+      "assignedMemberIds": [
+        "MEM-104"
+      ],
+      "id": "PRJ-013",
+      "title": "Microsoft365導入・officeバージョン移行支援",
+      "clientId": "CLI-014",
+      "clientName": "株式会社モノクロ",
+      "price": 55,
+      "priceYen": 550000,
+      "skills": [
+        "Microsoft",
+        "オフィス"
+      ],
+      "location": "常駐(仙台)",
+      "status": "面談調整中",
+      "projectType": "共有案件",
+      "participants": [
+        {
+          "memberId": "MEM-104",
+          "startDate": "2026-12-14",
+          "endDate": "2027-03-31",
+          "rateYen": 500000,
+          "allocationPercent": 100,
+          "history": [],
+          "tracked": true
+        }
+      ]
     }
   ],
   "members": [
@@ -2921,7 +2974,7 @@
       "role": "リーダー",
       "skills": [],
       "exp": "3年9か月",
-      "rate": 41,
+      "rate": 42,
       "cost": 40.25,
       "available": "未登録",
       "status": "稼働中",
@@ -3199,7 +3252,7 @@
     },
     {
       "assignedProjectId": "PRJ-002",
-      "contractEnd": "",
+      "contractEnd": "2027-01-31",
       "id": "MEM-103",
       "name": "伊藤 快成",
       "type": "正社員",
@@ -3207,7 +3260,7 @@
       "role": "リーダー",
       "skills": [],
       "exp": "1年2か月",
-      "rate": 45,
+      "rate": 40,
       "cost": 36.35,
       "available": "未登録",
       "status": "稼働中",
@@ -3372,6 +3425,160 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "LOG-MWX5DROI-9M6I",
+      "at": "2026-11-26T06:04:29.154Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX5CO1F-R7NT",
+      "at": "2026-11-26T06:03:37.779Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX5CNXY-22RF",
+      "at": "2026-11-26T06:03:37.654Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX5412Q-LUPZ",
+      "at": "2026-11-26T05:56:54.770Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX53UY0-LB51",
+      "at": "2026-11-26T05:56:46.824Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX52GKI-XHSA",
+      "at": "2026-11-26T05:55:41.538Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX51PYS-ZQC0",
+      "at": "2026-11-26T05:55:07.060Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX50NCQ-EHX2",
+      "at": "2026-11-26T05:54:17.018Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX4ZHX4-QLKW",
+      "at": "2026-11-26T05:53:23.320Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX4Z7KJ-V94T",
+      "at": "2026-11-26T05:53:09.907Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX4Y0A1-NZLP",
+      "at": "2026-11-26T05:52:13.801Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX4VAD2-WYX2",
+      "at": "2026-11-26T05:50:06.902Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX4VA95-R8WA",
+      "at": "2026-11-26T05:50:06.761Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX4KXFK-SGER",
+      "at": "2026-11-26T05:42:03.584Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX4D572-BQ35",
+      "at": "2026-11-26T05:36:00.398Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX3YWAS-XMA4",
+      "at": "2026-11-26T05:24:55.684Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX3YFMR-QWDR",
+      "at": "2026-11-26T05:24:34.083Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX2Q2BV-QJJC",
+      "at": "2026-11-26T04:50:03.979Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX2KXYP-9T3K",
+      "at": "2026-11-26T04:46:05.041Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX1I5NN-O3BU",
+      "at": "2026-11-26T04:15:55.427Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX0O25E-DYIP",
+      "at": "2026-11-26T03:52:31.202Z",
+      "user": "admin",
+      "action": "データ保存・更新",
+      "detail": "業務データを保存しました"
+    },
+    {
+      "id": "LOG-MWX0O25C-VGGO",
+      "at": "2026-11-26T03:52:31.200Z",
+      "user": "admin",
+      "action": "経費削除",
+      "detail": "EXP-MWWXVGV6-UR7B"
+    },
     {
       "id": "LOG-MWWY29BU-24DX",
       "at": "2026-11-26T02:39:34.842Z",
@@ -5075,13 +5282,13 @@
     "MEM-104|2027-01": 55,
     "MEM-104|2027-02": 55,
     "MEM-104|2027-03": 55,
-    "MEM-104|2027-04": 55,
-    "MEM-104|2027-05": 55,
-    "MEM-104|2027-06": 55,
-    "MEM-104|2027-07": 55,
-    "MEM-104|2027-08": 55,
-    "MEM-104|2027-09": 55,
-    "MEM-104|2027-10": 55,
+    "MEM-104|2027-04": 50,
+    "MEM-104|2027-05": 50,
+    "MEM-104|2027-06": 50,
+    "MEM-104|2027-07": 50,
+    "MEM-104|2027-08": 50,
+    "MEM-104|2027-09": 50,
+    "MEM-104|2027-10": 50,
     "MEM-105|2027-04": 42,
     "MEM-105|2027-05": 42,
     "MEM-105|2027-06": 42,
@@ -5170,16 +5377,16 @@
     "MEM-120|2027-08": 40,
     "MEM-120|2027-09": 40,
     "MEM-120|2027-10": 40,
-    "MEM-109|2027-01": 45,
-    "MEM-109|2027-02": 45,
-    "MEM-109|2027-03": 45,
-    "MEM-109|2027-04": 45,
-    "MEM-109|2027-05": 45,
-    "MEM-109|2027-06": 45,
-    "MEM-109|2027-07": 45,
-    "MEM-109|2027-08": 45,
-    "MEM-109|2027-09": 45,
-    "MEM-109|2027-10": 45
+    "MEM-109|2027-01": 53,
+    "MEM-109|2027-02": 53,
+    "MEM-109|2027-03": 53,
+    "MEM-109|2027-04": 53,
+    "MEM-109|2027-05": 53,
+    "MEM-109|2027-06": 53,
+    "MEM-109|2027-07": 53,
+    "MEM-109|2027-08": 53,
+    "MEM-109|2027-09": 53,
+    "MEM-109|2027-10": 53
   },
   "spotJobs": [
     {
@@ -5226,14 +5433,6 @@
     {
       "id": "EXP-MWWXVGV6-CO7B",
       "date": "2026-11-13",
-      "category": "その他",
-      "amount": 0.6,
-      "memberId": "MEM-102",
-      "note": "帰社日のため"
-    },
-    {
-      "id": "EXP-MWWXVGV6-UR7B",
-      "date": "2026-12-13",
       "category": "その他",
       "amount": 0.6,
       "memberId": "MEM-102",
@@ -5489,17 +5688,17 @@
     "MEM-110|2027-09": 52,
     "MEM-110|2027-10": 52,
     "MEM-104|2026-11": 0,
-    "MEM-104|2026-12": 20,
+    "MEM-104|2026-12": 50,
     "MEM-104|2027-01": 55,
     "MEM-104|2027-02": 55,
     "MEM-104|2027-03": 55,
-    "MEM-104|2027-04": 55,
-    "MEM-104|2027-05": 55,
-    "MEM-104|2027-06": 55,
-    "MEM-104|2027-07": 55,
-    "MEM-104|2027-08": 55,
-    "MEM-104|2027-09": 55,
-    "MEM-104|2027-10": 55,
+    "MEM-104|2027-04": 50,
+    "MEM-104|2027-05": 50,
+    "MEM-104|2027-06": 50,
+    "MEM-104|2027-07": 50,
+    "MEM-104|2027-08": 50,
+    "MEM-104|2027-09": 50,
+    "MEM-104|2027-10": 50,
     "MEM-116|2026-11": 35,
     "MEM-116|2026-12": 35,
     "MEM-116|2027-01": 35,
@@ -5584,15 +5783,15 @@
     "MEM-118|2027-08": 38,
     "MEM-118|2027-09": 38,
     "MEM-118|2027-10": 38,
-    "MEM-103|2026-11": 45,
-    "MEM-103|2026-12": 45,
-    "MEM-103|2027-01": 45,
-    "MEM-103|2027-02": 45,
-    "MEM-103|2027-03": 45,
-    "MEM-103|2027-04": 45,
-    "MEM-103|2027-05": 45,
-    "MEM-103|2027-06": 45,
-    "MEM-103|2027-07": 45,
+    "MEM-103|2026-11": 40,
+    "MEM-103|2026-12": 40,
+    "MEM-103|2027-01": 40,
+    "MEM-103|2027-02": 48,
+    "MEM-103|2027-03": 48,
+    "MEM-103|2027-04": 48,
+    "MEM-103|2027-05": 48,
+    "MEM-103|2027-06": 48,
+    "MEM-103|2027-07": 48,
     "MEM-103|2027-08": 48,
     "MEM-103|2027-09": 48,
     "MEM-103|2027-10": 48,
@@ -5634,9 +5833,9 @@
     "MEM-120|2027-10": 40,
     "MEM-107|2026-11": 10,
     "MEM-107|2026-12": 10,
-    "MEM-107|2027-01": 35,
-    "MEM-107|2027-02": 35,
-    "MEM-107|2027-03": 35,
+    "MEM-107|2027-01": 40,
+    "MEM-107|2027-02": 40,
+    "MEM-107|2027-03": 40,
     "MEM-107|2027-04": 40,
     "MEM-107|2027-05": 40,
     "MEM-107|2027-06": 40,
@@ -6129,7 +6328,530 @@
     "MEM-107|2027-09": 0.987,
     "MEM-107|2027-10": 0.987
   },
-  "oneOnOnes": [],
+  "oneOnOnes": [
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0001",
+      "memberId": "MEM-114",
+      "memberName": "佐々木 翔平",
+      "date": "2026-11-11T10:00",
+      "interviewer": "山田 裕也",
+      "projectId": "PRJ-011",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 テスト観点の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 仙台市税システム運用保守の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "テスト観点の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。テスト観点の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0002",
+      "memberId": "MEM-109",
+      "memberName": "生天目 慧海",
+      "date": "2026-11-11T13:00",
+      "interviewer": "梶原 悠羽",
+      "projectId": "",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 技術学習の計画を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 案件提案準備の例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "技術学習の計画を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。技術学習の計画"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0003",
+      "memberId": "MEM-108",
+      "memberName": "梶原 悠羽",
+      "date": "2026-11-12T10:00",
+      "interviewer": "山田 裕也",
+      "projectId": "PRJ-006",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 進捗共有の改善を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 電力システム開発の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "進捗共有の改善を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。進捗共有の改善"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0004",
+      "memberId": "MEM-115",
+      "memberName": "古山 淳詞",
+      "date": "2026-11-12T13:00",
+      "interviewer": "佐々木 翔平",
+      "projectId": "PRJ-011",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 設計資料の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 仙台市税システム運用保守の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "設計資料の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。設計資料の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0005",
+      "memberId": "MEM-110",
+      "memberName": "内海 未奈子",
+      "date": "2026-11-13T10:00",
+      "interviewer": "梶原 悠羽",
+      "projectId": "PRJ-007",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 レビュー観点の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 データ案件の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "レビュー観点の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。レビュー観点の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0006",
+      "memberId": "MEM-104",
+      "memberName": "佐々木 七海",
+      "date": "2026-11-13T13:00",
+      "interviewer": "伊藤 快成",
+      "projectId": "",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 テスト観点の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 案件提案準備の例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "テスト観点の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。テスト観点の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0007",
+      "memberId": "MEM-116",
+      "memberName": "稲毛 遼河",
+      "date": "2026-11-14T10:00",
+      "interviewer": "佐々木 翔平",
+      "projectId": "PRJ-011",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 技術学習の計画を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 仙台市税システム運用保守の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "技術学習の計画を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。技術学習の計画"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0008",
+      "memberId": "MEM-111",
+      "memberName": "高橋 響哉",
+      "date": "2026-11-14T13:00",
+      "interviewer": "梶原 悠羽",
+      "projectId": "PRJ-008",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 進捗共有の改善を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 G-PDM運用の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "進捗共有の改善を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。進捗共有の改善"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0009",
+      "memberId": "MEM-112",
+      "memberName": "澤村 吏久",
+      "date": "2026-11-15T10:00",
+      "interviewer": "梶原 悠羽",
+      "projectId": "PRJ-009",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 設計資料の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 土木・施工現場Webアプリ改修の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "設計資料の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。設計資料の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0010",
+      "memberId": "MEM-117",
+      "memberName": "鹿又 翔二朗",
+      "date": "2026-11-15T13:00",
+      "interviewer": "佐々木 翔平",
+      "projectId": "PRJ-011",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 レビュー観点の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 仙台市税システム運用保守の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "レビュー観点の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。レビュー観点の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0011",
+      "memberId": "MEM-105",
+      "memberName": "小関 彩乃",
+      "date": "2026-11-16T10:00",
+      "interviewer": "伊藤 快成",
+      "projectId": "PRJ-003",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 テスト観点の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 RPA保守開発の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "テスト観点の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。テスト観点の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0012",
+      "memberId": "MEM-113",
+      "memberName": "正木 裕多竜",
+      "date": "2026-11-16T13:00",
+      "interviewer": "梶原 悠羽",
+      "projectId": "PRJ-010",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 技術学習の計画を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 自動車部品管理の開発運用保守の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "技術学習の計画を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。技術学習の計画"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0013",
+      "memberId": "MEM-118",
+      "memberName": "遠藤 新太",
+      "date": "2026-11-17T10:00",
+      "interviewer": "佐々木 翔平",
+      "projectId": "PRJ-011",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 進捗共有の改善を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 仙台市税システム運用保守の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "進捗共有の改善を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。進捗共有の改善"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0014",
+      "memberId": "MEM-103",
+      "memberName": "伊藤 快成",
+      "date": "2026-11-17T13:00",
+      "interviewer": "山田 裕也",
+      "projectId": "PRJ-002",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 設計資料の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 電力システム開発（テスト）の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "設計資料の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。設計資料の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0015",
+      "memberId": "MEM-119",
+      "memberName": "鈴木 裕斗",
+      "date": "2026-11-18T10:00",
+      "interviewer": "佐々木 翔平",
+      "projectId": "PRJ-012",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 レビュー観点の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 大量帳票の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "レビュー観点の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。レビュー観点の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0016",
+      "memberId": "MEM-106",
+      "memberName": "曽根 美咲",
+      "date": "2026-11-18T13:00",
+      "interviewer": "伊藤 快成",
+      "projectId": "PRJ-004",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 テスト観点の整理を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 NTTデータ維持保守の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "テスト観点の整理を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。テスト観点の整理"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0017",
+      "memberId": "MEM-120",
+      "memberName": "滝沢 陽",
+      "date": "2026-11-19T10:00",
+      "interviewer": "佐々木 翔平",
+      "projectId": "PRJ-011",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 技術学習の計画を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 仙台市税システム運用保守の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "技術学習の計画を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。技術学習の計画"
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "OO-0018",
+      "memberId": "MEM-107",
+      "memberName": "久保 奈美礼",
+      "date": "2026-11-19T13:00",
+      "interviewer": "伊藤 快成",
+      "projectId": "PRJ-005",
+      "status": "対応中",
+      "condition": "【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。",
+      "goalReview": "【サンプル・架空】 進捗共有の改善を次月の目標例とする。",
+      "projectSituation": "【サンプル・架空】 新幹線改修の状況確認例",
+      "issues": "確認事項の整理を行う例",
+      "projectQuestions": "作業範囲の確認例",
+      "companyQuestions": "社内手続きの確認例",
+      "shared": "次月の目標設定例",
+      "strengths": "成果共有の記載例",
+      "rootIssues": "課題整理の記載例",
+      "environment": "作業環境の確認例",
+      "career": "次工程の経験を広げる計画例",
+      "memberAction": "進捗共有の改善を進める例",
+      "managerAction": "進捗確認と支援の例",
+      "followUp": "次回面談で目標を確認する例",
+      "nextDate": "2026-12-15",
+      "monthlyReport": "【サンプル・架空】 月報記入例。進捗共有の改善"
+    }
+  ],
   "feedbacks": [],
   "merchandiseProducts": [],
   "merchandiseSales": [],
@@ -6371,7 +7093,1091 @@
     }
   ],
   "gradeMasterRevision": 2,
-  "customerMeetings": [],
+  "customerMeetings": [
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00001",
+      "date": "2026-11-19T10:00",
+      "clientId": "CLI-004",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-001",
+      "memberIds": [
+        "MEM-102"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-102",
+        "技術力評価": "4",
+        "業務遂行評価": "3",
+        "コミュニケーション評価": "4",
+        "勤怠評価": "3",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-102",
+          "技術力評価": "4",
+          "業務遂行評価": "3",
+          "コミュニケーション評価": "4",
+          "勤怠評価": "3",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00002",
+      "date": "2026-11-19T11:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-011",
+      "memberIds": [
+        "MEM-114"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-114",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-114",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00003",
+      "date": "2026-11-19T12:00",
+      "clientId": "",
+      "contact": "顧客未設定（評価未実施）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 待機中のため顧客評価なし。",
+      "requests": "【サンプル・架空】 顧客未設定",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "",
+      "memberIds": [
+        "MEM-109"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-109",
+        "技術力評価": "",
+        "業務遂行評価": "",
+        "コミュニケーション評価": "",
+        "勤怠評価": "",
+        "良かった点": "【サンプル・架空】 評価未実施",
+        "改善してほしい点": "【サンプル・架空】 対象外",
+        "顧客からの要望": "【サンプル・架空】 顧客未設定",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 案件提案準備"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-109",
+          "技術力評価": "",
+          "業務遂行評価": "",
+          "コミュニケーション評価": "",
+          "勤怠評価": "",
+          "良かった点": "【サンプル・架空】 評価未実施",
+          "改善してほしい点": "【サンプル・架空】 対象外",
+          "顧客からの要望": "【サンプル・架空】 顧客未設定",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 案件提案準備"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00004",
+      "date": "2026-11-19T13:00",
+      "clientId": "CLI-055",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-006",
+      "memberIds": [
+        "MEM-108"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-108",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-108",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00005",
+      "date": "2026-11-20T09:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-011",
+      "memberIds": [
+        "MEM-115"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-115",
+        "技術力評価": "4",
+        "業務遂行評価": "3",
+        "コミュニケーション評価": "4",
+        "勤怠評価": "3",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-115",
+          "技術力評価": "4",
+          "業務遂行評価": "3",
+          "コミュニケーション評価": "4",
+          "勤怠評価": "3",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00006",
+      "date": "2026-11-20T10:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-007",
+      "memberIds": [
+        "MEM-110"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-110",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-110",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00007",
+      "date": "2026-11-20T11:00",
+      "clientId": "",
+      "contact": "顧客未設定（評価未実施）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 待機中のため顧客評価なし。",
+      "requests": "【サンプル・架空】 顧客未設定",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "",
+      "memberIds": [
+        "MEM-104"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-104",
+        "技術力評価": "",
+        "業務遂行評価": "",
+        "コミュニケーション評価": "",
+        "勤怠評価": "",
+        "良かった点": "【サンプル・架空】 評価未実施",
+        "改善してほしい点": "【サンプル・架空】 対象外",
+        "顧客からの要望": "【サンプル・架空】 顧客未設定",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 案件提案準備"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-104",
+          "技術力評価": "",
+          "業務遂行評価": "",
+          "コミュニケーション評価": "",
+          "勤怠評価": "",
+          "良かった点": "【サンプル・架空】 評価未実施",
+          "改善してほしい点": "【サンプル・架空】 対象外",
+          "顧客からの要望": "【サンプル・架空】 顧客未設定",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 案件提案準備"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00008",
+      "date": "2026-11-20T12:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-011",
+      "memberIds": [
+        "MEM-116"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-116",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-116",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00009",
+      "date": "2026-11-20T13:00",
+      "clientId": "CLI-006",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-008",
+      "memberIds": [
+        "MEM-111"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-111",
+        "技術力評価": "4",
+        "業務遂行評価": "3",
+        "コミュニケーション評価": "4",
+        "勤怠評価": "3",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-111",
+          "技術力評価": "4",
+          "業務遂行評価": "3",
+          "コミュニケーション評価": "4",
+          "勤怠評価": "3",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00010",
+      "date": "2026-11-21T09:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-009",
+      "memberIds": [
+        "MEM-112"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-112",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-112",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00011",
+      "date": "2026-11-21T10:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-011",
+      "memberIds": [
+        "MEM-117"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-117",
+        "技術力評価": "4",
+        "業務遂行評価": "3",
+        "コミュニケーション評価": "4",
+        "勤怠評価": "3",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-117",
+          "技術力評価": "4",
+          "業務遂行評価": "3",
+          "コミュニケーション評価": "4",
+          "勤怠評価": "3",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00012",
+      "date": "2026-11-21T11:00",
+      "clientId": "CLI-072",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-003",
+      "memberIds": [
+        "MEM-105"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-105",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-105",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00013",
+      "date": "2026-11-21T12:00",
+      "clientId": "CLI-006",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-010",
+      "memberIds": [
+        "MEM-113"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-113",
+        "技術力評価": "4",
+        "業務遂行評価": "3",
+        "コミュニケーション評価": "4",
+        "勤怠評価": "3",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-113",
+          "技術力評価": "4",
+          "業務遂行評価": "3",
+          "コミュニケーション評価": "4",
+          "勤怠評価": "3",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00014",
+      "date": "2026-11-21T13:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-011",
+      "memberIds": [
+        "MEM-118"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-118",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-118",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00015",
+      "date": "2026-11-22T09:00",
+      "clientId": "CLI-042",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-002",
+      "memberIds": [
+        "MEM-103"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-103",
+        "技術力評価": "4",
+        "業務遂行評価": "3",
+        "コミュニケーション評価": "4",
+        "勤怠評価": "3",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-103",
+          "技術力評価": "4",
+          "業務遂行評価": "3",
+          "コミュニケーション評価": "4",
+          "勤怠評価": "3",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00016",
+      "date": "2026-11-22T10:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-012",
+      "memberIds": [
+        "MEM-119"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-119",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-119",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00017",
+      "date": "2026-11-22T11:00",
+      "clientId": "CLI-004",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-004",
+      "memberIds": [
+        "MEM-106"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-106",
+        "技術力評価": "4",
+        "業務遂行評価": "3",
+        "コミュニケーション評価": "4",
+        "勤怠評価": "3",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-106",
+          "技術力評価": "4",
+          "業務遂行評価": "3",
+          "コミュニケーション評価": "4",
+          "勤怠評価": "3",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00018",
+      "date": "2026-11-22T12:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-011",
+      "memberIds": [
+        "MEM-120"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-120",
+        "技術力評価": "3",
+        "業務遂行評価": "4",
+        "コミュニケーション評価": "3",
+        "勤怠評価": "4",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-120",
+          "技術力評価": "3",
+          "業務遂行評価": "4",
+          "コミュニケーション評価": "3",
+          "勤怠評価": "4",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    },
+    {
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "createdBy": "admin",
+      "sample": true,
+      "id": "MTG-00019",
+      "date": "2026-11-22T13:00",
+      "clientId": "CLI-009",
+      "contact": "サンプル担当者（架空）",
+      "attendees": [
+        "MEM-101"
+      ],
+      "type": "メンバーフィードバック",
+      "purposes": [
+        "メンバー評価確認"
+      ],
+      "method": "Teams",
+      "location": "",
+      "purposeDetail": "【サンプル・架空】 操作確認用",
+      "content": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。",
+      "requests": "【サンプル・架空】 次月の作業範囲確認例",
+      "decisions": "次回確認例",
+      "issues": "",
+      "nextDate": "",
+      "projectId": "PRJ-005",
+      "memberIds": [
+        "MEM-107"
+      ],
+      "notes": "【サンプル・架空】",
+      "extra": {
+        "対象メンバー": "MEM-107",
+        "技術力評価": "4",
+        "業務遂行評価": "3",
+        "コミュニケーション評価": "4",
+        "勤怠評価": "3",
+        "良かった点": "【サンプル・架空】 作業報告の記載例",
+        "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+        "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+        "契約継続意向": "未確認",
+        "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+      },
+      "extraByType": {
+        "メンバーフィードバック": {
+          "対象メンバー": "MEM-107",
+          "技術力評価": "4",
+          "業務遂行評価": "3",
+          "コミュニケーション評価": "4",
+          "勤怠評価": "3",
+          "良かった点": "【サンプル・架空】 作業報告の記載例",
+          "改善してほしい点": "【サンプル・架空】 確認事項を整理する例",
+          "顧客からの要望": "【サンプル・架空】 次月の作業範囲確認例",
+          "契約継続意向": "未確認",
+          "今後のフォロー方針": "【サンプル・架空】 次回の状況確認"
+        }
+      },
+      "history": []
+    }
+  ],
   "customerMeetingActions": [],
   "customerMeetingMasters": {
     "methods": [
@@ -6641,7 +8447,7 @@
   ],
   "memberRates15Seeded": true,
   "memberGrades15Linked": true,
-  "projectIdSequence": 12,
+  "projectIdSequence": 13,
   "clientIdSequence": 72,
   "gradePeriods": {
     "2026": {
@@ -6924,7 +8730,2752 @@
       "changedAt": "2026-11-26T01:58:16.458Z",
       "changedBy": "admin"
     }
-  ]
+  ],
+  "regularMeetings": [
+    {
+      "id": "RM-0001",
+      "sample": true,
+      "createdBy": "admin",
+      "createdAt": "2026-11-26T00:00:00Z",
+      "updatedAt": "2026-11-26T00:00:00Z",
+      "title": "【サンプル・架空】 仙台営業所 リーダー定例会",
+      "date": "2026-11-26T13:00",
+      "meetingMonth": "2026-11",
+      "place": "仙台営業所",
+      "term": "15期",
+      "participants": "川合 要、山田 裕也、佐々木 翔平、梶原 悠羽、伊藤 快成",
+      "recorder": "山田 裕也",
+      "status": "対応中",
+      "carryover": "【サンプル・架空】 初回開催例",
+      "agendaRows": {
+        "member": [
+          {
+            "sourceId": "OO-0001",
+            "sourceDate": "2026-11-11T10:00",
+            "memberId": "MEM-114",
+            "subject": "佐々木 翔平",
+            "topic": "仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 仙台市税システム運用保守の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "山田 裕也",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0002",
+            "sourceDate": "2026-11-11T13:00",
+            "memberId": "MEM-109",
+            "subject": "生天目 慧海",
+            "topic": "案件未設定",
+            "summary": "【サンプル・架空】 案件提案準備の例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "梶原 悠羽",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0003",
+            "sourceDate": "2026-11-12T10:00",
+            "memberId": "MEM-108",
+            "subject": "梶原 悠羽",
+            "topic": "電力システム開発",
+            "summary": "【サンプル・架空】 電力システム開発の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "山田 裕也",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0004",
+            "sourceDate": "2026-11-12T13:00",
+            "memberId": "MEM-115",
+            "subject": "古山 淳詞",
+            "topic": "仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 仙台市税システム運用保守の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "佐々木 翔平",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0005",
+            "sourceDate": "2026-11-13T10:00",
+            "memberId": "MEM-110",
+            "subject": "内海 未奈子",
+            "topic": "データ案件",
+            "summary": "【サンプル・架空】 データ案件の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "梶原 悠羽",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0006",
+            "sourceDate": "2026-11-13T13:00",
+            "memberId": "MEM-104",
+            "subject": "佐々木 七海",
+            "topic": "案件未設定",
+            "summary": "【サンプル・架空】 案件提案準備の例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "伊藤 快成",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0007",
+            "sourceDate": "2026-11-14T10:00",
+            "memberId": "MEM-116",
+            "subject": "稲毛 遼河",
+            "topic": "仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 仙台市税システム運用保守の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "佐々木 翔平",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0008",
+            "sourceDate": "2026-11-14T13:00",
+            "memberId": "MEM-111",
+            "subject": "高橋 響哉",
+            "topic": "G-PDM運用",
+            "summary": "【サンプル・架空】 G-PDM運用の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "梶原 悠羽",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0009",
+            "sourceDate": "2026-11-15T10:00",
+            "memberId": "MEM-112",
+            "subject": "澤村 吏久",
+            "topic": "土木・施工現場Webアプリ改修",
+            "summary": "【サンプル・架空】 土木・施工現場Webアプリ改修の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "梶原 悠羽",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0010",
+            "sourceDate": "2026-11-15T13:00",
+            "memberId": "MEM-117",
+            "subject": "鹿又 翔二朗",
+            "topic": "仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 仙台市税システム運用保守の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "佐々木 翔平",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0011",
+            "sourceDate": "2026-11-16T10:00",
+            "memberId": "MEM-105",
+            "subject": "小関 彩乃",
+            "topic": "RPA保守開発",
+            "summary": "【サンプル・架空】 RPA保守開発の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "伊藤 快成",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0012",
+            "sourceDate": "2026-11-16T13:00",
+            "memberId": "MEM-113",
+            "subject": "正木 裕多竜",
+            "topic": "自動車部品管理の開発運用保守",
+            "summary": "【サンプル・架空】 自動車部品管理の開発運用保守の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "梶原 悠羽",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0013",
+            "sourceDate": "2026-11-17T10:00",
+            "memberId": "MEM-118",
+            "subject": "遠藤 新太",
+            "topic": "仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 仙台市税システム運用保守の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "佐々木 翔平",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0014",
+            "sourceDate": "2026-11-17T13:00",
+            "memberId": "MEM-103",
+            "subject": "伊藤 快成",
+            "topic": "電力システム開発（テスト）",
+            "summary": "【サンプル・架空】 電力システム開発（テスト）の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "山田 裕也",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0015",
+            "sourceDate": "2026-11-18T10:00",
+            "memberId": "MEM-119",
+            "subject": "鈴木 裕斗",
+            "topic": "大量帳票",
+            "summary": "【サンプル・架空】 大量帳票の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "佐々木 翔平",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0016",
+            "sourceDate": "2026-11-18T13:00",
+            "memberId": "MEM-106",
+            "subject": "曽根 美咲",
+            "topic": "NTTデータ維持保守",
+            "summary": "【サンプル・架空】 NTTデータ維持保守の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "伊藤 快成",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0017",
+            "sourceDate": "2026-11-19T10:00",
+            "memberId": "MEM-120",
+            "subject": "滝沢 陽",
+            "topic": "仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 仙台市税システム運用保守の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "佐々木 翔平",
+            "due": "2026-12-15",
+            "status": "対応中"
+          },
+          {
+            "sourceId": "OO-0018",
+            "sourceDate": "2026-11-19T13:00",
+            "memberId": "MEM-107",
+            "subject": "久保 奈美礼",
+            "topic": "新幹線改修",
+            "summary": "【サンプル・架空】 新幹線改修の状況確認例\n【サンプル・架空】 面談練習用。実際の健康状態・評価ではありません。\n次工程の経験を広げる計画例\n進捗確認と支援の例\n次回面談で目標を確認する例",
+            "evaluation": "確認事項の整理を行う例",
+            "decision": "【サンプル・架空】 次月の目標を確認する。",
+            "owner": "伊藤 快成",
+            "due": "2026-12-15",
+            "status": "対応中"
+          }
+        ],
+        "feedback": [
+          {
+            "sourceId": "MTG-00001",
+            "sourceDate": "2026-11-19T10:00",
+            "subject": "山田 裕也",
+            "topic": "株式会社エヌエスシー(NSC) / 保安協会システム改修",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：4\n業務遂行評価：3\nコミュニケーション評価：4\n勤怠評価：3\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00002",
+            "sourceDate": "2026-11-19T11:00",
+            "subject": "佐々木 翔平",
+            "topic": "株式会社ビッツ / 仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00003",
+            "sourceDate": "2026-11-19T12:00",
+            "subject": "生天目 慧海",
+            "topic": "案件未設定",
+            "summary": "【サンプル・架空】 待機中のため顧客評価なし。\n【サンプル・架空】 評価未実施",
+            "evaluation": "良かった点：【サンプル・架空】 評価未実施\n改善してほしい点：【サンプル・架空】 対象外\n顧客からの要望：【サンプル・架空】 顧客未設定\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 案件提案準備",
+            "decision": "【サンプル・架空】 案件提案状況を確認する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00004",
+            "sourceDate": "2026-11-19T13:00",
+            "subject": "梶原 悠羽",
+            "topic": "株式会社クラウドスミス / 電力システム開発",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00005",
+            "sourceDate": "2026-11-20T09:00",
+            "subject": "古山 淳詞",
+            "topic": "株式会社ビッツ / 仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：4\n業務遂行評価：3\nコミュニケーション評価：4\n勤怠評価：3\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00006",
+            "sourceDate": "2026-11-20T10:00",
+            "subject": "内海 未奈子",
+            "topic": "株式会社ビッツ / データ案件",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00007",
+            "sourceDate": "2026-11-20T11:00",
+            "subject": "佐々木 七海",
+            "topic": "案件未設定",
+            "summary": "【サンプル・架空】 待機中のため顧客評価なし。\n【サンプル・架空】 評価未実施",
+            "evaluation": "良かった点：【サンプル・架空】 評価未実施\n改善してほしい点：【サンプル・架空】 対象外\n顧客からの要望：【サンプル・架空】 顧客未設定\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 案件提案準備",
+            "decision": "【サンプル・架空】 案件提案状況を確認する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00008",
+            "sourceDate": "2026-11-20T12:00",
+            "subject": "稲毛 遼河",
+            "topic": "株式会社ビッツ / 仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00009",
+            "sourceDate": "2026-11-20T13:00",
+            "subject": "高橋 響哉",
+            "topic": "アルファーテクノロジー株式会社 / G-PDM運用",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：4\n業務遂行評価：3\nコミュニケーション評価：4\n勤怠評価：3\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00010",
+            "sourceDate": "2026-11-21T09:00",
+            "subject": "澤村 吏久",
+            "topic": "株式会社ビッツ / 土木・施工現場Webアプリ改修",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00011",
+            "sourceDate": "2026-11-21T10:00",
+            "subject": "鹿又 翔二朗",
+            "topic": "株式会社ビッツ / 仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：4\n業務遂行評価：3\nコミュニケーション評価：4\n勤怠評価：3\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00012",
+            "sourceDate": "2026-11-21T11:00",
+            "subject": "小関 彩乃",
+            "topic": "株式会社テレコムリサーチ / RPA保守開発",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00013",
+            "sourceDate": "2026-11-21T12:00",
+            "subject": "正木 裕多竜",
+            "topic": "アルファーテクノロジー株式会社 / 自動車部品管理の開発運用保守",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：4\n業務遂行評価：3\nコミュニケーション評価：4\n勤怠評価：3\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00014",
+            "sourceDate": "2026-11-21T13:00",
+            "subject": "遠藤 新太",
+            "topic": "株式会社ビッツ / 仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00015",
+            "sourceDate": "2026-11-22T09:00",
+            "subject": "伊藤 快成",
+            "topic": "株式会社ソフトウェア・ビーンズ / 電力システム開発（テスト）",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：4\n業務遂行評価：3\nコミュニケーション評価：4\n勤怠評価：3\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00016",
+            "sourceDate": "2026-11-22T10:00",
+            "subject": "鈴木 裕斗",
+            "topic": "株式会社ビッツ / 大量帳票",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00017",
+            "sourceDate": "2026-11-22T11:00",
+            "subject": "曽根 美咲",
+            "topic": "株式会社エヌエスシー(NSC) / NTTデータ維持保守",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：4\n業務遂行評価：3\nコミュニケーション評価：4\n勤怠評価：3\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00018",
+            "sourceDate": "2026-11-22T12:00",
+            "subject": "滝沢 陽",
+            "topic": "株式会社ビッツ / 仙台市税システム運用保守",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：3\n業務遂行評価：4\nコミュニケーション評価：3\n勤怠評価：4\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          },
+          {
+            "sourceId": "MTG-00019",
+            "sourceDate": "2026-11-22T13:00",
+            "subject": "久保 奈美礼",
+            "topic": "株式会社ビッツ / 新幹線改修",
+            "summary": "【サンプル・架空】 顧客評価の入力例。実際の評価ではありません。\n【サンプル・架空】 作業報告の記載例",
+            "evaluation": "技術力評価：4\n業務遂行評価：3\nコミュニケーション評価：4\n勤怠評価：3\n良かった点：【サンプル・架空】 作業報告の記載例\n改善してほしい点：【サンプル・架空】 確認事項を整理する例\n顧客からの要望：【サンプル・架空】 次月の作業範囲確認例\n契約継続意向：未確認\n今後のフォロー方針：【サンプル・架空】 次回の状況確認",
+            "decision": "【サンプル・架空】 次回の評価確認を予定する。",
+            "owner": "川合 要",
+            "due": "2026-12-15",
+            "status": "未対応"
+          }
+        ],
+        "leader": [
+          {
+            "subject": "運用統一",
+            "topic": "面談記録の統一",
+            "summary": "【サンプル・架空】 月次面談の入力例を確認",
+            "evaluation": "記載項目の統一",
+            "decision": "次月も同じ形式で記録する例",
+            "owner": "山田 裕也",
+            "due": "2026-12-15",
+            "status": "対応中"
+          }
+        ],
+        "office": [
+          {
+            "subject": "人材育成",
+            "topic": "次月の育成方針",
+            "summary": "【サンプル・架空】 学習目標の確認例",
+            "evaluation": "進捗確認方法の整理",
+            "decision": "次回定例会で確認する例",
+            "owner": "山田 裕也",
+            "due": "2026-12-18",
+            "status": "未対応"
+          }
+        ]
+      },
+      "decisionRows": [
+        {
+          "category": "次回確認",
+          "topic": "面談・顧客評価のフォロー",
+          "decision": "【サンプル・架空】 各担当者が次月の状況を確認する。",
+          "notes": "操作確認用",
+          "priority": "中",
+          "owner": "山田 裕也",
+          "due": "2026-12-18",
+          "status": "未対応"
+        }
+      ],
+      "nextDate": "2026-12-18",
+      "nextFocus": "【サンプル・架空】 次月の進捗確認"
+    }
+  ],
+  "financeClosings": {
+    "2026-11": {
+      "closed": false,
+      "expensesChecked": false,
+      "snapshot": {
+        "people": [
+          {
+            "id": "MEM-101",
+            "name": "川合 要",
+            "plan": 0,
+            "active": true,
+            "missing": false,
+            "sales": 0,
+            "cost": 363500,
+            "travel": 18310
+          },
+          {
+            "id": "MEM-102",
+            "name": "山田 裕也",
+            "plan": 510000,
+            "active": true,
+            "missing": false,
+            "sales": 510000,
+            "cost": 496500,
+            "travel": 9870
+          },
+          {
+            "id": "MEM-114",
+            "name": "佐々木 翔平",
+            "plan": 420000,
+            "active": true,
+            "missing": false,
+            "sales": 420000,
+            "cost": 402500,
+            "travel": 11510
+          },
+          {
+            "id": "MEM-109",
+            "name": "生天目 慧海",
+            "plan": 0,
+            "active": false,
+            "missing": false,
+            "sales": 0,
+            "cost": 363500,
+            "travel": 12650
+          },
+          {
+            "id": "MEM-108",
+            "name": "梶原 悠羽",
+            "plan": 500000,
+            "active": true,
+            "missing": false,
+            "sales": 500000,
+            "cost": 363500,
+            "travel": 9870
+          },
+          {
+            "id": "MEM-115",
+            "name": "古山 淳詞",
+            "plan": 430000,
+            "active": true,
+            "missing": false,
+            "sales": 430000,
+            "cost": 363500,
+            "travel": 17800
+          },
+          {
+            "id": "MEM-110",
+            "name": "内海 未奈子",
+            "plan": 480000,
+            "active": true,
+            "missing": false,
+            "sales": 480000,
+            "cost": 363500,
+            "travel": 13120
+          },
+          {
+            "id": "MEM-104",
+            "name": "佐々木 七海",
+            "plan": 0,
+            "active": false,
+            "missing": false,
+            "sales": 0,
+            "cost": 331000,
+            "travel": 9870
+          },
+          {
+            "id": "MEM-116",
+            "name": "稲毛 遼河",
+            "plan": 350000,
+            "active": true,
+            "missing": false,
+            "sales": 350000,
+            "cost": 331000,
+            "travel": 15710
+          },
+          {
+            "id": "MEM-111",
+            "name": "高橋 響哉",
+            "plan": 370000,
+            "active": true,
+            "missing": false,
+            "sales": 370000,
+            "cost": 331000,
+            "travel": 9870
+          },
+          {
+            "id": "MEM-112",
+            "name": "澤村 吏久",
+            "plan": 400000,
+            "active": true,
+            "missing": false,
+            "sales": 400000,
+            "cost": 331000,
+            "travel": 9870
+          },
+          {
+            "id": "MEM-117",
+            "name": "鹿又 翔二朗",
+            "plan": 400000,
+            "active": true,
+            "missing": false,
+            "sales": 400000,
+            "cost": 331000,
+            "travel": 16610
+          },
+          {
+            "id": "MEM-105",
+            "name": "小関 彩乃",
+            "plan": 350000,
+            "active": true,
+            "missing": false,
+            "sales": 350000,
+            "cost": 331000,
+            "travel": 16060
+          },
+          {
+            "id": "MEM-113",
+            "name": "正木 裕多竜",
+            "plan": 350000,
+            "active": true,
+            "missing": false,
+            "sales": 350000,
+            "cost": 331000,
+            "travel": 7840
+          },
+          {
+            "id": "MEM-118",
+            "name": "遠藤 新太",
+            "plan": 350000,
+            "active": true,
+            "missing": false,
+            "sales": 350000,
+            "cost": 331000,
+            "travel": 17750
+          },
+          {
+            "id": "MEM-103",
+            "name": "伊藤 快成",
+            "plan": 450000,
+            "active": true,
+            "missing": false,
+            "sales": 450000,
+            "cost": 363500,
+            "travel": 11510
+          },
+          {
+            "id": "MEM-119",
+            "name": "鈴木 裕斗",
+            "plan": 380000,
+            "active": true,
+            "missing": false,
+            "sales": 380000,
+            "cost": 331000,
+            "travel": 17400
+          },
+          {
+            "id": "MEM-106",
+            "name": "曽根 美咲",
+            "plan": 400000,
+            "active": true,
+            "missing": false,
+            "sales": 400000,
+            "cost": 300000,
+            "travel": 14780
+          },
+          {
+            "id": "MEM-120",
+            "name": "滝沢 陽",
+            "plan": 360000,
+            "active": true,
+            "missing": false,
+            "sales": 360000,
+            "cost": 300000,
+            "travel": 17400
+          },
+          {
+            "id": "MEM-107",
+            "name": "久保 奈美礼",
+            "plan": 100000,
+            "active": true,
+            "missing": false,
+            "sales": 100000,
+            "cost": 331000,
+            "travel": 9870
+          }
+        ],
+        "items": [
+          {
+            "type": "expense",
+            "id": "EXP-MWWXVGV6-CO7B",
+            "memberId": "MEM-102",
+            "expense": 6000
+          },
+          {
+            "type": "expense",
+            "id": "EXP-MWWY29BT-3AEL",
+            "memberId": "MEM-108",
+            "expense": 50000
+          }
+        ],
+        "projects": [
+          {
+            "id": "",
+            "name": "案件未配賦",
+            "sales": 0,
+            "cost": 1058000,
+            "travel": 40830,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-001",
+            "name": "保安協会システム改修",
+            "sales": 510000,
+            "cost": 496500,
+            "travel": 9870,
+            "expense": 6000
+          },
+          {
+            "id": "PRJ-011",
+            "name": "仙台市税システム運用保守",
+            "sales": 2310000,
+            "cost": 2059000,
+            "travel": 96780,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-006",
+            "name": "電力システム開発",
+            "sales": 500000,
+            "cost": 363500,
+            "travel": 9870,
+            "expense": 50000
+          },
+          {
+            "id": "PRJ-007",
+            "name": "データ案件",
+            "sales": 480000,
+            "cost": 363500,
+            "travel": 13120,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-008",
+            "name": "G-PDM運用",
+            "sales": 370000,
+            "cost": 331000,
+            "travel": 9870,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-009",
+            "name": "土木・施工現場Webアプリ改修",
+            "sales": 400000,
+            "cost": 331000,
+            "travel": 9870,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-003",
+            "name": "RPA保守開発",
+            "sales": 350000,
+            "cost": 331000,
+            "travel": 16060,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-010",
+            "name": "自動車部品管理の開発運用保守",
+            "sales": 350000,
+            "cost": 331000,
+            "travel": 7840,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-002",
+            "name": "電力システム開発（テスト）",
+            "sales": 450000,
+            "cost": 363500,
+            "travel": 11510,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-012",
+            "name": "大量帳票",
+            "sales": 380000,
+            "cost": 331000,
+            "travel": 17400,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-004",
+            "name": "NTTデータ維持保守",
+            "sales": 400000,
+            "cost": 300000,
+            "travel": 14780,
+            "expense": 0
+          },
+          {
+            "id": "PRJ-005",
+            "name": "新幹線改修",
+            "sales": 100000,
+            "cost": 331000,
+            "travel": 9870,
+            "expense": 0
+          }
+        ]
+      },
+      "history": [
+        {
+          "at": "2026-11-26T04:46:05.041Z",
+          "by": "admin",
+          "action": "締め",
+          "note": "メモ",
+          "snapshot": {
+            "people": [
+              {
+                "id": "MEM-101",
+                "name": "川合 要",
+                "plan": 0,
+                "active": true,
+                "missing": false,
+                "sales": 0,
+                "cost": 363500,
+                "travel": 18310
+              },
+              {
+                "id": "MEM-102",
+                "name": "山田 裕也",
+                "plan": 510000,
+                "active": true,
+                "missing": false,
+                "sales": 510000,
+                "cost": 496500,
+                "travel": 9870
+              },
+              {
+                "id": "MEM-114",
+                "name": "佐々木 翔平",
+                "plan": 420000,
+                "active": true,
+                "missing": false,
+                "sales": 420000,
+                "cost": 402500,
+                "travel": 11510
+              },
+              {
+                "id": "MEM-109",
+                "name": "生天目 慧海",
+                "plan": 0,
+                "active": false,
+                "missing": false,
+                "sales": 0,
+                "cost": 363500,
+                "travel": 12650
+              },
+              {
+                "id": "MEM-108",
+                "name": "梶原 悠羽",
+                "plan": 500000,
+                "active": true,
+                "missing": false,
+                "sales": 500000,
+                "cost": 363500,
+                "travel": 9870
+              },
+              {
+                "id": "MEM-115",
+                "name": "古山 淳詞",
+                "plan": 430000,
+                "active": true,
+                "missing": false,
+                "sales": 430000,
+                "cost": 363500,
+                "travel": 17800
+              },
+              {
+                "id": "MEM-110",
+                "name": "内海 未奈子",
+                "plan": 480000,
+                "active": true,
+                "missing": false,
+                "sales": 480000,
+                "cost": 363500,
+                "travel": 13120
+              },
+              {
+                "id": "MEM-104",
+                "name": "佐々木 七海",
+                "plan": 0,
+                "active": false,
+                "missing": false,
+                "sales": 0,
+                "cost": 331000,
+                "travel": 9870
+              },
+              {
+                "id": "MEM-116",
+                "name": "稲毛 遼河",
+                "plan": 350000,
+                "active": true,
+                "missing": false,
+                "sales": 350000,
+                "cost": 331000,
+                "travel": 15710
+              },
+              {
+                "id": "MEM-111",
+                "name": "高橋 響哉",
+                "plan": 370000,
+                "active": true,
+                "missing": false,
+                "sales": 370000,
+                "cost": 331000,
+                "travel": 9870
+              },
+              {
+                "id": "MEM-112",
+                "name": "澤村 吏久",
+                "plan": 400000,
+                "active": true,
+                "missing": false,
+                "sales": 400000,
+                "cost": 331000,
+                "travel": 9870
+              },
+              {
+                "id": "MEM-117",
+                "name": "鹿又 翔二朗",
+                "plan": 400000,
+                "active": true,
+                "missing": false,
+                "sales": 400000,
+                "cost": 331000,
+                "travel": 16610
+              },
+              {
+                "id": "MEM-105",
+                "name": "小関 彩乃",
+                "plan": 350000,
+                "active": true,
+                "missing": false,
+                "sales": 350000,
+                "cost": 331000,
+                "travel": 16060
+              },
+              {
+                "id": "MEM-113",
+                "name": "正木 裕多竜",
+                "plan": 350000,
+                "active": true,
+                "missing": false,
+                "sales": 350000,
+                "cost": 331000,
+                "travel": 7840
+              },
+              {
+                "id": "MEM-118",
+                "name": "遠藤 新太",
+                "plan": 350000,
+                "active": true,
+                "missing": false,
+                "sales": 350000,
+                "cost": 331000,
+                "travel": 17750
+              },
+              {
+                "id": "MEM-103",
+                "name": "伊藤 快成",
+                "plan": 450000,
+                "active": true,
+                "missing": false,
+                "sales": 450000,
+                "cost": 363500,
+                "travel": 11510
+              },
+              {
+                "id": "MEM-119",
+                "name": "鈴木 裕斗",
+                "plan": 380000,
+                "active": true,
+                "missing": false,
+                "sales": 380000,
+                "cost": 331000,
+                "travel": 17400
+              },
+              {
+                "id": "MEM-106",
+                "name": "曽根 美咲",
+                "plan": 400000,
+                "active": true,
+                "missing": false,
+                "sales": 400000,
+                "cost": 300000,
+                "travel": 14780
+              },
+              {
+                "id": "MEM-120",
+                "name": "滝沢 陽",
+                "plan": 360000,
+                "active": true,
+                "missing": false,
+                "sales": 360000,
+                "cost": 300000,
+                "travel": 17400
+              },
+              {
+                "id": "MEM-107",
+                "name": "久保 奈美礼",
+                "plan": 100000,
+                "active": true,
+                "missing": false,
+                "sales": 100000,
+                "cost": 331000,
+                "travel": 9870
+              }
+            ],
+            "items": [
+              {
+                "type": "expense",
+                "id": "EXP-MWWXVGV6-CO7B",
+                "memberId": "MEM-102",
+                "expense": 6000
+              },
+              {
+                "type": "expense",
+                "id": "EXP-MWWY29BT-3AEL",
+                "memberId": "MEM-108",
+                "expense": 50000
+              }
+            ],
+            "projects": [
+              {
+                "id": "",
+                "name": "案件未配賦",
+                "sales": 0,
+                "cost": 1058000,
+                "travel": 40830,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-001",
+                "name": "保安協会システム改修",
+                "sales": 510000,
+                "cost": 496500,
+                "travel": 9870,
+                "expense": 6000
+              },
+              {
+                "id": "PRJ-011",
+                "name": "仙台市税システム運用保守",
+                "sales": 2310000,
+                "cost": 2059000,
+                "travel": 96780,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-006",
+                "name": "電力システム開発",
+                "sales": 500000,
+                "cost": 363500,
+                "travel": 9870,
+                "expense": 50000
+              },
+              {
+                "id": "PRJ-007",
+                "name": "データ案件",
+                "sales": 480000,
+                "cost": 363500,
+                "travel": 13120,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-008",
+                "name": "G-PDM運用",
+                "sales": 370000,
+                "cost": 331000,
+                "travel": 9870,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-009",
+                "name": "土木・施工現場Webアプリ改修",
+                "sales": 400000,
+                "cost": 331000,
+                "travel": 9870,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-003",
+                "name": "RPA保守開発",
+                "sales": 350000,
+                "cost": 331000,
+                "travel": 16060,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-010",
+                "name": "自動車部品管理の開発運用保守",
+                "sales": 350000,
+                "cost": 331000,
+                "travel": 7840,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-002",
+                "name": "電力システム開発（テスト）",
+                "sales": 450000,
+                "cost": 363500,
+                "travel": 11510,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-012",
+                "name": "大量帳票",
+                "sales": 380000,
+                "cost": 331000,
+                "travel": 17400,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-004",
+                "name": "NTTデータ維持保守",
+                "sales": 400000,
+                "cost": 300000,
+                "travel": 14780,
+                "expense": 0
+              },
+              {
+                "id": "PRJ-005",
+                "name": "新幹線改修",
+                "sales": 100000,
+                "cost": 331000,
+                "travel": 9870,
+                "expense": 0
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-11-26T05:56:46.823Z",
+          "by": "admin",
+          "action": "再開",
+          "note": "不備有"
+        }
+      ]
+    }
+  },
+  "contractFollowUps": {
+    "MEM-103|PRJ-002": {
+      "stage": "未対応",
+      "owner": "",
+      "due": ""
+    }
+  },
+  "projectFinance": {
+    "actual": {
+      "MEM-103|2027-02": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-03": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-04": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-05": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-06": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-07": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-08": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-09": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-10": {
+        "PRJ-001": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-104|2027-04": {
+        "PRJ-001": {
+          "rev": 50,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-05": {
+        "PRJ-001": {
+          "rev": 50,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-06": {
+        "PRJ-001": {
+          "rev": 50,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-07": {
+        "PRJ-001": {
+          "rev": 50,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-08": {
+        "PRJ-001": {
+          "rev": 50,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-09": {
+        "PRJ-001": {
+          "rev": 50,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-10": {
+        "PRJ-001": {
+          "rev": 50,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2026-11": {
+        "PRJ-001": {
+          "rev": 51,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2026-12": {
+        "PRJ-001": {
+          "rev": 51,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-01": {
+        "PRJ-001": {
+          "rev": 51,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-02": {
+        "PRJ-001": {
+          "rev": 51,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-03": {
+        "PRJ-001": {
+          "rev": 51,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-04": {
+        "PRJ-001": {
+          "rev": 65,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-05": {
+        "PRJ-001": {
+          "rev": 65,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-06": {
+        "PRJ-001": {
+          "rev": 65,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-07": {
+        "PRJ-001": {
+          "rev": 65,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-08": {
+        "PRJ-001": {
+          "rev": 65,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-09": {
+        "PRJ-001": {
+          "rev": 65,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-102|2027-10": {
+        "PRJ-001": {
+          "rev": 65,
+          "cost": 49.65,
+          "transport": 0.987
+        }
+      },
+      "MEM-114|2026-11": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2026-12": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-01": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-02": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-03": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-04": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-05": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-06": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-07": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-08": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-09": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-114|2027-10": {
+        "PRJ-011": {
+          "rev": 42,
+          "cost": 40.25,
+          "transport": 1.151
+        }
+      },
+      "MEM-108|2026-11": {
+        "PRJ-006": {
+          "rev": 50,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2026-12": {
+        "PRJ-006": {
+          "rev": 50,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-01": {
+        "PRJ-006": {
+          "rev": 50,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-02": {
+        "PRJ-006": {
+          "rev": 50,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-03": {
+        "PRJ-006": {
+          "rev": 50,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-04": {
+        "PRJ-006": {
+          "rev": 53,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-05": {
+        "PRJ-006": {
+          "rev": 53,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-06": {
+        "PRJ-006": {
+          "rev": 53,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-07": {
+        "PRJ-006": {
+          "rev": 53,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-08": {
+        "PRJ-006": {
+          "rev": 53,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-09": {
+        "PRJ-006": {
+          "rev": 53,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-108|2027-10": {
+        "PRJ-006": {
+          "rev": 53,
+          "cost": 36.35,
+          "transport": 0.987
+        }
+      },
+      "MEM-115|2026-11": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2026-12": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-01": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-02": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-03": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-04": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-05": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-06": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-07": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-08": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-09": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-115|2027-10": {
+        "PRJ-011": {
+          "rev": 43,
+          "cost": 36.35,
+          "transport": 1.78
+        }
+      },
+      "MEM-110|2026-11": {
+        "PRJ-007": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2026-12": {
+        "PRJ-007": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-01": {
+        "PRJ-007": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-02": {
+        "PRJ-007": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-03": {
+        "PRJ-007": {
+          "rev": 48,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-04": {
+        "PRJ-007": {
+          "rev": 52,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-05": {
+        "PRJ-007": {
+          "rev": 52,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-06": {
+        "PRJ-007": {
+          "rev": 52,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-07": {
+        "PRJ-007": {
+          "rev": 52,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-08": {
+        "PRJ-007": {
+          "rev": 52,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-09": {
+        "PRJ-007": {
+          "rev": 52,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-110|2027-10": {
+        "PRJ-007": {
+          "rev": 52,
+          "cost": 36.35,
+          "transport": 1.312
+        }
+      },
+      "MEM-104|2026-12": {
+        "PRJ-013": {
+          "rev": 50,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-01": {
+        "PRJ-013": {
+          "rev": 55,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-02": {
+        "PRJ-013": {
+          "rev": 55,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-104|2027-03": {
+        "PRJ-013": {
+          "rev": 55,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-116|2026-11": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2026-12": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-01": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-02": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-03": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-04": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-05": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-06": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-07": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-08": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-09": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-116|2027-10": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.571
+        }
+      },
+      "MEM-111|2026-11": {
+        "PRJ-008": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2026-12": {
+        "PRJ-008": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-01": {
+        "PRJ-008": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-02": {
+        "PRJ-008": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-03": {
+        "PRJ-008": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-04": {
+        "PRJ-008": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-05": {
+        "PRJ-008": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-06": {
+        "PRJ-008": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-07": {
+        "PRJ-008": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-08": {
+        "PRJ-008": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-09": {
+        "PRJ-008": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-111|2027-10": {
+        "PRJ-008": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2026-11": {
+        "PRJ-009": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2026-12": {
+        "PRJ-009": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-01": {
+        "PRJ-009": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-02": {
+        "PRJ-009": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-03": {
+        "PRJ-009": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-04": {
+        "PRJ-009": {
+          "rev": 45,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-05": {
+        "PRJ-009": {
+          "rev": 45,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-06": {
+        "PRJ-009": {
+          "rev": 45,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-07": {
+        "PRJ-009": {
+          "rev": 45,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-08": {
+        "PRJ-009": {
+          "rev": 45,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-09": {
+        "PRJ-009": {
+          "rev": 45,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-112|2027-10": {
+        "PRJ-009": {
+          "rev": 45,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-117|2026-11": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2026-12": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-01": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-02": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-03": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-04": {
+        "PRJ-011": {
+          "rev": 41,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-05": {
+        "PRJ-011": {
+          "rev": 41,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-06": {
+        "PRJ-011": {
+          "rev": 41,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-07": {
+        "PRJ-011": {
+          "rev": 41,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-08": {
+        "PRJ-011": {
+          "rev": 41,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-09": {
+        "PRJ-011": {
+          "rev": 41,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-117|2027-10": {
+        "PRJ-011": {
+          "rev": 41,
+          "cost": 33.1,
+          "transport": 1.661
+        }
+      },
+      "MEM-105|2026-11": {
+        "PRJ-003": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2026-12": {
+        "PRJ-003": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-01": {
+        "PRJ-003": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-02": {
+        "PRJ-003": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-03": {
+        "PRJ-003": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-04": {
+        "PRJ-003": {
+          "rev": 42,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-05": {
+        "PRJ-003": {
+          "rev": 42,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-06": {
+        "PRJ-003": {
+          "rev": 42,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-07": {
+        "PRJ-003": {
+          "rev": 42,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-08": {
+        "PRJ-003": {
+          "rev": 42,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-09": {
+        "PRJ-003": {
+          "rev": 42,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-105|2027-10": {
+        "PRJ-003": {
+          "rev": 42,
+          "cost": 33.1,
+          "transport": 1.606
+        }
+      },
+      "MEM-113|2026-11": {
+        "PRJ-010": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2026-12": {
+        "PRJ-010": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-01": {
+        "PRJ-010": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-02": {
+        "PRJ-010": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-03": {
+        "PRJ-010": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-04": {
+        "PRJ-010": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-05": {
+        "PRJ-010": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-06": {
+        "PRJ-010": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-07": {
+        "PRJ-010": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-08": {
+        "PRJ-010": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-09": {
+        "PRJ-010": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-113|2027-10": {
+        "PRJ-010": {
+          "rev": 37,
+          "cost": 33.1,
+          "transport": 0.784
+        }
+      },
+      "MEM-118|2026-11": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2026-12": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-01": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-02": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-03": {
+        "PRJ-011": {
+          "rev": 35,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-04": {
+        "PRJ-011": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-05": {
+        "PRJ-011": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-06": {
+        "PRJ-011": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-07": {
+        "PRJ-011": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-08": {
+        "PRJ-011": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-09": {
+        "PRJ-011": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-118|2027-10": {
+        "PRJ-011": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.775
+        }
+      },
+      "MEM-103|2026-11": {
+        "PRJ-002": {
+          "rev": 40,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2026-12": {
+        "PRJ-002": {
+          "rev": 40,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-103|2027-01": {
+        "PRJ-002": {
+          "rev": 40,
+          "cost": 36.35,
+          "transport": 1.151
+        }
+      },
+      "MEM-119|2026-11": {
+        "PRJ-012": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2026-12": {
+        "PRJ-012": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-01": {
+        "PRJ-012": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-02": {
+        "PRJ-012": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-03": {
+        "PRJ-012": {
+          "rev": 38,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-04": {
+        "PRJ-012": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-05": {
+        "PRJ-012": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-06": {
+        "PRJ-012": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-07": {
+        "PRJ-012": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-08": {
+        "PRJ-012": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-09": {
+        "PRJ-012": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-119|2027-10": {
+        "PRJ-012": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 1.74
+        }
+      },
+      "MEM-106|2026-11": {
+        "PRJ-004": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2026-12": {
+        "PRJ-004": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-01": {
+        "PRJ-004": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-02": {
+        "PRJ-004": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-03": {
+        "PRJ-004": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-04": {
+        "PRJ-004": {
+          "rev": 44,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-05": {
+        "PRJ-004": {
+          "rev": 44,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-06": {
+        "PRJ-004": {
+          "rev": 44,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-07": {
+        "PRJ-004": {
+          "rev": 44,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-08": {
+        "PRJ-004": {
+          "rev": 44,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-09": {
+        "PRJ-004": {
+          "rev": 44,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-106|2027-10": {
+        "PRJ-004": {
+          "rev": 44,
+          "cost": 30,
+          "transport": 1.478
+        }
+      },
+      "MEM-120|2026-11": {
+        "PRJ-011": {
+          "rev": 36,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2026-12": {
+        "PRJ-011": {
+          "rev": 36,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-01": {
+        "PRJ-011": {
+          "rev": 36,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-02": {
+        "PRJ-011": {
+          "rev": 36,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-03": {
+        "PRJ-011": {
+          "rev": 36,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-04": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-05": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-06": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-07": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-08": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-09": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-120|2027-10": {
+        "PRJ-011": {
+          "rev": 40,
+          "cost": 30,
+          "transport": 1.74
+        }
+      },
+      "MEM-107|2026-11": {
+        "PRJ-005": {
+          "rev": 10,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2026-12": {
+        "PRJ-005": {
+          "rev": 10,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-01": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-02": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-03": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-04": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-05": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-06": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-07": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-08": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-09": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      },
+      "MEM-107|2027-10": {
+        "PRJ-005": {
+          "rev": 40,
+          "cost": 33.1,
+          "transport": 0.987
+        }
+      }
+    },
+    "plan": {
+      "MEM-104|2027-04": {
+        "PRJ-001": {
+          "rev": 50
+        }
+      },
+      "MEM-104|2027-05": {
+        "PRJ-001": {
+          "rev": 50
+        }
+      },
+      "MEM-104|2027-06": {
+        "PRJ-001": {
+          "rev": 50
+        }
+      },
+      "MEM-104|2027-07": {
+        "PRJ-001": {
+          "rev": 50
+        }
+      },
+      "MEM-104|2027-08": {
+        "PRJ-001": {
+          "rev": 50
+        }
+      },
+      "MEM-104|2027-09": {
+        "PRJ-001": {
+          "rev": 50
+        }
+      },
+      "MEM-104|2027-10": {
+        "PRJ-001": {
+          "rev": 50
+        }
+      }
+    }
+  }
 };
         const PREFERRED_MEMBER_ORDER = [
             '川合 要', '山田 裕也', '佐々木 翔平', '生天目 慧海', '梶原 悠羽', '古山 淳詞',
@@ -6932,22 +11483,25 @@
             '鹿又 翔二朗', '小関 彩乃', '正木 裕多竜', '遠藤 新太', '伊藤 快成',
             '鈴木 裕斗', '曽根 美咲', '滝沢 陽', '久保 奈美礼'
         ];
-        window.sortMembersByPreferredOrder = function(list) {
-            const source = Array.isArray(list) ? list : (typeof db !== 'undefined' && Array.isArray(db.members) ? db.members : []);
-            const orderIndex = new Map(PREFERRED_MEMBER_ORDER.map((name, index) => [String(name).normalize('NFKC').replace(/[\s　]/g, ''), index]));
-            source.sort((a, b) => {
-                const aName = String(a.name || a.fullName || '').normalize('NFKC').replace(/[\s　]/g, '');
-                const bName = String(b.name || b.fullName || '').normalize('NFKC').replace(/[\s　]/g, '');
-                const ai = orderIndex.has(aName) ? orderIndex.get(aName) : Number.MAX_SAFE_INTEGER;
-                const bi = orderIndex.has(bName) ? orderIndex.get(bName) : Number.MAX_SAFE_INTEGER;
-                return ai - bi || aName.localeCompare(bName, 'ja');
-            });
-            return source;
+        // R20: stable public employee ID, internal references remain unchanged.
+        window.ensureEmployeeIds = function(list) {
+            const used = new Set();
+            const preferred = new Map(PREFERRED_MEMBER_ORDER.map((n,i)=>[n.replace(/\s/g,''),i+1]));
+            for(const m of list){if(/^MEN-\d+$/.test(m.employeeId||'')&&!used.has(m.employeeId))used.add(m.employeeId);else delete m.employeeId;}
+            for(const m of list){const n=preferred.get(String(m.name||'').replace(/\s/g,''));const id=n&&`MEN-${String(n).padStart(3,'0')}`;if(!m.employeeId&&id&&!used.has(id)){m.employeeId=id;used.add(id);}}
+            let n=Math.max(20,...Array.from(used,x=>Number(x.slice(4))));
+            for(const m of list)if(!m.employeeId){m.employeeId=`MEN-${String(++n).padStart(3,'0')}`;used.add(m.employeeId);}
+            return list;
         };
-        window.getMemberDisplayId = function(member, ordered) {
-            const list = ordered || window.sortMembersByPreferredOrder([...db.members]);
-            const index = list.findIndex(m => m.id === member.id);
-            return index < 0 ? '未登録' : `MEN-${String(index + 1).padStart(3, '0')}`;
+        window.getMemberDisplayId = function(member) {
+            if(!member)return '未登録';
+            window.ensureEmployeeIds(db.members||[]);
+            return member.employeeId || '未登録';
+        };
+        window.sortMembersByPreferredOrder = function(list) {
+            const source=Array.isArray(list)?list:db.members;
+            window.ensureEmployeeIds(db.members||source);
+            return source.sort((a,b)=>String(a.employeeId||'').localeCompare(String(b.employeeId||''),'ja',{numeric:true}));
         };
         let db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
         let selectedImportFileContent = null;
@@ -7573,7 +12127,7 @@
                     <td class="p-2 text-slate-300">${memberDetailEscape(m.department || '未登録')}</td>
                     <td class="p-2 text-slate-300">${memberDetailEscape(m.role || '未登録')}</td>
                     <td class="p-2 whitespace-nowrap">${memberDetailEscape(window.calculateTenure ? window.calculateTenure(m.hireDate) : (m.exp || '未登録'))}</td>
-                    <td class="p-2"><div class="ses-member-status-compact"><span class="ses-member-status-label">現在</span><span class="ses-member-status-value" data-member-status="${memberDetailEscape(m.status || '未設定')}">${memberDetailEscape(m.status || '未設定')}</span><span class="ses-member-status-label">来月以降</span><span class="ses-member-status-value" data-member-status="${memberDetailEscape(m.nextMonthStatus || m.status || '未設定')}">${memberDetailEscape(m.nextMonthStatus || m.status || '未設定')}</span></div></td>
+                    <td class="p-2 ses-member-status-cell"><span class="ses-member-status-value" data-member-status="${memberDetailEscape(m.status || '未設定')}">${memberDetailEscape(m.status || '未設定')}</span></td><td class="p-2 ses-member-status-cell"><span class="ses-member-status-value" data-member-status="${memberDetailEscape(m.nextMonthStatus || m.status || '未設定')}">${memberDetailEscape(m.nextMonthStatus || m.status || '未設定')}</span></td>
                     <td class="p-2 text-right"><button type="button" onclick="openMemberDetailByIndex(${db.members.indexOf(m)})" class="ses-client-detail-button ses-member-detail-action" title="社員の詳細を開く" aria-label="社員の詳細を開く"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></td>
                 </tr>
             `).join('');
@@ -7589,7 +12143,7 @@
         }
         window.sesRestricted = () => window.sesCurrentAccount?.role === 'user';
         window.sesMoneyField = key => /単価|原価|交通費|売上|粗利|金額|給与|報酬|rate|cost|price|salary|revenue|profit|amount|sourceData|participants|grade|グレード/i.test(String(key));
-        const memberCoreFields = new Set(['id','name','type','skills','hireDate','exp','rate','cost','available','status','waitingStartDate','nextMonthStatus','grade','assignedProjectId','contractEnd','transportCost','currentStatus','currentProject']);
+        const memberCoreFields = new Set(['id','name','type','skills','hireDate','exp','rate','cost','available','status','waitingStartDate','nextMonthStatus','grade','assignedProjectId','contractEnd','contractStart','transportCost','currentStatus','currentProject']);
         function memberExtraEditor(member) {
             const root=document.getElementById('member-extra-fields'); if(!root)return;
             root.innerHTML='';
@@ -8018,8 +12572,8 @@
             if (!inPeriod(project.startDate, project.contractEnd)) return [];
             return getProjectParticipants(project).flatMap(row => {
                 const member = db.members.find(m => m.id === row.memberId);
-                if (!member || !inPeriod(row.startDate, row.endDate || row.contractEnd)) return [];
-                if (member.assignedProjectId === project.id && !inPeriod(member.contractStart, member.contractEnd)) return [];
+                if (!member || ![row, ...(row.history || [])].some(period => inPeriod(period.startDate, period.endDate || period.contractEnd))) return [];
+                if (!row.tracked && member.assignedProjectId === project.id && !inPeriod(member.contractStart, member.contractEnd)) return [];
                 return [{ ...row, member }];
             });
         }
@@ -8041,7 +12595,8 @@
             if(window.sesRestricted()){document.getElementById("project-participants-body").innerHTML=participants.map(x=>`<tr><td class="p-3">${projectInfoEscape(db.members.find(m=>m.id===x.memberId)?.name||x.memberId)}</td></tr>`).join("");return;}
             document.getElementById('project-participants-body').innerHTML = participants.length ? participants.map(x => {
                 const m = db.members.find(mm => mm.id === x.memberId);
-                return `<tr><td class="p-3 font-semibold text-slate-200">${m ? m.name : '削除済みメンバー'} <span class="text-slate-500">${x.memberId}</span></td><td class="p-3 font-mono text-amber-300">${formatYenAsMan(x.rateYen)}万円/月</td><td class="p-3 font-mono">¥${Math.round(Number(x.rateYen)||0).toLocaleString('ja-JP')}</td><td class="p-3 text-right whitespace-nowrap"><button onclick="editProjectParticipant('${x.memberId}')" class="text-cyan-400 mr-3">単価変更</button><button onclick="removeProjectParticipant('${x.memberId}')" class="text-rose-400">解除</button></td></tr>`;
+                return `<tr><td class="p-3 font-semibold text-slate-200">${m ? m.name : '削除済みメンバー'} <span class="text-slate-500">${x.memberId}</span>${[...(x.history || []), x].filter(period => period.startDate || period.endDate).map(period =>
+                    `<div class="text-xs text-slate-400">${projectInfoEscape(period.startDate || '開始日未登録')} ～ ${projectInfoEscape(period.endDate || '継続中')}</div>`).join('')}</td><td class="p-3 font-mono text-amber-300">${formatYenAsMan(x.rateYen)}万円/月</td><td class="p-3 font-mono">¥${Math.round(Number(x.rateYen)||0).toLocaleString('ja-JP')}</td><td class="p-3 text-right whitespace-nowrap"><button onclick="editProjectParticipant('${x.memberId}')" class="text-cyan-400 mr-3">単価変更</button><button onclick="removeProjectParticipant('${x.memberId}')" class="text-rose-400">解除</button></td></tr>`;
             }).join('') : '<tr><td colspan="4" class="p-5 text-center text-slate-500">参画メンバーはまだ登録されていません。</td></tr>';
             const select = document.getElementById('participant-member');
             if (select) Array.from(select.options).forEach(o => { if (o.value) { const exists = participants.some(x => x.memberId === o.value); o.disabled = exists; o.textContent = (db.members.find(m => m.id === o.value)?.name || o.value) + (exists ? '・登録済み' : ''); } });
@@ -8093,9 +12648,20 @@
         }
 
         // --- MEMBER CRUD ---
+        function updateMemberProjectSwitch() {
+            const prior = db.members.find(member => member.id === document.getElementById('member-id').value);
+            const field = document.getElementById('member-project-switch-date');
+            const changed = Boolean(prior && (prior.assignedProjectId || '') !== document.getElementById('member-project').value);
+            field.required = changed;
+            document.getElementById('member-project-switch-field').hidden = !changed;
+            if (!changed) field.value = '';
+        }
+        document.getElementById('member-project').addEventListener('change', updateMemberProjectSwitch);
         function openMemberModal() {
             document.getElementById('form-member').reset();
             document.getElementById('member-id').value = '';
+            window.sesResetMemberAssignments?.();
+            updateMemberProjectSwitch();
             const hireInput = document.getElementById('member-hire-date'); if (hireInput) hireInput.value = '';
             document.getElementById('member-exp').value = '';
             document.getElementById('modal-member-title').innerText = '新規社員登録';
@@ -8113,6 +12679,9 @@
             const m = db.members.find(item => item.id === id);
             if (!m) return;
             document.getElementById('member-id').value = m.id;
+            window.sesResetMemberAssignments?.(m);
+            document.getElementById('member-project').value = m.assignedProjectId || '';
+            updateMemberProjectSwitch();
             document.getElementById('member-name').value = m.name;
             document.getElementById('member-type').value = m.type;
             document.getElementById('member-skills').value = m.skills.join(', ');
@@ -8156,16 +12725,41 @@
             if (prior && grade && (window.gradeForPeriod?.(prior) ?? prior.grade) !== grade &&
                 !confirm('現在の会計期の登録済み予定・実績原価（締め済みを含む）にグレード変更を反映しますか？')) return;
 
+            const changedProject = prior && (prior.assignedProjectId || '') !== assignedProjectId;
+            const switchDate = document.getElementById('member-project-switch-date').value;
+            const additions = window.sesReadMemberAssignments(prior, assignedProjectId);
+            if (!additions) return;
+            if (prior && !changedProject) {
+                if (additions.length && contractEnd !== (prior.contractEnd || '')) {
+                    alert('参画案件を一括登録する際は、上の契約終了日を変更せずに保存してください。');
+                    return;
+                }
+                const project = db.projects.find(item => item.id === assignedProjectId);
+                const assignment = project?.participants?.find(row => row.memberId === id && row.tracked && row.allocationPercent == null);
+                if (assignment) {
+                    if (contractEnd && contractEnd < assignment.startDate) {
+                        alert('契約終了日は参画開始日以降を入力してください。');
+                        return;
+                    }
+                    assignment.endDate = contractEnd;
+                    assignment.rateYen = Math.round(rate * 10000);
+                }
+            }
+            if (changedProject && !window.sesTransferProject(prior, assignedProjectId, switchDate, contractEnd, rate)) return;
+
+            let savedMemberId = id;
             if (id) {
                 const index = db.members.findIndex(m => m.id === id);
-                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost }; saveMemberExtra(db.members[index]); if((window.gradeForPeriod?.(prior) ?? prior.grade)!==grade) window.assignMemberGradeForCurrentPeriod?.(db.members[index],grade); }
+                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost }; saveMemberExtra(db.members[index]); if (changedProject) db.members[index].contractStart = assignedProjectId ? switchDate : ''; if((window.gradeForPeriod?.(prior) ?? prior.grade)!==grade) window.assignMemberGradeForCurrentPeriod?.(db.members[index],grade); }
             } else {
                 db.memberIdSequence = Math.max(Number(db.memberIdSequence)||0, ...db.members.map(c=>/^MEM-\d+$/.test(c.id)?Number(c.id.slice(4)):0))+1;
                 const newId = `MEM-${String(db.memberIdSequence).padStart(3, '0')}`;
+                savedMemberId = newId;
                 const member={ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost };
-                saveMemberExtra(member); db.members.push(member); if(grade) window.assignMemberGradeForCurrentPeriod?.(member,grade);
+                saveMemberExtra(member); db.members.push(member); window.ensureEmployeeIds(db.members); if(grade) window.assignMemberGradeForCurrentPeriod?.(member,grade);
             }
 
+            window.sesAddMemberAssignments(savedMemberId, additions);
             saveStoredData();
             closeModal('modal-member');
             window.sesActionNotice?.(id ? 'update' : 'create');
