@@ -100,21 +100,25 @@
             const footer = memberForm.querySelector('.border-t');
             if (footer) footer.insertAdjacentHTML('beforebegin', `<div class="grid grid-cols-1 md:grid-cols-3 gap-3"><label class="text-slate-400">参画案件<select id="member-project" class="ext-input mt-1"><option value="">未紐付け</option></select></label><label class="text-slate-400">契約終了日<input id="member-contract-end" type="date" class="ext-input mt-1"></label><label class="text-slate-400">基本交通費（月額・万円）<input id="member-transport-cost" type="number" min="0" step="1" value="0" class="ext-input mt-1" placeholder="例：12000"></label></div>`);
         }
-        const spotView = makeView('spot','スポット業務','月額契約以外の単発業務・スポット売上を登録します。金額単位は円です。', `
+        const expenseCategories = ['交通費', '宿泊費', '備品・消耗品', '通信費', '外注費', '採用費', '交際費', 'その他'].map(category => `<option>${category}</option>`).join('');
+        const spotView = makeView('spot','スポット業務','月額契約以外の単発業務・スポット業務を登録します。金額単位は円です。', `
           <form onsubmit="addSpotJob(event)" class="glass-card rounded-xl p-4 grid grid-cols-1 md:grid-cols-3 gap-3">
             <label class="text-xs text-slate-400">業務名<input id="spot-title" class="ext-input mt-1" required placeholder="例：追加改修・短期支援"></label>
             <label class="text-xs text-slate-400">実施日<input id="spot-date" type="date" class="ext-input mt-1" required value="${today()}"></label>
             <label class="text-xs text-slate-400">売上（円）<input id="spot-amount" type="number" min="0" step="1" class="ext-input mt-1" required placeholder="例：150000"></label>
+            <label class="text-xs text-slate-400">粗利（円・経費控除前）<input id="spot-gross-profit" type="number" step="1" class="ext-input mt-1" required></label>
+            <label class="text-xs text-slate-400">経費（円）<input id="spot-expense-amount" type="number" min="0" step="1" class="ext-input mt-1" placeholder="経費がある場合のみ"></label>
+            <label class="text-xs text-slate-400">経費の費目<select id="spot-expense-category" class="ext-input mt-1">${expenseCategories}</select></label>
             <label class="text-xs text-slate-400">メンバー<select id="spot-member" class="ext-input mt-1" required><option value="">未指定</option></select></label>
             <label class="text-xs text-slate-400">取引先<input id="spot-client" class="ext-input mt-1" placeholder="取引先名"></label>
             <label class="text-xs text-slate-400">メモ<input id="spot-note" class="ext-input mt-1" placeholder="作業内容・請求情報など"></label>
-            <div class="md:col-span-3 flex justify-end"><button class="ext-button" type="submit"><i class="fa-solid fa-plus mr-1"></i>スポット売上を登録</button></div>
+            <div class="md:col-span-3 flex justify-end"><button id="spot-submit" class="ext-button" type="submit">スポット業務を登録</button></div>
           </form>
-          <div class="glass-card rounded-xl overflow-hidden"><div class="p-4 flex justify-between gap-3"><b>スポット業務一覧</b><span id="spot-total" class="text-cyan-300 font-bold"></span></div><div class="overflow-x-auto"><table class="ext-table"><thead><tr><th>実施日</th><th>業務名</th><th>メンバー</th><th>取引先</th><th>売上</th><th>メモ</th><th>操作</th></tr></thead><tbody id="spot-table-body"></tbody></table></div></div>`);
+          <div class="glass-card rounded-xl overflow-hidden"><div class="p-4 flex justify-between gap-3"><b>スポット業務一覧</b><span id="spot-total" class="text-cyan-300 font-bold"></span></div><div class="overflow-x-auto"><table class="ext-table"><thead><tr><th>実施日</th><th>業務名</th><th>メンバー</th><th>取引先</th><th>売上</th><th>粗利（経費控除前）</th><th>経費</th><th>メモ</th><th>操作</th></tr></thead><tbody id="spot-table-body"></tbody></table></div></div>`);
         const expensesView = makeView('expenses','経費登録','SES事業に関連する経費を記録します。金額単位は円です。', `
           <form onsubmit="addExpense(event)" class="glass-card rounded-xl p-4 grid grid-cols-1 md:grid-cols-3 gap-3">
             <label class="text-xs text-slate-400">発生日<input id="expense-date" type="date" class="ext-input mt-1" required value="${today()}"></label>
-            <label class="text-xs text-slate-400">費目<select id="expense-category" class="ext-input mt-1"><option>交通費</option><option>宿泊費</option><option>備品・消耗品</option><option>通信費</option><option>外注費</option><option>採用費</option><option>その他</option></select></label>
+            <label class="text-xs text-slate-400">費目<select id="expense-category" class="ext-input mt-1">${expenseCategories}</select></label>
             <label class="text-xs text-slate-400">金額（円）<input id="expense-amount" type="number" min="0" step="1" class="ext-input mt-1" required placeholder="例：12000"></label>
             <label class="text-xs text-slate-400">関連メンバー<select id="expense-member" class="ext-input mt-1"><option value="">全体経費・未指定</option></select></label>
             <label class="text-xs text-slate-400 md:col-span-2">内容・備考<input id="expense-note" class="ext-input mt-1" placeholder="支払先、用途など"></label>
@@ -267,7 +271,7 @@
         const departments = [...new Set((db.members||[]).map(m=>m.department||'未登録'))].sort((a,b)=>a.localeCompare(b,'ja'));
         const filteredMembers = (db.members||[]).filter(m=>(deptFilter==='ALL'||(m.department||'未登録')===deptFilter)&&(memberFilter==='ALL'||m.id===memberFilter));
         const memberOptions = (db.members||[]).map(m=>`<option value="${safeText(m.id)}" ${memberFilter===m.id?'selected':''}>${safeText(m.name)}</option>`).join('');
-        const extras = [...(db.spotJobs||[]).map(x=>({...x,kind:'スポット',label:x.title,rev:Math.round(Number(x.amount||0)*10000),cost:0})), ...(db.merchandiseSales||[]).map(x=>({...x,kind:'物販',label:x.productName,rev:Math.round(Number(x.quantity||0)*Number(x.unitPrice||0)),cost:Math.round(Number(x.quantity||0)*Number(x.unitCost||0))}))].filter(x=>months.includes(String(x.date||'').slice(0,7))&&(filteredMembers.some(m=>m.id===x.memberId)|| (deptFilter==='ALL'&&memberFilter==='ALL'&&!(db.members||[]).some(m=>m.id===x.memberId))));
+        const extras = [...(db.spotJobs||[]).map(x=>({...x,kind:'スポット',label:x.title,rev:Math.round(Number(x.amount||0)*10000),cost:spotCostYen(x)})), ...(db.merchandiseSales||[]).map(x=>({...x,kind:'物販',label:x.productName,rev:Math.round(Number(x.quantity||0)*Number(x.unitPrice||0)),cost:Math.round(Number(x.quantity||0)*Number(x.unitCost||0))}))].filter(x=>months.includes(String(x.date||'').slice(0,7))&&(filteredMembers.some(m=>m.id===x.memberId)|| (deptFilter==='ALL'&&memberFilter==='ALL'&&!(db.members||[]).some(m=>m.id===x.memberId))));
         const expenseItems = [...(db.expenses||[]).filter(x=>filteredMembers.some(m=>m.id===x.memberId)||(!(db.members||[]).some(m=>m.id===x.memberId)&&deptFilter==='ALL'&&memberFilter==='ALL')).map(x=>({...x,yen:Math.round(Number(x.amount||0)*10000)})), ...(deptFilter==='ALL'&&memberFilter==='ALL'?(db.merchandiseExpenses||[]).map(x=>({...x,yen:Number(x.amount||0)})):[])].filter(x=>months.includes(String(x.date||'').slice(0,7)));
         const expenseFor=(month,id)=>expenseItems.filter(x=>String(x.date).slice(0,7)===month&&(id===undefined||x.memberId===id)).reduce((a,x)=>a+x.yen,0)/10000;
         const extraRows = ['スポット','物販'].map(kind=>{
@@ -275,33 +279,61 @@
             const cell=items=>`<td title="${safeText(items.map(x=>`${x.date} ${x.label||''} / ${(db.members.find(m=>m.id===x.memberId)||{}).name||'担当未指定'} / 売上 ${money(x.rev/10000)} / 原価 ${money(x.cost/10000)}`).join('\n'))}">${money(items.reduce((a,x)=>a+x.rev,0)/10000)}</td>`;
             return `<tr class="revenue-extra"><th class="sticky left-0 z-10">${kind==='スポット'?'スポット業務':'物販'} 売上</th>${months.map(month=>cell(list.filter(x=>String(x.date).slice(0,7)===month))).join('')}${cell(list)}</tr>`;
         }).join('');
-        const rows = filteredMembers.map(m => {
+        const memberMonthly = filteredMembers.map(member => {
+            const records = extras.filter(x => x.memberId === member.id);
+            const start = member.contractStart || member.startDate;
+            return {
+                member,
+                values: months.map(month => {
+                    const active = member.status === '稼働中' && (!start || start.slice(0,7) <= month)
+                        && (!member.contractEnd || member.contractEnd.slice(0,7) >= month);
+                    const fallback = key => active && mode === 'plan' ? member[key] : 0;
+                    const rev = getField(revenueStore, member, month, fallback('rate'));
+                    const cost = getField(costStore, member, month, fallback('cost'));
+                    const transport = getField(transportStore, member, month, fallback('transportCost'));
+                    const monthly = records.filter(x => x.date.slice(0,7) === month);
+                    const salesFor = kind => monthly.filter(x => x.kind === kind).reduce((sum, x) => sum + x.rev, 0) / 10000;
+                    const spot = salesFor('スポット');
+                    const merchandise = salesFor('物販');
+                    const extraCost = monthly.reduce((sum, x) => sum + x.cost, 0) / 10000;
+                    const expense = expenseFor(month, member.id);
+                    const sales = rev + spot + merchandise;
+                    return { rev, cost, transport, spot, merchandise, expense, sales, profit: sales - cost - extraCost - transport - expense };
+                })
+            };
+        });
+        const sum = values => values.reduce((total, value) => total + value, 0);
+        const rows = memberMonthly.map(({ member: m, values }) => {
             const project = projectFor(m);
             const sub = `<div class="revenue-member-details text-[10px] leading-5 font-normal text-slate-400"><div>参画案件：${safeText(project?.title||'案件情報未登録')}</div><div>単価：${money(m.rate)}</div><div>原価：${money(m.cost)}</div><div>交通費：${money(m.transportCost)}/月</div></div>`;
-            const monthCells = months.map(month => {
-                const active = m.status === '稼働中';
-                const start = m.contractStart || m.startDate || '';
-                const end = m.contractEnd || '';
-                const inPeriod = active && (!start || start.slice(0,7)<=month) && (!end || end.slice(0,7)>=month);
-                const rev = getField(revenueStore,m,month,inPeriod?(mode==='actual'?0:m.rate):0);
-                const cost = getField(costStore,m,month,inPeriod?(mode==='actual'?0:m.cost):0);
-                const transport = getField(transportStore,m,month,inPeriod?(mode==='actual'?0:m.transportCost):0);
-                const expense = expenseFor(month,m.id);
-                const profit = rev-cost-transport-expense;
-                return `<td class="p-1 min-w-[112px] w-[112px] align-top revenue-month-cell-container"><div class="space-y-1.5"><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">売上（円）<input class="ext-input revenue-month-cell" type="number" min="0" step="1" value="${Math.round(rev*10000)}" data-kind="revenue" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 売上"></label><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">原価（円）<input class="ext-input" type="number" min="0" step="1" value="${Math.round(cost*10000)}" data-kind="cost" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 原価"></label><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">交通費（円）<input class="ext-input" type="number" min="0" step="1" value="${Math.round(transport*10000)}" data-kind="transport" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 交通費"></label><div class="text-xs" title="登録経費の自動集計">経費：${money(expense)}</div><div class="text-xs pt-1 border-t border-white/10 ${profit>=0?'text-emerald-300':'text-rose-300'}">粗利：${money(profit)}</div></div></td>`;
+            const monthCells = values.map(({ rev, cost, transport, expense, profit }, index) => {
+                const month = months[index];
+                return `<td class="p-1 min-w-[112px] w-[112px] align-top revenue-month-cell-container"><div class="space-y-1.5"><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">案件売上（円）<input class="ext-input revenue-month-cell" type="number" min="0" step="1" value="${Math.round(rev*10000)}" data-kind="revenue" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 売上"></label><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">原価（円）<input class="ext-input" type="number" min="0" step="1" value="${Math.round(cost*10000)}" data-kind="cost" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 原価"></label><label class="block revenue-field-label text-[9px] leading-tight text-slate-400">交通費（円）<input class="ext-input" type="number" min="0" step="1" value="${Math.round(transport*10000)}" data-kind="transport" data-member="${safeText(m.id)}" data-month="${month}" data-mode="${mode}" onchange="saveMonthlyFinance(this)" aria-label="${safeText(m.name)} ${month} 交通費"></label><div class="text-xs" title="登録経費の自動集計">経費：${money(expense)}</div><div class="text-xs pt-1 border-t border-white/10 ${profit>=0?'text-emerald-300':'text-rose-300'}">粗利：${money(profit)}</div></div></td>`;
             }).join('');
-            const annualRev = months.reduce((a,month)=>a+getField(revenueStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.rate:0))),0);
-            return `<tr class="border-b border-white/5"><th class="sticky left-0 z-10 bg-slate-950/95 text-left p-3 min-w-[220px] align-top"><div class="font-semibold text-slate-100">${safeText(m.name)}</div>${sub}<div class="text-[10px] text-slate-500">${safeText(m.department||'未登録')} / ${safeText(m.role||'役職未登録')}</div></th>${monthCells}<td class="p-3 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(viewMode==='sales'?annualRev:months.reduce((sum,month)=>sum+getField(revenueStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.rate:0)))-getField(costStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.cost:0)))-getField(transportStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.transportCost:0)))-expenseFor(month,m.id),0))}</td></tr>`;
-        }).join('')+extraRows;
-        const totals = months.map(month=>filteredMembers.reduce((sum,m)=>sum+getField(revenueStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.rate:0))),0));
-        months.forEach((month,i)=>{totals[i]+=extras.filter(x=>String(x.date).slice(0,7)===month).reduce((a,x)=>a+x.rev,0)/10000;});
-        const annualTotal = totals.reduce((a,b)=>a+b,0);
-        const annualCost = extras.reduce((a,x)=>a+x.cost,0)/10000 + months.reduce((sum,month)=>sum+filteredMembers.reduce((a,m)=>a+getField(costStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.cost:0))),0),0);
-        const annualTransport = months.reduce((sum,month)=>sum+filteredMembers.reduce((a,m)=>a+getField(transportStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.transportCost:0))),0),0);
-        const annualExpense = months.reduce((a,m)=>a+expenseFor(m),0);
-        const annualProfit = annualTotal-annualCost-annualTransport-annualExpense;
+            const annual = sum(values.map(value => viewMode === 'sales' ? value.sales : value.profit));
+            const details = [['spot', 'スポット業務 売上'], ['merchandise', '物販 売上']].map(([key, label]) => {
+                const amounts = values.map(value => value[key]);
+                if (!amounts.some(Boolean)) return '';
+                return `<tr class="revenue-extra" data-member-detail="${safeText(m.id)}"><th scope="row" class="sticky left-0 z-10 bg-slate-950">${label}</th>${amounts.map(amount => `<td>${money(amount)}</td>`).join('')}<td>${money(sum(amounts))}</td></tr>`;
+            }).join('');
+            return `<tr class="border-b border-white/5" data-revenue-member="${safeText(m.id)}"><th class="sticky left-0 z-10 bg-slate-950/95 text-left p-3 min-w-[220px] align-top"><div class="font-semibold text-slate-100">${safeText(m.name)}</div>${sub}<div class="text-[10px] text-slate-500">${safeText(m.department||'未登録')} / ${safeText(m.role||'役職未登録')}</div></th>${monthCells}<td class="p-3 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(annual)}</td></tr>${details}`;
+        }).join('') + extraRows;
+        const monthlyTotals = months.map((month, index) => {
+            const monthly = extras.filter(x => x.date.slice(0,7) === month);
+            const values = memberMonthly.map(row => row.values[index]);
+            const sales = sum(values.map(x => x.rev)) + sum(monthly.map(x => x.rev)) / 10000;
+            const cost = sum(values.map(x => x.cost)) + sum(monthly.map(x => x.cost)) / 10000;
+            const transport = sum(values.map(x => x.transport));
+            const expense = expenseFor(month);
+            return { sales, cost, transport, expense, profit: sales - cost - transport - expense };
+        });
+        const annualTotal = sum(monthlyTotals.map(x => x.sales));
+        const annualCost = sum(monthlyTotals.map(x => x.cost));
+        const annualTransport = sum(monthlyTotals.map(x => x.transport));
+        const annualExpense = sum(monthlyTotals.map(x => x.expense));
+        const annualProfit = sum(monthlyTotals.map(x => x.profit));
         const repeatFuture = matrix.dataset.repeatFuture === '1';
-        matrix.innerHTML = `<div class="glass-card rounded-xl p-4 mb-4"><div class="flex flex-wrap items-center justify-between gap-3 mb-3"><div><h3 class="font-bold text-cyan-300"><i class="fa-solid fa-table mr-2"></i>売上・粗利管理</h3><p class="text-xs text-slate-400 mt-1">売上・原価・交通費の予定と実績は別データです。登録経費（物販経費を含む）・スポット業務売上・物販売上および物販原価は予定・実績の両方に自動合算します。全体経費は下部の経費合計に表示します。金額は円単位（1円単位）。グレード変更時は当月以降の予定原価を更新します。予定・実績とも手入力できます。</p></div><div class="flex flex-wrap gap-2 items-center"><label class="text-xs text-slate-400 revenue-filter-label">表示<select id="revenue-view-type" class="ext-input" onchange="setRevenueViewType(this.value)"><option value="sales" ${viewMode==='sales'?'selected':''}>売上</option><option value="profit" ${viewMode==='profit'?'selected':''}>粗利</option></select></label><label class="text-xs text-slate-400 revenue-filter-label">データ<select id="revenue-mode" class="ext-input" onchange="renderRevenueView()"><option value="plan" ${mode==='plan'?'selected':''}>予定</option><option value="actual" ${mode==='actual'?'selected':''}>実績</option></select></label><label class="text-xs text-slate-400 revenue-filter-label">対象年<select id="revenue-year" class="ext-input" onchange="renderRevenueView()">${[year-1,year,year+1].map(y=>`<option value="${y}" ${y===year?'selected':''}>${y}年度（${y}/11〜${y+1}/10）</option>`).join('')}</select></label><label class="text-xs text-slate-400 revenue-filter-label">開始月<select id="revenue-start-month" class="ext-input" onchange="renderRevenueView()">${startMonthOptions}</select></label><label class="text-xs text-slate-400 revenue-filter-label">終了月<select id="revenue-end-month" class="ext-input" onchange="renderRevenueView()">${endMonthOptions}</select></label></div></div><div class="revenue-copy-tools"><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="revenue-repeat-future" ${repeatFuture?'checked':''} onchange="setRevenueRepeatFuture(this.checked)"><span>翌月も反映</span></label><label class="text-xs text-slate-300">コピー対象メンバー<select id="revenue-copy-member" class="ext-input"><option value="ALL">全員</option>${(db.members||[]).map(m=>`<option value="${safeText(m.id)}">${safeText(m.name)}</option>`).join('')}</select></label><label class="text-xs text-slate-300">コピー対象月<select id="revenue-copy-month" class="ext-input"><option value="ALL">全ての月</option>${[11,12,1,2,3,4,5,6,7,8,9,10].map(m=>{const y=year+(m<=10?1:0),key=`${y}-${String(m).padStart(2,'0')}`;return `<option value="${key}">${y}年${m}月</option>`}).join('')}</select></label><button type="button" class="ext-btn px-4 py-2 rounded-lg border border-emerald-400/60 text-emerald-200 bg-emerald-500/10 hover:bg-emerald-500/20" onclick="copyPlannedFinanceToActual()"><i class="fa-solid fa-copy mr-1"></i>予定を実績にコピー</button><span class="text-xs text-slate-400">コピー対象メンバー・月を指定できます。既存実績は確認後に上書きします。</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4"><label class="text-xs text-slate-400">部署で絞り込み<select id="revenue-department-filter" class="ext-input mt-1" onchange="renderRevenueView()"><option value="ALL">全部署</option>${departments.map(d=>`<option value="${safeText(d)}" ${deptFilter===d?'selected':''}>${safeText(d)}</option>`).join('')}</select></label><label class="text-xs text-slate-400">メンバーで絞り込み<select id="revenue-member-filter" class="ext-input mt-1" onchange="renderRevenueView()"><option value="ALL">全メンバー</option>${memberOptions}</select></label></div><div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4"><div class="p-3 rounded-lg border border-cyan-400/30 bg-cyan-500/10"><div class="text-xs text-slate-400">期間売上合計</div><div class="text-xl font-bold text-cyan-300">${money(annualTotal)}</div></div><div class="p-3 rounded-lg border border-rose-400/30 bg-rose-500/10"><div class="text-xs text-slate-400">期間原価合計</div><div class="text-xl font-bold text-rose-300">${money(annualCost)}</div></div><div class="p-3 rounded-lg border border-amber-400/30 bg-amber-500/10"><div class="text-xs text-slate-400">期間交通費合計</div><div class="text-xl font-bold text-amber-300">${money(annualTransport)}</div></div><div class="p-3 rounded-lg border border-emerald-400/30 bg-emerald-500/10"><div class="text-xs text-slate-400">期間粗利合計</div><div class="text-xl font-bold text-emerald-300">${money(annualProfit)}</div></div></div><div class="revenue-scroll overflow-x-auto"><table class="ext-table revenue-finance-table min-w-[1600px]"><thead><tr><th class="sticky left-0 z-20 bg-slate-900 p-3 text-left">メンバー／案件・単価情報</th>${months.map(m=>`<th class="p-3">${Number(m.slice(5))}月</th>`).join('')}<th class="p-3">${viewMode==='sales'?'期間売上':'期間粗利'}</th></tr></thead><tbody>${rows||`<tr><td colspan="${months.length+2}" class="p-6 text-center text-slate-500">条件に一致するメンバーがいません。</td></tr>`}<tr class="revenue-extra"><th class="sticky left-0 z-10">経費合計</th>${months.map(m=>`<td title="${safeText(expenseItems.filter(x=>String(x.date).slice(0,7)===m).map(x=>`${x.date} ${x.category} ${(db.members.find(r=>r.id===x.memberId)||{}).name||'全体経費'} ${money(x.yen/10000)} ${x.note||''}`).join('\n'))}">${money(expenseFor(m))}</td>`).join('')}<td>${money(annualExpense)}</td></tr><tr class="bg-cyan-500/10"><th class="sticky left-0 z-10 bg-slate-950 p-3 text-left ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">月別${viewMode==='sales'?'売上':'粗利'}合計</th>${months.map((month,i)=>{const v=viewMode==='sales'?totals[i]:totals[i]-expenseFor(month)-extras.filter(x=>String(x.date).slice(0,7)===month).reduce((a,x)=>a+x.cost,0)/10000-filteredMembers.reduce((a,m)=>a+getField(costStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.cost:0)))+getField(transportStore,m,month,(mode==='actual'?0:(m.status==='稼働中'?m.transportCost:0))),0);return `<td class="p-2 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(v)}</td>`}).join('')}<td class="p-2 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(viewMode==='sales'?annualTotal:annualProfit)}</td></tr></tbody></table></div><p class="text-[11px] text-slate-500 mt-3">基本交通費はメンバー管理ダイアログで登録します。月ごとに変更がある場合は該当月の交通費欄を編集してください。粗利＝売上−原価−交通費−経費。売上・原価・交通費は予定と実績で独立して保存され、登録経費・スポット業務・物販は共通です。</p></div>`;
+        matrix.innerHTML = `<div class="glass-card rounded-xl p-4 mb-4"><div class="flex flex-wrap items-center justify-between gap-3 mb-3"><div><h3 class="font-bold text-cyan-300"><i class="fa-solid fa-table mr-2"></i>売上・粗利管理</h3><p class="text-xs text-slate-400 mt-1">売上・原価・交通費の予定と実績は別データです。登録経費（物販経費を含む）・スポット業務と物販の売上・原価は予定・実績の両方に自動合算します。全体経費は下部の経費合計に表示します。金額は円単位（1円単位）。グレード変更時は当月以降の予定原価を更新します。予定・実績とも手入力できます。</p></div><div class="flex flex-wrap gap-2 items-center"><label class="text-xs text-slate-400 revenue-filter-label">表示<select id="revenue-view-type" class="ext-input" onchange="setRevenueViewType(this.value)"><option value="sales" ${viewMode==='sales'?'selected':''}>売上</option><option value="profit" ${viewMode==='profit'?'selected':''}>粗利</option></select></label><label class="text-xs text-slate-400 revenue-filter-label">データ<select id="revenue-mode" class="ext-input" onchange="renderRevenueView()"><option value="plan" ${mode==='plan'?'selected':''}>予定</option><option value="actual" ${mode==='actual'?'selected':''}>実績</option></select></label><label class="text-xs text-slate-400 revenue-filter-label">対象年<select id="revenue-year" class="ext-input" onchange="renderRevenueView()">${[year-1,year,year+1].map(y=>`<option value="${y}" ${y===year?'selected':''}>${y}年度（${y}/11〜${y+1}/10）</option>`).join('')}</select></label><label class="text-xs text-slate-400 revenue-filter-label">開始月<select id="revenue-start-month" class="ext-input" onchange="renderRevenueView()">${startMonthOptions}</select></label><label class="text-xs text-slate-400 revenue-filter-label">終了月<select id="revenue-end-month" class="ext-input" onchange="renderRevenueView()">${endMonthOptions}</select></label></div></div><div class="revenue-copy-tools"><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="revenue-repeat-future" ${repeatFuture?'checked':''} onchange="setRevenueRepeatFuture(this.checked)"><span>翌月も反映</span></label><label class="text-xs text-slate-300">コピー対象メンバー<select id="revenue-copy-member" class="ext-input"><option value="ALL">全員</option>${(db.members||[]).map(m=>`<option value="${safeText(m.id)}">${safeText(m.name)}</option>`).join('')}</select></label><label class="text-xs text-slate-300">コピー対象月<select id="revenue-copy-month" class="ext-input"><option value="ALL">全ての月</option>${[11,12,1,2,3,4,5,6,7,8,9,10].map(m=>{const y=year+(m<=10?1:0),key=`${y}-${String(m).padStart(2,'0')}`;return `<option value="${key}">${y}年${m}月</option>`}).join('')}</select></label><button type="button" class="ext-btn px-4 py-2 rounded-lg border border-emerald-400/60 text-emerald-200 bg-emerald-500/10 hover:bg-emerald-500/20" onclick="copyPlannedFinanceToActual()"><i class="fa-solid fa-copy mr-1"></i>予定を実績にコピー</button><span class="text-xs text-slate-400">コピー対象メンバー・月を指定できます。既存実績は確認後に上書きします。</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4"><label class="text-xs text-slate-400">部署で絞り込み<select id="revenue-department-filter" class="ext-input mt-1" onchange="renderRevenueView()"><option value="ALL">全部署</option>${departments.map(d=>`<option value="${safeText(d)}" ${deptFilter===d?'selected':''}>${safeText(d)}</option>`).join('')}</select></label><label class="text-xs text-slate-400">メンバーで絞り込み<select id="revenue-member-filter" class="ext-input mt-1" onchange="renderRevenueView()"><option value="ALL">全メンバー</option>${memberOptions}</select></label></div><div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4"><div class="p-3 rounded-lg border border-cyan-400/30 bg-cyan-500/10"><div class="text-xs text-slate-400">期間売上合計</div><div class="text-xl font-bold text-cyan-300">${money(annualTotal)}</div></div><div class="p-3 rounded-lg border border-rose-400/30 bg-rose-500/10"><div class="text-xs text-slate-400">期間原価合計</div><div class="text-xl font-bold text-rose-300">${money(annualCost)}</div></div><div class="p-3 rounded-lg border border-amber-400/30 bg-amber-500/10"><div class="text-xs text-slate-400">期間交通費合計</div><div class="text-xl font-bold text-amber-300">${money(annualTransport)}</div></div><div class="p-3 rounded-lg border border-emerald-400/30 bg-emerald-500/10"><div class="text-xs text-slate-400">期間粗利合計</div><div class="text-xl font-bold text-emerald-300">${money(annualProfit)}</div></div></div><div class="revenue-scroll overflow-x-auto"><table class="ext-table revenue-finance-table min-w-[1600px]"><thead><tr><th class="sticky left-0 z-20 bg-slate-900 p-3 text-left">メンバー／案件・単価情報</th>${months.map(m=>`<th class="p-3">${Number(m.slice(5))}月</th>`).join('')}<th class="p-3">${viewMode==='sales'?'期間売上':'期間粗利'}</th></tr></thead><tbody>${rows||`<tr><td colspan="${months.length+2}" class="p-6 text-center text-slate-500">条件に一致するメンバーがいません。</td></tr>`}<tr class="revenue-extra"><th class="sticky left-0 z-10">経費合計</th>${months.map(m=>`<td title="${safeText(expenseItems.filter(x=>String(x.date).slice(0,7)===m).map(x=>`${x.date} ${x.category} ${(db.members.find(r=>r.id===x.memberId)||{}).name||'全体経費'} ${money(x.yen/10000)} ${x.note||''}`).join('\n'))}">${money(expenseFor(m))}</td>`).join('')}<td>${money(annualExpense)}</td></tr><tr class="bg-cyan-500/10"><th class="sticky left-0 z-10 bg-slate-950 p-3 text-left ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">月別${viewMode==='sales'?'売上':'粗利'}合計</th>${monthlyTotals.map(({sales, profit})=>{const v=viewMode==='sales'?sales:profit;return `<td class="p-2 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(v)}</td>`}).join('')}<td class="p-2 text-right font-bold ${viewMode==='sales'?'text-cyan-300':'text-emerald-300'}">${money(viewMode==='sales'?annualTotal:annualProfit)}</td></tr></tbody></table></div><p class="text-[11px] text-slate-500 mt-3">基本交通費はメンバー管理ダイアログで登録します。月ごとに変更がある場合は該当月の交通費欄を編集してください。粗利＝売上−原価−交通費−経費。売上・原価・交通費は予定と実績で独立して保存され、登録経費・スポット業務・物販は共通です。</p></div>`;
     };
     window.setRevenueRepeatFuture = function(checked){
         const matrix=document.getElementById('monthly-revenue-matrix');
@@ -361,10 +393,126 @@
     };
     window.saveMonthlyRevenue = function(input){ input.dataset.kind='revenue'; input.dataset.mode=document.getElementById('revenue-mode')?.value||'plan'; saveMonthlyFinance(input); };
     function fillMemberSelect(id, includeBlank){ const el=document.getElementById(id);if(!el)return;const blank=includeBlank?'<option value="">未指定</option>':'';el.innerHTML=blank+(db.members||[]).map(m=>`<option value="${safeText(m.id)}">${safeText(m.name)}</option>`).join(''); }
-    window.renderSpotJobs = function(){ fillMemberSelect('spot-member',true);const body=document.getElementById('spot-table-body');if(!body)return;const list=[...(db.spotJobs||[])].sort((a,b)=>String(b.date).localeCompare(String(a.date)));body.innerHTML=list.map(x=>`<tr><td>${safeText(x.date)}</td><td>${safeText(x.title)}</td><td>${safeText((db.members.find(m=>m.id===x.memberId)||{}).name||'未指定')}</td><td>${safeText(x.client||'-')}</td><td class="text-fuchsia-300">${moneyLabel(x.amount)}</td><td>${safeText(x.note||'')}</td><td><button class="text-rose-300" onclick="deleteSpotJob('${safeText(x.id)}')">削除</button></td></tr>`).join('')||'<tr><td colspan="7" class="p-5 text-center text-slate-500">登録データはありません。</td></tr>';const total=list.reduce((a,x)=>a+Number(x.amount||0),0);document.getElementById('spot-total').textContent=`合計 ${moneyLabel(total)}`;};
-    const moneyLabel = value => '¥'+Math.round(Number(value||0)*10000).toLocaleString('ja-JP');
-    window.addSpotJob = function(e){e.preventDefault();if(!canEditEntity('projects')){alert('スポット業務の登録権限がありません。');return;}db.spotJobs.push({id:uid('SPT'),title:document.getElementById('spot-title').value.trim(),date:document.getElementById('spot-date').value,amount:Math.round(Number(document.getElementById('spot-amount').value)||0)/10000,memberId:document.getElementById('spot-member').value,client:document.getElementById('spot-client').value.trim(),note:document.getElementById('spot-note').value.trim()});logAction('スポット売上登録',document.getElementById('spot-title').value);saveStoredData();e.target.reset();document.getElementById('spot-date').value=today();renderSpotJobs();renderRevenueView();};
-    window.deleteSpotJob = function(id){if(!confirm('このスポット売上を削除しますか？'))return;db.spotJobs=db.spotJobs.filter(x=>x.id!==id);logAction('スポット売上削除',id);saveStoredData();renderSpotJobs();renderRevenueView();};
+    const moneyLabel = value => '¥' + Math.round(Number(value || 0) * 10000).toLocaleString('ja-JP');
+    const spotGrossProfit = job => Number(job.grossProfit ?? job.amount ?? 0);
+    const spotCostYen = job => Math.round((Number(job.amount || 0) - spotGrossProfit(job)) * 10000);
+    const spotExpenses = jobId => (db.expenses || []).filter(expense => expense.spotJobId === jobId);
+
+    window.renderSpotJobs = function() {
+        fillMemberSelect('spot-member', true);
+        const body = document.getElementById('spot-table-body');
+        if (!body) return;
+        const list = [...(db.spotJobs || [])].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        body.innerHTML = list.map(job => {
+            const member = db.members.find(m => m.id === job.memberId);
+            const expense = spotExpenses(job.id).reduce((total, row) => total + Number(row.amount || 0), 0);
+            return `<tr><td>${safeText(job.date)}</td><td>${safeText(job.title)}</td><td>${safeText(member?.name || '未指定')}</td><td>${safeText(job.client || '-')}</td><td class="text-fuchsia-300">${moneyLabel(job.amount)}</td><td>${moneyLabel(spotGrossProfit(job))}</td><td>${moneyLabel(expense)}</td><td>${safeText(job.note || '')}</td><td class="whitespace-nowrap">${canEditEntity('projects') ? `<button type="button" class="text-cyan-300 mr-2" data-id="${safeText(job.id)}" onclick="openSpotJob(this.dataset.id)">編集</button><button type="button" class="text-rose-300" data-id="${safeText(job.id)}" onclick="deleteSpotJob(this.dataset.id)">削除</button>` : ''}</td></tr>`;
+        }).join('') || '<tr><td colspan="9" class="p-5 text-center text-slate-500">登録データはありません。</td></tr>';
+        const total = list.reduce((sum, job) => sum + Number(job.amount || 0), 0);
+        document.getElementById('spot-total').textContent = `売上合計 ${moneyLabel(total)}`;
+    };
+
+    const spotField = name => document.getElementById('spot-' + name);
+    window.openSpotJob = function(id) {
+        if (!canEditEntity('projects')) return;
+        const job = id ? db.spotJobs.find(row => row.id === id) : null;
+        if (id && !job) return;
+        const form = spotField('title').form;
+        form.reset();
+        form.dataset.spotJobId = job?.id || '';
+        const submit = spotField('submit');
+        const modal = document.getElementById('ses73-spot-0');
+        const label = job ? 'スポット業務を編集' : 'スポット業務を登録';
+        submit.textContent = job ? '変更を保存' : label;
+        modal.querySelector('.ses73-header strong').textContent = label;
+        modal.querySelector('[role="dialog"]').setAttribute('aria-label', label);
+        fillMemberSelect('spot-member', true);
+        window.openSes73Dialog('ses73-spot-0');
+        const expenses = job ? spotExpenses(job.id) : [];
+        const multiple = expenses.length > 1;
+        spotField('expense-amount').disabled = multiple;
+        spotField('expense-category').disabled = multiple;
+        spotField('expense-amount').title = multiple ? '個別の経費は経費一覧で確認できます。' : '';
+        spotField('expense-category').querySelectorAll('[data-previous-value]').forEach(option => option.remove());
+        const selectValue = (name, value) => {
+            const select = spotField(name);
+            if (value && !Array.from(select.options).some(option => option.value === value)) {
+                const option = new Option(value, value);
+                option.dataset.previousValue = 'true';
+                select.add(option);
+            }
+            if (value) select.value = value;
+        };
+        spotField('date').value = job?.date || today();
+        if (!job) return;
+        spotField('title').value = job.title || '';
+        spotField('amount').value = Math.round(Number(job.amount || 0) * 10000);
+        spotField('gross-profit').value = Math.round(spotGrossProfit(job) * 10000);
+        spotField('note').value = job.note || '';
+        if (expenses.length) spotField('expense-amount').value = expenses.reduce((total, row) => total + Math.round(Number(row.amount || 0) * 10000), 0);
+        selectValue('member', job.memberId);
+        selectValue('client', job.client);
+        selectValue('expense-category', expenses[0]?.category);
+    };
+
+    window.addSpotJob = function(event) {
+        event.preventDefault();
+        if (!canEditEntity('projects')) { alert('スポット業務の登録・編集権限がありません。'); return; }
+        const form = event.target;
+        const id = form.dataset.spotJobId;
+        const existing = id ? db.spotJobs.find(row => row.id === id) : null;
+        if (id && !existing) { alert('編集対象のスポット業務が見つかりません。'); return; }
+        const title = spotField('title').value.trim();
+        const amount = Number(spotField('amount').value);
+        const grossProfit = Number(spotField('gross-profit').value);
+        const expenseAmount = Number(spotField('expense-amount').value);
+        if (!form.reportValidity() || !title) return;
+        if (grossProfit > amount) { alert('粗利は売上以下の金額を入力してください。'); return; }
+        const job = {
+            ...existing, id: id || uid('SPT'), title, date: spotField('date').value, amount: amount / 10000,
+            grossProfit: grossProfit / 10000, memberId: spotField('member').value,
+            client: spotField('client').value.trim(), note: spotField('note').value.trim()
+        };
+        const expenses = spotExpenses(job.id);
+        if (expenses.length === 1 && expenseAmount === 0 && !confirm('紐づいている経費を削除して保存しますか？')) return;
+        if (existing) Object.assign(existing, job);
+        else db.spotJobs.push(job);
+
+        if (expenses.length > 1) {
+            for (const expense of expenses) Object.assign(expense, { date: job.date, memberId: job.memberId });
+        } else if (expenseAmount > 0) {
+            const values = {
+                spotJobId: job.id, date: job.date, memberId: job.memberId,
+                category: spotField('expense-category').value, amount: expenseAmount / 10000
+            };
+            if (expenses.length) Object.assign(expenses[0], values);
+            else db.expenses.push({ id: uid('EXP'), note: job.note, ...values });
+        } else if (expenses.length) {
+            db.expenses = db.expenses.filter(row => row.spotJobId !== job.id);
+        }
+        logAction(existing ? 'スポット業務編集' : 'スポット業務登録', job.title);
+        saveStoredData();
+        form.reset();
+        delete form.dataset.spotJobId;
+        spotField('date').value = today();
+        renderSpotJobs();
+        renderExpenses();
+        renderRevenueView();
+        window.closeSes73Dialog?.('ses73-spot-0');
+    };
+
+    window.deleteSpotJob = function(id) {
+        if (!canEditEntity('projects')) return;
+        const linked = spotExpenses(id).length > 0;
+        if (!confirm(linked ? 'このスポット業務と紐づく経費を削除しますか？' : 'このスポット業務を削除しますか？')) return;
+        db.spotJobs = db.spotJobs.filter(job => job.id !== id);
+        db.expenses = db.expenses.filter(expense => expense.spotJobId !== id);
+        logAction('スポット業務削除', id);
+        saveStoredData();
+        renderSpotJobs();
+        renderExpenses();
+        renderRevenueView();
+    };
     const merchMoney = value => '¥' + Math.round(Number(value||0)).toLocaleString('ja-JP');
     window.renderMerchandise = function(){
       ensureSchema();
@@ -387,7 +535,7 @@
     window.deleteMerchSale=function(id){if(!canEditEntity('merchandise'))return;const sale=db.merchandiseSales.find(x=>x.id===id);if(!sale||!confirm('この販売を取り消し、在庫数を戻しますか？'))return;const p=db.merchandiseProducts.find(x=>x.id===sale.productId);if(p)p.stock=Number(p.stock||0)+Number(sale.quantity||0);db.merchandiseSales=db.merchandiseSales.filter(x=>x.id!==id);logAction('物販販売取消',sale.productName);saveStoredData();renderMerchandise();renderRevenueView();};
     window.addMerchExpense=function(e){e.preventDefault();if(!canEditEntity('merchandise')){alert('物販経費の編集権限がありません。');return;}db.merchandiseExpenses.push({id:uid('MEX'),date:document.getElementById('merch-exp-date').value||today(),category:document.getElementById('merch-exp-category').value,amount:Number(document.getElementById('merch-exp-amount').value)||0,note:document.getElementById('merch-exp-note').value.trim()});logAction('物販経費登録',document.getElementById('merch-exp-category').value);saveStoredData();e.target.reset();document.getElementById('merch-exp-date').value=today();renderMerchandise();renderRevenueView();};
     window.deleteMerchExpense=function(id){if(!canEditEntity('merchandise'))return;const x=db.merchandiseExpenses.find(x=>x.id===id);if(!x||!confirm('この物販経費を削除しますか？'))return;db.merchandiseExpenses=db.merchandiseExpenses.filter(x=>x.id!==id);logAction('物販経費削除',x.category);saveStoredData();renderMerchandise();renderRevenueView();};
-    window.renderExpenses = function(){fillMemberSelect('expense-member',true);const body=document.getElementById('expense-table-body');if(!body)return;const list=[...(db.expenses||[])].sort((a,b)=>String(b.date).localeCompare(String(a.date)));body.innerHTML=list.map(x=>`<tr><td>${safeText(x.date)}</td><td>${safeText(x.category)}</td><td>${safeText((db.members.find(m=>m.id===x.memberId)||{}).name||'全体経費')}</td><td class="text-rose-300">${moneyLabel(x.amount)}</td><td>${safeText(x.note||'')}</td><td><button class="text-rose-300" onclick="copyExpense('${safeText(x.id)}')">複製</button> <button class="text-rose-300" onclick="deleteExpense('${safeText(x.id)}')">削除</button></td></tr>`).join('')||'<tr><td colspan="6" class="p-5 text-center text-slate-500">登録データはありません。</td></tr>';document.getElementById('expense-total').textContent=`合計 ${moneyLabel(list.reduce((a,x)=>a+Number(x.amount||0),0))}`;};
+    window.renderExpenses = function(){fillMemberSelect('expense-member',true);const body=document.getElementById('expense-table-body');if(!body)return;const list=[...(db.expenses||[])].sort((a,b)=>String(b.date).localeCompare(String(a.date)));body.innerHTML=list.map(x=>`<tr><td>${safeText(x.date)}</td><td>${safeText(x.category)}</td><td>${safeText((db.members.find(m=>m.id===x.memberId)||{}).name||'全体経費')}</td><td class="text-rose-300">${moneyLabel(x.amount)}</td><td>${x.spotJobId ? `<div class="text-cyan-300">スポット業務：${safeText(db.spotJobs.find(job=>job.id===x.spotJobId)?.title || '業務情報未登録')}</div>` : ''}${safeText(x.note||'')}</td><td><button class="text-rose-300" onclick="copyExpense('${safeText(x.id)}')">複製</button> <button class="text-rose-300" onclick="deleteExpense('${safeText(x.id)}')">削除</button></td></tr>`).join('')||'<tr><td colspan="6" class="p-5 text-center text-slate-500">登録データはありません。</td></tr>';document.getElementById('expense-total').textContent=`合計 ${moneyLabel(list.reduce((a,x)=>a+Number(x.amount||0),0))}`;};
     function expenseDates(date,end){
         if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return [];
         if(!end)return [date];
@@ -398,7 +546,17 @@
     }
     window.copyExpense=function(id){if(window.sesRestricted?.()||!canEditEntity('projects'))return;const x=db.expenses.find(r=>r.id===id);if(!x)return;window.openSes73Dialog?.('ses73-expenses-0');const el=k=>document.getElementById('expense-'+k);el('date').value=today();el('category').value=x.category;el('amount').value=Math.round(Number(x.amount)*10000);el('member').value=x.memberId||'';el('note').value=x.note||'';el('repeat').value='once';el('repeat-end').value='';el('repeat-end').disabled=true;};
     window.addExpense = function(e){e.preventDefault();if(window.sesRestricted?.()||!canEditEntity('projects'))return;const el=k=>document.getElementById('expense-'+k);const monthly=el('repeat').value==='monthly';const dates=monthly&&!el('repeat-end').value?[]:expenseDates(el('date').value,monthly?el('repeat-end').value:'');const amount=Number(el('amount').value);if(!dates.length||!Number.isSafeInteger(amount)||amount<0||el('amount').value===''){alert('金額と終了月を確認してください（最大120か月）。');return;}const base={category:el('category').value,amount:amount/10000,memberId:el('member').value,note:el('note').value.trim()};const pending=dates.filter(date=>!db.expenses.some(x=>x.date===date&&x.category===base.category&&Math.round(Number(x.amount)*10000)===amount&&(x.memberId||'')===base.memberId&&(x.note||'')===base.note));if(!pending.length){alert('同じ内容の経費が登録済みです。');return;}if(monthly&&!confirm(`${pending.length}件の経費を登録します。重複 ${dates.length-pending.length}件は除外します。`))return;if(!monthly&&pending.length!==dates.length)return;pending.forEach(date=>db.expenses.push({id:uid('EXP'),date,...base}));logAction('経費登録',`${base.category} ${pending.length}件`);saveStoredData();e.target.reset();el('date').value=today();el('repeat-end').disabled=true;renderExpenses();const mode=document.getElementById('revenue-mode');if(mode)mode.value='actual';renderRevenueView();window.closeSes73Dialog?.('ses73-expenses-0');window.renderFiscalDashboard?.();};
-    window.deleteExpense = function(id){if(!confirm('この経費を削除しますか？'))return;db.expenses=db.expenses.filter(x=>x.id!==id);logAction('経費削除',id);saveStoredData();renderExpenses();renderRevenueView();};
+    window.deleteExpense = function(id) {
+        if (!canEditEntity('projects')) return;
+        const expense = db.expenses.find(row => row.id === id);
+        if (!expense || !confirm(expense.spotJobId ? 'この経費を削除しますか？ スポット業務の経費表示にも反映されます。' : 'この経費を削除しますか？')) return;
+        db.expenses = db.expenses.filter(row => row.id !== id);
+        logAction('経費削除', id);
+        saveStoredData();
+        renderExpenses();
+        if (expense.spotJobId) renderSpotJobs();
+        renderRevenueView();
+    };
     window.initCharts = function() {
         if (typeof Chart === 'undefined' || typeof db === 'undefined') return;
         ensureSchema();
@@ -454,7 +612,7 @@
       const all=db.members||[], members=all.filter(m=>(!reportDept||(m.department||'未登録')===reportDept)&&(!reportMember||m.id===reportMember)), ids=new Set(members.map(m=>m.id)), scoped=!!(reportDept||reportMember), match=id=>!scoped||ids.has(id);
       const months=Array.from({length:12},(_,i)=>{const n=(i+10)%12+1;return `${reportYear+(n<11?1:0)}-${String(n).padStart(2,'0')}`}), period=reportMonth?[reportMonth]:months, inPeriod=x=>period.includes(String(x||'').slice(0,7));
       const num=x=>Number(x)||0, yenInt=x=>Math.round(num(x)*10000), money=x=>'¥'+Math.round(x).toLocaleString('ja-JP'), sum=a=>a.reduce((s,v)=>s+v,0), group=(a,key,val=()=>1)=>{const map=new Map();a.forEach(x=>{const k=key(x)||'未設定';map.set(k,(map.get(k)||0)+val(x));});return [...map].sort((a,b)=>b[1]-a[1]);};
-      const extras=[...(db.spotJobs||[]).map(x=>({...x,kind:'スポット',r:yenInt(x.amount),c:0})),...(db.merchandiseSales||[]).map(x=>({...x,kind:'物販',r:Math.round(num(x.quantity)*num(x.unitPrice)),c:Math.round(num(x.quantity)*num(x.unitCost))}))].filter(x=>match(x.memberId)&&inPeriod(x.date));
+      const extras=[...(db.spotJobs||[]).map(x=>({...x,kind:'スポット',r:yenInt(x.amount),c:spotCostYen(x)})),...(db.merchandiseSales||[]).map(x=>({...x,kind:'物販',r:Math.round(num(x.quantity)*num(x.unitPrice)),c:Math.round(num(x.quantity)*num(x.unitCost))}))].filter(x=>match(x.memberId)&&inPeriod(x.date));
       const finance=(m,month,mode)=>{const k=m.id+'|'+month,active=m.status==='稼働中'&&(!(m.contractStart||m.startDate)||(m.contractStart||m.startDate).slice(0,7)<=month)&&(!m.contractEnd||m.contractEnd.slice(0,7)>=month), suffix=mode==='actual'?'Actual':'', get=(s,f)=>db[s+suffix]?.[k]??(mode==='plan'&&(active||f==='transportCost')?m[f]:0), grade=window.gradeCostFor?.(m,reportYear);const r=yenInt(mode==='plan'?(window.memberRatePlan?.(m,month)??get('monthlyRevenue','rate')):get('monthlyRevenue','rate')),c=yenInt(mode==='plan'&&active?(db.monthlyCost?.[k]??grade??m.cost):get('monthlyCost','cost')),t=yenInt(get('monthlyTransport','transportCost'));return {r,c,t,p:r-c-t};};
       const totals=(list,ms,mode,ex=[])=>{let r=0,c=0,t=0;list.forEach(m=>ms.forEach(month=>{const v=finance(m,month,mode);r+=v.r;c+=v.c;t+=v.t;}));if(mode==='actual')ex.filter(x=>ms.includes(String(x.date).slice(0,7))).forEach(x=>{r+=x.r;c+=x.c;});return {r,c,t,p:r-c-t};};
       const total=totals(members,period,reportMode,extras), active=members.filter(m=>m.status==='稼働中').length, projects=(db.projects||[]).filter(p=>!scoped||members.some(m=>m.assignedProjectId===p.id)), interviews=(db.interviews||[]).filter(i=>inPeriod(i.date||i.interviewDate)&&match(i.memberId)), rates=members.map(m=>({m,r:(db.memberRates||[]).find(r=>r.memberId===m.id&&Number(r.year)===reportYear)})), expenses=(db.expenses||[]).filter(x=>inPeriod(x.date)&&match(x.memberId)), feedback=(db.customerMeetings||[]).filter(x=>!x.deletedAt&&!x.deleted&&x.type==='メンバーフィードバック'&&inPeriod(x.date)&&match(x.extra?.['対象メンバー']||x.memberIds?.[0]));
@@ -543,9 +701,17 @@
     // Current assignment reference screen + grouped accordion navigation
     function renderCurrentAssignments(){
       const panel=document.getElementById('view-current-assignments'); if(!panel)return;
-      const members=(db.members||[]).filter(m=>['稼働中','参画中','参画中（稼働中）'].includes(m.status));
-      const esc=v=>String(v??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-      panel.innerHTML=`<div class="p-6 space-y-5"><div class="flex flex-wrap items-center justify-between gap-3"><div><h2 class="text-2xl font-bold neon-heading">現在の参画状況</h2><p class="text-sm opacity-70 mt-1">現在、実際に案件へ参画しているメンバーの確認画面です。案件がない人・退場予定者向けの人材マッチングとは分けて管理します。</p></div><div class="px-4 py-2 rounded-xl border border-emerald-400/40 text-emerald-300">稼働中 ${members.length} 名</div></div><div class="glass-card rounded-xl overflow-x-auto"><table class="w-full text-sm"><thead><tr class="text-left border-b border-white/10"><th class="p-3">メンバー</th><th class="p-3">参画案件</th><th class="p-3">取引先</th>${window.sesRestricted?.()?'':'<th class="p-3">月額単価</th>'}<th class="p-3">ステータス</th><th class="p-3">備考</th></tr></thead><tbody>${members.map(m=>{const pname=m.currentProject||m.projectName||m.projectTitle||m.assignment||m.project||'案件情報未登録';const proj=(db.projects||[]).find(p=>p.id===pname||p.title===pname);return `<tr class="border-b border-white/5 hover:bg-white/5"><td class="p-3 font-semibold">${esc(m.name||m.fullName||m.id)}</td><td class="p-3">${esc(proj?.title||pname)}</td><td class="p-3">${esc(proj?.clientName||m.clientName||'—')}</td>${window.sesRestricted?.()?'':`<td class="p-3 text-emerald-300">${Number(m.rate||m.monthlyRate||0).toLocaleString('ja-JP')} 万円</td>`}<td class="p-3"><span class="px-2 py-1 rounded-full bg-emerald-400/10 text-emerald-300">${esc(m.status)}</span></td><td class="p-3">${esc(m.assignmentNote||m.note||'—')}</td></tr>`}).join('')||'<tr><td colspan="6" class="p-8 text-center opacity-60">稼働中のメンバーがいません。メンバー管理でステータスを確認してください。</td></tr>'}</tbody></table></div><p class="text-xs opacity-60">※参画案件の紐付け情報が登録されていない場合は「案件情報未登録」と表示されます。</p></div>`;
+      const rows = (db.projects || []).flatMap(project => getCurrentProjectParticipants(project).map(row => ({ ...row, project })));
+      const showRate = !window.sesRestricted?.();
+      const memberCount = new Set(rows.map(row => row.memberId)).size;
+      panel.innerHTML = `<div class="p-6 space-y-5"><div class="text-emerald-300">${memberCount}人参画中</div>
+        <div class="glass-card rounded-xl overflow-x-auto"><table class="w-full text-sm"><thead><tr class="text-left border-b border-white/10">
+        <th class="p-3">メンバー</th><th class="p-3">参画案件</th><th class="p-3">取引先</th><th class="p-3">契約終了日</th>${showRate ? '<th class="p-3">参画単価（月額）</th>' : ''}</tr></thead>
+        <tbody>${rows.map(({ member, project, rateYen, endDate, contractEnd }) => {
+            const client = db.clients.find(c => c.id === project.clientId);
+            const end = endDate || contractEnd || (member.assignedProjectId === project.id && member.contractEnd) || project.contractEnd;
+            return `<tr class="border-b border-white/5"><td class="p-3 font-semibold">${safeText(member.name || member.id)}</td><td class="p-3">${safeText(project.title)}</td><td class="p-3">${safeText(client?.name || project.clientName || '—')}</td><td class="p-3">${safeText(end || '—')}</td>${showRate ? `<td class="p-3">${moneyLabel(rateYen / 10000)}</td>` : ''}</tr>`;
+        }).join('') || `<tr><td colspan="${showRate ? 5 : 4}" class="p-8 text-center opacity-60">参画中の案件が登録されていません。</td></tr>`}</tbody></table></div></div>`;
     }
     window.openCurrentAssignmentsDialog=function(){
       renderCurrentAssignments();
@@ -554,7 +720,7 @@
       let modal=document.getElementById('ses-current-assignments-dialog');
       if(!modal){
         modal=document.createElement('div');modal.id='ses-current-assignments-dialog';modal.className='ses-assignment-overlay';
-        modal.innerHTML='<div class="ses-assignment-dialog" role="dialog" aria-modal="true" aria-label="現在の参画状況"><div class="ses-assignment-dialog-header"><strong>現在の参画状況</strong><button type="button" aria-label="閉じる" onclick="closeCurrentAssignmentsDialog()"><i class="fa-solid fa-xmark"></i></button></div><div class="ses-assignment-dialog-body"></div></div>';
+        modal.innerHTML='<div class="ses-assignment-dialog" role="dialog" aria-modal="true" aria-label="案件参画情報"><div class="ses-assignment-dialog-header"><strong>案件参画情報</strong><button type="button" aria-label="閉じる" onclick="closeCurrentAssignmentsDialog()"><i class="fa-solid fa-xmark"></i></button></div><div class="ses-assignment-dialog-body"></div></div>';
         modal.addEventListener('click',e=>{if(e.target===modal)window.closeCurrentAssignmentsDialog()});
         document.body.appendChild(modal);
       }
@@ -627,7 +793,7 @@
       if(main&&!document.getElementById('view-current-assignments')){const p=document.createElement('section');p.id='view-current-assignments';p.className='view-panel hidden h-full overflow-y-auto';main.appendChild(p)}
       // Insert a navigation entry before grouping existing navigation.
       const navRoot=document.querySelector('#sidebar > div.py-4');
-      if(false&&navRoot&&!document.getElementById('nav-current-assignments')){const a=document.createElement('a');a.href='#';a.id='nav-current-assignments';a.className='nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50';a.innerHTML='<i class="fa-solid fa-user-check w-5 text-center text-base"></i><span class="sidebar-text">現在の参画状況</span>';a.onclick=e=>{e.preventDefault();window.switchTab('current-assignments')};navRoot.appendChild(a)}
+      if(false&&navRoot&&!document.getElementById('nav-current-assignments')){const a=document.createElement('a');a.href='#';a.id='nav-current-assignments';a.className='nav-item flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition space-x-3 text-slate-400 hover:text-white hover:bg-slate-800/50';a.innerHTML='<i class="fa-solid fa-user-check w-5 text-center text-base"></i><span class="sidebar-text">案件参画情報</span>';a.onclick=e=>{e.preventDefault();window.switchTab('current-assignments')};navRoot.appendChild(a)}
       if(typeof renderAllViews==='function'){const old=window.renderAllViews;window.renderAllViews=function(){if(old)old();renderCurrentAssignments();renderMerchandise()};}
     });
 

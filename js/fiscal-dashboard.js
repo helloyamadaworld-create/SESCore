@@ -32,7 +32,7 @@
     const sum=(list,fn,filter=match)=>(list||[]).filter(x=>inMonth(x)&&filter(x.memberId)).reduce((a,x)=>a+fn(x),0);
     const n=x=>Number(x)||0;
     const revenue=sum(d.spotJobs,x=>Math.round(n(x.amount)*10000))+sum(d.merchandiseSales,x=>Math.round(n(x.quantity)*n(x.unitPrice)));
-    const cost=sum(d.merchandiseSales,x=>Math.round(n(x.quantity)*n(x.unitCost)));
+    const cost=sum(d.spotJobs,x=>Math.round((n(x.amount)-n(x.grossProfit ?? x.amount))*10000))+sum(d.merchandiseSales,x=>Math.round(n(x.quantity)*n(x.unitCost)));
     const expense=sum(d.expenses,x=>Math.round(n(x.amount)*10000))+(all?sum(d.merchandiseExpenses,x=>n(x.amount),()=>true):0);
     return {revenue:revenue/10000,profit:(revenue-cost-expense)/10000};
   }
