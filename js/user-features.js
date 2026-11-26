@@ -62,7 +62,7 @@
 
   function applyHireDates() {
     if (typeof db === 'undefined' || !Array.isArray(db.members)) return;
-    db.members.forEach(m => { if (HIRE_DATES[m.name]) { m.hireDate = HIRE_DATES[m.name]; m.exp = window.calculateTenure(m.hireDate); } else if (m.hireDate) m.exp = window.calculateTenure(m.hireDate); });
+    db.members.forEach(m => { if (!m.hireDate && HIRE_DATES[m.name]) { m.hireDate = HIRE_DATES[m.name]; m.exp = window.calculateTenure(m.hireDate); } else if (m.hireDate) m.exp = window.calculateTenure(m.hireDate); });
     try { localStorage.setItem('ses_access_db', JSON.stringify(db)); } catch (_) {}
   }
   function setCurrentAccount(account) {
@@ -200,7 +200,6 @@
   };
 
   document.addEventListener('DOMContentLoaded', function () {
-    applyHireDates();
     // Center dialogs on portrait mobile screens and ensure overlays are above the app shell.
     const style = document.createElement('style');
     style.textContent = `

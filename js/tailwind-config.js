@@ -1,5 +1,5 @@
 
-        tailwind.config = {
+        if (window.tailwind) window.tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {

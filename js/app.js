@@ -6533,26 +6533,17 @@
         alignClientIds(db);
 
         function loadStoredData() {
-            const INITIAL_DATA_SEED_VERSION = 'sescore-seed-2026-11-25-v3.2.131';
-            const appliedSeedVersion = localStorage.getItem('ses_access_seed_version');
             const stored = localStorage.getItem('ses_access_db');
-            // Apply the supplied 2026-11-25 backup as the initial data exactly once for this release.
-            // After this one-time setup, subsequent user edits are preserved normally.
-            if (appliedSeedVersion !== INITIAL_DATA_SEED_VERSION) {
-                db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
-                try {
-                    localStorage.setItem('ses_access_db', JSON.stringify(db));
-                    localStorage.setItem('ses_access_seed_version', INITIAL_DATA_SEED_VERSION);
-                } catch (e) {}
-            } else if (stored) {
+            if (stored) {
                 try {
                     db = JSON.parse(stored);
-                } catch (e) {
-                    db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
+                } catch (error) {
+                    console.error('既存の保存データを読み込めませんでした。', error);
+                    alert('既存の保存データを読み込めません。バックアップを確認してください。');
+                    throw error;
                 }
             } else {
                 db = JSON.parse(JSON.stringify(DEFAULT_INITIAL_DATA));
-                try { localStorage.setItem('ses_access_db', JSON.stringify(db)); } catch (e) {}
             }
             // Annual goals for FY2027 / 15th term; preserve any existing user-entered values.
             if (!db.fiscalTargets || typeof db.fiscalTargets !== 'object') db.fiscalTargets = {};
@@ -7176,7 +7167,13 @@
 
             if (id) {
                 const index = db.projects.findIndex(p => p.id === id);
-                if (index !== -1) db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, priceYen, skills, location, status, projectType, ...extra };
+                if (index !== -1) {
+                    const previousStatus = db.projects[index].status;
+                    db.projects[index] = { ...db.projects[index], title, clientId, clientName, price, priceYen, skills, location, status, projectType, ...extra };
+                    if (previousStatus !== status) {
+                        (db.projectStatusHistory ||= []).push({projectId:id,from:previousStatus || null,to:status,at:new Date().toISOString()});
+                    }
+                }
             } else {
                 const maxId = db.projects.reduce((max, p) => { const match = /^PRJ-(\d+)$/.exec(p.id); return match ? Math.max(max, Number(match[1])) : max; }, 0);
                 db.projectIdSequence = Math.max(Number(db.projectIdSequence) || 0, maxId) + 1;
@@ -7305,7 +7302,7 @@
             document.getElementById('member-display-id').textContent=window.getMemberDisplayId(m);
             document.getElementById('member-submit').textContent='保存';
             document.querySelector('#modal-member .ses-member-body').scrollTop=0;
-            window.fillMemberGradeSelect?.(m.grade||'');
+            window.fillMemberGradeSelect?.(window.gradeForPeriod?.(m) ?? m.grade ?? '');
             document.getElementById('modal-member').classList.remove('hidden');
         }
 
@@ -7324,20 +7321,22 @@
             const status = document.getElementById('member-status').value;
             const waitingStartDate = document.getElementById('member-waiting-start').value;
             const nextMonthStatus = document.getElementById('member-next-month-status').value;
-            const grade = window.sesRestricted() ? (prior?.grade||'') : document.getElementById('member-grade')?.value || '';
+            const grade = window.sesRestricted() ? (window.gradeForPeriod?.(prior || {}) ?? prior?.grade ?? '') : document.getElementById('member-grade')?.value || '';
             const assignedProjectId = document.getElementById('member-project').value;
             const contractEnd = document.getElementById('member-contract-end').value;
             const transportCost = window.sesRestricted() ? Number(prior?.transportCost||0) : Math.round(Math.max(0, Number(document.getElementById('member-transport-cost').value)||0))/10000;
             const currentStatus = status;
+            if (prior && grade && (window.gradeForPeriod?.(prior) ?? prior.grade) !== grade &&
+                !confirm('現在の会計期の登録済み予定・実績原価（締め済みを含む）にグレード変更を反映しますか？')) return;
 
             if (id) {
                 const index = db.members.findIndex(m => m.id === id);
-                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost }; saveMemberExtra(db.members[index]); if(prior.grade!==grade){window.applyGradeToPlan?.(db.members[index]); db.members[index].cost=cost;} }
+                if (index !== -1) { db.members[index] = { ...db.members[index], name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost }; saveMemberExtra(db.members[index]); if((window.gradeForPeriod?.(prior) ?? prior.grade)!==grade) window.assignMemberGradeForCurrentPeriod?.(db.members[index],grade); }
             } else {
                 db.memberIdSequence = Math.max(Number(db.memberIdSequence)||0, ...db.members.map(c=>/^MEM-\d+$/.test(c.id)?Number(c.id.slice(4)):0))+1;
                 const newId = `MEM-${String(db.memberIdSequence).padStart(3, '0')}`;
                 const member={ id: newId, name, type, skills, hireDate, exp, rate, cost, available, status, waitingStartDate, nextMonthStatus, grade, currentStatus, assignedProjectId, contractEnd, transportCost };
-                saveMemberExtra(member); db.members.push(member);
+                saveMemberExtra(member); db.members.push(member); if(grade) window.assignMemberGradeForCurrentPeriod?.(member,grade);
             }
 
             saveStoredData();
@@ -7402,6 +7401,7 @@
         // 8. CHART.JS INITIALIZATION & UPDATES
         // ----------------------------------------------------
         function initCharts() {
+            if (typeof Chart !== 'function') return;
             const isNeon = document.body.classList.contains('theme-neon');
             const textColor = isNeon ? '#94A3B8' : '#64748B';
             const gridColor = isNeon ? 'rgba(255,255,255,0.05)' : '#E2E8F0';

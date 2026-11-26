@@ -259,6 +259,7 @@
         const getField = (store, m, month, fallback) => {
             const active=m.status==='稼働中'&&(!(m.contractStart||m.startDate)|| (m.contractStart||m.startDate).slice(0,7)<=month)&&(!m.contractEnd||m.contractEnd.slice(0,7)>=month);
             if(store===revenueStore&&mode==='plan'){const negotiated=window.memberRatePlan?.(m,month);if(negotiated!=null)return negotiated;}
+            if(store===costStore&&mode==='plan'&&active) return safeNum(store[keyFor(m,month)] ?? window.gradeCostFor?.(m,year) ?? fallback);
             if(store===transportStore&&mode==='plan')return safeNum(store[keyFor(m,month)] ?? m.transportCost);
             return store[keyFor(m,month)] !== undefined ? safeNum(store[keyFor(m,month)]) : (active?safeNum(fallback):0);
         };
@@ -435,9 +436,9 @@
     };
     window.renderMatching = function () {
         const select=document.getElementById('match-project'); const container=document.getElementById('matching-results'); if(!select||!container||typeof db === 'undefined') return; ensureSchema();
-        const matchProjects=db.projects.filter(p=>!['見送り','募集終了'].includes(p.status) && (p.projectType !== '参画案件'));
+        const matchProjects=db.projects.filter(p=>!['見送り','募集終了'].includes(p.status));
         const old=select.value; select.innerHTML=matchProjects.map(p=>`<option value="${safeText(p.id)}">${safeText(p.title)}</option>`).join(''); if(matchProjects.some(p=>p.id===old)) select.value=old;
-        const project=matchProjects.find(p=>p.id===select.value); if(!project){container.innerHTML='<p class="text-slate-500">人材提案に利用できる共有案件がありません。案件管理で共有案件を登録してください。</p>';return;}
+        const project=matchProjects.find(p=>p.id===select.value); if(!project){container.innerHTML='<p class="text-slate-500">人材提案に利用できる共有案件・参画案件がありません。</p>';return;}
         const required=(project.skills||[]).map(s=>String(s).toLowerCase()); const status=document.getElementById('match-status')?.value||'eligible';
         // 人材マッチングには「待機中」のみを表示し、稼働中のメンバーは除外する。
         const eligibleStatuses=['待機中'];
@@ -454,7 +455,7 @@
       const months=Array.from({length:12},(_,i)=>{const n=(i+10)%12+1;return `${reportYear+(n<11?1:0)}-${String(n).padStart(2,'0')}`}), period=reportMonth?[reportMonth]:months, inPeriod=x=>period.includes(String(x||'').slice(0,7));
       const num=x=>Number(x)||0, yenInt=x=>Math.round(num(x)*10000), money=x=>'¥'+Math.round(x).toLocaleString('ja-JP'), sum=a=>a.reduce((s,v)=>s+v,0), group=(a,key,val=()=>1)=>{const map=new Map();a.forEach(x=>{const k=key(x)||'未設定';map.set(k,(map.get(k)||0)+val(x));});return [...map].sort((a,b)=>b[1]-a[1]);};
       const extras=[...(db.spotJobs||[]).map(x=>({...x,kind:'スポット',r:yenInt(x.amount),c:0})),...(db.merchandiseSales||[]).map(x=>({...x,kind:'物販',r:Math.round(num(x.quantity)*num(x.unitPrice)),c:Math.round(num(x.quantity)*num(x.unitCost))}))].filter(x=>match(x.memberId)&&inPeriod(x.date));
-      const finance=(m,month,mode)=>{const k=m.id+'|'+month,active=m.status==='稼働中'&&(!(m.contractStart||m.startDate)||(m.contractStart||m.startDate).slice(0,7)<=month)&&(!m.contractEnd||m.contractEnd.slice(0,7)>=month), suffix=mode==='actual'?'Actual':'', get=(s,f)=>db[s+suffix]?.[k]??(mode==='plan'&&(active||f==='transportCost')?m[f]:0), grade=window.gradeCostFor?.(m);const r=yenInt(mode==='plan'?(window.memberRatePlan?.(m,month)??get('monthlyRevenue','rate')):get('monthlyRevenue','rate')),c=yenInt(get('monthlyCost','cost')),t=yenInt(get('monthlyTransport','transportCost'));return {r,c,t,p:r-c-t};};
+      const finance=(m,month,mode)=>{const k=m.id+'|'+month,active=m.status==='稼働中'&&(!(m.contractStart||m.startDate)||(m.contractStart||m.startDate).slice(0,7)<=month)&&(!m.contractEnd||m.contractEnd.slice(0,7)>=month), suffix=mode==='actual'?'Actual':'', get=(s,f)=>db[s+suffix]?.[k]??(mode==='plan'&&(active||f==='transportCost')?m[f]:0), grade=window.gradeCostFor?.(m,reportYear);const r=yenInt(mode==='plan'?(window.memberRatePlan?.(m,month)??get('monthlyRevenue','rate')):get('monthlyRevenue','rate')),c=yenInt(mode==='plan'&&active?(db.monthlyCost?.[k]??grade??m.cost):get('monthlyCost','cost')),t=yenInt(get('monthlyTransport','transportCost'));return {r,c,t,p:r-c-t};};
       const totals=(list,ms,mode,ex=[])=>{let r=0,c=0,t=0;list.forEach(m=>ms.forEach(month=>{const v=finance(m,month,mode);r+=v.r;c+=v.c;t+=v.t;}));if(mode==='actual')ex.filter(x=>ms.includes(String(x.date).slice(0,7))).forEach(x=>{r+=x.r;c+=x.c;});return {r,c,t,p:r-c-t};};
       const total=totals(members,period,reportMode,extras), active=members.filter(m=>m.status==='稼働中').length, projects=(db.projects||[]).filter(p=>!scoped||members.some(m=>m.assignedProjectId===p.id)), interviews=(db.interviews||[]).filter(i=>inPeriod(i.date||i.interviewDate)&&match(i.memberId)), rates=members.map(m=>({m,r:(db.memberRates||[]).find(r=>r.memberId===m.id&&Number(r.year)===reportYear)})), expenses=(db.expenses||[]).filter(x=>inPeriod(x.date)&&match(x.memberId)), feedback=(db.customerMeetings||[]).filter(x=>!x.deletedAt&&!x.deleted&&x.type==='メンバーフィードバック'&&inPeriod(x.date)&&match(x.extra?.['対象メンバー']||x.memberIds?.[0]));
       const tabs=['総合分析','売上・粗利','営業','メンバー','単価交渉','取引先','経費','顧客評価'];
@@ -484,14 +485,18 @@
         const lastMonth = new Date(now.getFullYear(), now.getMonth()-1, 1);
         const monthKey = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
         const validMonth = raw => /^\d{4}-\d{2}/.test(String(raw || '')) ? String(raw).slice(0,7) : null;
-        const projectMonth = p => validMonth(p.createdAt || p.registeredAt || p.registrationDate || p.addedAt);
+        const statusChanges = db.projectStatusHistory || [];
+        const transitionMonth = at => {
+            const date = new Date(at);
+            return Number.isNaN(date.getTime()) ? null : new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit'}).format(date);
+        };
         const interviewMonth = i => validMonth(i.date || i.interviewDate);
         const waiting = db.members.filter(m => m.status === '待機中');
         const waitingForMonth = month => month===monthKey(thisMonth) ? waiting : waiting.filter(m => { const started = validMonth(m.waitingStartDate); return started && started <= month; });
         const labels = [
-            ['募集案件', (month) => db.projects.filter(p => ['提案公募中','募集準備中','募集中'].includes(p.status) && projectMonth(p) === month).length],
+            ['募集案件', (month) => statusChanges.filter(row => ['提案公募中','募集準備中','募集中'].includes(row.to) && transitionMonth(row.at) === month).length],
             ['面談実施済み', (month) => db.interviews.filter(i => ['実施済み','面談実施済み','完了','実施完了'].includes(i.status) && interviewMonth(i) === month).length],
-            ['見送り', (month) => db.projects.filter(p => p.status === '見送り' && validMonth(p.statusChangedAt || p.rejectedAt || p.updatedAt) === month).length],
+            ['見送り', (month) => statusChanges.filter(row => row.to === '見送り' && transitionMonth(row.at) === month).length],
             ['面談予定', (month) => db.interviews.filter(i => ['予定調整済','面談予定','予定','調整済み'].includes(i.status) && interviewMonth(i) === month).length]
         ];
         const colors = ['#00f5ff','#ff39d4','#ffe75b','#00ffba','#ef4444'];
